@@ -1,0 +1,21 @@
+{
+  "name": "RDisquete Portfolio",
+  "short_name": "RDisquete",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "description": "Portfolio de Rafael Dorado (RDisquete), desarrollador frontend especializado en interfaces modernas y creativas.",
+  "icons": [
+    {
+      "src": "/images/Logo lila.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/Logo lila.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

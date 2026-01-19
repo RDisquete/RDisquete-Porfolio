@@ -1,0 +1,46 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  height: 100%;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  min-height: 100%;
+  background-color: #000; 
+  overflow-x: hidden;
+  color: white;
+}
+
+.texture-overlay {
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+
+body.modal-open {
+  overflow: hidden !important; 
+  padding-right: 0px !important; 
+  overscroll-behavior: none;
+}
+
+body.modal-open .footer-root {
+  display: none !important;
+}
+
+/* Si en el futuro la Navbar molesta en los modales, 
+   descomentar esta sección:
+   
+   body.modal-open .navbar-root {
+     display: none !important;
+   } 
+*/

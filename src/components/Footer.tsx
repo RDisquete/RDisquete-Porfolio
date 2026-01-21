@@ -52,7 +52,7 @@ export default function Footer() {
           { icon: <MdEmail />, href: "mailto:rafael.doradozamoro@gmail.com" },
           { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/rafael-dorado-zamoro/" },
           { icon: <FaFileDownload />, href: "/images/CV_Rafael_Dorado_Zamoro.pdf", download: true },
-          {icon: <FaGithub/>, href:"https://github.com/RafaDZdeveloper"}
+          {icon: <FaGithub/>, href:"https://github.com/RDisquete"}
         ].map((link, index) => (
           <a
             key={index}

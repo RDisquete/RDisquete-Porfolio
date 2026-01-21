@@ -55,7 +55,7 @@ const socials = [
   { label: "Email", url: "mailto:rafael.doradozamoro@gmail.com" },
   { label: "LinkedIn", url: "https://www.linkedin.com/in/rafael-dorado-zamoro/" },
   { label: "Descargar CV", url: "/images/CV_Rafael_Dorado_Zamoro.pdf", download: true },
-  {label: "GitHub", url:"https://github.com/RafaDZdeveloper"}
+  {label: "GitHub", url:"https://github.com/RDisquete"}
 ];
 
 const TEXTURA_URL = "/images/texturas/abstract-crumpled-black-paper-texture-background-f-2025-02-22-04-38-59-utc.jpg";

@@ -24,7 +24,7 @@ const socialLinks = {
     whatsapp: "https://wa.me/+34648791998",
     email: "mailto:rafael.doradozamoro@gmail.com",
     cv: "/images/CV_Rafael_Dorado_Zamoro.pdf",
-    github: "https://github.com/RafaDZdeveloper",
+    github: "https://github.com/RDisquete",
 };
 
 const IconMap: Record<string, React.ElementType> = {
@@ -446,7 +446,7 @@ const skillTracks = [
         num: '07',
         title: 'Angular & Otras Tecnologías',
         subtitle: 'B-Side',
-        details: 'Conocimientos de Angular para proyectos modulares, además de herramientas como WordPress, Git y despliegue en Vercel.',
+        details: 'Conocimientos de Angular para proyectos modulares, además de herramientas como WordPress, Git y despliegue en Netlify.',
     }
 ];
 

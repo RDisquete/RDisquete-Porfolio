@@ -102,7 +102,7 @@ export default function HeroSection() {
 
   return (
     <div className="relative w-full bg-neutral-900">
-      <section className="relative w-full h-screen text-[#cdc69c] overflow-hidden border-8 border-[#cdc69c] bg-neutral-900">
+      <section className="relative w-full h-screen text-[#cdc69c] overflow-hidden border-8 border-[#bbb88c] bg-neutral-900">
         <div className="absolute inset-0 z-[100] pointer-events-none" style={ESTILO_OVERLAY} />
 
         <div className="relative block w-full h-full md:hidden">

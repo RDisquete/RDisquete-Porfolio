@@ -451,7 +451,7 @@ const skillTracks = [
 ];
 
 const experienciaData = [
-    { empresa: "Adv Estudio", puesto: "Fotógrafo, filmmaker y desarrollo web", fecha: "2024 - Presente", resumen: "Desarrollo web a medida y contenido audiovisual estratégico.", detalles: "Lideré proyectos para pequeñas agencias y artistas integrando vídeo y web." },
+    { empresa: "Adv Estudio", puesto: "Fotógrafo, filmmaker y desarrollo web", fecha: "2024 - 2026", resumen: "Desarrollo web a medida y contenido audiovisual estratégico.", detalles: "Lideré proyectos para pequeñas agencias y artistas integrando vídeo y web." },
     { empresa: "Apple Mecanorba", puesto: "Asesor comercial y soporte técnico", fecha: "2024", resumen: "Estrategias personalizadas, soporte técnico y +15% ventas en productos Apple.", detalles: "Atención personalizada y formación a clientes." },
     { empresa: "P.D. Fotógrafos", puesto: "Fotógrafo y filmmaker", fecha: "2012 - 2023", resumen: "Producción visual y campañas de branding digital (+20% engagement).", detalles: "Coordinación de equipos y mejora de engagement visual." },
     { empresa: "Gestor.Ex", puesto: "Técnico de sonido y docente", fecha: "2014", resumen: "Sonido en directo y formación audiovisual.", detalles: "Técnica de sonido para Radio Marca." },

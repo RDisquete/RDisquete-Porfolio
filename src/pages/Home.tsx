@@ -24,6 +24,15 @@ const projects = [
     tech: ["React, Vite, Tailwind CSS"]
   },
   {
+    title: "Armario Escénico",
+    url: "https://armarioescenico.netlify.app/",
+    img: "/sambrona.jpg",
+    desc: "Gestión de archivo de vestuario histórico con búsqueda precisa.",
+    video: "/sambronaHover.mp4",
+    tech: ["React, TypeScript, Tailwind CSS"],
+   
+},
+  {
     title: "ED Movil",
     url: "https://edmovil.netlify.app/",
     img: "/images/edmovil.png",
@@ -31,14 +40,7 @@ const projects = [
     video: "/images/edHover.mp4",
     tech: ["React, TypeScript, Tailwind CSS"]
   },
-  {
-    title: "Web RDisquete Photo",
-    desc: "Combina fotografía y desarrollo web.",
-    img: "/images/rdisquetePhoto.jpg",
-    url: "https://rdisquetephoto.netlify.app/",
-    video: "/RPhotoHover.mp4",
-    tech: ["React, TypeScript, React Slick"]
-  },
+
   {
     title: "AM Movil Repair",
     desc: "Web de servicios enfocada en la reparación de móviles.",

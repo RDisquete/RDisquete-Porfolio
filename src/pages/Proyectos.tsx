@@ -48,6 +48,14 @@ const PROJECTS: Proyecto[] = [
         video: "/Nor3xtremeHover.mp4",
         techStack: "React, Vite, Tailwind CSS",
         pressingType: 'First'
+    }, {
+        title: "Armario Escénico",
+        url: "https://armarioescenico.netlify.app/",
+        img: "/sambrona.jpg",
+        desc: "Gestión de archivo de vestuario histórico con búsqueda precisa.",
+        video: "/sambronaHover.mp4",
+        techStack: "React, TypeScript, Tailwind CSS",
+        pressingType: 'Bootleg'
     },
     {
         title: "ED Movil",
@@ -58,15 +66,7 @@ const PROJECTS: Proyecto[] = [
         techStack: "React, TypeScript, Tailwind CSS",
         pressingType: 'First'
     },
-    {
-        title: "Armario Escénico",
-        url: "https://armarioescenico.netlify.app/",
-        img: "/sambrona.jpg",
-        desc: "Gestión de archivo de vestuario histórico con búsqueda precisa.",
-        video: "/sambronaHover.mp4",
-        techStack: "React, TypeScript, Tailwind CSS",
-        pressingType: 'Bootleg'
-    },
+   
     {
         title: "Web RDisquete Photo",
         url: "https://rdisquetephoto.netlify.app/",

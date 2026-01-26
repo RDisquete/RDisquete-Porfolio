@@ -13,11 +13,8 @@ import Contacto from "./pages/Contacto";
 
 export default function App() {
   return (
-  
     <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-[#171717]"> 
-      
       <Router>
-    
         <ScrollToTop />
         
         <Header />
@@ -25,15 +22,18 @@ export default function App() {
         <main className="relative z-0 flex-1"> 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/conoceme" element={<Conoceme />} />
-            <Route path="/proyectos" element={<Proyectos />} />
-            <Route path="/contacto" element={<Contacto />} />
+            {/* AQUÍ ESTÁ EL TRUCO: El path debe ser IGUAL al 'to' de tu Header */}
+            <Route path="/biography" element={<Conoceme />} /> 
+            <Route path="/catalog" element={<Proyectos />} />
+            <Route path="/feedback" element={<Contacto />} />
+            
+            {/* OPCIONAL: Ruta de seguridad por si alguien escribe mal la URL */}
+            <Route path="*" element={<Home />} />
           </Routes>
         </main>
 
         <Footer />
       </Router>
-
     </div>
   );
 }

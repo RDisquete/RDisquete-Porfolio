@@ -47,9 +47,10 @@ export default function Header() {
           </button>
 
           <ul className="flex flex-col gap-8 text-4xl font-black text-center uppercase">
-            <NavLink to="/conoceme" active={location.pathname === "/conoceme"}>Biography</NavLink>
-            <NavLink to="/proyectos" active={location.pathname === "/proyectos"}>Catalog</NavLink>
-            <NavLink to="/contacto" active={location.pathname === "/contacto"}>Feedback</NavLink>
+            {/* Los 'to' deben coincidir con App.tsx */}
+            <NavLink to="/biography" active={location.pathname === "/biography"}>Biography</NavLink>
+            <NavLink to="/catalog" active={location.pathname === "/catalog"}>Catalog</NavLink>
+            <NavLink to="/feedback" active={location.pathname === "/feedback"}>Feedback</NavLink>
           </ul>
         </div>
       )}
@@ -87,9 +88,9 @@ export default function Header() {
 
           {/* Menú de Navegación Escritorio */}
           <div className="items-center hidden gap-6 ml-auto md:flex">
-            <NavLink to="/conoceme" active={location.pathname === "/conoceme"}>Biography</NavLink>
-            <NavLink to="/proyectos" active={location.pathname === "/proyectos"}>Catalog</NavLink>
-            <NavLink to="/contacto" active={location.pathname === "/contacto"}>Feedback</NavLink>
+            <NavLink to="/biography" active={location.pathname === "/biography"}>Biography</NavLink>
+            <NavLink to="/catalog" active={location.pathname === "/catalog"}>Catalog</NavLink>
+            <NavLink to="/feedback" active={location.pathname === "/feedback"}>Feedback</NavLink>
           </div>
         </div>
       </header>

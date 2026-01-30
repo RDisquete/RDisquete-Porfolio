@@ -84,7 +84,7 @@ interface TrackItemProps {
 const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON, isPlatinum, icon }: TrackItemProps) => (
     <motion.div
         className={`relative p-6 transition-all duration-300 border-b group border-current/10 cursor-crosshair 
-        ${isPlatinum ? 'bg-white/10' : 'hover:bg-[#8e2b27]/5'}`}
+        ${isPlatinum ? 'bg-white/10' : 'hover:bg-[#cdc69c]/5'}`}
         whileHover={{ x: 15 }}
     >
         <div className="flex items-start">
@@ -105,7 +105,7 @@ const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON,
                 </div>
 
                 {subtitle && (
-                    <p className="mb-2 font-mono text-sm italic transition-all duration-300 opacity-70 group-hover:text-white/90 group-hover:opacity-100" style={{ color: isPlatinum ? color : undefined }}>
+                    <p className={`mb-2 font-mono text-sm italic transition-all duration-300 group-hover:text-white/90 group-hover:opacity-100 ${isPlatinum ? 'text-[#cdc69c] opacity-100 font-bold' : 'opacity-70'}`}>
                         {subtitle}
                     </p>
                 )}
@@ -452,11 +452,41 @@ const skillTracks = [
 ];
 
 const experienciaData = [
-    { empresa: "Adv Estudio", puesto: "Fotógrafo, filmmaker y desarrollo web", fecha: "2024 - 2026", resumen: "Desarrollo web a medida y contenido audiovisual estratégico.", detalles: "Lideré proyectos para pequeñas agencias y artistas integrando vídeo y web." },
-    { empresa: "Apple Mecanorba", puesto: "Asesor comercial y soporte técnico", fecha: "2024", resumen: "Estrategias personalizadas, soporte técnico y +15% ventas en productos Apple.", detalles: "Atención personalizada y formación a clientes." },
-    { empresa: "P.D. Fotógrafos", puesto: "Fotógrafo y filmmaker", fecha: "2012 - 2023", resumen: "Producción visual y campañas de branding digital (+20% engagement).", detalles: "Coordinación de equipos y mejora de engagement visual." },
-    { empresa: "Gestor.Ex", puesto: "Técnico de sonido y docente", fecha: "2014", resumen: "Sonido en directo y formación audiovisual.", detalles: "Técnica de sonido para Radio Marca." },
-    { empresa: "Uveauve", puesto: "Auxiliar de vídeo y sonido", fecha: "2011", resumen: "Retransmisión en directo.", detalles: "Montaje y operación de equipos en eventos." },
+    { 
+        empresa: "Adv Estudio", 
+        puesto: "Fotógrafo, filmmaker y desarrollo web", 
+        fecha: "2024 - 2026", 
+        resumen: "Digitalización de marca y creación de ecosistemas web robustos para clientes del sector creativo y comercial.", 
+        detalles: "Conceptualización y despliegue de soluciones web a medida integrando narrativa visual de alto impacto. Gestión directa con stakeholders para alinear objetivos de negocio con interfaces centradas en el usuario." 
+    },
+    { 
+        empresa: "Apple Mecanorba", 
+        puesto: "Asesor comercial y soporte técnico", 
+        fecha: "2024", 
+        resumen: "Especialista en ecosistema Apple, optimizando flujos de trabajo profesionales mediante soluciones hardware y software.", 
+        detalles: "Resolución de incidencias técnicas críticas y consultoría personalizada. Logré un incremento sustancial en la fidelización de clientes premium gracias a un soporte preventa especializado y formación técnica postventa." 
+    },
+    { 
+        empresa: "P.D. Fotógrafos", 
+        puesto: "Fotógrafo y filmmaker", 
+        fecha: "2012 - 2023", 
+        resumen: "Dirección creativa y producción audiovisual integral para campañas de branding y eventos corporativos.", 
+        detalles: "Lideré la transición digital del estudio, implementando nuevas estrategias de contenido que elevaron el engagement en un 20%. Supervisión de postproducción y entrega de activos visuales optimizados para diversas plataformas digitales." 
+    },
+    { 
+        empresa: "Gestor.Ex", 
+        puesto: "Técnico de sonido y docente", 
+        fecha: "2014", 
+        resumen: "Ingeniería de audio para eventos en vivo y formación técnica en entornos de radio y producción musical.", 
+        detalles: "Operación de mesas de mezcla y control de calidad sonora para Radio Marca. Diseñé y ejecuté programas formativos para técnicos noveles, asegurando la transmisión de buenas prácticas en captación y procesado de señal." 
+    },
+    { 
+        empresa: "Uveauve", 
+        puesto: "Auxiliar de vídeo y sonido", 
+        fecha: "2011", 
+        resumen: "Soporte técnico operativo en producciones televisivas y retransmisiones de gran escala en directo.", 
+        detalles: "Asistencia en el montaje de infraestructura técnica y operación de cámaras secundarias. Garanticé el flujo continuo de señal bajo presión en entornos de televisión profesional." 
+    },
 ];
 
 const formacionData = [

@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion, type Variants } from "framer-motion";
 import {
     FaQuoteLeft, FaQuoteRight, FaInstagram, FaWhatsapp, FaLinkedin, FaFileDownload, FaGithub,
@@ -167,7 +168,7 @@ export default function Conoceme() {
                                 variants={simpleEntryVariants}
                                 transition={{ delay: 0.3 }}
                             >
-                                ¿QUIÉN SOY?
+                               README.md
                             </motion.h2>
 
                             <motion.p
@@ -177,7 +178,7 @@ export default function Conoceme() {
                                 transition={{ delay: 0.8 }}
                             >
                                 <FaQuoteLeft className="inline mr-2 text-3xl md:mr-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
-                                Soy <strong className="font-black" style={{ color: RETRO_MAROON }}>Rafa</strong>, frontend developer. Me gusta <strong className="font-black" style={{ color: RETRO_MAROON }}>ir más allá de lo esperado</strong>, combinando <strong className="font-black" style={{ color: RETRO_MAROON }}>rigor técnico</strong> con un toque creativo que hace que cada proyecto tenga <strong className="font-black" style={{ color: RETRO_MAROON }}>personalidad propia</strong>. Disfruto <strong className="font-black" style={{ color: RETRO_MAROON }}>resolviendo problemas</strong> y construyendo experiencias digitales que funcionen y sorprendan. Si buscas alguien que aporte <strong className="font-black" style={{ color: RETRO_MAROON }}>ideas frescas</strong> y resultados que se noten, podemos crear algo interesante juntos.
+                                Soy <strong className="font-black" style={{ color: RETRO_MAROON }}>Rafa</strong>. Mi trabajo es la colisión entre el <strong className="font-black" style={{ color: RETRO_MAROON }}>Frontend</strong> de alto rendimiento y el <strong className="font-black" style={{ color: RETRO_MAROON }}>Creative Web Design</strong> con carácter. No diseño pantallas, <strong className="font-black" style={{ color: RETRO_MAROON }}>levanto estructuras digitales</strong> donde el rigor del código sostiene la fuerza de una idea visual. Busco la perfección en el detalle técnico y la provocación en la estética. Creo webs que se sienten como una <strong className="font-black" style={{ color: RETRO_MAROON }}>pieza única</strong>, no como un estándar.
                                 <FaQuoteRight className="inline ml-2 text-3xl md:ml-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
                             </motion.p>
 

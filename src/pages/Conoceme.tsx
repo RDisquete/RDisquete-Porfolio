@@ -326,7 +326,7 @@ export default function Conoceme() {
                     style={{ backgroundImage: `url(${TEXTURE_4})`, backgroundSize: 'cover' }} />
 
                 <div className="relative z-10 max-w-6xl mx-auto">
-                    <h2 className="absolute -top-16 -left-10 text-[12rem] md:text-[20rem] font-black text-[#8e2b27]/5 font-display-impact select-none uppercase leading-none">
+                    <h2 className="absolute -top-16 -left-10 text-[12rem] md:text-[20rem] font-black text-[#8e2b27]/20 font-display-impact select-none uppercase leading-none">
                         A SIDE
                     </h2>
 
@@ -338,7 +338,7 @@ export default function Conoceme() {
                             </h3>
                         </div>
                         <p className="font-mono text-xs opacity-60 max-w-[200px] text-right hidden md:block">
-                            TECHNICAL SKILLS APPLIED IN REAL SCENARIOS _
+                            TECHNICAL SKILLS APPLIED IN REAL SCENARIOS 
                         </p>
                     </div>
 

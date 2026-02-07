@@ -12,7 +12,7 @@ const COLORS = {
     cardLight: "#f5f3e7",
 };
 
-const TEXTURE_URL = "/images/texturas/top-view-of-crumpled-vintage2.webp"; 
+const TEXTURE_URL = "/images/texturas/paperproject.webp"; 
 
 const COLLAGE_ROTATIONS = [
     "rotate-[-1deg]", "rotate-[2deg] -translate-y-1",

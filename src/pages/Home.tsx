@@ -104,7 +104,6 @@ export default function HeroSection() {
 
         <div className="relative w-full h-full px-6 pt-8 md:px-8">
           <div className="absolute w-full top-[15%] md:top-[5%] left-0 z-[70]">
-            {/* SEO: h1 para el nombre principal */}
             <motion.div className="absolute z-20 top-0 left-0 translate-x-[5vw] translate-y-[-20%]" variants={verticalSweep} initial="hidden" animate="visible" transition={{ delay: 0.1 }}>
               <h1 className="text-[22vw] md:text-[14vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#cdc69c] uppercase font-display-impact font-light whitespace-nowrap">RAFA</h1>
             </motion.div>

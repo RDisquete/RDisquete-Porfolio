@@ -7,58 +7,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="#171717" />
 
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+    <link 
+      rel="preload" 
+      href="/images/texturas/abstract-crumpled.jpg" 
+      as="image" 
+      fetchpriority="high"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@900&display=swap" 
+      rel="stylesheet"
+    />
+
+    <title>RDisquete | Frontend Developer & Creative Designer</title>
+    <meta name="description" content="Portfolio de Rafael Dorado (RDisquete). Desarrollo Frontend con React y estética High-Fidelity." />
+
+    <style>
+      :root { color-scheme: dark; }
+      body { 
+        background-color: #171717; 
+        margin: 0; 
+        background-image: url("/images/texturas/abstract-crumpled.webp");
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      #root { min-height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <main id="root"></main>
+    <script type="module" src="/src/main.tsx"></script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GOOGLE_ANALYTICS_ID%"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
-      gtag('config', '%VITE_GOOGLE_ANALYTICS_ID%');
+      gtag('config', '%VITE_GOOGLE_ANALYTICS_ID%', { 'animate_ad_signals': false });
     </script>
-    
-    <link 
-      rel="preload" 
-      href="/images/texturas/abstract-crumpled-black-paper-texture-background-f-2025-02-22-04-38-59-utc.jpg" 
-      as="image" 
-      type="image/jpeg"
-    />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link 
-      rel="preload" 
-      as="style" 
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@900&display=swap" 
-    />
-    <link 
-      rel="stylesheet" 
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@900&display=swap" 
-      media="print" 
-      onload="this.media='all'" 
-    />
-
-    <title>RDisquete | Frontend Developer & Creative Designer</title>
-    <meta name="description" content="Portfolio de Rafael Dorado (RDisquete). Especialista en React y estética analógica." />
-
-    <style>
-      body { 
-        background-color: #171717; 
-        margin: 0; 
-        background-image: url("/images/texturas/abstract-crumpled-black-paper-texture-background-f-2025-02-22-04-38-59-utc.jpg");
-        background-attachment: fixed;
-        background-size: cover;
-      }
-      #root { 
-        min-height: 100vh; 
-        position: relative; 
-        display: block;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

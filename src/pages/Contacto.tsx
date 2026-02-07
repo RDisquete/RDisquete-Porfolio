@@ -15,8 +15,8 @@ import { useForm } from "@formspree/react";
 const ACCENT_COLOR = "#681f1d";
 const CARD_LIGHT = "#ffffff";
 const BACKGROUND_SECUNDARY = "#cdc69c";
-const TEXTURE_PAPER = "/images/texturas/textura1.jpg"; 
-const TEXTURE_BG = "/images/texturas/top-view-of-crumpled-vintage-beige-paper-texture-w-2024-11-19-09-16-52-utc.jpg"; 
+const TEXTURE_PAPER = "/images/texturas/textura1.webp"; 
+const TEXTURE_BG = "/images/texturas/top-view-of-crumpled-vintage.webp"; 
 
 const socialLinks = [
   { icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com/rdisquete/" },

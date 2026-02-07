@@ -11,13 +11,13 @@ const RETRO_DARK = "#171717";
 const RETRO_CREAM = "#cdc69c";
 const RETRO_MAROON = "#8e2b27";
 
-const TEXTURE_1 = "/images/texturas/abstract-crumpled-black-paper-texture-background-f-2025-02-22-04-38-59-utc.jpg";
-const TEXTURE_2 = "/images/texturas/old-paper-grunge-dark-photo-grungy-black-textur-2025-10-15-04-48-44-utc.jpg";
-const TEXTURE_3 = "/images/texturas/old-crumpled-paper-sheet-or-parchment-texture-back-2025-09-04-18-44-37-utc.jpg";
-const TEXTURE_4 = "/images/texturas/top-view-of-crumpled-vintage-beige-paper-texture-w-2024-11-19-09-16-52-utc.jpg";
-const TEXTURE_5 = "/images/texturas/old-black-background-grunge-texture-dark-wallpap-2025-03-08-03-00-25-utc.jpg";
+const TEXTURE_1 = "/images/texturas/abstract-crumpled.webp";
+const TEXTURE_2 = "/images/texturas/old-paper-grunge-dark.webp";
+const TEXTURE_3 = "/images/texturas/old-paper-grunge-dark.webp";
+const TEXTURE_4 = "/images/texturas/top-view-of-crumpled-vintage.webp";
+const TEXTURE_5 = "/images/texturas/old-black-background-grunge.webp";
 
-const fotoRealUrl = "/IMG_6012_byn.png";
+const fotoRealUrl = "/images/IMG_6012_byn.webp";
 
 const socialLinks = {
     linkedin: "https://www.linkedin.com/in/rafael-dorado-zamoro/",
@@ -37,7 +37,6 @@ const IconMap: Record<string, React.ElementType> = {
     cv: FaFileDownload,
 };
 
-// --- ESTILOS AUXILIARES ---
 const retroWhite = "text-[#cdc69c]";
 const secondaryFont = "font-mono";
 const signatureStyle = { color: RETRO_MAROON };
@@ -322,7 +321,7 @@ export default function Conoceme() {
 
             {/* --- CARA A: EXPERIENCIA --- */}
             <section className="relative py-32 bg-[#cdc69c] text-[#171717] px-6 overflow-hidden">
-                <div className="absolute inset-0 opacity-25 pointer-events-none mix-blend-multiply"
+                <div className="absolute inset-0 opacity-35 pointer-events-none mix-blend-multiply"
                     style={{ backgroundImage: `url(${TEXTURE_4})`, backgroundSize: 'cover' }} />
 
                 <div className="relative z-10 max-w-6xl mx-auto">

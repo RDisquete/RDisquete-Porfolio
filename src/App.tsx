@@ -1,14 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
-import Home from "./pages/Home";
-import Conoceme from "./pages/Conoceme";
-import Proyectos from "./pages/Proyectos";
-import Contacto from "./pages/Contacto";
+const Home = lazy(() => import("./pages/Home"));
+const Conoceme = lazy(() => import("./pages/Conoceme"));
+const Proyectos = lazy(() => import("./pages/Proyectos"));
+const Contacto = lazy(() => import("./pages/Contacto"));
 
 import { useVinyl } from "./hooks/useVinyl";
 
@@ -18,35 +18,32 @@ export default function App() {
   useEffect(() => {
     const handleFirstInteraction = () => {
       startAtmosphere();
-      window.removeEventListener("click", handleFirstInteraction);
     };
 
-    window.addEventListener("click", handleFirstInteraction);
+    window.addEventListener("click", handleFirstInteraction, { once: true });
 
     return () => window.removeEventListener("click", handleFirstInteraction);
   }, [startAtmosphere]);
 
   return (
-    <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-[#171717]">
-      <Router>
+    <Router>
+      <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-[#171717]">
         <ScrollToTop />
-
         <Header />
-
-        <main className="relative z-0 flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-
-            <Route path="/biography" element={<Conoceme />} />
-            <Route path="/catalog" element={<Proyectos />} />
-            <Route path="/feedback" element={<Contacto />} />
-
-            <Route path="*" element={<Home />} />
-          </Routes>
+        <main className="relative z-10 flex-1">
+          <Suspense fallback={<div className="bg-[#171717] min-h-screen" />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/biography" element={<Conoceme />} />
+              <Route path="/catalog" element={<Proyectos />} />
+              <Route path="/feedback" element={<Contacto />} />
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </Suspense>
         </main>
 
         <Footer />
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }

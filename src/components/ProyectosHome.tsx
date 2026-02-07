@@ -19,6 +19,20 @@ interface ProjectTrackProps {
   onHoverStart: (project: Project) => void;
 }
 
+const LazyVideo = ({ src }: { src: string }) => {
+  return (
+    <video 
+      src={src} 
+      className="object-cover w-full h-full grayscale contrast-125" 
+      autoPlay 
+      loop 
+      muted 
+      playsInline 
+      preload="auto" 
+    />
+  );
+};
+
 const ProjectTrack = ({ project, index, onHoverStart }: ProjectTrackProps) => {
   const trackNumber = String(index + 1).padStart(2, '0');
 
@@ -39,7 +53,7 @@ const ProjectTrack = ({ project, index, onHoverStart }: ProjectTrackProps) => {
             {project.title}
           </h3>
         </div>
-        <Play className="w-4 h-4 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
+        <Play className="w-4 h-4 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
       </div>
     </motion.div>
   );
@@ -53,8 +67,12 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
     <section className="relative flex flex-col items-center justify-center w-full min-h-screen py-16 overflow-hidden lg:flex-row lg:py-0 bg-neutral-950 lg:overflow-visible">
       
       <div 
-        className="absolute inset-0 z-0 pointer-events-none opacity-30 mix-blend-overlay" 
-        style={{ backgroundImage: "url('/images/texturas/textura2.jpg')", backgroundSize: 'cover' }} 
+        className="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-overlay will-change-transform" 
+        style={{ 
+            backgroundImage: "url('/images/texturas/textura2.webp')", 
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+        }} 
       />
 
       <div className="relative z-10 flex flex-col items-center w-full h-auto gap-12 px-6 lg:h-screen lg:px-12 max-w-7xl lg:flex-row">
@@ -70,21 +88,22 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
             </h2>
           </header>
 
-          <div className="flex-grow pr-4 custom-scrollbar lg:overflow-y-auto lg:max-h-[50vh] mb-4">
+          <nav className="flex-grow pr-4 custom-scrollbar lg:overflow-y-auto lg:max-h-[50vh] mb-4" aria-label="Lista de proyectos destacados">
             {projects?.map((project, index) => (
               <ProjectTrack
-                key={index}
+                key={project.title} 
                 project={project}
                 index={index}
                 onHoverStart={setHoveredProject}
               />
             ))}
-          </div>
+          </nav>
 
           <motion.button
             whileHover={{ x: 10 }}
             className="flex items-center gap-3 py-4 mt-4 group w-fit"
             onClick={() => navigate('/catalog')}
+            aria-label="Ver discografía completa de proyectos"
           >
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#8e2b27] group-hover:bg-[#8e2b27] transition-all duration-300">
               <ArrowRight className="w-5 h-5 text-[#8e2b27] group-hover:text-[#cdc69c] transition-colors" />
@@ -108,24 +127,22 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                 initial={{ opacity: 0, scale: 0.95, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 1.05, y: -10 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 className="relative lg:absolute inset-0 p-4 md:p-6 bg-[#cdc69c] shadow-[20px_20px_0px_rgba(142,43,39,0.3)] md:shadow-[30px_30px_0px_rgba(142,43,39,0.2)] flex flex-col"
               >
                 <div className="relative h-[45%] md:h-[55%] w-full overflow-hidden bg-black border border-black/10">
                   {hoveredProject?.video ? (
-                    <video 
-                      src={hoveredProject.video} 
-                      className="object-cover w-full h-full grayscale contrast-125" 
-                      autoPlay loop muted playsInline 
-                    />
+                    <LazyVideo src={hoveredProject.video} />
                   ) : (
                     <img 
                       src={hoveredProject?.img} 
                       className="object-cover w-full h-full grayscale contrast-110" 
-                      alt={hoveredProject?.title} 
+                      alt={`Captura del proyecto ${hoveredProject?.title}`} 
+                      width="500"
+                      height="500"
                     />
                   )}
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 via-transparent to-black/10" />
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 via-transparent to-black/10" aria-hidden="true" />
                 </div>
 
                 <div className="flex flex-col flex-grow pt-4 text-black md:pt-6">
@@ -133,7 +150,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                     <h4 className="text-xl font-black leading-none tracking-tighter uppercase md:text-3xl">
                       {hoveredProject?.title}
                     </h4>
-                    <span className="font-mono text-[9px] md:text-[10px] font-bold bg-black text-[#cdc69c] px-2 py-0.5">
+                    <span className="font-mono text-[9px] md:text-[10px] font-bold bg-black text-[#cdc69c] px-2 py-0.5" aria-label="Número de pista">
                       {hoveredProject ? `OP_0${projects.indexOf(hoveredProject) + 1}` : 'OP_00'}
                     </span>
                   </div>
@@ -156,7 +173,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
               </motion.div>
             </AnimatePresence>
             
-            <div className="absolute hidden w-full h-full -translate-y-1/2 border rounded-full lg:block -z-10 top-1/2 left-1/2 -translate-x-1/4 bg-neutral-900 border-white/5" />
+            <div className="absolute hidden w-full h-full -translate-y-1/2 border rounded-full lg:block -z-10 top-1/2 left-1/2 -translate-x-1/4 bg-neutral-900 border-white/5" aria-hidden="true" />
           </div>
         </div>
       </div>

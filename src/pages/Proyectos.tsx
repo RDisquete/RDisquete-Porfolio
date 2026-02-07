@@ -1,8 +1,8 @@
-import { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaExternalLinkAlt, FaTimes } from "react-icons/fa";
-import { ArrowRight } from "lucide-react"; // Importamos la flecha
+import { ArrowRight } from "lucide-react";
 
 // --- CONFIGURACIÓN DE ESTILOS ---
 const COLORS = {
@@ -12,7 +12,7 @@ const COLORS = {
     cardLight: "#f5f3e7",
 };
 
-const TEXTURE_URL = "/images/texturas/textura1.jpg";
+const TEXTURE_URL = "/images/texturas/top-view-of-crumpled-vintage2.webp"; 
 
 const COLLAGE_ROTATIONS = [
     "rotate-[-1deg]", "rotate-[2deg] -translate-y-1",
@@ -30,21 +30,20 @@ export interface Proyecto {
     pressingType?: 'First' | 'Remaster' | 'Bootleg';
 }
 
-// --- DATOS ---
 const PROJECTS: Proyecto[] = [
     {
         title: "The Pueblo",
         url: "https://thepueblo.es/",
-        img: "/images/ThePueblo.jpg",
+        img: "/images/ThePueblo.webp",
         desc: "Productora creativa de imágenes para redes sociales, enfocada en crear contenido visual moderno.",
-        video: "/images/thePueblo Hover.mp4",
+        video: "/images/thePueblo%20Hover.mp4",
         techStack: "React, Vite, Tailwind CSS",
         pressingType: 'First'
     },
     {
         title: "Nor3xtrem",
         url: "https://nor3xtrem.es/",
-        img: "/Nor3xtreme.png",
+        img: "/Nor3xtreme.webp",
         desc: "Presencia digital para una de las marchas cicloturistas más exigentes de España.",
         video: "/Nor3xtremeHover.mp4",
         techStack: "React, Vite, Tailwind CSS",
@@ -53,7 +52,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "Armario Escénico",
         url: "https://armarioescenico.netlify.app/",
-        img: "/sambrona.jpg",
+        img: "/sambrona.webp",
         desc: "Gestión de archivo de vestuario histórico con búsqueda precisa.",
         video: "/sambronaHover.mp4",
         techStack: "React, TypeScript, Tailwind CSS",
@@ -62,7 +61,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "Matter & Sound",
         url: "https://mattersoundrdisquete.netlify.app/",
-        img: "/MatterSound.jpg",
+        img: "/MatterSound.webp",
         desc: "Estación de visualización generativa que transforma ondas mecánicas en materia digital mediante FFT y Web Audio API.",
         video: "/MattersoundHover.mp4",
         techStack: "React, TypeScript, Web Audio API, HTML5 Canvas, Tailwind CSS",
@@ -71,7 +70,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "ED Movil",
         url: "https://edmovil.netlify.app",
-        img: "/images/edmovil.png",
+        img: "/images/edmovil.webp",
         desc: "Web responsive enfocada en la velocidad de carga y adaptabilidad.",
         video: "/images/edHover.mp4",
         techStack: "React, TypeScript, Tailwind CSS",
@@ -80,7 +79,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "Web RDisquete Photo",
         url: "https://rdisquetephoto.netlify.app/",
-        img: "/images/rdisquetePhoto.jpg",
+        img: "/images/rdisquetePhoto.webp",
         desc: "Portafolio fotográfico con componentes reutilizables y carruseles fluidos.",
         video: "/RPhotoHover.mp4",
         techStack: "React, TypeScript, React Slick",
@@ -89,7 +88,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "AM Movil Repair",
         url: "https://ammovilrepair.com",
-        img: "/images/am movil repair.jpg",
+        img: "/images/ammovilrepair.webp",
         desc: "Servicio técnico con integración de formularios dinámicos y mapas.",
         video: "/amhover.mp4",
         techStack: "React, Tailwind, Google Maps",
@@ -98,16 +97,16 @@ const PROJECTS: Proyecto[] = [
     {
         title: "Valle Escondido",
         url: "https://valleescondido.netlify.app/",
-        img: "/Captura de pantalla 2025-08-11 a las 20.57.32.png",
+        img: "/valleescondido.webp",
         desc: "Demo de evento con animaciones complejas y transiciones fluidas.",
-        video: "/home web.mp4",
+        video: "/home_web.mp4",
         techStack: "React, Framer Motion, Tailwind CSS",
         pressingType: 'Remaster'
     },
     {
         title: "Rdisquete mk II",
         url: "https://rdisquetemk2.netlify.app/",
-        img: "/rdisquetemk2.jpg",
+        img: "/rdisquetemk2.webp",
         desc: "Portfolio frontend moderno con enfoque en UX fluida.",
         video: "/rdisquetemk2.mp4",
         techStack: "React, TypeScript, Tailwind CSS",
@@ -116,7 +115,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "Buscador de bebidas",
         url: "https://buscadordebebidasrafadz.netlify.app",
-        img: "/images/buscadorbibidas.jpg",
+        img: "/images/buscadorbibidas.webp",
         desc: "Gestión de recetas con validación de datos en tiempo real.",
         video: "/CoctelHover.mp4",
         techStack: "Zustand, Zod, React Router",
@@ -125,7 +124,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "Portfolio v1.0",
         url: "https://rafadz.netlify.app",
-        img: "/images/portfoliov1.jpg",
+        img: "/images/portfoliov1.webp",
         desc: "Primera versión profesional optimizada para carga rápida.",
         video: "/Portfolio1Hover.mp4",
         techStack: "React, Vite, TypeScript",
@@ -134,7 +133,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "CryptoApp",
         url: "https://cryptoapprafadz.netlify.app",
-        img: "/images/appcrypto.jpg",
+        img: "/images/appcrypto.webp",
         desc: "Seguimiento de criptomonedas con gestión de estado global.",
         video: "/Criptoapp.mp4",
         techStack: "React, Zustand, Zod",
@@ -143,7 +142,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "App de clima",
         url: "https://appclimardz.netlify.app",
-        img: "/images/appclima.jpg",
+        img: "/images/appclima.webp",
         desc: "Consulta climatológica con Axios y estados de carga.",
         video: "/ClimaApp.mp4",
         techStack: "React, TypeScript, Axios",
@@ -152,7 +151,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "Seguimiento de pacientes",
         url: "https://seguimientoclinicarafaeldorado.netlify.app",
-        img: "/images/seguimientodepacientes.jpg",
+        img: "/images/seguimientodepacientes.webp",
         desc: "CRUD para gestión veterinaria con persistencia de datos.",
         video: "/PacienteHover.mp4",
         techStack: "React, Zustand, Tailwind CSS",
@@ -161,7 +160,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "Calculadora de gastos",
         url: "https://calculadordegastos-rafaeldorado.netlify.app",
-        img: "/images/calculadoragastos.jpg",
+        img: "/images/calculadoragastos.webp",
         desc: "Control de finanzas con indicadores visuales circulares.",
         video: "/GastosHover.mp4",
         techStack: "Context API, Reducer, TypeScript",
@@ -170,7 +169,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "Contador de calorias",
         url: "https://calorietracker-rafadorado.netlify.app",
-        img: "/images/contadorcalorias.jpg",
+        img: "/images/contadorcalorias.webp",
         desc: "Seguimiento de nutrición con lógica de reductor.",
         video: "/CaloriasHover.mp4",
         techStack: "React, useReducer, useMemo",
@@ -179,7 +178,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "Calculadora de descuentos",
         url: "https://calculadoradescuentosrafadorado.netlify.app",
-        img: "/images/calculadoradescuentos.jpg",
+        img: "/images/calculadoradescuentos.webp",
         desc: "Herramienta optimizada con Custom Hooks.",
         video: "/CalculadoraHover.mp4",
         techStack: "Custom Hooks, useMemo, Vite",
@@ -188,7 +187,7 @@ const PROJECTS: Proyecto[] = [
     {
         title: "GuitarLa",
         url: "https://guitarlarafaeldorado.netlify.app",
-        img: "/images/guitarlab.jpg",
+        img: "/images/guitarlab.webp",
         desc: "E-commerce de instrumentos con carrito de compras.",
         video: "/GuitarHover.mp4",
         techStack: "React, CSS Grid, LocalStorage",
@@ -204,7 +203,6 @@ const cardVariants: Variants = {
 
 function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto, index: number, onOpen: (p: Proyecto) => void, isFeatured?: boolean }) {
     const [isHovered, setIsHovered] = useState(false);
-    const videoRef = useRef<HTMLVideoElement>(null);
 
     const theme = useMemo(() => {
         if (isFeatured) return { bg: COLORS.accent, text: "#ffffff", label: "FEATURED RELEASE" };
@@ -212,11 +210,6 @@ function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto
         if (project.pressingType === 'Bootleg') return { bg: "#d1d1d1", text: "#171717", label: "BOOTLEG" };
         return { bg: COLORS.accent, text: "#f5f3e7", label: "FIRST PRESS" };
     }, [project.pressingType, isFeatured]);
-
-    useEffect(() => {
-        if (isHovered) videoRef.current?.play().catch(() => {});
-        else { if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; } }
-    }, [isHovered]);
 
     const rotation = isFeatured ? "rotate-0" : COLLAGE_ROTATIONS[index % COLLAGE_ROTATIONS.length];
 
@@ -229,17 +222,18 @@ function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto
             initial="initial"
             whileInView="animate"
             whileHover="hover"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             className={`group relative overflow-hidden rounded-sm border-black/20 shadow-xl transition-all w-full
                 ${isFeatured ? "md:col-span-2 md:row-span-2 border-[4px] border-[#8e2b27] min-h-[400px]" : "border-[1px] aspect-square min-h-[300px]"} 
                 ${rotation}`}
             style={{ backgroundColor: COLORS.cardLight }}
         >
-            <div className="absolute inset-0 z-[15] pointer-events-none opacity-30 mix-blend-multiply"
-                style={{ backgroundImage: `url(${TEXTURE_URL})`, backgroundSize: 'cover' }} />
-
             <motion.div className="absolute inset-0 z-10" animate={{ opacity: isHovered ? 0 : 1 }}>
-                <img src={project.img} alt={project.title} className="object-cover w-full h-full contrast-[1.1] grayscale-[20%]" />
+                <img 
+                    src={project.img} 
+                    alt="" 
+                    className="object-cover w-full h-full contrast-[1.1] grayscale-[20%]" 
+                />
                 
                 <div className={`absolute top-4 right-4 z-20 px-3 py-1 border-2 font-mono font-black uppercase shadow-lg
                     ${isFeatured ? "bg-[#8e2b27] text-white -rotate-3 text-[10px]" : "bg-white/90 text-[#8e2b27] rotate-12 text-[8px]"}`}
@@ -262,9 +256,12 @@ function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto
                 initial={{ opacity: 0 }} animate={{ opacity: isHovered ? 1 : 0 }}
                 style={{ backgroundColor: theme.bg }}
             >
-                {project.video && (
-                    <video ref={videoRef} src={project.video.replace(/ /g, "%20")} loop muted playsInline 
-                           className="absolute inset-0 z-0 object-cover w-full h-full opacity-40 grayscale mix-blend-overlay" />
+                {isHovered && project.video && (
+                    <video 
+                        src={project.video.replace(/ /g, "%20")} 
+                        autoPlay loop muted playsInline 
+                        className="absolute inset-0 z-0 object-cover w-full h-full opacity-40 grayscale mix-blend-overlay" 
+                    />
                 )}
 
                 <div className="relative z-10 flex flex-col h-full text-left">
@@ -281,7 +278,7 @@ function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto
                         <h4 className="mb-2 text-[9px] font-black uppercase tracking-[0.2em]">Technical_Specs:</h4>
                         <div className="flex flex-wrap gap-1.5">
                             {project.techStack?.split(',').map((tech, i) => (
-                                <span key={i} className={`font-mono bg-black/20 px-2 py-0.5 font-bold text-[9px] md:text-[10px]`}>
+                                <span key={i} className="font-mono bg-black/20 px-2 py-0.5 font-bold text-[9px] md:text-[10px]">
                                     {tech.trim()}
                                 </span>
                             ))}
@@ -299,25 +296,17 @@ function ProjectModal({ project, onClose }: { project: Proyecto, onClose: () => 
                     className="fixed inset-0 flex items-center justify-center bg-black/95 backdrop-blur-md z-[9999] p-4">
             <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} onClick={e => e.stopPropagation()}
                         className="bg-[#f5f3e7] max-w-5xl w-full flex flex-col md:flex-row overflow-hidden shadow-[25px_25px_0px_#8e2b27] border-2 border-black relative">
-                <div className="absolute inset-0 pointer-events-none opacity-20 mix-blend-multiply" style={{ backgroundImage: `url(${TEXTURE_URL})`, backgroundSize: 'cover' }} />
-                
-                <div className="relative w-full border-b-4 border-black h-72 md:w-3/5 md:h-auto md:border-b-0 md:border-r-4">
-                    <img src={project.img} className="object-cover w-full h-full" alt="" />
+                <div className="relative w-full border-b-4 border-black h-72 md:w-3/5 md:h-auto md:border-b-0 md:border-r-4 bg-black">
+                    <img src={project.img} className="object-cover w-full h-full" alt={project.title} />
                 </div>
-
                 <div className="relative flex flex-col justify-between p-8 md:p-12 md:w-2/5">
-                    <button onClick={onClose} className="absolute text-black transition-transform top-6 right-6 hover:rotate-90">
-                        <FaTimes size={28} />
-                    </button>
+                    <button onClick={onClose} className="absolute text-black top-6 right-6 hover:rotate-90 transition-transform"><FaTimes size={28} /></button>
                     <div className="space-y-8">
                         <div>
                             <span className="text-[10px] font-mono text-[#8e2b27] font-black tracking-widest uppercase block mb-2">// DATA_LOG_01</span>
-                            <h2 className="text-5xl font-black leading-[0.85] text-black uppercase tracking-tighter">{project.title}</h2>
+                            <h2 className="text-5xl font-black text-black uppercase tracking-tighter">{project.title}</h2>
                         </div>
                         <p className="font-mono text-sm leading-relaxed text-black/80 border-l-4 border-[#8e2b27] pl-5">{project.desc}</p>
-                        <div className="pt-6 font-mono text-xs font-bold text-black uppercase border-t border-black/10">
-                            <span className="text-[#8e2b27]">Stack:</span> {project.techStack}
-                        </div>
                     </div>
                     <a href={project.url} target="_blank" rel="noreferrer" 
                        className="mt-12 bg-[#8e2b27] text-white py-5 text-center text-xs font-black tracking-[0.3em] uppercase hover:bg-black transition-colors">
@@ -334,6 +323,20 @@ export default function Proyectos() {
 
     return (
         <main className="relative min-h-screen" style={{ backgroundColor: COLORS.bg }}>
+            
+           
+            <div 
+                className="absolute inset-0 z-[100] pointer-events-none opacity-25 mix-blend-multiply"
+                style={{ 
+                    backgroundImage: `url(${TEXTURE_URL})`, 
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat', 
+                   
+                }} 
+            />
+
+          
             <section className="relative z-20 px-6 pt-32 pb-16 mx-auto text-center max-w-7xl">
                 <span className="absolute top-10 left-1/2 -translate-x-1/2 text-[18vw] font-black text-white/20 select-none pointer-events-none uppercase leading-none">
                     Catalog
@@ -342,41 +345,32 @@ export default function Proyectos() {
                     <span className="text-6xl md:text-[9rem] font-black uppercase tracking-tighter text-black">PROJECT</span>
                     <div className="flex items-center gap-4 mt-2 md:gap-8">
                         <div className="w-12 h-2 md:w-32 md:h-4" style={{ backgroundColor: COLORS.accent }} />
-                        <span className="text-5xl md:text-[9rem] font-black uppercase italic" style={{ color: "transparent", WebkitTextStroke: `2px ${COLORS.accent}` }}>PRESS</span>
+                        <span className="text-5xl md:text-[9rem] font-black uppercase italic text-black" 
+                              style={{ WebkitTextStroke: `2px ${COLORS.accent}`, paintOrder: 'stroke fill' }}>
+                            PRESS
+                        </span>
                         <span className="text-5xl md:text-[9rem] font-black uppercase tracking-tighter" style={{ color: COLORS.accent }}>INGS</span>
                     </div>
                 </h1>
-                <p className="font-mono text-[10px] md:text-sm uppercase tracking-[0.5em] font-black text-black/40 italic">— Flip the record —</p>
             </section>
 
-            <section className="px-6 pb-40 mx-auto max-w-7xl">
+            {/* Grid */}
+            <section className="px-6 pb-40 mx-auto max-w-7xl relative z-10">
                 <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 xl:gap-14">
                     {PROJECTS.map((proj, idx) => (
                         <ProjectCard key={proj.title} project={proj} index={idx} onOpen={setSelected} isFeatured={idx === 0} />
                     ))}
                 </div>
 
-                {/* --- BOTÓN REPLICADO DE SOBRE MI --- */}
                 <div className="flex flex-col items-center mt-32">
-                    <Link
-                        to="/Feedback"
-                        className="flex items-center gap-4 group w-fit"
-                    >
-                        <motion.div 
-                            whileHover={{ x: 10 }}
-                            className="flex items-center gap-4 cursor-pointer"
-                        >
-                            <div className="flex items-center justify-center w-12 h-12 transition-all duration-300 border-2 border-black rounded-full group-hover:bg-black">
-                                <ArrowRight className="w-6 h-6 text-black group-hover:text-[#cdc69c] transition-colors" />
+                    <Link to="/Feedback" className="flex items-center gap-4 group w-fit">
+                        <motion.div whileHover={{ x: 10 }} className="flex items-center gap-4 cursor-pointer">
+                            <div className="flex items-center justify-center w-12 h-12 border-2 border-black rounded-full group-hover:bg-black transition-colors">
+                                <ArrowRight className="w-6 h-6 text-black group-hover:text-[#cdc69c]" />
                             </div>
-                            <div className="flex flex-col">
-                                <span className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-black">
-                                    Let's connect
-                                </span>
-                                <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#8e2b27] group-hover:text-black transition-colors">
+                            <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#8e2b27] group-hover:text-black">
                                 ¿GRABAMOS EL PRÓXIMO HIT?
-                                </span>
-                            </div>
+                            </span>
                         </motion.div>
                     </Link>
                 </div>

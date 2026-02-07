@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 
-const TEXTURE_2 = "/images/texturas/old-paper-grunge-dark-photo-grungy-black-textur-2025-10-15-04-48-44-utc.jpg";
+const TEXTURE_2 = "/images/texturas/old-paper-grunge-dark.webp";
 
 export default function Manifesto() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -26,43 +26,48 @@ export default function Manifesto() {
     <motion.section
       ref={sectionRef}
       id="manifesto-section"
-      style={{ position: 'relative', display: 'block' }} 
-      className="w-full px-6 py-10 md:py-24 overflow-hidden bg-[#cdc69c]"
+      className="relative block w-full px-6 py-10 md:py-24 overflow-hidden bg-[#cdc69c]"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
     >
       <div 
-        className="absolute inset-0 pointer-events-none opacity-10 contrast-125 saturate-110" 
+        className="absolute inset-0 pointer-events-none opacity-10 contrast-125 saturate-110 will-change-transform" 
         style={{ 
           backgroundImage: `url(${TEXTURE_2})`, 
           backgroundSize: 'cover', 
+          backgroundPosition: 'center',
           mixBlendMode: 'multiply' 
         }} 
       />
 
       <div className="relative z-10 max-w-3xl mx-auto font-mono text-[#171717]">
-        <div className="w-full h-px mb-8 opacity-60 bg-[#8e2b27]" />
+        <div className="w-full h-px mb-8 opacity-60 bg-[#8e2b27]" aria-hidden="true" />
 
         <div className="pl-4 border-l-4 md:pl-6 border-[#8e2b27]">
-          <pre className="text-base leading-snug whitespace-pre-wrap md:text-lg">
-            <span className="text-[#8e2b27]">if</span> (
-            <span className="tracking-wider uppercase font-display-impact">todoEsPredecible</span>
-            ) <span className="opacity-70">{`{`}</span>
-              {'\n'} <span className="ml-4 italic opacity-40">// boring...</span>
-              {'\n'} <span className="ml-4">console.log("</span>
-              <span className="text-xl font-bold">HACER OTRA COSA</span> 
-              <span>");</span>
-            {'\n'}<span className="opacity-70">{`}`}</span> <span className="text-[#8e2b27]">else</span> <span className="opacity-70">{`{`}</span>
-              {'\n'} <span className="ml-4 text-2xl uppercase font-display-impact text-[#8e2b27]">esto promete</span>
-            {'\n'}<span className="opacity-70">{`}`}</span>
-          </pre>
+          <div className="text-base leading-snug md:text-lg font-mono">
+            <div>
+              <span className="text-[#8e2b27]">if</span> (
+              <span className="tracking-wider uppercase font-display-impact">todoEsPredecible</span>
+              ) <span className="opacity-70">{`{`}</span>
+            </div>
+            <p className="ml-4 italic opacity-40">// boring...</p>
+            <div className="ml-4">
+              console.log("<span className="text-xl font-bold">HACER OTRA COSA</span>");
+            </div>
+            <div>
+              <span className="opacity-70">{`}`}</span> <span className="text-[#8e2b27]">else</span> <span className="opacity-70">{`{`}</span>
+            </div>
+            <p className="ml-4 text-2xl uppercase font-display-impact text-[#8e2b27]">esto promete</p>
+            <p className="opacity-70">{`}`}</p>
+          </div>
         </div>
         
         <div className="w-full my-12 text-right">
             <button 
                 onClick={() => setIsDone(true)} 
                 disabled={isDone}
+                aria-label="Ejecutar acción de crear"
                 className="relative inline-block outline-none cursor-pointer group"
             >
                 <div className="relative px-4 py-2">
@@ -102,7 +107,7 @@ export default function Manifesto() {
             </button>
         </div>
 
-        <div className="w-full h-1 my-8 bg-[#8e2b27]" />
+        <div className="w-full h-1 my-8 bg-[#8e2b27]" aria-hidden="true" />
    
         <div className="relative pl-4 text-right md:pl-6">
             <AnimatePresence>
@@ -119,21 +124,24 @@ export default function Manifesto() {
                 )}
             </AnimatePresence>
 
-            <pre className={`relative inline-block text-base leading-snug text-left transition-all duration-700 ${
-              isDone ? 'opacity-100' : 'opacity-100'
-            }`}>
-                <span className="text-[#8e2b27]">while</span> (cafe <span className="text-[#8e2b27]">&gt;</span> 0) <span className="text-[#8e2b27]">{`{`}</span>
-                {'\n'} <span className="text-sm opacity-50">cafe = {cafeCount > 0 ? cafeCount : 0};</span>
-                {'\n'}<span className="text-[#8e2b27]">{`}`}</span>
+            <div className="relative inline-block text-base leading-snug text-left font-mono">
+                <div>
+                  <span className="text-[#8e2b27]">while</span> (cafe <span className="text-[#8e2b27]">&gt;</span> 0) <span className="text-[#8e2b27]">{`{`}</span>
+                </div>
+                <p className="text-sm opacity-50 ml-4">cafe = {cafeCount > 0 ? cafeCount : 0};</p>
+                <div><span className="text-[#8e2b27]">{`}`}</span></div>
                 
-                {'\n\n'}
-                <span className="text-[#8e2b27]">const</span> disquete = <span className="text-[#8e2b27]">{`{`}</span>
-                {'\n '} <span className="opacity-80">status:</span> 
-                <span className="ml-2 text-xl font-extrabold font-display-impact md:text-2xl">
-                    "ALGO QUE PARECE ARTE"
-                </span>
-                {'\n'}<span className="text-[#8e2b27]">{`}`}</span>;
-            </pre>
+                <div className="mt-6">
+                  <div><span className="text-[#8e2b27]">const</span> disquete = <span className="text-[#8e2b27]">{`{`}</span></div>
+                  <div className="ml-4">
+                    <span className="opacity-80">status:</span> 
+                    <span className="ml-2 text-xl font-extrabold font-display-impact md:text-2xl">
+                        "ALGO QUE PARECE ARTE"
+                    </span>
+                  </div>
+                  <div><span className="text-[#8e2b27]">{`}`}</span>;</div>
+                </div>
+            </div>
 
             {isDone && (
                 <motion.div 

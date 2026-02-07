@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode, useCallback } from "react";
+import { useEffect, useState, type ReactNode, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -10,13 +10,21 @@ export default function Header() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  
+  // Usamos refs para los audios para no crear nuevos objetos en cada render/interacción
+  const audioCache = useRef<{ [key: string]: HTMLAudioElement }>({});
 
   const playSfx = useCallback((fileName: string, volume = 0.1) => {
-    const audio = new Audio(`/sounds/${fileName}.mp3`);
+    if (!audioCache.current[fileName]) {
+      audioCache.current[fileName] = new Audio(`/sounds/${fileName}.mp3`);
+    }
+    const audio = audioCache.current[fileName];
     audio.volume = volume;
-    audio.play().catch(() => {});
+    audio.currentTime = 0; // Reinicia para que suene aunque se pulse rápido
+    audio.play().catch(() => {
+      // Silenciamos el error si el navegador bloquea el audio sin interacción previa
+    });
   }, []);
-
 
   useEffect(() => {
     playSfx('relay', 0.12);
@@ -25,6 +33,7 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
+    // passive: true es clave para el rendimiento de scroll en móviles
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
@@ -39,6 +48,9 @@ export default function Header() {
       {/* OVERLAY MENÚ MÓVIL */}
       {menuOpen && (
         <div
+          id="mobile-navigation"
+          role="dialog"
+          aria-modal="true"
           className="fixed inset-0 z-50 flex flex-col items-center justify-center border-8"
           style={{
             backgroundColor: RETRO_DARK,
@@ -51,38 +63,41 @@ export default function Header() {
               setMenuOpen(false);
               playSfx('relay', 0.2);
             }}
+            aria-label="Cerrar menú de navegación"
             className="absolute p-2 text-4xl border-4 top-4 right-4"
             style={{ borderColor: RETRO_CREAM }}
           >
-            <FaTimes />
+            <FaTimes aria-hidden="true" />
           </button>
 
-          <ul className="flex flex-col gap-8 text-4xl font-black text-center uppercase">
-            <NavLink 
-              to="/biography" 
-              active={location.pathname === "/biography"}
-              onClick={() => playSfx('relay', 0.15)}
-              onHover={() => playSfx('switch', 0.1)} 
-            >
-              Biography
-            </NavLink>
-            <NavLink 
-              to="/catalog" 
-              active={location.pathname === "/catalog"}
-              onClick={() => playSfx('relay', 0.15)}
-              onHover={() => playSfx('switch', 0.1)} 
-            >
-              Catalog
-            </NavLink>
-            <NavLink 
-              to="/feedback" 
-              active={location.pathname === "/feedback"}
-              onClick={() => playSfx('relay', 0.15)}
-              onHover={() => playSfx('switch', 0.1)}
-            >
-              Feedback
-            </NavLink>
-          </ul>
+          <nav aria-label="Menú móvil">
+            <ul className="flex flex-col gap-8 text-4xl font-black text-center uppercase">
+              <NavLink 
+                to="/biography" 
+                active={location.pathname === "/biography"}
+                onClick={() => playSfx('relay', 0.15)}
+                onHover={() => playSfx('switch', 0.1)} 
+              >
+                Biography
+              </NavLink>
+              <NavLink 
+                to="/catalog" 
+                active={location.pathname === "/catalog"}
+                onClick={() => playSfx('relay', 0.15)}
+                onHover={() => playSfx('switch', 0.1)} 
+              >
+                Catalog
+              </NavLink>
+              <NavLink 
+                to="/feedback" 
+                active={location.pathname === "/feedback"}
+                onClick={() => playSfx('relay', 0.15)}
+                onHover={() => playSfx('switch', 0.1)}
+              >
+                Feedback
+              </NavLink>
+            </ul>
+          </nav>
         </div>
       )}
 
@@ -103,27 +118,34 @@ export default function Header() {
               setMenuOpen(true);
               playSfx('relay', 0.2);
             }}
+            aria-label="Abrir menú de navegación"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
             className="text-3xl md:hidden"
             style={{ color: RETRO_MAROON }}
           >
-            <FaBars />
+            <FaBars aria-hidden="true" />
           </button>
 
           <Link
             to="/"
+            aria-label="Ir a la página de inicio"
             onClick={() => playSfx('relay', 0.1)}
             onMouseEnter={() => playSfx('switch', 0.1)} 
             className="absolute transition-transform -translate-x-1/2 left-1/2 hover:scale-150"
           >
             <img
               src="/images/Logo rojo claro.png" 
-              alt="rdisquete"
-              className="w-12 h-12 md:w-12 md:h-12"
+              alt="Logo RDisquete"
+              // Dimensiones explícitas para evitar Layout Shift (CLS)
+              width="48"
+              height="48"
+              className="w-12 h-12"
             />
           </Link>
 
           {/* Navegación Escritorio */}
-          <div className="items-center hidden gap-6 ml-auto md:flex">
+          <nav className="items-center hidden gap-6 ml-auto md:flex" aria-label="Navegación principal">
             <NavLink 
               to="/biography" 
               active={location.pathname === "/biography"}
@@ -148,7 +170,7 @@ export default function Header() {
             >
               Feedback
             </NavLink>
-          </div>
+          </nav>
         </div>
       </header>
     </>

@@ -16,22 +16,25 @@ const projects = [
 ];
 
 const socials = [
-  { label: "Instagram", url: "https://www.instagram.com/rdisquete/" },
-  { label: "WhatsApp", url: "https://wa.me/+34648791998" },
-  { label: "Email", url: "mailto:rafael.doradozamoro@gmail.com" },
-  { label: "LinkedIn", url: "https://www.linkedin.com/in/rafael-dorado-zamoro/" },
-  { label: "Descargar CV", url: "/images/CV_Rafael_Dorado_Zamoro.pdf", download: true },
-  { label: "GitHub", url: "https://github.com/RDisquete" }
+  { label: "Instagram", url: "https://www.instagram.com/rdisquete/", aria: "Visitar mi perfil de Instagram" },
+  { label: "WhatsApp", url: "https://wa.me/+34648791998", aria: "Contactar por WhatsApp" },
+  { label: "Email", url: "mailto:rafael.doradozamoro@gmail.com", aria: "Enviar un correo electrónico" },
+  { label: "LinkedIn", url: "https://www.linkedin.com/in/rafael-dorado-zamoro/", aria: "Ver mi perfil profesional en LinkedIn" },
+  { label: "Descargar CV", url: "/images/CV_Rafael_Dorado_Zamoro.pdf", download: true, aria: "Descargar currículum vitae en PDF" },
+  { label: "GitHub", url: "https://github.com/RDisquete", aria: "Ver mis proyectos en GitHub" }
 ];
 
-const TEXTURA_URL = "/images/texturas/abstract-crumpled-black-paper-texture-background-f-2025-02-22-04-38-59-utc.jpg";
-const SILUETA_URL = "/siluetalineas.png";
+const TEXTURA_URL = "/images/texturas/abstract-crumpled.webp";
+const SILUETA_URL = "/images/siluetalineas.webp";
 
 const ESTILO_OVERLAY: React.CSSProperties = {
   backgroundImage: `url(${TEXTURA_URL})`,
   backgroundSize: 'cover',
   opacity: 0.25,
-  top: 0, left: 0, width: '100vw', height: '100vh',
+  top: 0, 
+  left: 0, 
+  width: '100vw', 
+  height: '100vh',
   zIndex: 9999,
   pointerEvents: 'none',
 };
@@ -54,7 +57,7 @@ const drawSilhouette: Variants = {
 export default function HeroSection() {
 
   const renderIcon = (label: string) => {
-    const props = { className: "w-7 h-7" };
+    const props = { className: "w-7 h-7", "aria-hidden": true };
     switch (label) {
       case "Instagram": return <FaInstagram {...props} />;
       case "WhatsApp": return <FaWhatsapp {...props} />;
@@ -90,21 +93,24 @@ export default function HeroSection() {
 
         <motion.img 
           src={SILUETA_URL} 
+          alt="Silueta artística de Rafael Dorado"
           variants={drawSilhouette} 
           initial="hidden" 
           animate="visible" 
+          width="800"
+          height="1200"
           className="absolute top-0 right-0 z-[10] md:z-[80] mr-[-20px] md:mr-[-16px] w-[60vw] md:w-[25vw] h-full object-cover object-bottom contrast-125 transform origin-right opacity-40 md:opacity-100 pointer-events-none" 
         />
 
         <div className="relative w-full h-full px-6 pt-8 md:px-8">
-          
           <div className="absolute w-full top-[15%] md:top-[5%] left-0 z-[70]">
+            {/* SEO: h1 para el nombre principal */}
             <motion.div className="absolute z-20 top-0 left-0 translate-x-[5vw] translate-y-[-20%]" variants={verticalSweep} initial="hidden" animate="visible" transition={{ delay: 0.1 }}>
-              <h2 className="text-[22vw] md:text-[14vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#cdc69c] uppercase font-display-impact font-light whitespace-nowrap">RAFA</h2>
+              <h1 className="text-[22vw] md:text-[14vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#cdc69c] uppercase font-display-impact font-light whitespace-nowrap">RAFA</h1>
             </motion.div>
 
             <motion.div className="absolute z-40 left-[10vw] top-[30vw] md:top-[19vw]" variants={verticalSweep} initial="hidden" animate="visible" transition={{ delay: 0.2 }}>
-              <h3 className="text-[28vw] md:text-[20vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#8e2b27] uppercase font-display-impact font-extrabold whitespace-nowrap">DORADO</h3>
+              <span className="text-[28vw] md:text-[20vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#8e2b27] uppercase font-display-impact font-extrabold whitespace-nowrap block" aria-hidden="true">DORADO</span>
             </motion.div>
 
             <motion.div className="absolute z-[70] left-[40vw] md:left-[55vw] top-[65vw] md:top-[39vw]" variants={blockFade} initial="hidden" animate="visible" transition={{ delay: 0.3 }}>
@@ -120,33 +126,41 @@ export default function HeroSection() {
           >
             <div className="border border-black md:border-2 px-3 py-2 md:px-6 md:py-4 flex flex-col items-center bg-[#d4cea6] relative">
               <div className="absolute -left-3 md:-left-5 top-1/2 -translate-y-1/2 w-3 md:w-6 h-10 md:h-20 bg-[#8e2b27] border border-black flex items-center justify-center">
-                <p className="text-[1.5vw] md:text-[0.45vw] font-black text-[#cdc69c] rotate-90 whitespace-nowrap uppercase">2026</p>
+                <span className="text-[1.5vw] md:text-[0.45vw] font-black text-[#cdc69c] rotate-90 whitespace-nowrap uppercase">2026</span>
               </div>
 
               <div className="pl-2 text-center md:pl-4">
-                <h3 className="text-[4vw] md:text-[2vw] font-display-impact uppercase text-black leading-none italic">FRONTEND</h3>
+                <h2 className="text-[4vw] md:text-[2vw] font-display-impact uppercase text-black leading-none italic">FRONTEND</h2>
                 <div className="flex items-center justify-center gap-1 md:gap-2 my-1 md:my-1.5">
                   <div className="h-[1px] w-4 md:w-8 bg-black/20" />
                   <span className="text-[2vw] md:text-[0.9vw] font-display-impact text-[#8e2b27]">&</span>
                   <div className="h-[1px] w-4 md:w-8 bg-black/20" />
                 </div>
-                <h4 className="text-[2.5vw] md:text-[1.2vw] font-display-impact uppercase text-black leading-none">
+                <h2 className="text-[2.5vw] md:text-[1.2vw] font-display-impact uppercase text-black leading-none">
                   <span className="text-[#8e2b27]">CREATIVE</span> DESIGN
-                </h4>
+                </h2>
               </div>
             </div>
           </motion.div>
         </div>
 
-        <div className="absolute bottom-4 left-0 w-full z-[110] px-4 md:px-8 flex justify-center">
+        <nav className="absolute bottom-4 left-0 w-full z-[110] px-4 md:px-8 flex justify-center" aria-label="Redes sociales">
           <div className="flex space-x-6">
             {socials.map((social) => (
-              <a key={social.label} href={social.url} target="_blank" rel="noreferrer" className="text-[#cdc69c] text-2xl md:text-3xl hover:text-[#8e2b27] transition-colors">
+              <a 
+                key={social.label} 
+                href={social.url} 
+                target="_blank" 
+                rel="noreferrer" 
+                aria-label={social.aria}
+                title={social.label}
+                className="text-[#cdc69c] text-2xl md:text-3xl hover:text-[#8e2b27] transition-colors"
+              >
                 {renderIcon(social.label)}
               </a>
             ))}
           </div>
-        </div>
+        </nav>
       </section>
 
       <main className="relative">

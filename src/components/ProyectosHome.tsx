@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, ArrowRight } from "lucide-react";
+import { FaPlay, FaArrowRight } from "react-icons/fa"; 
 import { useNavigate } from "react-router-dom";
 
 // --- INTERFACES ---
@@ -53,7 +53,8 @@ const ProjectTrack = ({ project, index, onHoverStart }: ProjectTrackProps) => {
             {project.title}
           </h3>
         </div>
-        <Play className="w-4 h-4 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+        {/* Icono FaPlay de react-icons */}
+        <FaPlay className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
       </div>
     </motion.div>
   );
@@ -106,7 +107,8 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
             aria-label="Ver discografía completa de proyectos"
           >
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#8e2b27] group-hover:bg-[#8e2b27] transition-all duration-300">
-              <ArrowRight className="w-5 h-5 text-[#8e2b27] group-hover:text-[#cdc69c] transition-colors" />
+              {/* Icono FaArrowRight de react-icons */}
+              <FaArrowRight className="w-4 h-4 text-[#8e2b27] group-hover:text-[#cdc69c] transition-colors" />
             </div>
             <span className="font-mono text-xs font-black uppercase tracking-[0.2em] text-[#cdc69c] group-hover:text-white transition-colors">
               View Full Discography

@@ -1,6 +1,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react"; 
+// Cambiamos Lucide por React Icons (FontAwesome)
+import { FaArrowRight } from "react-icons/fa"; 
 
 const textReveal: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -35,7 +36,7 @@ export default function SobreMi() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }} 
     >
-      {/* Textura de fondo optimizada a WebP */}
+      {/* Textura de fondo optimizada a WebP - Capa Inferior */}
       <div 
         className="absolute inset-0 pointer-events-none z-[1] opacity-40 mix-blend-multiply will-change-transform" 
         style={{ 
@@ -137,7 +138,8 @@ export default function SobreMi() {
             >
               <div className="flex items-center gap-4 cursor-pointer">
                 <div className="flex items-center justify-center w-12 h-12 transition-all duration-300 border-2 border-black rounded-full group-hover:bg-black">
-                  <ArrowRight className="w-6 h-6 text-black group-hover:text-[#cdc69c] transition-colors" />
+                  {/* Flecha de React Icons */}
+                  <FaArrowRight className="w-5 h-5 text-black group-hover:text-[#cdc69c] transition-colors" />
                 </div>
                 <div className="flex flex-col">
                   <span className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-[#cdc69c]">
@@ -153,6 +155,7 @@ export default function SobreMi() {
         </div>
       </div>
 
+      {/* Capa de textura superior para unificar el grano */}
       <div 
         className="absolute inset-0 z-[30] pointer-events-none opacity-[0.05] mix-blend-overlay" 
         style={{ backgroundImage: "url('/images/texturas/textura2.webp')" }} 

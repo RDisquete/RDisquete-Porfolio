@@ -8,7 +8,6 @@ export default {
   theme: {
     extend: {
         fontFamily: {
-            // USAR IMPACT COMO FALLBACK GENÉRICO
             'display-impact': ['Bebas Neue', 'Impact', 'sans-serif'], 
             'vintage-cursive': ['Great Vibes', 'cursive'], 
         },colors: {

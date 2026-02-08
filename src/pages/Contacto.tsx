@@ -7,9 +7,9 @@ import {
   FaEnvelope,
   FaWhatsapp,
   FaFileDownload,
-  FaGithub
+  FaGithub,
+  FaArrowRight // Sustitución de Lucide
 } from "react-icons/fa";
-import { ArrowRight } from "lucide-react"; 
 import { useForm } from "@formspree/react";
 
 const ACCENT_COLOR = "#681f1d";
@@ -163,7 +163,8 @@ export default function Contacto() {
                     className="flex items-center gap-4"
                   >
                     <div className="flex items-center justify-center w-12 h-12 transition-all duration-300 border-2 border-black rounded-full group-hover:bg-black">
-                      <ArrowRight className="w-6 h-6 text-black transition-colors group-hover:text-white" />
+                      {/* Icono actualizado a react-icons */}
+                      <FaArrowRight className="w-5 h-5 text-black transition-colors group-hover:text-white" />
                     </div>
                     <div className="flex flex-col text-left">
                       <span className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-[#8e2b27]">

@@ -1,8 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaExternalLinkAlt, FaTimes } from "react-icons/fa";
-import { ArrowRight } from "lucide-react";
+import { FaExternalLinkAlt, FaTimes, FaArrowRight } from "react-icons/fa"; // Unificado en react-icons
 
 // --- CONFIGURACIÓN DE ESTILOS ---
 const COLORS = {
@@ -324,7 +323,6 @@ export default function Proyectos() {
     return (
         <main className="relative min-h-screen" style={{ backgroundColor: COLORS.bg }}>
             
-           
             <div 
                 className="absolute inset-0 z-[100] pointer-events-none opacity-25 mix-blend-multiply"
                 style={{ 
@@ -332,11 +330,9 @@ export default function Proyectos() {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat', 
-                   
                 }} 
             />
 
-          
             <section className="relative z-20 px-6 pt-32 pb-16 mx-auto text-center max-w-7xl">
                 <span className="absolute top-10 left-1/2 -translate-x-1/2 text-[18vw] font-black text-white/20 select-none pointer-events-none uppercase leading-none">
                     Catalog
@@ -366,7 +362,8 @@ export default function Proyectos() {
                     <Link to="/Feedback" className="flex items-center gap-4 group w-fit">
                         <motion.div whileHover={{ x: 10 }} className="flex items-center gap-4 cursor-pointer">
                             <div className="flex items-center justify-center w-12 h-12 border-2 border-black rounded-full group-hover:bg-black transition-colors">
-                                <ArrowRight className="w-6 h-6 text-black group-hover:text-[#cdc69c]" />
+                                {/* Sustituido ArrowRight (lucide) por FaArrowRight (react-icons) */}
+                                <FaArrowRight className="w-5 h-5 text-black group-hover:text-[#cdc69c] transition-colors" />
                             </div>
                             <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#8e2b27] group-hover:text-black">
                                 ¿GRABAMOS EL PRÓXIMO HIT?

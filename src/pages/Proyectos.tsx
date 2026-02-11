@@ -1,17 +1,17 @@
 import { useMemo, useState } from "react";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { motion, AnimatePresence, type Variants, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaExternalLinkAlt, FaTimes, FaArrowRight } from "react-icons/fa"; // Unificado en react-icons
+import { FaExternalLinkAlt, FaTimes, FaArrowRight } from "react-icons/fa";
 
 // --- CONFIGURACIÓN DE ESTILOS ---
 const COLORS = {
-    bg: "#cdc69c", 
+    bg: "#cdc69c",
     text: "#0f0f0f",
     accent: "#8e2b27",
     cardLight: "#f5f3e7",
 };
 
-const TEXTURE_URL = "/images/texturas/paperproject.webp"; 
+const TEXTURE_URL = "/images/texturas/paperproject.webp";
 
 const COLLAGE_ROTATIONS = [
     "rotate-[-1deg]", "rotate-[2deg] -translate-y-1",
@@ -64,8 +64,8 @@ const PROJECTS: Proyecto[] = [
         desc: "Estación de visualización generativa que transforma ondas mecánicas en materia digital mediante FFT y Web Audio API.",
         video: "/MattersoundHover.mp4",
         techStack: "React, TypeScript, Web Audio API, HTML5 Canvas, Tailwind CSS",
-         pressingType: 'Bootleg'
-      },
+        pressingType: 'Bootleg'
+    },
     {
         title: "ED Movil",
         url: "https://edmovil.netlify.app",
@@ -196,12 +196,13 @@ const PROJECTS: Proyecto[] = [
 
 const cardVariants: Variants = {
     initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
     hover: { scale: 1.02, transition: { duration: 0.3 } }
 };
 
 function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto, index: number, onOpen: (p: Proyecto) => void, isFeatured?: boolean }) {
     const [isHovered, setIsHovered] = useState(false);
+    const prefersReducedMotion = useReducedMotion();
 
     const theme = useMemo(() => {
         if (isFeatured) return { bg: COLORS.accent, text: "#ffffff", label: "FEATURED RELEASE" };
@@ -218,66 +219,71 @@ function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             variants={cardVariants}
-            initial="initial"
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : "initial"}
             whileInView="animate"
-            whileHover="hover"
-            viewport={{ once: true, amount: 0.1 }}
+            whileHover={prefersReducedMotion ? {} : "hover"}
+            viewport={{ once: true, amount: 0.05 }}
             className={`group relative overflow-hidden rounded-sm border-black/20 shadow-xl transition-all w-full
-                ${isFeatured ? "md:col-span-2 md:row-span-2 border-[4px] border-[#8e2b27] min-h-[400px]" : "border-[1px] aspect-square min-h-[300px]"} 
+                ${isFeatured ? "md:col-span-2 md:row-span-2 border-[4px] border-[#8e2b27] min-h-[350px]" : "border-[1px] aspect-square min-h-[280px]"} 
                 ${rotation}`}
             style={{ backgroundColor: COLORS.cardLight }}
         >
             <motion.div className="absolute inset-0 z-10" animate={{ opacity: isHovered ? 0 : 1 }}>
-                <img 
-                    src={project.img} 
-                    alt="" 
-                    className="object-cover w-full h-full contrast-[1.1] grayscale-[20%]" 
+                <img
+                    src={project.img}
+                    alt={`Proyecto ${project.title}`}
+                    className="object-cover w-full h-full contrast-[1.1] grayscale-[20%]"
+                    // Borrada la línea del @ts-expect-error porque TS ya es inteligente
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    loading={index < 2 ? "eager" : "lazy"}
+                    width={isFeatured ? 800 : 450}
+                    height={isFeatured ? 600 : 450}
                 />
-                
-                <div className={`absolute top-4 right-4 z-20 px-3 py-1 border-2 font-mono font-black uppercase shadow-lg
-                    ${isFeatured ? "bg-[#8e2b27] text-white -rotate-3 text-[10px]" : "bg-white/90 text-[#8e2b27] rotate-12 text-[8px]"}`}
+
+                <div className={`absolute top-3 right-3 z-20 px-2 py-1 border-2 font-mono font-black uppercase text-[8px] shadow-lg
+                    ${isFeatured ? "bg-[#8e2b27] text-white -rotate-3" : "bg-white/90 text-[#8e2b27] rotate-12"}`}
                     style={{ borderColor: isFeatured ? 'white' : COLORS.accent }}>
                     {isFeatured ? "★ SPECIAL EDITION ★" : theme.label}
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 p-6 text-left bg-gradient-to-t from-black via-black/80 to-transparent">
-                    <p className="font-mono text-[9px] text-[#cdc69c]/80 mb-1 tracking-[0.2em] uppercase">
-                        {isFeatured ? "PREMIUM_COLLECTION_VOL_01" : `CATALOG_ID: RD-202${index}`}
+                <div className="absolute inset-x-0 bottom-0 p-4 text-left bg-gradient-to-t from-black via-black/90 to-transparent">
+                    <p className="font-mono text-[8px] text-[#cdc69c]/70 mb-1 tracking-[0.2em] uppercase">
+                        {isFeatured ? "PREMIUM_COLLECTION" : `RD-202${index}`}
                     </p>
-                    <h3 className={`font-black tracking-tighter text-white uppercase leading-[0.9] 
-                        ${isFeatured ? "text-4xl md:text-8xl" : "text-2xl"}`}>
+                    <h2 className={`font-black tracking-tighter text-white uppercase leading-[0.9] 
+                        ${isFeatured ? "text-4xl md:text-7xl" : "text-xl md:text-2xl"}`}>
                         {project.title}
-                    </h3>
+                    </h2>
                 </div>
             </motion.div>
 
-            <motion.div className="absolute inset-0 z-20 flex flex-col justify-between p-6 overflow-hidden md:p-8"
+            <motion.div className="absolute inset-0 z-20 flex flex-col justify-between p-5 overflow-hidden"
                 initial={{ opacity: 0 }} animate={{ opacity: isHovered ? 1 : 0 }}
                 style={{ backgroundColor: theme.bg }}
             >
-                {isHovered && project.video && (
-                    <video 
-                        src={project.video.replace(/ /g, "%20")} 
-                        autoPlay loop muted playsInline 
-                        className="absolute inset-0 z-0 object-cover w-full h-full opacity-40 grayscale mix-blend-overlay" 
+                {!prefersReducedMotion && isHovered && project.video && (
+                    <video
+                        src={project.video.replace(/ /g, "%20")}
+                        autoPlay loop muted playsInline
+                        className="absolute inset-0 z-0 object-cover w-full h-full opacity-30 grayscale mix-blend-overlay"
                     />
                 )}
 
                 <div className="relative z-10 flex flex-col h-full text-left">
-                    <div className="flex items-start justify-between pb-3 mb-4 border-b border-current/20" style={{ color: theme.text }}>
-                        <span className="font-mono text-[10px] font-black tracking-widest uppercase">// SIDE B: TRACK_DETAILS</span>
-                        <span className="font-mono text-[10px]">LP 12"</span>
+                    <div className="flex items-start justify-between pb-2 mb-3 border-b border-current/20" style={{ color: theme.text }}>
+                        <span className="font-mono text-[9px] font-black tracking-widest uppercase">// SIDE B: TRACK_DETAILS</span>
+                        <span className="font-mono text-[9px]">LP 12"</span>
                     </div>
 
-                    <p className={`font-mono leading-tight mb-6 italic ${isFeatured ? "text-lg md:text-2xl" : "text-xs md:text-sm"}`} style={{ color: theme.text }}>
+                    <p className={`font-mono leading-tight mb-4 italic ${isFeatured ? "text-base md:text-xl" : "text-[11px] md:text-sm"}`} style={{ color: theme.text }}>
                         "{project.desc}"
                     </p>
 
-                    <div className="p-4 mt-auto border-2 border-current border-dashed bg-black/10" style={{ color: theme.text }}>
-                        <h4 className="mb-2 text-[9px] font-black uppercase tracking-[0.2em]">Technical_Specs:</h4>
-                        <div className="flex flex-wrap gap-1.5">
+                    <div className="p-3 mt-auto border-2 border-current border-dashed bg-black/5" style={{ color: theme.text }}>
+                        <h3 className="mb-1.5 text-[8px] font-black uppercase tracking-[0.1em]">Technical_Specs:</h3>
+                        <div className="flex flex-wrap gap-1">
                             {project.techStack?.split(',').map((tech, i) => (
-                                <span key={i} className="font-mono bg-black/20 px-2 py-0.5 font-bold text-[9px] md:text-[10px]">
+                                <span key={i} className="font-mono bg-black/10 px-1.5 py-0.5 font-bold text-[8px] md:text-[9px]">
                                     {tech.trim()}
                                 </span>
                             ))}
@@ -292,23 +298,25 @@ function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto
 function ProjectModal({ project, onClose }: { project: Proyecto, onClose: () => void }) {
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}
-                    className="fixed inset-0 flex items-center justify-center bg-black/95 backdrop-blur-md z-[9999] p-4">
+            className="fixed inset-0 flex items-center justify-center bg-black/95 backdrop-blur-md z-[9999] p-4">
             <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} onClick={e => e.stopPropagation()}
-                        className="bg-[#f5f3e7] max-w-5xl w-full flex flex-col md:flex-row overflow-hidden shadow-[25px_25px_0px_#8e2b27] border-2 border-black relative">
-                <div className="relative w-full border-b-4 border-black h-72 md:w-3/5 md:h-auto md:border-b-0 md:border-r-4 bg-black">
-                    <img src={project.img} className="object-cover w-full h-full" alt={project.title} />
+                className="bg-[#f5f3e7] max-w-5xl w-full flex flex-col md:flex-row overflow-hidden shadow-[20px_20px_0px_#8e2b27] border-2 border-black relative">
+                <div className="relative w-full border-b-4 border-black h-60 md:w-3/5 md:h-auto md:border-b-0 md:border-r-4 bg-black">
+                    <img src={project.img} className="object-cover w-full h-full" alt={project.title} loading="eager" />
                 </div>
-                <div className="relative flex flex-col justify-between p-8 md:p-12 md:w-2/5">
-                    <button onClick={onClose} className="absolute text-black top-6 right-6 hover:rotate-90 transition-transform"><FaTimes size={28} /></button>
-                    <div className="space-y-8">
+                <div className="relative flex flex-col justify-between p-6 md:p-10 md:w-2/5">
+                    <button onClick={onClose} className="absolute text-black top-4 right-4 hover:rotate-90 transition-transform" aria-label="Cerrar modal">
+                        <FaTimes size={24} />
+                    </button>
+                    <div className="space-y-6">
                         <div>
-                            <span className="text-[10px] font-mono text-[#8e2b27] font-black tracking-widest uppercase block mb-2">// DATA_LOG_01</span>
-                            <h2 className="text-5xl font-black text-black uppercase tracking-tighter">{project.title}</h2>
+                            <span className="text-[9px] font-mono text-[#8e2b27] font-black tracking-widest uppercase block mb-1">// DATA_LOG_01</span>
+                            <h2 className="text-4xl font-black text-black uppercase tracking-tighter">{project.title}</h2>
                         </div>
-                        <p className="font-mono text-sm leading-relaxed text-black/80 border-l-4 border-[#8e2b27] pl-5">{project.desc}</p>
+                        <p className="font-mono text-xs leading-relaxed text-black/80 border-l-4 border-[#8e2b27] pl-4">{project.desc}</p>
                     </div>
-                    <a href={project.url} target="_blank" rel="noreferrer" 
-                       className="mt-12 bg-[#8e2b27] text-white py-5 text-center text-xs font-black tracking-[0.3em] uppercase hover:bg-black transition-colors">
+                    <a href={project.url} target="_blank" rel="noreferrer"
+                        className="mt-8 bg-[#8e2b27] text-white py-4 text-center text-[10px] font-black tracking-[0.3em] uppercase hover:bg-black transition-colors">
                         LAUNCH_PREVIEW <FaExternalLinkAlt className="inline mb-1 ml-2" />
                     </a>
                 </div>
@@ -322,50 +330,47 @@ export default function Proyectos() {
 
     return (
         <main className="relative min-h-screen" style={{ backgroundColor: COLORS.bg }}>
-            
-            <div 
+
+            <div
                 className="absolute inset-0 z-[100] pointer-events-none opacity-25 mix-blend-multiply"
-                style={{ 
-                    backgroundImage: `url(${TEXTURE_URL})`, 
+                style={{
+                    backgroundImage: `url(${TEXTURE_URL})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat', 
-                }} 
+                }}
             />
 
-            <section className="relative z-20 px-6 pt-32 pb-16 mx-auto text-center max-w-7xl">
-                <span className="absolute top-10 left-1/2 -translate-x-1/2 text-[18vw] font-black text-white/20 select-none pointer-events-none uppercase leading-none">
+            <section className="relative z-999 px-6 pt-24 pb-12 mx-auto text-center max-w-7xl">
+                <span className="absolute top-6 left-1/2 -translate-x-1/2 text-[18vw] font-black text-white/20 select-none pointer-events-none uppercase leading-none">
                     Catalog
                 </span>
-                <h1 className="flex flex-col items-center leading-[0.8] mb-8 relative z-10">
-                    <span className="text-6xl md:text-[9rem] font-black uppercase tracking-tighter text-black">PROJECT</span>
-                    <div className="flex items-center gap-4 mt-2 md:gap-8">
-                        <div className="w-12 h-2 md:w-32 md:h-4" style={{ backgroundColor: COLORS.accent }} />
-                        <span className="text-5xl md:text-[9rem] font-black uppercase italic text-black" 
-                              style={{ WebkitTextStroke: `2px ${COLORS.accent}`, paintOrder: 'stroke fill' }}>
+                <h1 className="flex flex-col items-center leading-[0.8] mb-6 relative z-10">
+                    <span className="text-5xl md:text-[9rem] font-black uppercase tracking-tighter text-black">PROJECT</span>
+                    <div className="flex items-center gap-3 mt-2 md:gap-8">
+                        <div className="w-10 h-1.5 md:w-32 md:h-4" style={{ backgroundColor: COLORS.accent }} />
+                        <span className="text-4xl md:text-[9rem] font-black uppercase italic text-black"
+                            style={{ WebkitTextStroke: `1.5px ${COLORS.accent}`, paintOrder: 'stroke fill' }}>
                             PRESS
                         </span>
-                        <span className="text-5xl md:text-[9rem] font-black uppercase tracking-tighter" style={{ color: COLORS.accent }}>INGS</span>
+                        <span className="text-4xl md:text-[9rem] font-black uppercase tracking-tighter" style={{ color: COLORS.accent }}>INGS</span>
                     </div>
                 </h1>
             </section>
 
-            {/* Grid */}
-            <section className="px-6 pb-40 mx-auto max-w-7xl relative z-10">
-                <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 xl:gap-14">
+            <section className="px-6 pb-32 mx-auto max-w-7xl relative z-10">
+                <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-14">
                     {PROJECTS.map((proj, idx) => (
                         <ProjectCard key={proj.title} project={proj} index={idx} onOpen={setSelected} isFeatured={idx === 0} />
                     ))}
                 </div>
 
-                <div className="flex flex-col items-center mt-32">
-                    <Link to="/Feedback" className="flex items-center gap-4 group w-fit">
+                <div className="flex flex-col items-center mt-24">
+                    <Link to="/Feedback" className="flex items-center gap-4 group w-fit" aria-label="Contacto">
                         <motion.div whileHover={{ x: 10 }} className="flex items-center gap-4 cursor-pointer">
-                            <div className="flex items-center justify-center w-12 h-12 border-2 border-black rounded-full group-hover:bg-black transition-colors">
-                                {/* Sustituido ArrowRight (lucide) por FaArrowRight (react-icons) */}
-                                <FaArrowRight className="w-5 h-5 text-black group-hover:text-[#cdc69c] transition-colors" />
+                            <div className="flex items-center justify-center w-10 h-10 border-2 border-black rounded-full group-hover:bg-black transition-colors">
+                                <FaArrowRight className="w-4 h-4 text-black group-hover:text-[#cdc69c] transition-colors" />
                             </div>
-                            <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#8e2b27] group-hover:text-black">
+                            <span className="text-xl md:text-3xl font-black uppercase tracking-tighter text-[#8e2b27] group-hover:text-black">
                                 ¿GRABAMOS EL PRÓXIMO HIT?
                             </span>
                         </motion.div>

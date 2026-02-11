@@ -11,7 +11,6 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   
-  // Usamos refs para los audios para no crear nuevos objetos en cada render/interacción
   const audioCache = useRef<{ [key: string]: HTMLAudioElement }>({});
 
   const playSfx = useCallback((fileName: string, volume = 0.1) => {
@@ -20,10 +19,8 @@ export default function Header() {
     }
     const audio = audioCache.current[fileName];
     audio.volume = volume;
-    audio.currentTime = 0; // Reinicia para que suene aunque se pulse rápido
-    audio.play().catch(() => {
-      // Silenciamos el error si el navegador bloquea el audio sin interacción previa
-    });
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -33,7 +30,6 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
-    // passive: true es clave para el rendimiento de scroll en móviles
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
@@ -112,7 +108,6 @@ export default function Header() {
       >
         <div className="relative flex items-center justify-between h-20 px-4 mx-auto max-w-7xl md:px-8">
 
-          {/* Icono Hamburguesa */}
           <button
             onClick={() => {
               setMenuOpen(true);
@@ -132,19 +127,17 @@ export default function Header() {
             aria-label="Ir a la página de inicio"
             onClick={() => playSfx('relay', 0.1)}
             onMouseEnter={() => playSfx('switch', 0.1)} 
-            className="absolute transition-transform -translate-x-1/2 left-1/2 hover:scale-150"
+            className="absolute transition-transform -translate-x-1/2 left-1/2 hover:scale-110"
           >
             <img
-              src="/images/Logo rojo claro.png" 
+              src="/Logo rojo claro.svg" 
               alt="Logo RDisquete"
-              // Dimensiones explícitas para evitar Layout Shift (CLS)
               width="48"
               height="48"
               className="w-12 h-12"
             />
           </Link>
 
-          {/* Navegación Escritorio */}
           <nav className="items-center hidden gap-6 ml-auto md:flex" aria-label="Navegación principal">
             <NavLink 
               to="/biography" 
@@ -193,9 +186,9 @@ function NavLink({ to, active, children, onClick, onHover }: NavLinkProps) {
       onMouseEnter={onHover}
       className="relative px-3 py-2 uppercase transition-transform duration-200 hover:scale-110" 
       style={{ 
-        fontFamily: "'Montserrat', sans-serif",
-        fontWeight: 900,
-        fontSize: "0.9rem",
+        fontFamily: "'Montserrat', sans-serif", 
+        fontWeight: 400, 
+        fontSize: "1rem",
         letterSpacing: "0.15em",
         color: active ? RETRO_MAROON : RETRO_CREAM,
         display: "inline-block"

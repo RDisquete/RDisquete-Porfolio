@@ -167,7 +167,7 @@ export default function Conoceme() {
                                 variants={simpleEntryVariants}
                                 transition={{ delay: 0.3 }}
                             >
-                               README.md
+                                README.md
                             </motion.h2>
 
                             <motion.p
@@ -177,7 +177,7 @@ export default function Conoceme() {
                                 transition={{ delay: 0.8 }}
                             >
                                 <FaQuoteLeft className="inline mr-2 text-3xl md:mr-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
-                                Soy <strong className="font-black" style={{ color: RETRO_MAROON }}>Rafa</strong>. Mi trabajo es la colisión entre el <strong className="font-black" style={{ color: RETRO_MAROON }}>Frontend</strong> de alto rendimiento y el <strong className="font-black" style={{ color: RETRO_MAROON }}>Creative Web Design</strong> con carácter. No diseño pantallas, <strong className="font-black" style={{ color: RETRO_MAROON }}>levanto estructuras digitales</strong> donde el rigor del código sostiene la fuerza de una idea visual. Busco la perfección en el detalle técnico y la provocación en la estética. Creo webs que se sienten como una <strong className="font-black" style={{ color: RETRO_MAROON }}>pieza única</strong>, no como un estándar.
+                                Soy <strong className="font-black" style={{ color: RETRO_MAROON }}>Rafa</strong>. Mi enfoque como desarrollador <strong className="font-black" style={{ color: RETRO_MAROON }}>Frontend</strong> es construir interfaces donde el rendimiento y la estética vayan de la mano. Vengo del sector audiovisual, una etapa que me enseñó a cuidar el detalle visual, pero hoy mi prioridad es la <strong className="font-black" style={{ color: RETRO_MAROON }}>solución técnica</strong>. Utilizo herramientas como <strong className="font-black" style={{ color: RETRO_MAROON }}>React y TypeScript</strong> para crear sitios web rápidos, accesibles y con un diseño cuidado. No busco el estándar, sino el equilibrio entre un código limpio y una <strong className="font-black" style={{ color: RETRO_MAROON }}>experiencia de usuario</strong> impecable.
                                 <FaQuoteRight className="inline ml-2 text-3xl md:ml-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
                             </motion.p>
 
@@ -279,16 +279,15 @@ export default function Conoceme() {
 
                     <div className="space-y-8 text-lg md:text-2xl font-mono leading-relaxed text-left border-l-8 border-[#171717] pl-8">
                         <p>
-                            Después de más de una década contando historias con la cámara, descubrí que mi verdadera pasión iba <strong className="font-black">más allá del encuadre</strong>.
-                            Lo que empezó como la <span style={{ color: RETRO_MAROON }} className="font-bold">necesidad de crear una presencia digital</span> para mis proyectos, se convirtió en una obsesión por entender cómo el código da vida a las ideas.
+                            Tras más de diez años en el sector audiovisual, entendí que una interfaz no es solo una imagen, sino un <strong className="font-black">sistema funcional</strong>. Mi trabajo actual consiste en llevar esa exigencia visual al desarrollo <span style={{ color: RETRO_MAROON }} className="font-bold">Frontend</span>.
                         </p>
 
                         <p>
-                            Esa transición de <strong className="font-black">fotógrafo y videógrafo a desarrollador frontend</strong> no fue un cambio, sino una <span style={{ color: RETRO_MAROON }} className="font-bold">evolución natural</span> para fusionar mi ojo creativo con la lógica del desarrollo web.
+                            No veo el código como un cambio de rumbo, sino como la capacidad de <strong className="font-black">construir mis propias herramientas</strong>. He pasado de capturar la realidad con una cámara a programar experiencias interactivas escalables y eficientes.
                         </p>
 
                         <p>
-                            Ahora, cada línea de código es una extensión de mi visión artística. No busco solo que algo funcione, sino que <strong style={{ color: RETRO_MAROON }}>sienta, funcione y deje una huella duradera</strong> en el usuario, a través de interfaces intuitivas y un código impecable.
+                            Hoy, mi enfoque es el equilibrio técnico: utilizar <strong style={{ color: RETRO_MAROON }}>React y TypeScript</strong> para crear productos que sean robustos por dentro e impecables por fuera. Busco que el código limpio sea siempre la base de una <strong className="font-black">experiencia de usuario superior</strong>.
                         </p>
                     </div>
                 </div>
@@ -337,7 +336,7 @@ export default function Conoceme() {
                             </h3>
                         </div>
                         <p className="font-mono text-xs opacity-60 max-w-[200px] text-right hidden md:block">
-                            TECHNICAL SKILLS APPLIED IN REAL SCENARIOS 
+                            TECHNICAL SKILLS APPLIED IN REAL SCENARIOS
                         </p>
                     </div>
 
@@ -387,7 +386,7 @@ export default function Conoceme() {
                                 subtitle={`${form.centro} | ${form.fecha}`}
                                 details={form.resumen}
                                 extra={form.detalles}
-                                color={RETRO_CREAM} 
+                                color={RETRO_CREAM}
                             />
                         ))}
                     </div>
@@ -451,40 +450,40 @@ const skillTracks = [
 ];
 
 const experienciaData = [
-    { 
-        empresa: "Adv Estudio", 
-        puesto: "Fotógrafo, filmmaker y desarrollo web", 
-        fecha: "2024 - 2026", 
-        resumen: "Digitalización de marca y creación de ecosistemas web robustos para clientes del sector creativo y comercial.", 
-        detalles: "Conceptualización y despliegue de soluciones web a medida integrando narrativa visual de alto impacto. Gestión directa con stakeholders para alinear objetivos de negocio con interfaces centradas en el usuario." 
+    {
+        empresa: "Adv Estudio",
+        puesto: "Frontend Developer & Audiovisual Creator",
+        fecha: "2024 - Actualidad",
+        resumen: "Desarrollo de interfaces dinámicas en React y digitalización de procesos mediante soluciones web personalizadas.",
+        detalles: "Liderazgo técnico en proyectos como 'Armario Escénico', implementando arquitecturas de filtrado complejo y persistencia de datos. Desarrollo de componentes escalables priorizando el rendimiento y la narrativa visual de alto impacto."
     },
-    { 
-        empresa: "Apple Mecanorba", 
-        puesto: "Asesor comercial y soporte técnico", 
-        fecha: "2024", 
-        resumen: "Especialista en ecosistema Apple, optimizando flujos de trabajo profesionales mediante soluciones hardware y software.", 
-        detalles: "Resolución de incidencias técnicas críticas y consultoría personalizada. Logré un incremento sustancial en la fidelización de clientes premium gracias a un soporte preventa especializado y formación técnica postventa." 
+    {
+        empresa: "Apple Mecanorba",
+        puesto: "Asesor Comercial de Productos Apple",
+        fecha: "May. 2024 - Sep. 2024",
+        resumen: "Especialista en el ecosistema Apple, asesorando sobre hardware y flujos de trabajo técnicos para perfiles creativos.",
+        detalles: "Resolución de flujos técnicos críticos y optimización de entornos de trabajo basados en macOS e iOS. Consultoría experta en la integración de soluciones tecnológicas para profesionales del sector multimedia."
     },
-    { 
-        empresa: "P.D. Fotógrafos", 
-        puesto: "Fotógrafo y filmmaker", 
-        fecha: "2012 - 2023", 
-        resumen: "Dirección creativa y producción audiovisual integral para campañas de branding y eventos corporativos.", 
-        detalles: "Lideré la transición digital del estudio, implementando nuevas estrategias de contenido que elevaron el engagement en un 20%. Supervisión de postproducción y entrega de activos visuales optimizados para diversas plataformas digitales." 
+    {
+        empresa: "P.D. Fotógrafos",
+        puesto: "Fotógrafo y Editor de Vídeo",
+        fecha: "2012 - 2023",
+        resumen: "Dirección de producción visual y campañas digitales durante más de una década.",
+        detalles: "Responsable de la narrativa visual y postproducción de activos digitales. Mi etapa en este estudio forjó mi capacidad para entender la jerarquía visual y el detalle estético que hoy aplico al desarrollo de interfaces."
     },
-    { 
-        empresa: "Gestor.Ex", 
-        puesto: "Técnico de sonido y docente", 
-        fecha: "2014", 
-        resumen: "Ingeniería de audio para eventos en vivo y formación técnica en entornos de radio y producción musical.", 
-        detalles: "Operación de mesas de mezcla y control de calidad sonora para Radio Marca. Diseñé y ejecuté programas formativos para técnicos noveles, asegurando la transmisión de buenas prácticas en captación y procesado de señal." 
+    {
+        empresa: "Gestor.Ex",
+        puesto: "Técnico de Sonido y Docente",
+        fecha: "2014",
+        resumen: "Ingeniería de sonido en directo para Radio Marca y formación técnica en producción audiovisual.",
+        detalles: "Operación de sistemas de audio complejos y formación técnica en flujos de trabajo de producción sonora. Una experiencia clave para mi comprensión actual del procesamiento de señales (Web Audio API)."
     },
-    { 
-        empresa: "Uveauve", 
-        puesto: "Auxiliar de vídeo y sonido", 
-        fecha: "2011", 
-        resumen: "Soporte técnico operativo en producciones televisivas y retransmisiones de gran escala en directo.", 
-        detalles: "Asistencia en el montaje de infraestructura técnica y operación de cámaras secundarias. Garanticé el flujo continuo de señal bajo presión en entornos de televisión profesional." 
+    {
+        empresa: "Uveauve",
+        puesto: "Auxiliar de Vídeo y Sonido",
+        fecha: "2011",
+        resumen: "Soporte técnico operativo en eventos y retransmisiones multimedia en directo.",
+        detalles: "Montaje de infraestructura técnica y asistencia en control de señal. Inicio de mi trayectoria técnica en entornos de alta presión y flujos de trabajo multimedia."
     },
 ];
 

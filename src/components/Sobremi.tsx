@@ -1,8 +1,8 @@
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
-// Cambiamos Lucide por React Icons (FontAwesome)
 import { FaArrowRight } from "react-icons/fa"; 
 
+// --- ANIMACIONES ---
 const textReveal: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { 
@@ -36,24 +36,28 @@ export default function SobreMi() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }} 
     >
-      {/* Textura de fondo optimizada a WebP - Capa Inferior */}
-      <div 
-        className="absolute inset-0 pointer-events-none z-[1] opacity-40 mix-blend-multiply will-change-transform" 
-        style={{ 
-          backgroundImage: "url('/images/texturas/textura2.webp')", 
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }} 
-        aria-hidden="true"
-      />
+      {/* 1. TEXTURA SUPREMA (Picture para ahorro de datos) */}
+      <picture className="absolute inset-0 z-[100] pointer-events-none">
+        <source srcSet="/images/texturas/textura2-mobile.webp" media="(max-width: 767px)" />
+        <source srcSet="/images/texturas/textura2.webp" media="(min-width: 768px)" />
+        <img 
+          src="/images/texturas/textura2.webp"
+          alt=""
+          role="presentation"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover opacity-15 mix-blend-multiply grayscale contrast-150"
+        />
+      </picture>
 
+      {/* Marca de agua decorativa */}
       <span className="absolute bottom-10 right-10 text-[15vw] font-black text-black/10 select-none pointer-events-none uppercase leading-none z-[2]">
         Profile
       </span>
 
-      <div className="relative z-20 flex flex-col w-full gap-12 mx-auto max-w-7xl lg:flex-row lg:items-center"> 
+      {/* CONTENIDO PRINCIPAL */}
+      <div className="relative z-10 flex flex-col w-full gap-12 mx-auto max-w-7xl lg:flex-row lg:items-center"> 
         
-        {/* Lado de la Imagen */}
+        {/* 2. LADO DE LA IMAGEN (Retrato Adaptativo) */}
         <motion.div
           className="relative flex justify-center flex-shrink-0 lg:w-5/12 lg:justify-start"
           variants={imageEntry}
@@ -61,14 +65,21 @@ export default function SobreMi() {
           <div className="relative p-2 bg-[#cdc69c] shadow-[20px_20px_0px_0px_rgba(23,23,23,0.4)] md:shadow-[30px_30px_0px_0px_rgba(23,23,23,0.4)]">
            
             <div className="relative overflow-hidden border-2 border-black bg-[#0f0f0f] w-[240px] h-[300px] md:w-[380px] md:h-[500px]">
-              <img
-                src="/images/IMG_6012_byn.webp" 
-                alt="Retrato de Rafa Dorado"
-                width="380"
-                height="500"
-                className="object-cover object-bottom w-full h-full transition-all duration-1000 grayscale contrast-125 hover:grayscale-0" 
-                loading="lazy"
-              />
+              <picture>
+                {/* Móvil: 300px ancho, Calidad 60% en Squoosh */}
+                <source srcSet="/images/IMG_6012_byn-mobile.webp" media="(max-width: 767px)" />
+                {/* Desktop: 500px ancho, Calidad 75% en Squoosh */}
+                <source srcSet="/images/IMG_6012_byn.webp" media="(min-width: 768px)" />
+                <img
+                  src="/images/IMG_6012_byn.webp" 
+                  alt="Retrato de Rafa Dorado"
+                  width="380"
+                  height="500"
+                  className="object-cover object-bottom w-full h-full transition-all duration-1000 hover:grayscale-0" 
+                  loading="lazy"
+                />
+              </picture>
+              
               {/* Scanlines effect */}
               <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px]" aria-hidden="true" />
             </div>
@@ -138,7 +149,6 @@ export default function SobreMi() {
             >
               <div className="flex items-center gap-4 cursor-pointer">
                 <div className="flex items-center justify-center w-12 h-12 transition-all duration-300 border-2 border-black rounded-full group-hover:bg-black">
-                  {/* Flecha de React Icons */}
                   <FaArrowRight className="w-5 h-5 text-black group-hover:text-[#cdc69c] transition-colors" />
                 </div>
                 <div className="flex flex-col">
@@ -154,13 +164,6 @@ export default function SobreMi() {
           </motion.div>
         </div>
       </div>
-
-      {/* Capa de textura superior para unificar el grano */}
-      <div 
-        className="absolute inset-0 z-[30] pointer-events-none opacity-[0.05] mix-blend-overlay" 
-        style={{ backgroundImage: "url('/images/texturas/textura2.webp')" }} 
-        aria-hidden="true"
-      />
     </motion.section> 
   );
 }

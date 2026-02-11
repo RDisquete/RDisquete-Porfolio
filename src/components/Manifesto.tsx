@@ -1,13 +1,13 @@
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-
-const TEXTURE_2 = "/images/texturas/old-paper-grunge-dark.webp";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
 export default function Manifesto() {
-  const sectionRef = useRef<HTMLElement>(null);
+  // 1. Especificamos el tipo de elemento para el ref
+  const sectionRef = useRef<HTMLDivElement>(null); 
   const [cafeCount, setCafeCount] = useState(10);
   const [isDone, setIsDone] = useState(false);
 
+  // 2. useScroll necesita que el target tenga un layout estable
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -17,48 +17,57 @@ export default function Manifesto() {
 
   useEffect(() => {
     const unsubscribe = cafeValue.on("change", (v) => {
-      setCafeCount(Math.ceil(v));
+      const rounded = Math.ceil(v);
+      // Evitamos renders innecesarios si el valor es el mismo
+      setCafeCount((prev) => (prev !== rounded ? rounded : prev));
     });
     return () => unsubscribe();
   }, [cafeValue]);
 
   return (
-    <motion.section
+    <section
       ref={sectionRef}
       id="manifesto-section"
+      // CAMBIO CLAVE: Posicionamiento explícito y 'relative'
       className="relative block w-full px-6 py-10 md:py-24 overflow-hidden bg-[#cdc69c]"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.1 }}
+      style={{ position: 'relative' }} 
     >
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-10 contrast-125 saturate-110 will-change-transform" 
-        style={{ 
-          backgroundImage: `url(${TEXTURE_2})`, 
-          backgroundSize: 'cover', 
-          backgroundPosition: 'center',
-          mixBlendMode: 'multiply' 
-        }} 
-      />
+      {/* Texturas */}
+      <picture className="absolute inset-0 z-[50] pointer-events-none">
+        <source srcSet="/images/texturas/old-paper-grunge-dark-mobile.webp" media="(max-width: 767px)" />
+        <source srcSet="/images/texturas/old-paper-grunge-dark.webp" media="(min-width: 768px)" />
+        <img 
+          src="/images/texturas/old-paper-grunge-dark.webp" 
+          alt="" 
+          role="presentation"
+          loading="lazy"
+          className="absolute inset-0 object-cover w-full h-full opacity-15 grayscale contrast-150 mix-blend-multiply"
+        />
+      </picture>
 
-      <div className="relative z-10 max-w-3xl mx-auto font-mono text-[#171717]">
+      <motion.div 
+        className="relative z-10 max-w-3xl mx-auto font-mono text-[#171717]"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
         <div className="w-full h-px mb-8 opacity-60 bg-[#8e2b27]" aria-hidden="true" />
 
         <div className="pl-4 border-l-4 md:pl-6 border-[#8e2b27]">
           <div className="text-base leading-snug md:text-lg font-mono">
             <div>
               <span className="text-[#8e2b27]">if</span> (
-              <span className="tracking-wider uppercase font-display-impact">todoEsPredecible</span>
+              <span className="font-bold uppercase">todoEsPredecible</span>
               ) <span className="opacity-70">{`{`}</span>
             </div>
             <p className="ml-4 italic opacity-40">// boring...</p>
             <div className="ml-4">
-              console.log("<span className="text-xl font-bold">HACER OTRA COSA</span>");
+              console.log("<span className="text-xl font-bold uppercase">Hacer otra cosa</span>");
             </div>
             <div>
               <span className="opacity-70">{`}`}</span> <span className="text-[#8e2b27]">else</span> <span className="opacity-70">{`{`}</span>
             </div>
-            <p className="ml-4 text-2xl uppercase font-display-impact text-[#8e2b27]">esto promete</p>
+            <p className="ml-4 text-2xl uppercase font-bold text-[#8e2b27]">esto promete</p>
             <p className="opacity-70">{`}`}</p>
           </div>
         </div>
@@ -67,8 +76,7 @@ export default function Manifesto() {
             <button 
                 onClick={() => setIsDone(true)} 
                 disabled={isDone}
-                aria-label="Ejecutar acción de crear"
-                className="relative inline-block outline-none cursor-pointer group"
+                className="relative inline-block outline-none cursor-pointer group bg-transparent border-none p-0"
             >
                 <div className="relative px-4 py-2">
                     <AnimatePresence>
@@ -82,27 +90,12 @@ export default function Manifesto() {
                       )}
                     </AnimatePresence>
 
-                    <motion.span 
-                        className={`relative z-10 text-5xl font-extrabold uppercase font-display-impact md:text-7xl transition-colors duration-300 ${
+                    <span className={`relative z-10 text-5xl font-black uppercase md:text-7xl transition-colors duration-300 ${
                           isDone ? 'text-[#cdc69c]' : 'text-[#8e2b27] group-hover:text-black'
-                        }`}
-                    >
+                        }`}>
                         CREAR
-                    </motion.span>
+                    </span>
                     <span className={`relative z-10 text-4xl md:text-6xl font-black transition-colors duration-300 ${isDone ? 'text-[#cdc69c]' : 'text-[#8e2b27]'}`}>();</span>
-
-                    <AnimatePresence>
-                        {isDone && (
-                            <motion.div 
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="absolute -inset-1 border-2 border-[#8e2b27] z-20 pointer-events-none"
-                                style={{ 
-                                  clipPath: "polygon(2% 0%, 98% 1%, 100% 98%, 1% 100%)" 
-                                }}
-                            />
-                        )}
-                    </AnimatePresence>
                 </div>
             </button>
         </div>
@@ -115,9 +108,9 @@ export default function Manifesto() {
                     <motion.div 
                         initial={{ scale: 3, opacity: 0, rotate: 25 }}
                         animate={{ scale: 1, opacity: 0.9, rotate: -12 }}
-                        className="absolute -top-10 right-10 z-[100] pointer-events-none"
+                        className="absolute -top-10 right-10 z-[40] pointer-events-none"
                     >
-                        <div className="px-4 py-1 border-4 border-[#8e2b27] text-[#8e2b27] font-display-impact text-4xl md:text-6xl uppercase tracking-tighter bg-[#cdc69c] border-double shadow-lg">
+                        <div className="px-4 py-1 border-4 border-[#8e2b27] text-[#8e2b27] font-bold text-4xl md:text-6xl uppercase tracking-tighter bg-[#cdc69c] border-double shadow-lg">
                          AL LÍO!
                         </div>
                     </motion.div>
@@ -135,25 +128,15 @@ export default function Manifesto() {
                   <div><span className="text-[#8e2b27]">const</span> disquete = <span className="text-[#8e2b27]">{`{`}</span></div>
                   <div className="ml-4">
                     <span className="opacity-80">status:</span> 
-                    <span className="ml-2 text-xl font-extrabold font-display-impact md:text-2xl">
+                    <span className="ml-2 text-xl font-black md:text-2xl">
                         "ALGO QUE PARECE ARTE"
                     </span>
                   </div>
                   <div><span className="text-[#8e2b27]">{`}`}</span>;</div>
                 </div>
             </div>
-
-            {isDone && (
-                <motion.div 
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="mt-4 text-left font-mono text-xs text-[#8e2b27] font-bold"
-                >
-                    &gt; Menos hablar, más crear!
-                </motion.div>
-            )}
         </div>
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 }

@@ -3,8 +3,8 @@ import { FaInstagram, FaLinkedin, FaWhatsapp, FaFileDownload, FaGithub } from "r
 import { MdEmail } from "react-icons/md";
 
 const BG = "#171717";
-const PAPER = "#cdc69c";
-const ACCENT = "#b43a31";
+const PAPER = "#e5dfbc"; 
+const ACCENT = "#d14d44";
 
 export default function Footer() {
   const [timecode, setTimecode] = useState("00:00:00:00");
@@ -20,6 +20,15 @@ export default function Footer() {
     }, 40);
     return () => clearInterval(interval);
   }, []);
+
+  const links = [
+    { icon: <FaInstagram aria-hidden="true" />, href: "https://www.instagram.com/rdisquete/", label: "Instagram" },
+    { icon: <FaWhatsapp aria-hidden="true" />, href: "https://wa.me/+34648791998", label: "WhatsApp" },
+    { icon: <MdEmail aria-hidden="true" />, href: "mailto:rafael.doradozamoro@gmail.com", label: "Email" },
+    { icon: <FaLinkedin aria-hidden="true" />, href: "https://www.linkedin.com/in/rafael-dorado-zamoro/", label: "LinkedIn" },
+    { icon: <FaFileDownload aria-hidden="true" />, href: "/images/CV_Rafael_Dorado_Zamoro.pdf", label: "Descargar CV", download: true },
+    { icon: <FaGithub aria-hidden="true" />, href: "https://github.com/RDisquete", label: "GitHub" }
+  ];
 
   return (
     <footer
@@ -41,30 +50,22 @@ export default function Footer() {
           {timecode}
         </span>
       </div>
-
-      <div
-        className="flex text-2xl transition-colors duration-300 gap-7"
-        style={{ color: PAPER }}
-      >
-        {[
-          { icon: <FaInstagram />, href: "https://www.instagram.com/rdisquete/" },
-          { icon: <FaWhatsapp />, href: "https://wa.me/+34648791998" },
-          { icon: <MdEmail />, href: "mailto:rafael.doradozamoro@gmail.com" },
-          { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/rafael-dorado-zamoro/" },
-          { icon: <FaFileDownload />, href: "/images/CV_Rafael_Dorado_Zamoro.pdf", download: true },
-          {icon: <FaGithub/>, href:"https://github.com/RDisquete"}
-        ].map((link, index) => (
-          <a
-            key={index}
-            href={link.href}
-            target={link.download ? undefined : "_blank"}
-            rel="noopener noreferrer"
-            className="transition-all duration-300 hover:text-[#b43a31] transform hover:scale-110"
-          >
-            {link.icon}
-          </a>
-        ))}
-      </div>
+      <nav aria-label="Enlaces de contacto" className="z-10">
+        <div className="flex text-2xl gap-7" style={{ color: PAPER }}>
+          {links.map((link, index) => (
+            <a
+              key={index}
+              href={link.href}
+              target={link.download ? undefined : "_blank"}
+              rel="noopener noreferrer"
+              aria-label={link.label}
+              className="transition-all duration-300 hover:text-[#d14d44] transform hover:scale-110"
+            >
+              {link.icon}
+            </a>
+          ))}
+        </div>
+      </nav>
     </footer>
   );
 }

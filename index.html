@@ -2,55 +2,79 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/images/Logo rojo claro.png" type="image/png" />
+    <link rel="icon" href="/Logo rojo claro.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="#171717" />
 
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
-
+    
+    <link 
+      rel="preload" 
+      href="/images/texturas/abstract-crumpled-mobile.webp" 
+      as="image" 
+      media="(max-width: 767px)"
+      fetchpriority="high"
+    />
     <link 
       rel="preload" 
       href="/images/texturas/abstract-crumpled.webp" 
       as="image" 
+      media="(min-width: 768px)"
       fetchpriority="high"
     />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link 
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@900&display=swap" 
-      rel="stylesheet"
-    />
+    rel="preload" 
+    href="/fonts/montserrat-v31-latin-regular.woff2" 
+    as="font" 
+    type="font/woff2" 
+    crossorigin="anonymous" 
+  />
 
     <title>RDisquete | Frontend Developer & Creative Designer</title>
     <meta name="description" content="Portfolio de Rafael Dorado (RDisquete). Desarrollo Frontend con React y estética High-Fidelity." />
 
     <style>
+      /* Evita el destello blanco/gris inicial */
       :root { color-scheme: dark; }
       body { 
         background-color: #171717; 
         margin: 0; 
-        background-image: url("/images/texturas/abstract-crumpled.webp");
-        background-attachment: fixed;
-        background-size: cover;
-        background-repeat: no-repeat;
+        overflow-x: hidden;
+        /* Fuente de respaldo mientras carga la local */
+        font-family: system-ui, -apple-system, sans-serif;
       }
       #root { min-height: 100vh; }
     </style>
   </head>
 
   <body>
-    <main id="root"></main>
+    <div id="root"></div>
+    
     <script type="module" src="/src/main.tsx"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GOOGLE_ANALYTICS_ID%"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '%VITE_GOOGLE_ANALYTICS_ID%', { 'animate_ad_signals': false });
+      window.addEventListener('load', function() {
+        const loadGtag = () => {
+          if (window.dataLayer) return; // Evita doble carga
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '%VITE_GOOGLE_ANALYTICS_ID%', {
+            'page_path': window.location.pathname,
+            'animate_ad_signals': false
+          });
+        };
+        
+        // requestIdleCallback es oro para Lighthouse
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadGtag);
+        } else {
+          setTimeout(loadGtag, 1000);
+        }
+      });
     </script>
   </body>
 </html>

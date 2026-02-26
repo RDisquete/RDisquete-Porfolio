@@ -42,7 +42,7 @@ const PROJECTS: Proyecto[] = [
         title: "Invitación R&M",
         url: "https://rdisquetesevadeboda.netlify.app/", 
         img: "/images/invitacionboda.webp", 
-        github: "https://github.com/tu-usuario/wedding-demo",
+        github: "https://github.com/RDisquete/InvitacionDemo",
         desc: "Invitación editorial premium con galería colaborativa en tiempo real. Los invitados acceden mediante QR para subir y compartir fotos del evento instantáneamente.",
         video: "/images/invitacionboda.mp4", 
         techStack: "React, Supabase, Framer Motion, Tailwind",

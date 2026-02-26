@@ -92,7 +92,6 @@ export default function Contacto() {
       className="relative flex flex-col items-center justify-center min-h-screen px-4 py-12 overflow-hidden"
       style={{ backgroundColor: ACCENT_COLOR }}
     >
-      {/* OPTIMIZACIÓN LCP: Picture con fetchPriority */}
       <picture className="absolute inset-0 z-0 pointer-events-none opacity-30 mix-blend-overlay">
         <source srcSet={TEXTURE_MOBILE} media="(max-width: 767px)" />
         <source srcSet={TEXTURE_DESKTOP} media="(min-width: 768px)" />
@@ -131,7 +130,6 @@ export default function Contacto() {
           style={{ backgroundColor: CARD_LIGHT }}
           {...animationProps}
         >
-          {/* OPTIMIZACIÓN: Añadimos dimensiones y carga prioritaria */}
           <img
             src={TEXTURE_PAPER}
             alt=""

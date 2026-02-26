@@ -7,12 +7,20 @@ import SobreMi from "../components/Sobremi";
 
 // --- CONFIGURACIÓN DE DATOS ---
 const projects = [
+  { 
+    title: "Invitación R&M", 
+    desc: "Invitación digital editorial con acceso vía QR y galería colaborativa en tiempo real gestionada con Supabase.", 
+    img: "/images/invitacionboda.webp", 
+    url: "https://rdisquetesevadeboda.netlify.app/", 
+    video: "/images/invitacionboda.mp4", 
+    tech: ["React, Supabase, Framer Motion, Tailwind"] 
+  },
   { title: "The Pueblo", url: "https://thepueblo.es/", img: "/images/ThePuebloHome.webp", desc: "Enfocado en contenido visual moderno.", video: "/images/thePueblo Hover.mp4", tech: ["React, Vite, Tailwind CSS"] },
   { title: "Nor3xtrem", url: "https://nor3xtrem.es/", img: "/Nor3xtreme.webp", desc: "Presencia digital de una marcha cicloturista.", video: "/Nor3xtremeHover.mp4", tech: ["React, Vite, Tailwind CSS"] },
   { title: "Matter & Sound", url: "https://mattersoundrdisquete.netlify.app/", img: "/MatterSound.webp", desc: "Estación de visualización generativa...", video: "/MattersoundHover.mp4", tech: ["React", "TypeScript", "Web Audio API", "HTML5 Canvas", "Tailwind CSS"] },
   { title: "Armario Escénico", url: "https://armarioescenico.netlify.app/", img: "/sambrona.webp", desc: "Gestión de archivo de vestuario histórico...", video: "/sambronaHover.mp4", tech: ["React, TypeScript, Tailwind CSS"] },
   { title: "ED Movil", url: "https://edmovil.netlify.app/", img: "/images/edmovil.webp", desc: "Enfocada en la presentación de tarifas...", video: "/images/edHover.mp4", tech: ["React, TypeScript, Tailwind CSS"] },
-  { title: "AM Movil Repair", desc: "Web de servicios enfocada en la reparación...", img: "/images/am movil repair.webp", url: "https://ammovilrepair.com", video: "/amhover.mp4", tech: ["React, Tailwind, Google Maps"] },
+
 ];
 
 const socials = [

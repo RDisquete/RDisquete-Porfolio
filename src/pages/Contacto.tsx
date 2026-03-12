@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { useMemo, useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaLinkedin,
   FaInstagram,
@@ -14,7 +15,6 @@ import { useForm } from "@formspree/react";
 
 const ACCENT_COLOR = "#681f1d";
 const CARD_LIGHT = "#ffffff";
-// Ajustamos ligeramente el crema para mejorar el contraste en Lighthouse
 const BACKGROUND_SECUNDARY = "#e5dfbc";
 
 const TEXTURE_PAPER = "/images/texturas/textura1.webp";
@@ -41,6 +41,7 @@ const sectionVariants: Variants = {
 };
 
 export default function Contacto() {
+  const navigate = useNavigate();
   const formKey = import.meta.env.VITE_FORMSPREE_KEY;
   const [state, handleSubmitFormspree, reset] = useForm(formKey || "");
 
@@ -99,7 +100,7 @@ export default function Contacto() {
           src={TEXTURE_BG}
           alt=""
           role="presentation"
-          // @ts-expect-error - fetchpriority no está en los tipos oficiales de React todavía
+         // @ts-expect-error - fetchpriority no está en los tipos oficiales de React todavía
           fetchpriority="high"
           className="object-cover w-full h-full"
           width="1920"
@@ -177,7 +178,6 @@ export default function Contacto() {
                   type="submit"
                   disabled={state.submitting}
                   className="flex items-center gap-4 group w-fit disabled:opacity-50 disabled:cursor-not-allowed"
-                  aria-label={state.submitting ? "Enviando mensaje" : "Enviar formulario de contacto"}
                 >
                   <motion.div
                     whileHover={!state.submitting ? { x: 10 } : {}}
@@ -217,13 +217,13 @@ export default function Contacto() {
           </AnimatePresence>
         </motion.section>
 
-        <footer className="flex flex-col items-center gap-6 mt-12">
+        <footer className="flex flex-col items-center gap-6 mt-12 w-full">
           <div className="flex gap-8">
             {socialLinks.map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                aria-label={`Visitar mi perfil de ${s.label}`} // <-- NOMBRE PARA ACCESIBILIDAD
+                aria-label={`Visitar mi perfil de ${s.label}`}
                 className="text-[#e5dfbc] hover:text-white transition-all hover:-translate-y-1 text-2xl">
-                <s.icon aria-hidden="true" /> {/* El icono se oculta para no confundir lectores */}
+                <s.icon aria-hidden="true" />
               </a>
             ))}
           </div>
@@ -242,6 +242,22 @@ export default function Contacto() {
               </motion.span>
             </AnimatePresence>
           </div>
+
+          <button
+            onClick={() => navigate('/')}
+            className="flex items-center gap-4 group w-fit mt-12 mb-8 border-none outline-none cursor-pointer"
+            aria-label="Volver a la página principal"
+          >
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#cdc69c] group-hover:bg-[#cdc69c] transition-all duration-300">
+              <FaArrowRight className="w-4 h-4 text-[#cdc69c] rotate-[180deg] group-hover:text-[#681f1d] transition-colors" />
+            </div>
+            <div className="flex flex-col text-left">
+             
+              <span className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#cdc69c] group-hover:text-white transition-colors">
+              RETURN_TO_HOME
+              </span>
+            </div>
+          </button>
         </footer>
       </div>
     </main>

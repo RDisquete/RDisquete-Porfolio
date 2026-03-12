@@ -123,20 +123,21 @@ export default function Header() {
           </button>
 
           <Link
-            to="/"
-            aria-label="Ir a la página de inicio"
-            onClick={() => playSfx('relay', 0.1)}
-            onMouseEnter={() => playSfx('switch', 0.1)} 
-            className="absolute transition-transform -translate-x-1/2 left-1/2 hover:scale-110"
-          >
-            <img
-              src="/Logo rojo claro.svg" 
-              alt="Logo RDisquete"
-              width="48"
-              height="48"
-              className="w-12 h-12"
-            />
-          </Link>
+  to="/"
+  aria-label="Ir a la página de inicio"
+  onClick={() => playSfx('relay', 0.1)}
+  onMouseEnter={() => playSfx('switch', 0.1)}
+  className="absolute transition-all duration-500 -translate-x-1/2 left-1/2 hover:scale-105 hover:drop-shadow-[0_2px_4px_rgba(205,198,156,0.5)]"
+>
+  <img
+    src="/Logo rojo claro.svg"
+    alt="Logo RDisquete"
+    width="100"
+    height="100"
+    className="w-30 h-30
+    "
+  />
+</Link>
 
           <nav className="items-center hidden gap-6 ml-auto md:flex" aria-label="Navegación principal">
             <NavLink 

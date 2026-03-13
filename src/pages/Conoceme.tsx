@@ -357,17 +357,20 @@ export default function Conoceme() {
 
             {/* --- CARA B: FORMACIÓN --- */}
             <section className="relative py-32 bg-[#8e2b27] text-[#cdc69c] px-6 overflow-hidden">
-                <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay"
-                    style={{ backgroundImage: `url(${TEXTURE_5})`, backgroundSize: 'cover' }} />
+                <div
+                    className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay"
+                    style={{ backgroundImage: `url(${TEXTURE_5})`, backgroundSize: 'cover' }}
+                />
 
                 <div className="relative z-10 max-w-6xl mx-auto">
-                    <h2 className="absolute -top-16 -right-10 text-[12rem] md:text-[20rem] font-black text-black/20 font-display-impact select-none uppercase leading-none text-right">
+                    <h2 className="absolute -top-16 -right-10 text-[12rem] md:text-[20rem] font-black text-black/20 font-display-impact select-none uppercase leading-none text-right z-0">
                         B SIDE
                     </h2>
-
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b-4 border-[#cdc69c]/30 pb-8">
+                    <div className="relative z-20 flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b-4 border-[#cdc69c]/30 pb-8">
                         <div>
-                            <span className="text-[#cdc69c] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2 opacity-60">Side B // 45 RPM</span>
+                            <span className="text-[#cdc69c] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2 opacity-60">
+                                Side B // 45 RPM
+                            </span>
                             <h3 className="text-6xl font-black tracking-tighter uppercase font-display-impact">
                                 Formación <span className="text-white">Académica</span>
                             </h3>
@@ -377,6 +380,7 @@ export default function Conoceme() {
                         </p>
                     </div>
 
+                    {/* Lista de formación */}
                     <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
                         {formacionData.map((form, i) => (
                             <TrackItem
@@ -453,7 +457,7 @@ const experienciaData = [
     {
         empresa: "Adv Estudio",
         puesto: "Frontend Developer & Audiovisual Creator",
-        fecha: "2024 - Actualidad",
+        fecha: "2024 - 2026",
         resumen: "Desarrollo de interfaces dinámicas en React y digitalización de procesos mediante soluciones web personalizadas.",
         detalles: "Liderazgo técnico en proyectos como 'Armario Escénico', implementando arquitecturas de filtrado complejo y persistencia de datos. Desarrollo de componentes escalables priorizando el rendimiento y la narrativa visual de alto impacto."
     },
@@ -488,7 +492,8 @@ const experienciaData = [
 ];
 
 const formacionData = [
-    { titulo: "IA para Desarrolladores", centro: "Big School", fecha: "2025", resumen: "Diseño prompts técnicos y automatización.", detalles: "" },
+    { titulo: "Desarrollo de 0 a producción", centro: "Big School", fecha: "2026", resumen: "Desarrollo de aplicaciones de 0 a producción con IA.", detalles: "Copilotos, Prompt Engineering, Docker, CI/CD y Cloud." },
+    { titulo: "Certificado de IA para Desarrolladores", centro: "Big School", fecha: "2025", resumen: "Diseño prompts técnicos y automatización.", detalles: "" },
     { titulo: "Maestría en JavaScript", centro: "Udemy", fecha: "2025", resumen: "Fundamentos sólidos y sintaxis moderna.", detalles: "Manejo avanzado de asincronía." },
     { titulo: "React y TypeScript", centro: "Udemy", fecha: "2024", resumen: "Zustand, React Query y Next.js.", detalles: "" },
     { titulo: "Master en JavaScript", centro: "Udemy", fecha: "2024", resumen: "jQuery, Angular y NodeJS.", detalles: "" },

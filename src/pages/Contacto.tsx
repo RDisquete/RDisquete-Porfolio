@@ -97,15 +97,14 @@ export default function Contacto() {
         <source srcSet={TEXTURE_MOBILE} media="(max-width: 767px)" />
         <source srcSet={TEXTURE_DESKTOP} media="(min-width: 768px)" />
         <img
-          src={TEXTURE_BG}
-          alt=""
-          role="presentation"
-         // @ts-expect-error - fetchpriority no está en los tipos oficiales de React todavía
-          fetchpriority="high"
-          className="object-cover w-full h-full"
-          width="1920"
-          height="1080"
-        />
+  src={TEXTURE_BG}
+  alt=""
+  role="presentation"
+  fetchPriority="high" // Corregido: de 'fetchpriority' a 'fetchPriority'
+  className="object-cover w-full h-full"
+  width="1920"
+  height="1080"
+/>
       </picture>
 
       <div className="absolute z-0 w-full overflow-hidden text-center pointer-events-none select-none top-10 md:top-20">

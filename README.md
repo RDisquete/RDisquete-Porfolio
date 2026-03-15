@@ -29,6 +29,18 @@ Como desarrollador con ojo de fotógrafo, mi enfoque en este proyecto se basa en
 
 ---
 
+## 🎧 Quality Control: Testing Suite
+
+En la industria musical, el *mastering* es el último paso crítico antes de publicar. En desarrollo, ese paso es el **Testing**. He implementado una suite de pruebas para asegurar que mi portfolio sea una pieza de ingeniería estable, libre de "ruido" y errores técnicos.
+
+* **Frecuencia de Muestreo (Stack):** `Vitest` como motor de pruebas y `@testing-library/react` para validar la interfaz.
+* **Mastering de Componentes:** * `TrackList`: Verificación de renderizado correcto de datos.
+    * `Navigation`: Comprobación de integridad en los enlaces de navegación.
+    * `ContactForm`: Validación estricta de entradas para evitar errores de envío.
+* **Resultado:** Un código "limpio", sin regresiones y listo para ser desplegado en cualquier entorno sin sorpresas.
+
+---
+
 ## 📈 Sesiones de Grabación (Aprendizaje)
 Este refactor me ha permitido profundizar en:
 - El flujo de datos avanzado mediante **Props** en TypeScript.

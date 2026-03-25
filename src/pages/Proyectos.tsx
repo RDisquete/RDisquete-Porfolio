@@ -129,6 +129,24 @@ const PROJECTS: Proyecto[] = [
         techIcons: [<SiReact key="re" />, <SiTailwindcss key="tw" />, <SiGooglemaps key="gm" />],
         pressingType: 'First'
     },
+
+    {
+        title: "Infra.RD",
+        url: "https://rdisquetehealthmonitor.netlify.app/",
+        img: "/infrard.webp", 
+        github: "https://github.com/RDisquete/health-monitor", 
+        desc: "Monitor de infraestructura industrial con arquitectura resiliente. Ejecución secuencial de nodos y visualización de latencia en tiempo real bajo estética de terminal de alta densidad.",
+        video: "/infrard.mp4", 
+        techStack: "Next.js, TypeScript, Tailwind CSS, Supabase",
+        techIcons: [
+            <SiReact key="re" />, 
+            <SiTypescript key="ts" />, 
+            <SiTailwindcss key="tw" />, 
+            <SiSupabase key="su" />
+        ],
+        pressingType: 'First'
+    },
+
     {
         title: "Valle Escondido",
         url: "https://valleescondido.netlify.app/",
@@ -139,6 +157,7 @@ const PROJECTS: Proyecto[] = [
         techIcons: [<SiReact key="re" />, <SiFramer key="fr" />, <SiTailwindcss key="tw" />],
         pressingType: 'Remaster'
     },
+
     {
         title: "Rdisquete mk II",
         url: "https://rdisquetemk2.netlify.app/",
@@ -358,7 +377,7 @@ export default function Proyectos() {
     const [selected, setSelected] = useState<Proyecto | null>(null);
     const [filter, setFilter] = useState('ALL');
 
-    const categories = ['ALL', 'REACT', 'TYPESCRIPT', 'TAILWIND', 'VITE'];
+    const categories = ['ALL', 'REACT', 'TYPESCRIPT', 'TAILWIND', 'VITE', 'FRAMER', 'ZOD', 'AXIOS', 'SUPABASE', 'GOOGLE MAPS', 'CSS3','NEXT.JS'];
 
     const filteredProjects = PROJECTS.filter(p => 
         filter === 'ALL' || p.techStack?.toUpperCase().includes(filter)

@@ -31,10 +31,8 @@ export interface Proyecto {
     github?: string;
     desc: string;
     video?: string;
-
     techStack?: string;
     techIcons?: React.ReactNode[];
-
     pressingType?: 'First' | 'Remaster' | 'Bootleg';
     context: string;
     problem: string;

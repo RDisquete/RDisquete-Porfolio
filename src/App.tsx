@@ -34,9 +34,9 @@ export default function App() {
           <Suspense fallback={<div className="bg-[#171717] min-h-screen" />}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/biography" element={<Conoceme />} />
-              <Route path="/catalog" element={<Proyectos />} />
-              <Route path="/feedback" element={<Contacto />} />
+              <Route path="/about" element={<Conoceme />} />
+              <Route path="/projects" element={<Proyectos />} />
+              <Route path="/contact" element={<Contacto />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </Suspense>

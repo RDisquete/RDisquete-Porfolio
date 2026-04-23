@@ -41,7 +41,6 @@ export default function Header() {
 
   return (
     <>
-      {/* OVERLAY MENÚ MÓVIL */}
       {menuOpen && (
         <div
           id="mobile-navigation"
@@ -69,35 +68,34 @@ export default function Header() {
           <nav aria-label="Menú móvil">
             <ul className="flex flex-col gap-8 text-4xl font-black text-center uppercase">
               <NavLink 
-                to="/biography" 
-                active={location.pathname === "/biography"}
+                to="/about" 
+                active={location.pathname === "/about"}
                 onClick={() => playSfx('relay', 0.15)}
                 onHover={() => playSfx('switch', 0.1)} 
               >
-                Biography
+                About
               </NavLink>
               <NavLink 
-                to="/catalog" 
-                active={location.pathname === "/catalog"}
+                to="/projects" 
+                active={location.pathname === "/projects"}
                 onClick={() => playSfx('relay', 0.15)}
                 onHover={() => playSfx('switch', 0.1)} 
               >
-                Catalog
+                Projects
               </NavLink>
               <NavLink 
-                to="/feedback" 
-                active={location.pathname === "/feedback"}
+                to="/contact" 
+                active={location.pathname === "/contact"}
                 onClick={() => playSfx('relay', 0.15)}
                 onHover={() => playSfx('switch', 0.1)}
               >
-                Feedback
+                Contact
               </NavLink>
             </ul>
           </nav>
         </div>
       )}
 
-      {/* HEADER PRINCIPAL */}
       <header
         className="fixed top-0 left-0 z-40 w-full transition-all duration-300"
         style={{
@@ -123,46 +121,45 @@ export default function Header() {
           </button>
 
           <Link
-  to="/"
-  aria-label="Ir a la página de inicio"
-  onClick={() => playSfx('relay', 0.1)}
-  onMouseEnter={() => playSfx('switch', 0.1)}
-  className="absolute transition-all duration-500 -translate-x-1/2 left-1/2 hover:scale-105 hover:drop-shadow-[0_2px_4px_rgba(205,198,156,0.5)]"
->
-  <img
-    src="/Logo rojo claro.svg"
-    alt="Logo RDisquete"
-    width="100"
-    height="100"
-    className="w-30 h-30
-    "
-  />
-</Link>
+            to="/"
+            aria-label="Ir a la página de inicio"
+            onClick={() => playSfx('relay', 0.1)}
+            onMouseEnter={() => playSfx('switch', 0.1)}
+            className="absolute transition-all duration-500 -translate-x-1/2 left-1/2 hover:scale-105 hover:drop-shadow-[0_2px_4px_rgba(205,198,156,0.5)]"
+          >
+            <img
+              src="/Logo rojo claro.svg"
+              alt="Logo RDisquete"
+              width="100"
+              height="100"
+              className="w-30 h-30"
+            />
+          </Link>
 
           <nav className="items-center hidden gap-6 ml-auto md:flex" aria-label="Navegación principal">
             <NavLink 
-              to="/biography" 
-              active={location.pathname === "/biography"}
+              to="/about" 
+              active={location.pathname === "/about"}
               onClick={() => playSfx('relay', 0.15)}
               onHover={() => playSfx('switch', 0.1)} 
             >
-              Biography
+              About
             </NavLink>
             <NavLink 
-              to="/catalog" 
-              active={location.pathname === "/catalog"}
+              to="/projects" 
+              active={location.pathname === "/projects"}
               onClick={() => playSfx('relay', 0.15)}
               onHover={() => playSfx('switch', 0.1)} 
             >
-              Catalog
+              Projects
             </NavLink>
             <NavLink 
-              to="/feedback" 
-              active={location.pathname === "/feedback"}
+              to="/contact" 
+              active={location.pathname === "/contact"}
               onClick={() => playSfx('relay', 0.15)}
               onHover={() => playSfx('switch', 0.1)} 
             >
-              Feedback
+              Contact
             </NavLink>
           </nav>
         </div>

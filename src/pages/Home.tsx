@@ -257,7 +257,7 @@ export default function HeroSection() {
           </p>
         </motion.div>
 
-        <picture className="absolute top-0 right-0 z-[10] md:z-[80] mr-[-20px] md:mr-[-16px] w-[60vw] md:w-[25vw] h-full pointer-events-none">
+        <picture className="absolute top-0 right-0 z-[10] md:z-[80] mr-[-20px] md:mr-[-16px] w-[60vw] md:w-[25vw] h-full pointer-events-none ">
           <source srcSet="/images/siluetalineas-mobile.webp" media="(max-width: 767px)" />
           <source srcSet="/images/siluetalineas.webp" media="(min-width: 768px)" />
           <motion.img

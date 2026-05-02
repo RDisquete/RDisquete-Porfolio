@@ -42,8 +42,9 @@ const sectionVariants: Variants = {
 
 export default function Contacto() {
   const navigate = useNavigate();
+  
   const formKey = import.meta.env.VITE_FORMSPREE_KEY;
-  const [state, handleSubmitFormspree, reset] = useForm(formKey || "");
+  const [state, handleSubmitFormspree, reset] = useForm(formKey || "no_key_assigned");
 
   const [showSuccess, setShowSuccess] = useState(false);
   const [formIteration, setFormIteration] = useState(0);
@@ -88,25 +89,29 @@ export default function Contacto() {
     viewport: { once: true }
   };
 
+  const isFormDisabled = state.submitting || !formKey;
+
   return (
     <main
       className="relative flex flex-col items-center justify-center min-h-screen px-4 py-12 overflow-hidden"
       style={{ backgroundColor: ACCENT_COLOR }}
     >
+      {/* TEXTURAS DE FONDO */}
       <picture className="absolute inset-0 z-0 pointer-events-none opacity-30 mix-blend-overlay">
         <source srcSet={TEXTURE_MOBILE} media="(max-width: 767px)" />
         <source srcSet={TEXTURE_DESKTOP} media="(min-width: 768px)" />
         <img
-  src={TEXTURE_BG}
-  alt=""
-  role="presentation"
-  fetchPriority="high" // Corregido: de 'fetchpriority' a 'fetchPriority'
-  className="object-cover w-full h-full"
-  width="1920"
-  height="1080"
-/>
+          src={TEXTURE_BG}
+          alt=""
+          role="presentation"
+          fetchPriority="high"
+          className="object-cover w-full h-full"
+          width="1920"
+          height="1080"
+        />
       </picture>
 
+      {/* TÍTULO DECORATIVO */}
       <div className="absolute z-0 w-full overflow-hidden text-center pointer-events-none select-none top-10 md:top-20">
         <h1 className="text-[18vw] font-black leading-none uppercase tracking-tighter text-white/10">
           CONTACT
@@ -125,6 +130,7 @@ export default function Contacto() {
           </h2>
         </motion.div>
 
+        {/* TARJETA DEL FORMULARIO */}
         <motion.section
           className="relative w-full p-6 md:p-12 shadow-[20px_20px_0px_rgba(0,0,0,0.5)] border-[3px] border-black"
           style={{ backgroundColor: CARD_LIGHT }}
@@ -144,7 +150,12 @@ export default function Contacto() {
             <header className="flex items-center justify-between pb-3 mb-8 border-b-2 border-black/20 font-mono text-[10px] font-black uppercase italic">
               <span className="text-[#8e2b27]">// INPUT_SIGNAL_RECORDS</span>
               <div className="flex gap-1.5" aria-hidden="true">
-                {[1, 2, 3].map(i => <div key={i} className="w-2 h-2 rounded-full bg-[#8e2b27]" />)}
+                {[1, 2, 3].map((num: number) => (
+                  <div
+                    key={num}
+                    className="w-2 h-2 rounded-full bg-[#8e2b27]"
+                  />
+                ))}
               </div>
             </header>
 
@@ -175,11 +186,11 @@ export default function Contacto() {
               <div className="flex justify-start mt-4">
                 <button
                   type="submit"
-                  disabled={state.submitting}
+                  disabled={isFormDisabled}
                   className="flex items-center gap-4 group w-fit disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <motion.div
-                    whileHover={!state.submitting ? { x: 10 } : {}}
+                    whileHover={!isFormDisabled ? { x: 10 } : {}}
                     className="flex items-center gap-4"
                   >
                     <div className="flex items-center justify-center w-12 h-12 transition-all duration-300 border-2 border-black rounded-full group-hover:bg-black">
@@ -187,10 +198,10 @@ export default function Contacto() {
                     </div>
                     <div className="flex flex-col text-left">
                       <span className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-[#8e2b27]">
-                        {state.submitting ? "Sending Signal..." : "Ready to Send?"}
+                        {!formKey ? "CONFIG_REQUIRED" : state.submitting ? "Sending Signal..." : "Ready to Send?"}
                       </span>
                       <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-black group-hover:text-[#8e2b27] transition-colors">
-                        {state.submitting ? "ENVIANDO..." : "PUSH_TO_START"}
+                        {!formKey ? "SYSTEM_OFF" : state.submitting ? "ENVIANDO..." : "PUSH_TO_START"}
                       </span>
                     </div>
                   </motion.div>
@@ -216,6 +227,7 @@ export default function Contacto() {
           </AnimatePresence>
         </motion.section>
 
+        {/* FOOTER & SOCIALS */}
         <footer className="flex flex-col items-center gap-6 mt-12 w-full">
           <div className="flex gap-8">
             {socialLinks.map((s) => (
@@ -244,18 +256,15 @@ export default function Contacto() {
 
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-4 group w-fit mt-12 mb-8 border-none outline-none cursor-pointer"
+            className="flex items-center gap-4 group w-fit mt-12 mb-8 border-none outline-none cursor-pointer bg-transparent"
             aria-label="Volver a la página principal"
           >
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#cdc69c] group-hover:bg-[#cdc69c] transition-all duration-300">
               <FaArrowRight className="w-4 h-4 text-[#cdc69c] rotate-[180deg] group-hover:text-[#681f1d] transition-colors" />
             </div>
-            <div className="flex flex-col text-left">
-             
-              <span className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#cdc69c] group-hover:text-white transition-colors">
+            <span className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#cdc69c] group-hover:text-white transition-colors">
               RETURN_TO_HOME
-              </span>
-            </div>
+            </span>
           </button>
         </footer>
       </div>

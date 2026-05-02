@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { FaPlay, FaArrowRight } from "react-icons/fa";
@@ -34,12 +34,15 @@ const modalPanel: Variants = {
 };
 
 // --- MODAL ---
-// imagen con object-cover + aspect fijo para que nunca queden huecos negros
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
-  useState(() => {
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
-  });
+    
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
 
   const modal = (
     <motion.div
@@ -59,7 +62,6 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         onClick={(e) => e.stopPropagation()}
         className="bg-[#f5f3e7] max-w-5xl w-full flex flex-col md:flex-row border-2 border-black shadow-[20px_20px_0px_#8e2b27] max-h-[90vh] overflow-y-auto"
       >
-        {/* IMAGE — aspect-[4/3] en móvil, altura total en desktop, siempre cubierta */}
         <div className="w-full md:w-3/5 flex-shrink-0 overflow-hidden aspect-[4/3] md:aspect-auto md:self-stretch">
           <img
             src={project.img}
@@ -68,10 +70,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           />
         </div>
 
-        {/* CONTENT */}
         <div className="p-8 md:w-2/5 space-y-6 text-black relative flex flex-col">
-
-          {/* CLOSE */}
           <button
             onClick={onClose}
             className="absolute top-4 right-4 text-xl hover:text-[#8e2b27] transition"
@@ -79,12 +78,10 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             ✕
           </button>
 
-          {/* TITLE */}
           <h2 className="text-4xl font-black uppercase leading-[0.9] pr-8">
             {project.title}
           </h2>
 
-          {/* CONTEXT */}
           {project.context && (
             <div>
               <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">Contexto</h3>
@@ -92,16 +89,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </div>
           )}
 
-          {/* PROBLEM */}
-          {project.problem && (
-            <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">Problema</h3>
-              <p className="text-xs font-mono text-black/80">{project.problem}</p>
-            </div>
-          )}
-
-          {/* SOLUTION */}
-          {project.solution && project.solution.length > 0 && (
+          {project.solution && (
             <div>
               <h3 className="text-[10px] font-black uppercase text-black/40 mb-2">Solución</h3>
               <ul className="text-xs font-mono space-y-1">
@@ -112,16 +100,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </div>
           )}
 
-          {/* RESULT */}
-          {project.result && (
-            <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">Resultado</h3>
-              <p className="text-xs font-mono text-black/80">{project.result}</p>
-            </div>
-          )}
-
-          {/* STACK — iconos */}
-          {project.techIcons && project.techIcons.length > 0 && (
+          {project.techIcons && (
             <div className="pt-4 border-t border-black/10">
               <div className="flex flex-wrap gap-2 text-2xl text-[#8e2b27]">
                 {project.techIcons.map((icon, i) => (
@@ -131,18 +110,15 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </div>
           )}
 
-          {/* ACTION BUTTONS */}
           <div className="flex flex-col gap-3 pt-4 mt-auto">
-            {project.url && (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full text-center bg-[#8e2b27] text-white py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-black transition"
-              >
-                Ver proyecto
-              </a>
-            )}
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full text-center bg-[#8e2b27] text-white py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-black transition"
+            >
+              Ver proyecto
+            </a>
             {project.github && (
               <a
                 href={project.github}

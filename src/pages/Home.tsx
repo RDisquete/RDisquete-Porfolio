@@ -253,7 +253,7 @@ export default function HeroSection() {
           transition={{ delay: 0.6, duration: 0.5 }}
         >
           <p className="px-6 md:px-8 text-sm md:text-xl font-mono tracking-widest text-[#cdc69c] font-extrabold truncate uppercase">
-            console.log('ART IS CODE')
+            console.log('Frontend Engineer: React & TS')
           </p>
         </motion.div>
 

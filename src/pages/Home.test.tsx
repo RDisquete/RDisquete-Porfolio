@@ -43,8 +43,7 @@ test('Home debe renderizar todos sus bloques principales y el contenido base', (
   expect(screen.getByTestId('proyectos-mock')).toBeDefined();
   expect(screen.getByTestId('sobremi-mock')).toBeDefined();
 
-  // Verificamos branding
-  expect(screen.getByText(/RAFA/i)).toBeDefined();
-  expect(screen.getByText(/DORADO/i)).toBeDefined();
-  expect(screen.getByText(/rdisquete/i)).toBeDefined();
+  expect(screen.getAllByText(/RAFA/i)).toHaveLength(2);
+  expect(screen.getAllByText(/DORADO/i)).toHaveLength(2);
+  expect(screen.getAllByText(/rdisquete/i)).toHaveLength(2);
 });

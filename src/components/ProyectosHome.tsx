@@ -18,6 +18,7 @@ interface Project {
   solution?: string[];
   result?: string;
   github?: string;
+  impact?: string;
 }
 
 // --- ANIMACIONES MODAL ---
@@ -97,6 +98,25 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   <li key={i}>• {item}</li>
                 ))}
               </ul>
+            </div>
+          )}{project.problem && (
+            <div>
+              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">Problema</h3>
+              <p className="text-xs font-mono text-black/80">{project.problem}</p>
+            </div>
+          )}
+          
+          {project.result && (
+            <div>
+              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">Resultado</h3>
+              <p className="text-xs font-mono text-black/80">{project.result}</p>
+            </div>
+          )}
+          
+          {project.impact && (
+            <div>
+              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">Impacto</h3>
+              <p className="text-xs font-mono text-black/80">{project.impact}</p>
             </div>
           )}
 
@@ -249,7 +269,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
 
           <button
             className="flex items-center gap-3 py-4 mt-4 group w-fit bg-transparent border-none outline-none cursor-pointer"
-            onClick={() => navigate("/catalog")}
+            onClick={() => navigate("/projects")}
           >
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#8e2b27] group-hover:bg-[#8e2b27] transition-all duration-300">
               <FaArrowRight className="w-4 h-4 text-[#8e2b27] group-hover:text-[#cdc69c]" />
@@ -345,7 +365,6 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
         </div>
       </div>
 
-      {/* ... (resto del componente igual: Textura, Scrollbar, Modal) */}
       <AnimatePresence>
         {selectedProject && (
           <ProjectModal

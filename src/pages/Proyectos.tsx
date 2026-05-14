@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import {
     SiReact, SiTailwindcss, SiTypescript, SiVite, SiFramer,
-    SiHtml5, SiJavascript, SiReactrouter, SiAxios, SiZod, SiCss3, SiGooglemaps, SiSupabase
+    SiHtml5, SiJavascript, SiReactrouter, SiAxios, SiZod, SiCss3, SiGooglemaps, SiSupabase, SiVitest, 
 } from "react-icons/si";
 
 // --- CONFIGURACIÓN DE ESTILOS ---
@@ -38,44 +38,91 @@ export interface Proyecto {
     problem: string;
     solution: string[];
     result: string;
+    impact?: string;
 }
 
 // --- DATA ---
 const PROJECTS: Proyecto[] = [
     {
-        title: "Invitación R&M",
+        title: "Wedding Album System",
         url: "https://rdisquetesevadeboda.netlify.app/",
         img: "/images/invitacionboda.webp",
         github: "https://github.com/RDisquete/InvitacionDemo",
-
         video: "/images/invitacionboda.mp4",
-
         techStack: "React, Supabase, Framer Motion, Tailwind",
-
         techIcons: [
             <SiReact key="re" />,
             <SiSupabase key="su" />,
             <SiFramer key="fr" />,
             <SiTailwindcss key="tw" />
         ],
+        pressingType: "First" as const,
 
-        pressingType: 'First',
-        desc: "Sistema de invitación con acceso mediante QR que permite a los invitados subir y compartir fotos del evento en tiempo real sin aplicaciones externas.",
+        desc: "Invitación digital interactiva para eventos que centraliza toda la información, la historia de la pareja y una galería colaborativa en tiempo real accesible mediante QR.",
 
-        context: "Proyecto desarrollado para un evento real con necesidad de compartir recuerdos de forma inmediata desde móvil.",
+        context: "Proyecto desarrollado para una boda real con la necesidad de centralizar información, gestionar invitados y compartir recuerdos sin depender de múltiples herramientas.",
 
-        problem: "Los invitados no tenían una forma sencilla de centralizar fotos sin usar apps externas ni registros complejos.",
+        problem: "La información del evento, la gestión de invitados y las fotos estaban dispersas en distintos canales, generando fricción tanto para los novios como para los invitados.",
 
         solution: [
-            "Acceso mediante QR sin fricción",
-            "Autenticación para contenido privado",
-            "Subida de imágenes en tiempo real",
-            "Storage con Supabase",
-            "Optimización de imágenes en cliente",
-            "Diseño mobile-first"
+            "Invitación digital con toda la información del evento",
+            "Enlaces directos a ubicaciones clave (Google Maps)",
+            "Sección con historia de la pareja",
+            "Galería donde los invitados pueden ver, subir y descargar fotos",
+            "Acceso a zona privada mediante QR sin fricción",
+            "Formulario de confirmación conectado a Google Sheets",
+            "Compresión de imágenes en cliente para mejorar rendimiento",
+            "Diseño pensado para uso rápido desde móvil"
         ],
 
-        result: "Plataforma usada en un evento real donde los invitados compartieron recuerdos en segundos desde el móvil."
+        result: "Los invitados accedieron a toda la información desde un único lugar y compartieron fotos en tiempo real, mientras que los novios gestionaron confirmaciones automáticamente sin procesos manuales.",
+
+        impact: "Validado en un entorno real con usuarios no técnicos."
+    },
+    {
+        title: "skyRESERVE",
+    
+        url: "https://sky-reserve.netlify.app/",
+    
+        img: "/images/skyreserve.webp",
+    
+        github: "https://github.com/RDisquete/skyReserve",
+    
+        video: "/images/skyReservehover.mp4",
+    
+        techStack: "React 19, TypeScript, Supabase, Zustand, Tailwind, Framer Motion, Vitest",
+    
+        techIcons: [
+            <SiReact key="re" />,
+            <SiTypescript key="ts" />,
+            <SiSupabase key="su" />,
+            <SiTailwindcss key="tw" />,
+            <SiFramer key="fr" />,
+            <SiVitest key="vi" />
+        ],
+    
+        pressingType: "First" as const,
+    
+        desc: "Plataforma de reservas para servicios de drones con autenticación, panel admin y gestión de disponibilidad.",
+    
+        context: "Proyecto enfocado en arquitectura frontend moderna, estado global y experiencia de usuario.",
+    
+        problem: "La idea era construir una aplicación escalable con lógica real de reservas, autenticación y gestión de estado.",
+    
+        solution: [
+            "Sistema de reservas conectado a Supabase",
+            "Autenticación y control de roles",
+            "Panel de administración protegido",
+            "Estado global con Zustand",
+            "Hooks personalizados",
+            "Responsive design y dark mode",
+            "Animaciones con Framer Motion",
+            "Testing con Vitest"
+        ],
+    
+        result: "El proyecto evolucionó hacia una aplicación frontend con estructura cercana a un entorno profesional.",
+    
+        impact: "Proyecto utilizado para profundizar en frontend moderno y arquitectura de aplicaciones."
     },
 
     {
@@ -91,19 +138,20 @@ const PROJECTS: Proyecto[] = [
             <SiTailwindcss key="tw" />
         ],
         pressingType: 'First',
-        desc: "Plataforma visual-first optimizada para contenido audiovisual pesado, combinando imágenes y video dinámico sin comprometer la velocidad de carga.",
-        context: "Web desarrollada para una productora audiovisual con necesidad de mostrar contenido visual de alta calidad manteniendo una experiencia fluida.",
-        problem: "El uso intensivo de imágenes y video (4K, galerías extensas) impactaba directamente en el rendimiento y la experiencia de usuario.",
+        desc: "Experiencia visual construida para soportar contenido audiovisual pesado sin romper la fluidez ni los tiempos de carga.",
+        context: "Proyecto para una productora audiovisual donde el contenido (imagen y video) es el producto. La prioridad no era añadir funcionalidad, sino garantizar que la experiencia se mantuviera rápida incluso con assets pesados.",
+        problem: "El contenido en alta calidad (video + galerías extensas) degrada rápidamente el rendimiento: tiempos de carga altos, bloqueos en render y pérdida de fluidez en navegación.",
         solution: [
-            "Arquitectura SPA con React y routing dinámico",
-            "Carga progresiva de contenido (imagen → video)",
-            "Lazy loading de video optimizado",
-            "Sistema híbrido de interacción para reducir consumo de recursos",
-            "Optimización de tipografías para evitar layout shift",
-            "Animaciones eficientes con CSS nativo y AOS"
+            "Carga progresiva: imagen estática como placeholder antes del video",
+            "Lazy loading de video activado solo en interacción",
+            "Separación entre capas visuales y lógica para evitar re-renderizados innecesarios",
+            "Optimización de fuentes para eliminar layout shift",
+            "Control manual de reproducción para evitar consumo innecesario",
+            "Uso de animaciones ligeras (CSS/AOS) en lugar de JS pesado"
         ],
+        result: "La web mantiene una sensación fluida incluso manejando contenido pesado, evitando bloqueos y reduciendo el tiempo percibido de carga.",
+        impact: "Permite mostrar contenido audiovisual de alta calidad sin sacrificar rendimiento, algo crítico en proyectos donde lo visual es el producto.",
 
-        result: "Plataforma visual fluida capaz de manejar contenido multimedia pesado manteniendo tiempos de carga rápidos y una navegación sin fricción."
     },
 
     {
@@ -111,72 +159,64 @@ const PROJECTS: Proyecto[] = [
         url: "https://nor3xtrem.es/",
         img: "/Nor3xtreme.webp",
         github: "https://github.com/RDisquete/Nor3Xtrem-2026",
-
         video: "/Nor3xtremeHover.mp4",
-
         techStack: "React, Vite, Tailwind CSS",
-
         techIcons: [
             <SiReact key="re" />,
             <SiVite key="vi" />,
             <SiTailwindcss key="tw" />
         ],
-
         pressingType: 'First',
-        desc: "Plataforma digital optimizada para una marcha cicloturista de alta exigencia, diseñada para funcionar en condiciones de baja conectividad y alto tráfico durante el evento.",
-        context: "Plataforma desarrollada para una de las marchas cicloturistas más exigentes de España, con alta carga de usuarios en día de evento.",
-        problem: "El acceso a información crítica (rutas, reglamento y clasificaciones) debía mantenerse rápido y estable incluso en zonas con baja cobertura móvil.",
+        desc: "Plataforma de consulta en tiempo real para evento cicloturista, optimizada para funcionar bajo alta carga de usuarios y conectividad limitada.",
+        context: "Sistema desarrollado para una marcha cicloturista de gran escala, donde miles de usuarios acceden simultáneamente a información crítica durante el evento.",
+        problem: "En entornos de alta afluencia y cobertura irregular, el acceso a información clave (rutas, reglamento, clasificaciones) debía mantenerse estable, rápido y accesible sin depender de conexiones óptimas.",
         solution: [
-            "Arquitectura SPA con React",
-            "Optimización de build con Vite para carga ultrarrápida",
-            "Diseño mobile-first orientado a uso en carretera",
-            "Dark mode de alto contraste para exteriores",
-            "Componentes modulares reutilizables",
-            "Animaciones suaves con Framer Motion para UX fluida"
+            "Arquitectura SPA ligera con React para minimizar overhead",
+            "Build optimizado con Vite para tiempos de carga mínimos",
+            "Diseño mobile-first pensado para uso en carretera",
+            "Interfaz de alto contraste para visibilidad en exteriores",
+            "Estructura modular para evitar bloqueos en renderizado",
+            "Animaciones suaves con Framer Motion sin afectar rendimiento"
         ],
-        result: "Plataforma estable y rápida utilizada en un entorno real de alta demanda durante el evento cicloturista."
+        result: "Plataforma capaz de soportar picos de tráfico en condiciones reales de evento, manteniendo acceso estable a información crítica en todo momento.",
+        impact: "Utilizada en un entorno real de alta demanda, demostrando fiabilidad bajo condiciones de conectividad limitada y uso masivo simultáneo."
     },
 
     {
+
         title: "Armario Escénico",
         url: "https://armarioescenico.netlify.app/",
         img: "/sambrona.webp",
         github: "https://github.com/RDisquete/ArmarioEscenico",
-
         video: "/sambronaHover.mp4",
-
         techStack: "React, TypeScript, Tailwind CSS",
-
         techIcons: [
             <SiReact key="re" />,
             <SiTypescript key="ts" />,
             <SiTailwindcss key="tw" />
         ],
         pressingType: 'First',
-        desc: "Catálogo digital de vestuario histórico con filtrado avanzado y persistencia de selección para facilitar el alquiler sin fricción.",
-        context: "Plataforma desarrollada para digitalizar el archivo de vestuario de una asociación cultural y facilitar su uso por figurinistas y productores.",
-        problem: "El inventario físico dificultaba la búsqueda de prendas específicas, obligando a procesos manuales lentos y poco eficientes.",
+        desc: "Sistema digital de consulta de vestuario escénico que reemplaza un archivo físico, optimizando la búsqueda y selección de prendas para uso profesional.",
+        context: "Proyecto desarrollado para digitalizar un archivo real de vestuario utilizado en producciones escénicas, donde la consulta dependía de sistemas físicos y poco eficientes.",
+        problem: "La gestión manual del inventario hacía que localizar una prenda específica requiriera búsquedas lentas, dependientes de memoria o revisión física del archivo.",
         solution: [
-            "Sistema de filtrado multi-criterio (época, tipo, materiales)",
-            "Optimización de renders con useMemo",
-            "Persistencia de selección con localStorage",
-            "Arquitectura de componentes reutilizables",
-            "Diseño mobile-first orientado a consulta rápida"
+            "Sistema de filtrado avanzado por atributos (época, tipo, material)",
+            "Optimización de renderizado con useMemo para grandes volúmenes de datos",
+            "Persistencia de selección con localStorage para continuidad de trabajo",
+            "Arquitectura modular de componentes para escalabilidad del catálogo",
+            "Interfaz mobile-first pensada para consulta rápida en entorno de trabajo"
         ],
-        result: "Herramienta digital que permite localizar y seleccionar vestuario de forma ágil, reduciendo el tiempo de búsqueda y mejorando la operativa del archivo."
+        result: "Transforma un archivo físico en una herramienta de consulta ágil, reduciendo significativamente el tiempo necesario para localizar y seleccionar vestuario en procesos de producción.",
+        impact: "Convierte un proceso de búsqueda físico de vestuario en una consulta digital inmediata, agilizando el trabajo de producción y selección de prendas."
     },
 
     {
         title: "Infra.RD",
         url: "https://rdisquetehealthmonitor.netlify.app/",
         img: "/infrard.webp",
-
         github: "https://github.com/RDisquete/health-monitor",
-
         video: "/infrard.mp4",
-
         techStack: "Next.js, TypeScript, Tailwind CSS, Supabase",
-
         techIcons: [
             <SiReact key="re" />,
             <SiTypescript key="ts" />,
@@ -184,18 +224,19 @@ const PROJECTS: Proyecto[] = [
             <SiSupabase key="su" />
         ],
         pressingType: 'First',
-        desc: "Sistema de monitorización de servicios con alertas automáticas y análisis de latencia en tiempo real.",
-        context: "Proyecto enfocado a monitorizar servicios web y detectar caídas o degradaciones sin intervención manual.",
-        problem: "Necesidad de controlar múltiples endpoints y reaccionar automáticamente ante fallos sin depender de supervisión constante.",
+        desc: "Sistema de observabilidad y monitorización de servicios que detecta caídas, latencia y degradaciones en tiempo real con alertas automáticas.",
+        context: "Proyecto orientado a supervisar el estado de múltiples servicios web de forma continua, eliminando la necesidad de comprobación manual.",
+        problem: "La falta de visibilidad centralizada sobre el estado de varios endpoints hacía imposible detectar degradaciones o caídas de forma inmediata sin supervisión constante.",
         solution: [
-            "Health-check automático mediante cron jobs",
-            "Registro de latencia en base de datos",
-            "Sistema de alertas por email ante caídas",
-            "Testing de escenarios críticos (OK, DOWN, TIMEOUT)",
-            "Dashboard técnico para visualización rápida",
-            "Arquitectura desacoplada entre monitor y UI"
+            "Health-checks automatizados mediante cron jobs",
+            "Registro histórico de latencia en base de datos",
+            "Sistema de alertas automáticas por email ante fallos críticos",
+            "Simulación de escenarios (OK / DOWN / TIMEOUT) para testing",
+            "Dashboard técnico para lectura rápida del estado del sistema",
+            "Arquitectura desacoplada entre monitorización y capa de visualización"
         ],
-        result: "Sistema capaz de detectar fallos en servicios y notificar automáticamente, reduciendo el tiempo de reacción ante incidencias."
+        result: "Permite detectar y notificar incidencias en servicios de forma automática, reduciendo drásticamente el tiempo de reacción ante fallos en producción.",
+        impact: "Reduce el tiempo de detección de fallos de servicios al automatizar la monitorización y alertas, eliminando la necesidad de comprobación manual constante."
     },
 
     {
@@ -203,29 +244,27 @@ const PROJECTS: Proyecto[] = [
         url: "https://mattersoundrdisquete.netlify.app/",
         img: "/MatterSound.webp",
         github: "https://github.com/RDisquete/MatterSound",
-
         video: "/MattersoundHover.mp4",
-
         techStack: "React, TypeScript, Web Audio API, HTML5 Canvas, Tailwind CSS",
-
         techIcons: [
             <SiReact key="re" />,
             <SiTypescript key="ts" />,
             <SiHtml5 key="h5" />
         ],
         pressingType: 'Bootleg',
-        desc: "Visualizador de audio en tiempo real que transforma frecuencias en sistemas de partículas mediante FFT y renderizado en Canvas.",
-        context: "Proyecto experimental enfocado en la visualización de señales de audio en tiempo real mediante procesamiento en cliente.",
-        problem: "Representar datos de audio en tiempo real sin bloquear el renderizado ni generar re-renders innecesarios en React.",
+        desc: "Motor de visualización de audio en tiempo real que convierte frecuencias en sistemas de partículas generativas mediante análisis FFT.",
+        context: "Proyecto experimental centrado en la interacción entre audio y visualización generativa en el navegador, procesando señal directamente en cliente.",
+        problem: "La representación de audio en tiempo real implica procesar datos continuos sin bloquear el renderizado ni provocar re-renders en React, manteniendo 60 FPS estables.",
         solution: [
-            "Procesamiento de señal con Web Audio API",
+            "Procesamiento de audio en tiempo real con Web Audio API",
             "Análisis de frecuencias mediante FFT",
-            "Renderizado de partículas con HTML5 Canvas a 60 FPS",
-            "Uso de useRef para evitar re-renderizados en React",
-            "Separación entre lógica de audio y motor visual",
-            "Gestión eficiente del loop de animación"
+            "Renderizado de sistema de partículas en HTML5 Canvas a 60 FPS",
+            "Uso de useRef para aislar el loop de animación de React",
+            "Separación entre capa de audio y motor visual",
+            "Optimización del render loop para evitar pérdida de frames"
         ],
-        result: "Sistema fluido de visualización en tiempo real capaz de procesar audio y renderizar múltiples partículas sin degradar el rendimiento."
+        result: "Sistema estable de visualización reactiva capaz de transformar audio en estructuras visuales dinámicas sin degradación perceptible del rendimiento.",
+        impact: "Permite explorar audio como experiencia visual en tiempo real sin necesidad de herramientas externas, manteniendo una interacción fluida incluso en dispositivos de gama media."
     },
 
     {
@@ -241,19 +280,19 @@ const PROJECTS: Proyecto[] = [
             <SiTailwindcss key="tw" />
         ],
         pressingType: 'First',
-        desc: "Plataforma de contratación de servicios optimizada para comparar tarifas de forma rápida y guiar al usuario hacia la conversión.",
-        context: "Web desarrollada para un servicio de telecomunicaciones centrada en facilitar la contratación de fibra, móvil y televisión.",
-        problem: "Los usuarios necesitaban comparar múltiples tarifas de forma clara y rápida sin fricción en el proceso de decisión.",
+        desc: "Plataforma de comparación y contratación de servicios de telecomunicaciones optimizada para guiar al usuario en la toma de decisiones rápidas y claras.",
+        context: "Proyecto desarrollado para un servicio de telecomunicaciones con el objetivo de centralizar la oferta de fibra, móvil y televisión en un flujo de decisión simple y directo.",
+        problem: "Los usuarios enfrentaban dificultad para comparar tarifas de forma clara, lo que generaba fricción en el proceso de decisión y ralentizaba la contratación.",
         solution: [
-            "Diseño centrado en conversión con CTAs estratégicos",
-            "Estructura clara para comparación de tarifas",
-            "Responsive design optimizado para móvil",
-            "Validación de formularios de contacto",
-            "Testing con Vitest y Testing Library",
-            "Integración en flujo CI/CD para evitar regresiones"
+            "Arquitectura de UI enfocada en conversión con CTAs jerarquizados",
+            "Estructura clara de comparación de planes y tarifas",
+            "Diseño responsive optimizado para uso intensivo en móvil",
+            "Validación de formularios para reducir errores en contacto",
+            "Testing con Vitest y Testing Library para estabilidad del flujo",
+            "Integración en CI/CD para prevenir regresiones en producción"
         ],
-
-        result: "Plataforma clara y accesible que facilita la comparación de servicios y mejora la experiencia de contratación del usuario."
+        result: "Flujo de comparación y contacto más directo y comprensible, reduciendo la fricción en la toma de decisiones del usuario.",
+        impact: "Reduce el tiempo necesario para comparar y contratar servicios al simplificar la información y eliminar pasos innecesarios en el proceso de decisión."
     },
 
     {
@@ -268,118 +307,121 @@ const PROJECTS: Proyecto[] = [
             <SiCss3 key="cs" />
         ],
         pressingType: 'Bootleg',
-        desc: "Portfolio fotográfico enfocado en la presentación visual mediante carruseles fluidos y componentes reutilizables.",
-        context: "Proyecto desarrollado para mostrar trabajos fotográficos con un enfoque visual limpio y navegación fluida.",
-        problem: "Necesidad de presentar contenido visual de forma clara y atractiva sin sobrecargar la interfaz.",
+        desc: "Portfolio fotográfico centrado en la presentación de contenido visual mediante galerías fluidas y una experiencia de navegación minimalista.",
+        context: "Proyecto desarrollado como portfolio fotográfico para priorizar la imagen por encima de la interfaz, reduciendo distracciones y mejorando la lectura visual del contenido.",
+        problem: "La necesidad principal era mostrar series fotográficas de forma clara sin sobrecargar la interfaz ni romper el ritmo de navegación entre imágenes.",
         solution: [
-            "Componentes reutilizables para galerías",
-            "Carruseles optimizados para navegación fluida",
-            "Uso de CSS tradicional para control visual detallado",
-            "Estructura simple orientada a contenido visual",
-            "Diseño responsive"
+            "Sistema de galerías basado en componentes reutilizables",
+            "Carruseles optimizados para navegación continua y fluida",
+            "Uso de CSS puro para control preciso del layout visual",
+            "Estructura simplificada orientada exclusivamente a contenido visual",
+            "Diseño responsive adaptado a consumo móvil y desktop"
         ],
-        result: "Portfolio visual ligero que permite recorrer colecciones fotográficas de forma fluida y sin distracciones."
+        result: "Portfolio ligero y fluido que permite recorrer colecciones fotográficas sin interrupciones ni distracciones visuales, priorizando la experiencia de imagen.",
+        impact: "Mejora significativa en la percepción del contenido visual al reducir fricción en la navegación, aumentando el tiempo de exploración de las galerías y la claridad en la presentación del trabajo fotográfico."
     },
 
     {
-        title: "AM Movil Repair",
-        url: "https://ammovilrepair.com",
-        img: "/images/ammovilrepair.webp",
-        video: "/amhover.mp4",
-        techStack: "React, Tailwind, Google Maps",
-        techIcons: [
-            <SiReact key="re" />,
-            <SiTailwindcss key="tw" />,
-            <SiGooglemaps key="gm" />
-        ],
-        pressingType: 'First',
-        desc: "Web de servicio técnico optimizada para conversión, con formularios dinámicos y localización integrada.",
-        context: "Proyecto desarrollado para un servicio técnico con el objetivo de captar clientes y facilitar el contacto directo.",
-        problem: "El cliente necesitaba una presencia digital clara donde los usuarios pudieran localizar el servicio y solicitar reparación sin fricción.",
-        solution: [
-            "Integración de formularios de contacto optimizados",
-            "Mapa interactivo para localización inmediata",
-            "Estructura enfocada a conversión (CTA claros)",
-            "Diseño responsive orientado a móvil",
-            "Carga rápida y navegación simple"
-        ],
+    title: "AM Movil Repair",
+    url: "https://ammovilrepair.com",
+    img: "/images/ammovilrepair.webp",
+    video: "/amhover.mp4",
+    techStack: "React, Tailwind, Google Maps",
+    techIcons: [
+        <SiReact key="re" />,
+        <SiTailwindcss key="tw" />,
+        <SiGooglemaps key="gm" />
+    ],
+    pressingType: 'First',
+    desc: "Web de servicio técnico optimizada para conversión, con formularios dinámicos y localización integrada.",
+    context: "Proyecto desarrollado para un servicio técnico con el objetivo de digitalizar su presencia y facilitar la captación de clientes a través de una experiencia directa y sin fricción.",
+    problem: "La ausencia de una estructura digital clara dificultaba que los usuarios localizaran el servicio o iniciaran una solicitud de reparación de forma rápida.",
+    solution: [
+        "Integración de formularios de contacto optimizados para conversión",
+        "Mapa interactivo con localización inmediata del negocio",
+        "Estructura centrada en CTAs claros y accesibles",
+        "Diseño responsive optimizado para uso móvil",
+        "Optimización de rendimiento para carga rápida y navegación fluida"
+    ],
+    result: "Plataforma funcional que reduce la fricción entre el usuario y el servicio, facilitando la localización y el contacto directo.",
+    impact: "Mejora en la accesibilidad del servicio y en la conversión de usuarios, reduciendo pasos necesarios para contactar y aumentando la efectividad del canal digital como punto de entrada de clientes."
+}, 
 
-        result: "Web funcional que permite a los usuarios encontrar el servicio rápidamente y contactar sin barreras."
-    },
-
-    {
-        title: "Valle Escondido",
-        url: "https://valleescondido.netlify.app/",
-        img: "/valleescondido.webp",
-        video: "/home_web.mp4",
-        techStack: "React, Framer Motion, Tailwind CSS",
-        techIcons: [
-            <SiReact key="re" />,
-            <SiFramer key="fr" />,
-            <SiTailwindcss key="tw" />
-        ],
-        pressingType: 'Remaster',
-        desc: "Iteración experimental centrada en animaciones y narrativa visual aplicada a eventos.",
-        context: "Proyecto exploratorio basado en eventos, utilizado para experimentar con animaciones y narrativa visual.",
-        problem: "Necesidad de explorar cómo mejorar la experiencia visual y el ritmo de navegación en webs de eventos.",
-        solution: [
-            "Uso intensivo de animaciones con Framer Motion",
-            "Transiciones entre secciones para guiar al usuario",
-            "Experimentación con narrativa visual",
-            "Optimización de interacción en scroll",
-            "Diseño enfocado en impacto visual"
-        ],
-        result: "Base experimental que permitió mejorar la calidad visual aplicada posteriormente en proyectos reales."
-    },
-
-    {
-        title: "Rdisquete mk II",
-        url: "https://rdisquetemk2.netlify.app/",
-        img: "/rdisquetemk2.webp",
-        video: "/rdisquetemk2.mp4",
-        techStack: "React, TypeScript, Tailwind CSS",
-        techIcons: [
-            <SiReact key="re" />,
-            <SiTypescript key="ts" />,
-            <SiTailwindcss key="tw" />
-        ],
-        pressingType: 'Remaster',
-        desc: "Versión anterior de mi portfolio, enfocada en estructura clásica y navegación más convencional.",
-        context: "Iteración previa de mi portfolio personal antes de evolucionar hacia un enfoque más conceptual y visual.",
-        problem: "La estructura tradicional limitaba la forma de presentar proyectos y diferenciar el perfil.",
-        solution: [
-            "Diseño basado en layout más convencional",
-            "Organización clara de proyectos y contenido",
-            "Uso de componentes reutilizables en React",
-            "Base sólida para evolución posterior",
-            "Implementación responsive"
-        ],
-        result: "Punto de partida que permitió evolucionar hacia un portfolio más diferencial y enfocado en narrativa."
-    },
-    {
-        title: "Buscador de bebidas",
-        url: "https://buscadordebebidasrafadz.netlify.app",
-        img: "/images/buscadorbibidas.webp",
-        video: "/CoctelHover.mp4",
-        techStack: "Zod, React Router, Javascript",
-        techIcons: [
-            <SiZod key="zo" />,
-            <SiReactrouter key="rr" />,
-            <SiJavascript key="js" />
-        ],
-        pressingType: 'Bootleg',
-        desc: "Ejercicio de aprendizaje centrado en validación de datos y consumo de APIs.",
-        context: "Proyecto de formación enfocado en practicar consumo de APIs y validación de formularios.",
-        problem: "Necesidad de entender cómo manejar datos externos y validar inputs del usuario correctamente.",
-        solution: [
-            "Consumo de API de recetas",
-            "Validación de datos con Zod",
-            "Gestión de rutas con React Router",
-            "Manejo de estados de carga y error",
-            "Estructura básica de componentes"
-        ],
-        result: "Base sólida para trabajar con APIs y validación de datos en proyectos posteriores."
-    },
+{
+    title: "Valle Escondido",
+    url: "https://valleescondido.netlify.app/",
+    img: "/valleescondido.webp",
+    video: "/home_web.mp4",
+    techStack: "React, Framer Motion, Tailwind CSS",
+    techIcons: [
+        <SiReact key="re" />,
+        <SiFramer key="fr" />,
+        <SiTailwindcss key="tw" />
+    ],
+    pressingType: 'Remaster',
+    desc: "Prototipo experimental de narrativa visual y animación, base conceptual previa a Nor3xtrem.",
+    context: "Proyecto exploratorio desarrollado como prueba de concepto para sistemas de narrativa visual, animaciones y experiencia de usuario en webs de eventos.",
+    problem: "Explorar cómo estructurar una experiencia web basada en ritmo visual, transiciones y guía del usuario sin depender de interfaces tradicionales.",
+    solution: [
+        "Experimentación con animaciones avanzadas en Framer Motion",
+        "Diseño de transiciones entre secciones como herramienta narrativa",
+        "Estructuración del scroll como eje de experiencia",
+        "Pruebas de composición visual para impacto emocional",
+        "Optimización de timing y ritmo de interacción"
+    ],
+    result: "Prototipo funcional que definió las bases de diseño y animación posteriormente aplicadas en Nor3xtrem.",
+    impact: "Sirvió como base conceptual directa para Nor3xtrem, validando decisiones de animación, flujo de navegación y estructura narrativa antes de su implementación en un entorno real."
+},
+{
+    title: "Rdisquete mk II",
+    url: "https://rdisquetemk2.netlify.app/",
+    img: "/rdisquetemk2.webp",
+    video: "/rdisquetemk2.mp4",
+    techStack: "React, TypeScript, Tailwind CSS",
+    techIcons: [
+        <SiReact key="re" />,
+        <SiTypescript key="ts" />,
+        <SiTailwindcss key="tw" />
+    ],
+    pressingType: 'Remaster',
+    desc: "Versión previa de mi portfolio centrada en una estructura más tradicional y funcional.",
+    context: "Iteración anterior de mi portfolio personal antes de evolucionar hacia un enfoque más narrativo, visual y conceptual.",
+    problem: "El enfoque clásico de estructura limitaba la diferenciación del perfil y la forma de presentar proyectos.",
+    solution: [
+        "Arquitectura de portfolio basada en layout tradicional",
+        "Organización clara de secciones y proyectos",
+        "Componentización en React para escalabilidad",
+        "Diseño responsive funcional",
+        "Base técnica para iteraciones posteriores"
+    ],
+    result: "Portfolio funcional que sirvió como base estructural para la evolución hacia un enfoque más conceptual y diferenciado.",
+    impact: "Actuó como punto de transición en la evolución del portfolio, definiendo la base técnica y de organización que permitió desarrollar una versión posterior más avanzada y diferenciada."
+}, 
+{
+    title: "Buscador de bebidas",
+    url: "https://buscadordebebidasrafadz.netlify.app",
+    img: "/images/buscadorbibidas.webp",
+    video: "/CoctelHover.mp4",
+    techStack: "Zod, React Router, Javascript",
+    techIcons: [
+        <SiZod key="zo" />,
+        <SiReactrouter key="rr" />,
+        <SiJavascript key="js" />
+    ],
+    pressingType: 'Bootleg',
+    desc: "Proyecto de aprendizaje centrado en el consumo de APIs y validación de datos de usuario.",
+    context: "Ejercicio formativo orientado a comprender el flujo completo de datos desde APIs externas y su validación en el cliente.",
+    problem: "La necesidad de gestionar datos externos y validar inputs del usuario de forma fiable sin depender de backend.",
+    solution: [
+        "Consumo de API de recetas de bebidas",
+        "Validación de esquemas de datos con Zod",
+        "Gestión de rutas con React Router",
+        "Control de estados de carga, éxito y error",
+        "Estructuración modular de componentes"
+    ],
+    result: "Aplicación funcional que consolida conceptos clave de consumo de APIs y validación de datos en frontend.",
+    impact: "Base de aprendizaje que permitió entender flujos reales de datos externos, sentando las bases para proyectos posteriores más complejos con APIs y validación estructurada."
+},
     //   {
     //     title: "Portfolio v1.0",
     //   url: "https://rafadz.netlify.app",
@@ -402,19 +444,19 @@ const PROJECTS: Proyecto[] = [
             <SiVite key="vi" />
         ],
         pressingType: 'Bootleg',
-        desc: "Ejercicio de consumo de API para visualizar precios de criptomonedas en tiempo real.",
-        context: "Proyecto de aprendizaje centrado en el consumo de APIs externas y gestión de estado en React.",
-        problem: "Necesidad de entender cómo trabajar con datos dinámicos provenientes de una API externa.",
+        desc: "Proyecto de aprendizaje centrado en el consumo de APIs para la visualización de datos financieros en tiempo real.",
+        context: "Ejercicio formativo enfocado en la integración de APIs externas y la gestión de estado en aplicaciones React.",
+        problem: "La necesidad de manejar datos dinámicos provenientes de APIs externas y representarlos de forma consistente en la UI.",
         solution: [
-            "Consumo de API de criptomonedas",
-            "Gestión de estado en React",
-            "Validación básica de datos con Zod",
-            "Renderizado dinámico de información financiera",
-            "Manejo de estados de carga y error"
+            "Consumo de API de criptomonedas en tiempo real",
+            "Gestión de estado en React para datos dinámicos",
+            "Validación de datos con Zod",
+            "Renderizado dinámico de métricas financieras",
+            "Control de estados de carga y error"
         ],
-        result: "Aplicación funcional para practicar integración de APIs y renderizado de datos en tiempo real."
-    },
-
+        result: "Aplicación funcional que permite visualizar información de criptomonedas en tiempo real de forma estructurada.",
+        impact: "Refuerzo de conceptos clave en consumo de APIs y gestión de datos dinámicos, consolidando la base técnica para aplicaciones con información en tiempo real."
+    }, 
     {
         title: "App de clima",
         url: "https://appclimardz.netlify.app",
@@ -427,143 +469,149 @@ const PROJECTS: Proyecto[] = [
             <SiAxios key="ax" />
         ],
         pressingType: 'Bootleg',
-        desc: "Ejercicio de consumo de API para mostrar información meteorológica en tiempo real.",
-        context: "Proyecto de aprendizaje centrado en consumo de APIs y gestión de estados asíncronos en React.",
-        problem: "Necesidad de entender cómo trabajar con datos externos y gestionar estados de carga y error.",
+        desc: "Proyecto de aprendizaje centrado en el consumo de APIs para la visualización de datos meteorológicos en tiempo real.",
+        context: "Ejercicio formativo orientado a trabajar con APIs externas y gestión de estados asíncronos en React.",
+        problem: "La necesidad de manejar datos meteorológicos en tiempo real y controlar correctamente los estados derivados de peticiones asíncronas.",
         solution: [
-            "Consumo de API meteorológica con Axios",
-            "Gestión de estados de carga (loading / error / success)",
+            "Consumo de API meteorológica mediante Axios",
+            "Gestión de estados asíncronos (loading / error / success)",
             "Renderizado dinámico de datos climáticos",
-            "Manejo de respuestas asíncronas",
-            "Interfaz responsive básica"
+            "Manejo de respuestas en tiempo real",
+            "Interfaz responsive orientada a usabilidad básica"
         ],
-        result: "Aplicación funcional utilizada para practicar consumo de APIs y manejo de estados en React."
+        result: "Aplicación funcional que permite consultar información meteorológica en tiempo real con una estructura clara y control de estados.",
+        impact: "Consolidación de patrones de manejo de asincronía en frontend, reforzando la base para integración de APIs externas con estados complejos en React."
     },
 
-{
-    title: "Seguimiento de pacientes",
-    url: "https://seguimientoclinicarafaeldorado.netlify.app",
-    img: "/images/seguimientodepacientes.webp",
-    video: "/PacienteHover.mp4",
-    techStack: "React, Tailwind CSS, Javascript",
-    techIcons: [
-        <SiReact key="re" />,
-        <SiTailwindcss key="tw" />,
-        <SiJavascript key="js" />
-    ],
-    pressingType: 'Bootleg',
-    desc: "Ejercicio de CRUD para gestión de pacientes con persistencia local de datos.",
-    context: "Proyecto de aprendizaje enfocado en la creación de un sistema CRUD básico con persistencia en cliente.",
-    problem: "Necesidad de entender cómo crear, editar y eliminar datos en una aplicación React.",
-    solution: [
-        "Implementación de operaciones CRUD",
-        "Persistencia de datos en localStorage",
-        "Gestión de estado en React",
-        "Estructuración de formularios dinámicos",
-        "Interfaz responsive básica"
-    ],
-    result: "Aplicación funcional para practicar lógica CRUD y manejo de estado persistente en el navegador."
-},
+    {
+        title: "Seguimiento de pacientes",
+        url: "https://seguimientoclinicarafaeldorado.netlify.app",
+        img: "/images/seguimientodepacientes.webp",
+        video: "/PacienteHover.mp4",
+        techStack: "React, Tailwind CSS, Javascript",
+        techIcons: [
+            <SiReact key="re" />,
+            <SiTailwindcss key="tw" />,
+            <SiJavascript key="js" />
+        ],
+        pressingType: 'Bootleg',
+        desc: "Proyecto de aprendizaje centrado en la implementación de un sistema CRUD con persistencia de datos en el cliente.",
+        context: "Ejercicio formativo orientado a la construcción de una aplicación CRUD completa en React sin backend.",
+        problem: "La necesidad de gestionar creación, edición y eliminación de datos de forma persistente en una aplicación frontend.",
+        solution: [
+            "Implementación completa de operaciones CRUD",
+            "Persistencia de datos mediante localStorage",
+            "Gestión de estado en React",
+            "Formularios dinámicos para edición y creación",
+            "Interfaz responsive básica orientada a usabilidad"
+        ],
+        result: "Aplicación funcional que permite gestionar pacientes con persistencia local sin necesidad de backend.",
+        impact: "Consolidación de lógica CRUD en frontend y comprensión de persistencia en cliente, base fundamental para aplicaciones con gestión de datos más complejas."
+    },
 
-{
-    title: "Calculadora de gastos",
-    url: "https://calculadordegastos-rafaeldorado.netlify.app",
-    img: "/images/calculadoragastos.webp",
-    video: "/GastosHover.mp4",
-    desc: "Aplicación de control financiero personal con visualización circular de gastos y gestión por categorías.",
-    context: "Proyecto desarrollado como ejercicio de arquitectura de estado en React, centrado en la gestión clara de finanzas personales.",
-    problem: "La mayoría de usuarios no tiene una forma visual e intuitiva de entender en qué se distribuye su dinero mensual.",
-    solution: [
-        "Uso de Context API para gestión global de estado",
-        "Componentes reutilizables para categorías de gasto",
-        "Visualización circular para lectura rápida",
-        "Persistencia de datos en estado de sesión",
-        "UI enfocada en claridad y reducción de fricción"
-    ],
-    result: "Permite al usuario entender su distribución de gastos en segundos con una interfaz visual directa y sin complejidad innecesaria.",
-    techStack: "Context API, CSS3, TypeScript",
-    techIcons: [
-        <SiReact key="re" />,
-        <SiCss3 key="cs" />,
-        <SiTypescript key="ts" />
-    ],
-    pressingType: 'Bootleg'
-},
+    {
+        title: "Calculadora de gastos",
+        url: "https://calculadordegastos-rafaeldorado.netlify.app",
+        img: "/images/calculadoragastos.webp",
+        video: "/GastosHover.mp4",
+        techStack: "Context API, CSS3, TypeScript",
+        techIcons: [
+            <SiReact key="re" />,
+            <SiCss3 key="cs" />,
+            <SiTypescript key="ts" />
+        ],
+        pressingType: 'Bootleg',
+        desc: "Aplicación de control financiero personal con visualización circular de gastos y gestión por categorías.",
+        context: "Proyecto de aprendizaje enfocado en la arquitectura de estado en React aplicada a la gestión de finanzas personales.",
+        problem: "La dificultad de representar la distribución de gastos de forma clara, visual e intuitiva para el usuario.",
+        solution: [
+            "Gestión global de estado con Context API",
+            "Componentes reutilizables para categorías de gasto",
+            "Visualización circular para interpretación rápida",
+            "Persistencia de datos en estado de sesión",
+            "Interfaz optimizada para claridad y reducción de fricción"
+        ],
+        result: "Aplicación funcional que permite visualizar la distribución de gastos de forma clara e inmediata mediante representación visual directa.",
+        impact: "Mejora en la comprensión de patrones de estado global en React y en la construcción de interfaces orientadas a datos visuales complejos de forma simplificada."
+    },
 
-{
-    title: "Contador de calorías",
-    url: "https://calorietracker-rafadorado.netlify.app",
-    img: "/images/contadorcalorias.webp",
-    video: "/CaloriasHover.mp4",
-    desc: "Aplicación de seguimiento nutricional para el control diario de calorías mediante lógica de reducción de estado.",
-    context: "Proyecto orientado a practicar gestión de estado en React y manipulación de datos en tiempo real sin backend.",
-    problem: "El control manual de calorías suele ser poco intuitivo y propenso a errores en aplicaciones simples o hojas de cálculo.",
-    solution: [
-        "Uso de reducers para gestión de estado compleja",
-        "Componentización de entradas de alimentos",
-        "Cálculo dinámico de calorías restantes",
-        "Actualización en tiempo real del estado",
-        "UI simplificada enfocada en rapidez de uso"
-    ],
-    result: "Permite registrar y controlar ingesta calórica diaria de forma rápida, visual y sin fricción técnica.",
-    techStack: "React, Javascript, CSS3",
-    techIcons: [
-        <SiReact key="re" />,
-        <SiJavascript key="js" />,
-        <SiCss3 key="cs" />
-    ],
-    pressingType: 'Bootleg'
-},
+    {
+        title: "Contador de calorías",
+        url: "https://calorietracker-rafadorado.netlify.app",
+        img: "/images/contadorcalorias.webp",
+        video: "/CaloriasHover.mp4",
+        techStack: "React, Javascript, CSS3",
+        techIcons: [
+            <SiReact key="re" />,
+            <SiJavascript key="js" />,
+            <SiCss3 key="cs" />
+        ],
+        pressingType: 'Bootleg',
+        desc: "Aplicación de seguimiento nutricional centrada en el control diario de calorías mediante gestión avanzada de estado.",
+        context: "Proyecto orientado a practicar manejo de estado complejo en React y actualización de datos en tiempo real sin backend.",
+        problem: "La dificultad de realizar un seguimiento preciso de la ingesta calórica de forma manual y sin herramientas visuales claras.",
+        solution: [
+            "Gestión de estado mediante useReducer",
+            "Componentización de entradas de alimentos",
+            "Cálculo dinámico de calorías restantes",
+            "Actualización en tiempo real del estado de la aplicación",
+            "Interfaz optimizada para uso rápido y directo"
+        ],
+        result: "Aplicación funcional que permite registrar y controlar la ingesta calórica diaria de forma visual e inmediata.",
+        impact: "Refuerzo de patrones avanzados de gestión de estado en React mediante reducers, mejorando la capacidad de estructurar lógica compleja en interfaces interactivas."
+    },
 
-{
-    title: "Calculadora de descuentos",
-    url: "https://calculadoradescuentosrafadorado.netlify.app",
-    img: "/images/calculadoradescuentos.webp",
-    video: "/CalculadoraHover.mp4",
-    desc: "Herramienta interactiva para el cálculo de descuentos y precios finales con una interfaz rápida y minimalista.",
-    context: "Proyecto desarrollado para practicar reutilización de lógica mediante Custom Hooks en React y optimización de componentes.",
-    problem: "Muchas herramientas de cálculo de descuentos son lentas, poco claras o están sobrecargadas de opciones innecesarias.",
-    solution: [
-        "Creación de Custom Hooks para lógica reutilizable",
-        "Cálculo instantáneo de precios con actualización en tiempo real",
-        "Separación clara entre lógica y UI",
-        "Interfaz minimalista enfocada en rapidez",
-        "Estructura ligera con Vite para carga rápida"
-    ],
-    result: "Permite calcular descuentos de forma instantánea con una experiencia fluida y sin distracciones.",
-    techStack: "React, Vite, Javascript",
-    techIcons: [
-        <SiReact key="re" />,
-        <SiVite key="vi" />,
-        <SiJavascript key="js" />
-    ],
-    pressingType: 'Bootleg'
-},
+    {
+        title: "Calculadora de descuentos",
+        url: "https://calculadoradescuentosrafadorado.netlify.app",
+        img: "/images/calculadoradescuentos.webp",
+        video: "/CalculadoraHover.mp4",
+        techStack: "React, Vite, Javascript",
+        techIcons: [
+            <SiReact key="re" />,
+            <SiVite key="vi" />,
+            <SiJavascript key="js" />
+        ],
+        pressingType: 'Bootleg',
+        desc: "Herramienta interactiva para el cálculo de descuentos y precios finales con una interfaz rápida y minimalista.",
+        context: "Proyecto enfocado en la optimización de lógica reutilizable mediante Custom Hooks en React.",
+        problem: "La existencia de herramientas de cálculo de descuentos poco eficientes, lentas o sobrecargadas de funcionalidades innecesarias.",
+        solution: [
+            "Implementación de Custom Hooks para lógica reutilizable",
+            "Cálculo en tiempo real de precios con actualizaciones instantáneas",
+            "Separación clara entre lógica de negocio y UI",
+            "Interfaz minimalista orientada a velocidad de uso",
+            "Optimización de estructura con Vite para carga rápida"
+        ],
+        result: "Aplicación funcional que permite calcular descuentos de forma instantánea con una experiencia fluida y sin distracciones.",
+        impact: "Consolidación del uso de Custom Hooks como patrón de reutilización de lógica en React, mejorando la separación entre lógica y presentación en aplicaciones frontend."
+    },
 
-{
-    title: "GuitarLa",
-    url: "https://guitarlarafaeldorado.netlify.app",
-    img: "/images/guitarlab.webp",
-    video: "/GuitarHover.mp4",
-    desc: "E-commerce de instrumentos musicales con sistema de carrito de compras y gestión básica de productos.",
-    context: "Proyecto de práctica enfocado en la construcción de una tienda online funcional sin backend, simulando flujos reales de compra.",
-    problem: "Muchos e-commerce educativos no implementan una experiencia de compra completa ni un flujo claro de selección de productos.",
-    solution: [
-        "Implementación de carrito de compras en frontend",
-        "Gestión de estado para productos seleccionados",
-        "Estructura de catálogo de instrumentos",
-        "Interacción dinámica entre productos y carrito",
-        "UI enfocada en simplicidad y navegación rápida"
-    ],
-    result: "Simula una experiencia de compra funcional permitiendo añadir y gestionar productos en un flujo de e-commerce básico pero completo.",
-    techStack: "React, CSS3, Javascript",
-    techIcons: [
-        <SiReact key="re" />,
-        <SiCss3 key="cs" />,
-        <SiJavascript key="js" />
-    ],
-    pressingType: 'Bootleg'
-}
+    {
+        title: "GuitarLa",
+        url: "https://guitarlarafaeldorado.netlify.app",
+        img: "/images/guitarlab.webp",
+        video: "/GuitarHover.mp4",
+        techStack: "React, CSS3, Javascript",
+        techIcons: [
+            <SiReact key="re" />,
+            <SiCss3 key="cs" />,
+            <SiJavascript key="js" />
+        ],
+        pressingType: 'Bootleg',
+        desc: "E-commerce de instrumentos musicales con sistema de carrito de compras y gestión básica de productos.",
+        context: "Proyecto de práctica enfocado en la construcción de una tienda online funcional sin backend, simulando flujos reales de compra.",
+        problem: "Muchos e-commerce educativos no implementan una experiencia de compra completa ni un flujo claro de selección de productos.",
+        solution: [
+            "Implementación de carrito de compras en frontend",
+            "Gestión de estado para productos seleccionados",
+            "Estructura de catálogo de instrumentos",
+            "Interacción dinámica entre productos y carrito",
+            "UI enfocada en simplicidad y navegación rápida"
+        ],
+        result: "Simula una experiencia de compra funcional permitiendo añadir y gestionar productos en un flujo de e-commerce básico pero completo.",
+        impact: "Refuerza la comprensión de flujos de compra reales en frontend sin backend, aplicando lógica de estado compleja en un entorno de e-commerce simulado."
+    }
 ];
 
 // --- COMPONENTES AUXILIARES ---
@@ -640,113 +688,127 @@ function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto
 function ProjectModal({ project, onClose }: { project: Proyecto, onClose: () => void }) {
     return (
         <motion.div
-            className="fixed inset-0 bg-black/95 flex items-center justify-center p-4 z-[9999]"
+            className="fixed inset-0 bg-black/95 flex items-start justify-center z-[9999] overflow-y-auto px-4 py-8"
             onClick={onClose}
         >
             <motion.div
                 onClick={(e) => e.stopPropagation()}
                 className="bg-[#f5f3e7] max-w-5xl w-full flex flex-col md:flex-row border-2 border-black shadow-[20px_20px_0px_#8e2b27]"
             >
-                {/* IMAGE */}
-                <div className="w-full md:w-3/5 bg-black">
-                    <img src={project.img} className="w-full h-full object-cover" />
-                </div>
+              {/* IMAGEN */}
+<div className="w-full md:w-3/5 bg-black flex-shrink-0 relative overflow-hidden">
+    {/* Blurred background */}
+    <img
+        src={project.img}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-60"
+    />
+    {/* Imagen principal sin recortes */}
+    <div className="relative w-full aspect-video md:aspect-auto md:h-full flex items-center justify-center p-4">
+        <div className="absolute inset-3 border border-white/20 z-10 pointer-events-none" />
+        <img
+            src={project.img}
+            alt={project.title}
+            className="relative z-[1] w-full h-full object-contain"
+        />
+    </div>
+</div>
 
-                {/* CONTENT */}
-                <div className="p-8 md:w-2/5 space-y-6 text-black relative">
+                {/* CONTENIDO */}
+                <div className="p-6 md:p-8 md:w-2/5 space-y-5 text-black relative flex flex-col">
 
                     {/* CLOSE */}
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 text-xl hover:text-[#8e2b27] transition"
+                        className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-black text-white text-sm font-bold hover:bg-[#8e2b27] transition z-20"
                     >
                         ✕
                     </button>
 
                     {/* TITLE */}
-                    <h2 className="text-4xl font-black uppercase leading-[0.9]">
+                    <h2 className="text-3xl md:text-4xl font-black uppercase leading-[0.9] pr-8">
                         {project.title}
                     </h2>
 
-                    {/* CONTEXT */}
-                    <div>
-                        <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">
-                            Contexto
-                        </h3>
-                        <p className="text-xs font-mono text-black/80">
-                            {project.context}
-                        </p>
-                    </div>
-
-                    {/* PROBLEM */}
-                    <div>
-                        <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">
-                            Problema
-                        </h3>
-                        <p className="text-xs font-mono text-black/80">
-                            {project.problem}
-                        </p>
-                    </div>
-
-                    {/* SOLUTION */}
-                    <div>
-                        <h3 className="text-[10px] font-black uppercase text-black/40 mb-2">
-                            Solución
-                        </h3>
-
-                        <ul className="text-xs font-mono space-y-1">
-                            {project.solution.map((item, i) => (
-                                <li key={i}>• {item}</li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* RESULT */}
-                    <div>
-                        <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">
-                            Resultado
-                        </h3>
-                        <p className="text-xs font-mono text-black/80">
-                            {project.result}
-                        </p>
-                    </div>
-
-                    {/* STACK */}
-                    <div className="pt-4 border-t border-black/10">
-                        <div className="flex flex-wrap gap-2 text-2xl text-[#8e2b27]">
+                    {/* META: pressing type + stack icons */}
+                    <div className="flex items-center justify-between border-b border-black/10 pb-3">
+                        <span className="font-mono text-[9px] font-black uppercase tracking-widest text-black/40">
+                            {project.pressingType === 'First' ? 'FIRST PRESS' : project.pressingType === 'Remaster' ? 'REMASTERED' : 'BOOTLEG'}
+                        </span>
+                        <div className="flex gap-2 text-base text-[#8e2b27]">
                             {project.techIcons?.map((icon, i) => (
                                 <span key={i}>{icon}</span>
                             ))}
                         </div>
                     </div>
 
-                    {/* 🔥 ACTION BUTTONS (IMPORTANTE) */}
-                    <div className="flex flex-col gap-3 pt-4">
+                    {/* DESC */}
+                    <p className="text-xs font-mono text-black/60 italic leading-relaxed border-l-2 border-[#8e2b27] pl-3">
+                        "{project.desc}"
+                    </p>
 
+                    {/* CONTEXT */}
+                    <div className="space-y-1">
+                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">Contexto</h3>
+                        <p className="text-xs font-mono text-black/80 leading-relaxed">{project.context}</p>
+                    </div>
+
+                    {/* PROBLEM */}
+                    <div className="space-y-1">
+                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">Problema</h3>
+                        <p className="text-xs font-mono text-black/80 leading-relaxed">{project.problem}</p>
+                    </div>
+
+                    {/* SOLUTION */}
+                    <div className="space-y-1">
+                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">Solución</h3>
+                        <ul className="text-xs font-mono space-y-1 text-black/80">
+                            {project.solution.map((item, i) => (
+                                <li key={i} className="flex gap-2">
+                                    <span className="text-[#8e2b27] shrink-0">→</span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* RESULT */}
+                    <div className="border-t border-black/10 pt-3 space-y-1">
+                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">Resultado</h3>
+                        <p className="text-sm font-mono text-black/90 leading-relaxed">{project.result}</p>
+                    </div>
+
+                    {/* IMPACT */}
+                    {project.impact && (
+                        <div className="bg-black/5 border border-black/10 p-3">
+                            <p className="text-[10px] font-mono text-black/70 italic">{project.impact}</p>
+                        </div>
+                    )}
+
+                    {/* BOTONES */}
+                    <div className="flex flex-col gap-2 pt-3 mt-auto">
                         {project.url && (
                             <a
                                 href={project.url}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="w-full text-center bg-[#8e2b27] text-white py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-black transition"
+                                className="w-full text-center bg-[#8e2b27] text-white py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-black transition"
                             >
                                 Ver proyecto
                             </a>
                         )}
-
                         {project.github && (
                             <a
                                 href={project.github}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="w-full text-center border-2 border-black text-black py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-black hover:text-white transition"
+                                className="w-full text-center border-2 border-black text-black py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-black hover:text-white transition"
                             >
                                 Ver código
                             </a>
                         )}
-
                     </div>
-
                 </div>
             </motion.div>
         </motion.div>

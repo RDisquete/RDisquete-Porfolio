@@ -324,7 +324,7 @@ const PROJECTS: Proyecto[] = [
     {
     title: "AM Movil Repair",
     url: "https://ammovilrepair.com",
-    img: "/images/ammovilrepair.webp",
+    img: "/am movil repair.webp",
     video: "/amhover.mp4",
     techStack: "React, Tailwind, Google Maps",
     techIcons: [

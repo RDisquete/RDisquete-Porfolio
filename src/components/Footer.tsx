@@ -4,7 +4,7 @@ import { MdEmail } from "react-icons/md";
 
 const BG = "#171717";
 const PAPER = "#e5dfbc"; 
-const ACCENT = "#d14d44";
+const ACCENT = "#8e2b27";
 
 export default function Footer() {
   const [timecode, setTimecode] = useState("00:00:00:00");
@@ -17,7 +17,7 @@ export default function Footer() {
       const s = String(now.getSeconds()).padStart(2, "0");
       const f = String(Math.floor(Math.random() * 24)).padStart(2, "0");
       setTimecode(`${h}:${m}:${s}:${f}`);
-    }, 40);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -59,7 +59,7 @@ export default function Footer() {
               target={link.download ? undefined : "_blank"}
               rel="noopener noreferrer"
               aria-label={link.label}
-              className="transition-all duration-300 hover:text-[#d14d44] transform hover:scale-110"
+              className="transition-all duration-300 hover:text-[#8e2b27] transform hover:scale-110"
             >
               {link.icon}
             </a>

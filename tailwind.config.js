@@ -8,14 +8,14 @@ export default {
   theme: {
     extend: {
         fontFamily: {
-            'display-impact': ['Bebas Neue', 'Impact', 'sans-serif'], 
-            'vintage-cursive': ['Great Vibes', 'cursive'], 
-        },colors: {
+            'display-impact': ['Bebas Neue', 'Impact', 'sans-serif'],
+            'vintage-cursive': ['"Great Vibes"', 'cursive'],
+        },
+        colors: {
           'retro-dark': '#171717',
           'retro-cream': '#cdc69c',
           'retro-maroon': '#8e2b27',
       }
-        
     },
   },
   plugins: [],

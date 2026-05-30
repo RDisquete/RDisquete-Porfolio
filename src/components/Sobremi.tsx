@@ -143,7 +143,7 @@ export default function SobreMi() {
           
           <motion.div className="mt-8 md:mt-12" variants={textReveal}>
             <Link
-              to="/Feedback"
+              to="/contact"
               className="flex items-center gap-4 group w-fit"
               aria-label="Ir a la página de contacto"
             >

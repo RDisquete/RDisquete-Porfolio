@@ -1,13 +1,11 @@
 
 @font-face {
-  font-family: 'Montserrat'; /* Este nombre debe ser IGUAL al del Header */
+  font-family: 'Montserrat';
   src: url('/fonts/montserrat-v31-latin-regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
-
-
 
 @font-face {
   font-family: 'Great Vibes';
@@ -22,16 +20,13 @@
 @tailwind utilities;
 
 html {
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
   height: 100%;
   scroll-behavior: smooth;
 }
 
-
 body {
   min-height: 100%;
-  background-color: #0a0a0a; 
+  background-color: #0a0a0a;
   overflow-x: hidden;
   color: white;
   margin: 0;
@@ -43,26 +38,9 @@ body {
 
 #root {
   height: 100%;
-  
 }
 
 .texture-overlay {
   mix-blend-mode: overlay;
   pointer-events: none;
-  will-change: opacity; 
-}
-
-body.modal-open {
-  overflow: hidden !important; 
-  padding-right: 0px !important; 
-  overscroll-behavior: none;
-}
-
-body.modal-open .footer-root {
-  display: none !important;
-}
-
-.will-animate {
-  will-change: transform, opacity;
-  backface-visibility: hidden;
 }

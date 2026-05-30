@@ -29,7 +29,6 @@ export default function Manifesto() {
       ref={sectionRef}
       id="manifesto-section"
       className="relative block w-full px-6 py-10 md:py-24 overflow-hidden bg-[#cdc69c]"
-      style={{ position: "relative" }}
     >
       {/* Texturas */}
       <picture className="absolute inset-0 z-[50] pointer-events-none">

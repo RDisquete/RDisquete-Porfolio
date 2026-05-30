@@ -28,10 +28,13 @@ export default function App() {
   return (
     <Router>
       <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-[#171717]">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[9999] focus:bg-[#8e2b27] focus:text-white focus:px-4 focus:py-2 focus:top-2 focus:left-2">
+          Saltar al contenido principal
+        </a>
         <ScrollToTop />
         <Header />
-        <main className="relative z-10 flex-1">
-          <Suspense fallback={<div className="bg-[#171717] min-h-screen" />}>
+        <main id="main-content" className="relative z-10 flex-1">
+          <Suspense fallback={<div className="bg-[#171717] min-h-screen flex items-center justify-center"><span className="text-[#cdc69c] font-mono text-sm animate-pulse">Cargando...</span></div>}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<Conoceme />} />

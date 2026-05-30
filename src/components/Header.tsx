@@ -10,7 +10,9 @@ export default function Header() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
   const audioCache = useRef<{ [key: string]: HTMLAudioElement }>({});
 
   const playSfx = useCallback((fileName: string, volume = 0.1) => {
@@ -37,12 +39,42 @@ export default function Header() {
 
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", menuOpen);
+    if (menuOpen) {
+      const timer = setTimeout(() => {
+        const closeBtn = menuRef.current?.querySelector('button');
+        closeBtn?.focus();
+      }, 100);
+      return () => clearTimeout(timer);
+    } else {
+      hamburgerRef.current?.focus();
+    }
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      const focusable = menuRef.current?.querySelectorAll<HTMLElement>('a[href], button, [tabindex]:not([tabindex="-1"])');
+      if (!focusable || focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [menuOpen]);
 
   return (
     <>
       {menuOpen && (
         <div
+          ref={menuRef}
           id="mobile-navigation"
           role="dialog"
           aria-modal="true"
@@ -107,6 +139,7 @@ export default function Header() {
         <div className="relative flex items-center justify-between h-20 px-4 mx-auto max-w-7xl md:px-8">
 
           <button
+            ref={hamburgerRef}
             onClick={() => {
               setMenuOpen(true);
               playSfx('relay', 0.2);

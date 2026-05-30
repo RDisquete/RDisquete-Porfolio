@@ -74,6 +74,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         <div className="p-8 md:w-2/5 space-y-6 text-black relative flex flex-col">
           <button
             onClick={onClose}
+            aria-label="Cerrar modal"
             className="absolute top-4 right-4 text-xl hover:text-[#8e2b27] transition"
           >
             ✕
@@ -163,7 +164,7 @@ const LazyVideo = ({ src }: { src: string }) => (
   <video
     src={src}
     className="object-cover w-full h-full grayscale contrast-125"
-    autoPlay loop muted playsInline preload="auto"
+    autoPlay loop muted playsInline preload="none"
   />
 );
 
@@ -191,15 +192,20 @@ const ProjectTrack = ({ project, index, featured, onHoverStart, onSelect }: Proj
         onMouseEnter={() => onHoverStart(project)}
         onClick={() => onSelect(project)}
       >
-        <div className="flex items-center gap-4 py-5 px-2 cursor-pointer transition-all hover:bg-[#cdc69c]/5">
-          <span className="font-mono text-sm text-[#8e2b27] font-black">{trackNumber}.</span>
-          <div className="flex-grow">
-            <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-white group-hover:text-[#cdc69c] transition-colors">
-              {project.title}
-            </h3>
-          </div>
-          <FaPlay className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
-        </div>
+      <div
+         role="button"
+         tabIndex={0}
+         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(project); } }}
+         className="flex items-center gap-4 py-5 px-2 cursor-pointer transition-all hover:bg-[#cdc69c]/5"
+       >
+           <span className="font-mono text-sm text-[#8e2b27] font-black">{trackNumber}.</span>
+           <div className="flex-grow">
+             <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-white group-hover:text-[#cdc69c] transition-colors">
+               {project.title}
+             </h3>
+           </div>
+           <FaPlay className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
+         </div>
       </motion.div>
     );
   }
@@ -215,15 +221,20 @@ const ProjectTrack = ({ project, index, featured, onHoverStart, onSelect }: Proj
       onMouseEnter={() => onHoverStart(project)}
       onClick={() => onSelect(project)}
     >
-      <div className="flex items-center gap-4 py-4 px-2 cursor-pointer transition-all hover:bg-[#cdc69c]/5">
-        <span className="font-mono text-xs text-[#8e2b27] font-bold">{trackNumber}.</span>
-        <div className="flex-grow">
-          <h3 className="text-lg md:text-2xl font-black uppercase tracking-tighter text-[#cdc69c] group-hover:text-white transition-colors">
-            {project.title}
-          </h3>
-        </div>
-        <FaPlay className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
-      </div>
+      <div
+         role="button"
+         tabIndex={0}
+         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(project); } }}
+         className="flex items-center gap-4 py-4 px-2 cursor-pointer transition-all hover:bg-[#cdc69c]/5"
+       >
+         <span className="font-mono text-xs text-[#8e2b27] font-bold">{trackNumber}.</span>
+         <div className="flex-grow">
+           <h3 className="text-lg md:text-2xl font-black uppercase tracking-tighter text-[#cdc69c] group-hover:text-white transition-colors">
+             {project.title}
+           </h3>
+         </div>
+         <FaPlay className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
+       </div>
     </motion.div>
   );
 };

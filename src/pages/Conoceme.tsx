@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, type Variants } from "framer-motion";
 import {
     FaQuoteLeft, FaQuoteRight, FaInstagram, FaWhatsapp, FaLinkedin, FaFileDownload, FaGithub,
-    FaRegPlayCircle, FaReact,
+    FaRegPlayCircle, FaReact, FaCheckCircle, FaBolt, FaCubes, FaWrench, FaUniversalAccess, FaRocket,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { SiTailwindcss, SiTypescript, SiFramer } from "react-icons/si";
@@ -78,9 +78,10 @@ interface TrackItemProps {
     color?: string;
     isPlatinum?: boolean;
     icon?: React.ReactNode;
+    badge?: string;
 }
 
-const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON, isPlatinum, icon }: TrackItemProps) => (
+const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON, isPlatinum, icon, badge }: TrackItemProps) => (
     <motion.div
         className={`relative p-6 transition-all duration-300 border-b group border-current/10 cursor-crosshair 
         ${isPlatinum ? 'bg-white/10' : 'hover:bg-[#cdc69c]/5'}`}
@@ -96,6 +97,11 @@ const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON,
                     <h4 className="text-xl font-bold leading-tight tracking-tight uppercase md:text-2xl transition-colors duration-300 group-hover:text-white group-hover:drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
                         {title}
                     </h4>
+                    {badge && (
+                        <span className="font-mono text-[8px] font-black uppercase tracking-[0.15em] bg-[#8e2b27] text-[#cdc69c] px-2 py-0.5">
+                            {badge}
+                        </span>
+                    )}
                     {icon && (
                         <span className="text-2xl transition-all duration-300 group-hover:text-white group-hover:scale-125">
                             {icon}
@@ -249,7 +255,7 @@ export default function Conoceme() {
                                 return (
                                     <motion.a
                                         key={key} custom={index} variants={simpleEntryVariants} href={url}
-                                        target="_blank" rel="noopener noreferrer" aria-label={key}
+                                        target="_blank" rel="noopener noreferrer" aria-label={`Visitar perfil de ${key === 'cv' ? 'currículum' : key}`}
                                         className={`transition-colors hover:text-[#b43a31] transform hover:scale-110`}
                                     >
                                         <IconComponent />
@@ -311,6 +317,38 @@ export default function Conoceme() {
                                 details={s.details}
                                 subtitle={s.subtitle}
                                 isPlatinum={s.isPlatinum}
+                                icon={s.icon}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- STUDIO SESSIONS: PROCESO TÉCNICO --- */}
+            <section className="relative py-24 bg-[#0f0f0f] text-[#cdc69c] px-6 overflow-hidden">
+                <div className="absolute inset-0 opacity-20 contrast-125 saturate-110" style={{ backgroundImage: `url(${TEXTURE_2})`, backgroundSize: 'cover', mixBlendMode: 'overlay' }} />
+                <div className="relative z-10 max-w-6xl mx-auto">
+                    <div className="flex items-center gap-6 mb-20">
+                        <FaWrench className="text-6xl text-[#8e2b27]" />
+                        <div>
+                            <span className="text-[#8e2b27] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2">Behind The Mix</span>
+                            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase font-display-impact">
+                                STUDIO <span className="text-[#8e2b27]">SESSIONS</span>
+                            </h2>
+                        </div>
+                    </div>
+
+                    <p className="max-w-2xl mb-14 font-mono text-sm leading-relaxed opacity-85 border-l-2 border-[#8e2b27] pl-4">
+                        No basta con saber usar las herramientas. Lo que define mi trabajo es <strong className="text-[#cdc69c]">cómo las aplico</strong>: testing, rendimiento, accesibilidad y arquitectura como parte del proceso, no como añadidos.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
+                        {studioTracks.map(s => (
+                            <TrackItem
+                                key={s.num}
+                                num={s.num}
+                                title={s.title}
+                                details={s.details}
                                 icon={s.icon}
                             />
                         ))}
@@ -502,4 +540,44 @@ const formacionData = [
     { titulo: "Responsive Web Design", centro: "FreeCodeCamp", fecha: "2023", resumen: "Diseño web adaptable.", detalles: "" },
     { titulo: "Postgrado Full Stack", centro: "Euroinnova", fecha: "2023", resumen: "HTML, CSS, JS, PHP y MySQL.", detalles: "" },
     { titulo: "Certificado Multimedia", centro: "Sexpe", fecha: "2021", resumen: "Creación de productos interactivos.", detalles: "" },
+];
+
+const studioTracks = [
+    {
+        num: '01',
+        title: 'Testing',
+        details: 'Vitest + Testing Library. Tests de render, comportamiento y formularios. Mock compartido de Framer Motion para evitar duplicación entre specs.',
+        icon: <FaCheckCircle />,
+        badge: 'QUALITY FIRST'
+    },
+    {
+        num: '02',
+        title: 'Arquitectura',
+        details: 'Estructura feature-based, custom hooks, estado global con Zustand/Context, separación entre lógica de negocio y UI. Componentes reutilizables y modulares.',
+        icon: <FaCubes />
+    },
+    {
+        num: '03',
+        title: 'Performance',
+        details: 'Lazy routes con React.lazy, imágenes WebP con picture element, font preloading, preload="none" en vídeos y lazy loading nativo. Lighthouse 95+.',
+        icon: <FaBolt />
+    },
+    {
+        num: '04',
+        title: 'Code Quality',
+        details: 'TypeScript estricto, ESLint con reglas personalizadas, flujos de Git con ramas y PRs, despliegue continuo en Netlify. El código se mantiene limpio por convención, no por supervisión.',
+        icon: <FaWrench />
+    },
+    {
+        num: '05',
+        title: 'Accesibilidad',
+        details: 'Skip-to-content, focus traps en modales y menús, aria-labels descriptivos, roles ARIA, respeto a prefers-reduced-motion. Teclado navegable.',
+        icon: <FaUniversalAccess />
+    },
+    {
+        num: '06',
+        title: 'Despliegue',
+        details: 'Netlify con CI/CD, optimización de build automática, SEO con schema.org y Open Graph, sitemap, meta descriptions y estructura semántica.',
+        icon: <FaRocket />
+    }
 ];

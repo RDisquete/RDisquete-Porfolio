@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 import { useForm } from "@formspree/react";
 
-const ACCENT_COLOR = "#681f1d";
+const ACCENT_COLOR = "#8e2b27";
 const CARD_LIGHT = "#ffffff";
 const BACKGROUND_SECUNDARY = "#e5dfbc";
 

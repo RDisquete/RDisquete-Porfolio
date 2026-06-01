@@ -1,14 +1,13 @@
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-
-const Home = lazy(() => import("./pages/Home"));
-const Conoceme = lazy(() => import("./pages/Conoceme"));
-const Proyectos = lazy(() => import("./pages/Proyectos"));
-const Contacto = lazy(() => import("./pages/Contacto"));
+import Home from "./pages/Home";
+import Conoceme from "./pages/Conoceme";
+import Proyectos from "./pages/Proyectos";
+import Contacto from "./pages/Contacto";
 
 import { useVinyl } from "./hooks/useVinyl";
 
@@ -34,15 +33,13 @@ export default function App() {
         <ScrollToTop />
         <Header />
         <main id="main-content" className="relative z-10 flex-1">
-          <Suspense fallback={<div className="bg-[#171717] min-h-screen flex items-center justify-center"><span className="text-[#cdc69c] font-mono text-sm animate-pulse">Cargando...</span></div>}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<Conoceme />} />
-              <Route path="/projects" element={<Proyectos />} />
-              <Route path="/contact" element={<Contacto />} />
-              <Route path="*" element={<Home />} />
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<Conoceme />} />
+            <Route path="/projects" element={<Proyectos />} />
+            <Route path="/contact" element={<Contacto />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
         </main>
 
         <Footer />

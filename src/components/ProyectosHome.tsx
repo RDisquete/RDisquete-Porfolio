@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { FaPlay, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // --- TIPOS ---
 interface Project {
@@ -37,6 +38,7 @@ const modalPanel: Variants = {
 
 // --- MODAL ---
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  const { t } = useTranslation();
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = "hidden";
@@ -75,7 +77,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         <div className="p-8 md:w-2/5 space-y-6 text-black relative flex flex-col">
           <button
             onClick={onClose}
-            aria-label="Cerrar modal"
+            aria-label={t("proyectosHome.aria.closeModal")}
             className="absolute top-4 right-4 text-xl hover:text-[#8e2b27] transition"
           >
             ✕
@@ -87,14 +89,14 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
           {project.context && (
             <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">Contexto</h3>
+              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">{t("proyectosHome.contexto")}</h3>
               <p className="text-xs font-mono text-black/80">{project.context}</p>
             </div>
           )}
 
           {project.solution && (
             <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-2">Solución</h3>
+              <h3 className="text-[10px] font-black uppercase text-black/40 mb-2">{t("proyectosHome.solucion")}</h3>
               <ul className="text-xs font-mono space-y-1">
                 {project.solution.map((item, i) => (
                   <li key={i}>• {item}</li>
@@ -103,21 +105,21 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </div>
           )}{project.problem && (
             <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">Problema</h3>
+              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">{t("proyectosHome.problema")}</h3>
               <p className="text-xs font-mono text-black/80">{project.problem}</p>
             </div>
           )}
           
           {project.result && (
             <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">Resultado</h3>
+              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">{t("proyectosHome.resultado")}</h3>
               <p className="text-xs font-mono text-black/80">{project.result}</p>
             </div>
           )}
           
           {project.impact && (
             <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">Impacto</h3>
+              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">{t("proyectosHome.impacto")}</h3>
               <p className="text-xs font-mono text-black/80">{project.impact}</p>
             </div>
           )}
@@ -139,7 +141,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               rel="noreferrer"
               className="w-full text-center bg-[#8e2b27] text-white py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-black transition"
             >
-              Ver proyecto
+              {t("proyectosHome.verProyecto")}
             </a>
             {project.github && (
               <a
@@ -148,7 +150,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 rel="noreferrer"
                 className="w-full text-center border-2 border-black text-black py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-black hover:text-white transition"
               >
-                Ver código
+                {t("proyectosHome.verCodigo")}
               </a>
             )}
             {project.apkUrl && (
@@ -157,7 +159,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 target="_blank" rel="noreferrer"
                 className="w-full text-center border-2 border-[#8e2b27] text-[#8e2b27] py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-[#8e2b27] hover:text-white transition"
               >
-                Descargar APK
+                {t("proyectosHome.descargarApk")}
               </a>
             )}
           </div>
@@ -205,7 +207,6 @@ interface ProjectTrackProps {
 const ProjectTrack = ({ project, index, featured, onHoverStart, onSelect }: ProjectTrackProps) => {
   const trackNumber = String(index + 1).padStart(2, "0");
 
-  // ── FEATURED: igual que un track normal pero número y título más grandes ──
   if (featured) {
     return (
       <motion.div
@@ -266,6 +267,7 @@ const ProjectTrack = ({ project, index, featured, onHoverStart, onSelect }: Proj
 
 // --- COMPONENTE PRINCIPAL ---
 export default function ProyectosHome({ projects }: { projects: Project[] }) {
+  const { t } = useTranslation();
   const [hoveredProject, setHoveredProject] = useState<Project | null>(
     projects?.[0] ?? null
   );
@@ -297,7 +299,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
         <div className="w-full lg:w-1/2 flex flex-col justify-center border-l border-[#8e2b27]/30 pl-6 md:pl-8 lg:h-full lg:py-12">
           <header className="mb-8">
             <span className="font-mono text-[9px] tracking-[0.5em] text-[#8e2b27] uppercase font-bold block mb-2">
-              Side_B // Archive
+              {t("proyectosHome.sideBArchive")}
             </span>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#cdc69c] uppercase tracking-tighter leading-[0.85]">
               SELECTED <br />
@@ -395,7 +397,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                         onClick={(e) => e.stopPropagation()}
                         className="flex-1 text-center bg-black text-[#cdc69c] py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-[#8e2b27] transition-colors"
                       >
-                        Ver proyecto
+                        {t("proyectosHome.verProyecto")}
                       </a>
                     )}
                     {hoveredProject?.github && (
@@ -406,7 +408,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                         onClick={(e) => e.stopPropagation()}
                         className="flex-1 text-center border border-black text-black py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-black hover:text-[#cdc69c] transition-colors"
                       >
-                        Código
+                        {t("proyectosHome.codigo")}
                       </a>
                     )}
                     {hoveredProject?.apkUrl && (

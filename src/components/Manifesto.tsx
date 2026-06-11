@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function Manifesto() {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const [cafeCount, setCafeCount] = useState(10);
@@ -69,18 +71,18 @@ export default function Manifesto() {
           <div className="text-base leading-snug md:text-lg font-mono">
             <div>
               <span className="text-[#8e2b27]">if</span> (
-              <span className="font-bold uppercase">soloEsVisual</span>)
+              <span className="font-bold uppercase">{t("manifesto.soloEsVisual")}</span>)
               <span className="opacity-70">{" {"}</span>
             </div>
 
             <p className="ml-4 italic opacity-40">
-              // falta estructura
+              {t("manifesto.faltaEstructura")}
             </p>
 
             <div className="ml-4">
               console.log("
               <span className="text-xl font-bold uppercase">
-                construir mejor
+                {t("manifesto.construirMejor")}
               </span>
               ");
             </div>
@@ -92,7 +94,7 @@ export default function Manifesto() {
             </div>
 
             <p className="ml-4 text-2xl uppercase font-bold text-[#8e2b27]">
-              ahora tiene sentido
+              {t("manifesto.ahoraTieneSentido")}
             </p>
 
             <p className="opacity-70">{"}"}</p>
@@ -185,7 +187,7 @@ export default function Manifesto() {
                 <span className="opacity-80">focus:</span>
 
                 <span className="ml-2 text-xl font-black md:text-2xl">
-                  "PRODUCTO · UX · FRONTEND"
+                  {t("manifesto.productoUxFrontend")}
                 </span>
               </div>
 

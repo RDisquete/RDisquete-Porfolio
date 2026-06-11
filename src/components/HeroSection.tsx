@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, type Variants, useReducedMotion } from "framer-motion";
 import { FaInstagram, FaWhatsapp, FaEnvelope, FaLinkedin, FaFileDownload, FaGithub } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 function useOrientation() {
   const [isLandscape, setIsLandscape] = useState(
@@ -19,12 +20,12 @@ function useOrientation() {
 }
 
 const socials = [
-  { label: "Instagram", url: "https://www.instagram.com/rdisquete/", aria: "Visitar mi perfil de Instagram" },
-  { label: "WhatsApp", url: "https://wa.me/+34648791998", aria: "Contactar por WhatsApp" },
-  { label: "Email", url: "mailto:rafael.doradozamoro@gmail.com", aria: "Enviar un correo electrónico" },
-  { label: "LinkedIn", url: "https://www.linkedin.com/in/rafael-dorado-zamoro/", aria: "Ver mi perfil profesional en LinkedIn" },
-  { label: "Descargar CV", url: "/images/CV_Rafael_Dorado_Zamoro.pdf", download: true, aria: "Descargar currículum vitae en PDF" },
-  { label: "GitHub", url: "https://github.com/RDisquete", aria: "Ver mis proyectos en GitHub" },
+  { label: "Instagram", url: "https://www.instagram.com/rdisquete/", key: "instagram" },
+  { label: "WhatsApp", url: "https://wa.me/+34648791998", key: "whatsapp" },
+  { label: "Email", url: "mailto:rafael.doradozamoro@gmail.com", key: "email" },
+  { label: "LinkedIn", url: "https://www.linkedin.com/in/rafael-dorado-zamoro/", key: "linkedin" },
+  { label: "Descargar CV", url: "/images/CV_Rafael_Dorado_Zamoro.pdf", download: true, key: "cv" },
+  { label: "GitHub", url: "https://github.com/RDisquete", key: "github" },
 ];
 
 const frontendSlideIn: Variants = {
@@ -56,6 +57,7 @@ const renderIcon = (label: string) => {
 };
 
 function HeroMobile() {
+  const { t } = useTranslation();
   const isLandscape = useOrientation();
   const nameSize = isLandscape ? "11vw" : "23vw";
   const rdSize = isLandscape ? "6vw" : "13vw";
@@ -150,10 +152,10 @@ function HeroMobile() {
         </motion.div>
       )}
 
-      <nav className="absolute bottom-1 left-0 w-full z-40 flex justify-center" aria-label="Redes sociales">
+      <nav className="absolute bottom-1 left-0 w-full z-40 flex justify-center" aria-label={t("hero.aria.social")}>
         <div className="flex space-x-5">
           {socials.map((s) => (
-            <a key={s.label} href={s.url} target="_blank" rel="noreferrer" aria-label={s.aria}
+            <a key={s.label} href={s.url} target="_blank" rel="noreferrer" aria-label={t(`hero.aria.${s.key}`)}
               className="text-[#cdc69c] hover:text-[#8e2b27] transition-colors">
               {renderIcon(s.label)}
             </a>
@@ -165,6 +167,7 @@ function HeroMobile() {
 }
 
 function HeroDesktop() {
+  const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
   return (
     <section className="relative w-full h-screen text-[#cdc69c] overflow-hidden border-8 border-[#bbb88c] bg-neutral-900">
@@ -239,10 +242,10 @@ function HeroDesktop() {
         </p>
       </motion.div>
 
-      <nav className="absolute bottom-4 left-0 w-full z-[110] px-8 flex justify-center" aria-label="Redes sociales">
+      <nav className="absolute bottom-4 left-0 w-full z-[110] px-8 flex justify-center" aria-label={t("hero.aria.social")}>
         <div className="flex space-x-6">
           {socials.map((s) => (
-            <a key={s.label} href={s.url} target="_blank" rel="noreferrer" aria-label={s.aria}
+            <a key={s.label} href={s.url} target="_blank" rel="noreferrer" aria-label={t(`hero.aria.${s.key}`)}
               className="text-[#cdc69c] hover:text-[#8e2b27] transition-colors">
               {renderIcon(s.label)}
             </a>

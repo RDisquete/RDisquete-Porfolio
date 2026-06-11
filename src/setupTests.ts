@@ -1,6 +1,26 @@
 import { vi } from 'vitest';
 import '@testing-library/jest-dom';
 import React from 'react';
+import es from './i18n/es.json';
+
+vi.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const keys = key.split('.');
+      let value: unknown = es;
+      for (const k of keys) {
+        if (value && typeof value === 'object' && k in value) {
+          value = (value as Record<string, unknown>)[k];
+        } else {
+          return key;
+        }
+      }
+      return typeof value === 'string' ? value : key;
+    },
+    i18n: { language: 'es', changeLanguage: vi.fn() },
+  }),
+  Trans: ({ children }: { children: React.ReactNode }) => React.createElement(React.Fragment, null, children),
+}));
 
 window.IntersectionObserver = vi.fn().mockImplementation(() => ({
   observe: vi.fn(),

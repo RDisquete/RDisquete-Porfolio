@@ -2,6 +2,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { useMemo, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   FaLinkedin,
   FaInstagram,
@@ -42,6 +43,7 @@ const sectionVariants: Variants = {
 };
 
 export default function Contacto() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   
   const formKey = import.meta.env.VITE_FORMSPREE_KEY;
@@ -51,13 +53,7 @@ export default function Contacto() {
   const [formIteration, setFormIteration] = useState(0);
   const [index, setIndex] = useState(0);
 
-  const phrases = useMemo(() => [
-    "Me puedes contar tu idea, o simplemente decirme hola 👋",
-    "Un formulario nunca muerde.",
-    "¿Tienes dudas? ¡Pregúntame sin miedo!",
-    "Aquí empieza todo gran proyecto…",
-    "Respondo rápido, prometido."
-  ], []);
+  const phrases = useMemo(() => t("contacto.phrases", { returnObjects: true }) as string[], [t]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -171,19 +167,19 @@ export default function Contacto() {
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div className="border-b-2 border-black/10 focus-within:border-[#8e2b27] transition-all">
                   <label htmlFor="nombre" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">Producer_Name</label>
-                  <input type="text" id="nombre" name="nombre" placeholder="TU NOMBRE..." required
+                  <input type="text" id="nombre" name="nombre" placeholder={t("contacto.placeholder.nombre")} required
                     className="w-full py-1 font-mono text-base text-black uppercase bg-transparent outline-none placeholder:text-black/20" />
                 </div>
                 <div className="border-b-2 border-black/10 focus-within:border-[#8e2b27] transition-all">
                   <label htmlFor="email" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">Return_Path</label>
-                  <input type="email" id="email" name="email" placeholder="EMAIL..." required
+                  <input type="email" id="email" name="email" placeholder={t("contacto.placeholder.email")} required
                     className="w-full py-1 font-mono text-base text-black uppercase bg-transparent outline-none placeholder:text-black/20" />
                 </div>
               </div>
 
               <div className="border-b-2 border-black/10 focus-within:border-[#8e2b27] transition-all">
                 <label htmlFor="mensaje" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">Project_Brief</label>
-                <textarea id="mensaje" name="mensaje" placeholder="ESCRIBE TU IDEA AQUÍ..." required
+                <textarea id="mensaje" name="mensaje" placeholder={t("contacto.placeholder.mensaje")} required
                   className="w-full bg-transparent py-1 font-mono text-base outline-none min-h-[100px] resize-none text-black placeholder:text-black/20" />
               </div>
 
@@ -205,7 +201,7 @@ export default function Contacto() {
                         {!formKey ? "CONFIG_REQUIRED" : state.submitting ? "Sending Signal..." : "Ready to Send?"}
                       </span>
                       <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-black group-hover:text-[#8e2b27] transition-colors">
-                        {!formKey ? "SYSTEM_OFF" : state.submitting ? "ENVIANDO..." : "PUSH_TO_START"}
+                        {!formKey ? "SYSTEM_OFF" : state.submitting ? t("contacto.enviando") : "PUSH_TO_START"}
                       </span>
                     </div>
                   </motion.div>
@@ -236,7 +232,7 @@ export default function Contacto() {
           <div className="flex gap-8">
             {socialLinks.map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                aria-label={`Visitar mi perfil de ${s.label}`}
+                aria-label={t("contacto.aria.profile", { label: s.label })}
                 className="text-[#e5dfbc] hover:text-white transition-all hover:-translate-y-1 text-2xl">
                 <s.icon aria-hidden="true" />
               </a>
@@ -261,13 +257,13 @@ export default function Contacto() {
           <button
             onClick={() => navigate('/')}
             className="flex items-center gap-4 group w-fit mt-12 mb-8 border-none outline-none cursor-pointer bg-transparent"
-            aria-label="Volver a la página principal"
+            aria-label={t("contacto.aria.home")}
           >
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#cdc69c] group-hover:bg-[#cdc69c] transition-all duration-300">
               <FaArrowRight className="w-4 h-4 text-[#cdc69c] rotate-[180deg] group-hover:text-[#681f1d] transition-colors" />
             </div>
             <span className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#cdc69c] group-hover:text-white transition-colors">
-              RETURN_TO_HOME
+              {t("contacto.returnHome")}
             </span>
           </button>
         </footer>

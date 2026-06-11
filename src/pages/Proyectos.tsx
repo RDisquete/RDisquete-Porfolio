@@ -2,7 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
-import { PROJECTS, type Proyecto } from "../data/projectsData";
+import { useTranslation } from "react-i18next";
+import { type Proyecto } from "../data/projectsData";
+import { useTranslatedProjects } from "../hooks/useTranslatedProjects";
 import ProjectCard from "../components/ProjectCard";
 import ProjectModal from "../components/ProjectModal";
 
@@ -15,6 +17,8 @@ const TEXTURE_URL = "/images/texturas/paperproject.webp";
 const TEXTURE_MOBILE_URL = "/images/texturas/paperproject-mobile.webp";
 
 export default function Proyectos() {
+    const { t } = useTranslation();
+    const PROJECTS = useTranslatedProjects();
     const [selected, setSelected] = useState<Proyecto | null>(null);
     const [filter, setFilter] = useState('ALL');
 
@@ -87,7 +91,7 @@ export default function Proyectos() {
                             <div className="flex items-center justify-center w-10 h-10 border-2 border-black rounded-full group-hover:bg-black transition-colors">
                                 <FaArrowRight className="w-4 h-4 text-black group-hover:text-[#cdc69c] transition-colors" />
                             </div>
-                            <span className="text-xl md:text-3xl font-black uppercase tracking-tighter text-[#8e2b27] group-hover:text-black">¿GRABAMOS EL PRÓXIMO HIT?</span>
+                            <span className="text-xl md:text-3xl font-black uppercase tracking-tighter text-[#8e2b27] group-hover:text-black">{t("proyectos.cta")}</span>
                         </motion.div>
                     </Link>
                 </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, type Variants } from "framer-motion";
+import { useTranslation, Trans } from "react-i18next";
 import {
     FaQuoteLeft, FaQuoteRight, FaInstagram, FaWhatsapp, FaLinkedin, FaFileDownload, FaGithub,
     FaRegPlayCircle, FaReact, FaCheckCircle, FaBolt, FaCubes, FaWrench, FaUniversalAccess, FaRocket,
@@ -122,6 +123,48 @@ const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON,
 );
 
 export default function Conoceme() {
+    const { t } = useTranslation();
+
+    const skillTracks = React.useMemo(() => [
+        { num: '01', title: t("conoceme.skills.01.title"), subtitle: t("conoceme.skills.01.subtitle"), details: t("conoceme.skills.01.details"), isPlatinum: true, icon: <FaReact /> },
+        { num: '02', title: t("conoceme.skills.02.title"), subtitle: t("conoceme.skills.02.subtitle"), details: t("conoceme.skills.02.details"), isPlatinum: true, icon: <SiTailwindcss /> },
+        { num: '03', title: t("conoceme.skills.03.title"), subtitle: t("conoceme.skills.03.subtitle"), details: t("conoceme.skills.03.details"), icon: <SiTypescript /> },
+        { num: '04', title: t("conoceme.skills.04.title"), subtitle: t("conoceme.skills.04.subtitle"), details: t("conoceme.skills.04.details") },
+        { num: '05', title: t("conoceme.skills.05.title"), subtitle: t("conoceme.skills.05.subtitle"), details: t("conoceme.skills.05.details") },
+        { num: '06', title: t("conoceme.skills.06.title"), subtitle: t("conoceme.skills.06.subtitle"), details: t("conoceme.skills.06.details"), icon: <SiFramer /> },
+        { num: '07', title: t("conoceme.skills.07.title"), subtitle: t("conoceme.skills.07.subtitle"), details: t("conoceme.skills.07.details") },
+    ], [t]);
+
+    const experienciaData = React.useMemo(() => [
+        { empresa: t("conoceme.experiencia.00.empresa"), puesto: t("conoceme.experiencia.00.puesto"), fecha: t("conoceme.experiencia.00.fecha"), resumen: t("conoceme.experiencia.00.resumen"), detalles: t("conoceme.experiencia.00.detalles") },
+        { empresa: t("conoceme.experiencia.01.empresa"), puesto: t("conoceme.experiencia.01.puesto"), fecha: t("conoceme.experiencia.01.fecha"), resumen: t("conoceme.experiencia.01.resumen"), detalles: t("conoceme.experiencia.01.detalles") },
+        { empresa: t("conoceme.experiencia.02.empresa"), puesto: t("conoceme.experiencia.02.puesto"), fecha: t("conoceme.experiencia.02.fecha"), resumen: t("conoceme.experiencia.02.resumen"), detalles: t("conoceme.experiencia.02.detalles") },
+        { empresa: t("conoceme.experiencia.03.empresa"), puesto: t("conoceme.experiencia.03.puesto"), fecha: t("conoceme.experiencia.03.fecha"), resumen: t("conoceme.experiencia.03.resumen"), detalles: t("conoceme.experiencia.03.detalles") },
+        { empresa: t("conoceme.experiencia.04.empresa"), puesto: t("conoceme.experiencia.04.puesto"), fecha: t("conoceme.experiencia.04.fecha"), resumen: t("conoceme.experiencia.04.resumen"), detalles: t("conoceme.experiencia.04.detalles") },
+    ], [t]);
+
+    const formacionData = React.useMemo(() => [
+        { titulo: t("conoceme.formacion.00.titulo"), centro: t("conoceme.formacion.00.centro"), fecha: t("conoceme.formacion.00.fecha"), resumen: t("conoceme.formacion.00.resumen"), detalles: t("conoceme.formacion.00.detalles") },
+        { titulo: t("conoceme.formacion.01.titulo"), centro: t("conoceme.formacion.01.centro"), fecha: t("conoceme.formacion.01.fecha"), resumen: t("conoceme.formacion.01.resumen"), detalles: t("conoceme.formacion.01.detalles") },
+        { titulo: t("conoceme.formacion.02.titulo"), centro: t("conoceme.formacion.02.centro"), fecha: t("conoceme.formacion.02.fecha"), resumen: t("conoceme.formacion.02.resumen"), detalles: t("conoceme.formacion.02.detalles") },
+        { titulo: t("conoceme.formacion.03.titulo"), centro: t("conoceme.formacion.03.centro"), fecha: t("conoceme.formacion.03.fecha"), resumen: t("conoceme.formacion.03.resumen"), detalles: t("conoceme.formacion.03.detalles") },
+        { titulo: t("conoceme.formacion.04.titulo"), centro: t("conoceme.formacion.04.centro"), fecha: t("conoceme.formacion.04.fecha"), resumen: t("conoceme.formacion.04.resumen"), detalles: t("conoceme.formacion.04.detalles") },
+        { titulo: t("conoceme.formacion.05.titulo"), centro: t("conoceme.formacion.05.centro"), fecha: t("conoceme.formacion.05.fecha"), resumen: t("conoceme.formacion.05.resumen"), detalles: t("conoceme.formacion.05.detalles") },
+        { titulo: t("conoceme.formacion.06.titulo"), centro: t("conoceme.formacion.06.centro"), fecha: t("conoceme.formacion.06.fecha"), resumen: t("conoceme.formacion.06.resumen"), detalles: t("conoceme.formacion.06.detalles") },
+        { titulo: t("conoceme.formacion.07.titulo"), centro: t("conoceme.formacion.07.centro"), fecha: t("conoceme.formacion.07.fecha"), resumen: t("conoceme.formacion.07.resumen"), detalles: t("conoceme.formacion.07.detalles") },
+        { titulo: t("conoceme.formacion.08.titulo"), centro: t("conoceme.formacion.08.centro"), fecha: t("conoceme.formacion.08.fecha"), resumen: t("conoceme.formacion.08.resumen"), detalles: t("conoceme.formacion.08.detalles") },
+        { titulo: t("conoceme.formacion.09.titulo"), centro: t("conoceme.formacion.09.centro"), fecha: t("conoceme.formacion.09.fecha"), resumen: t("conoceme.formacion.09.resumen"), detalles: t("conoceme.formacion.09.detalles") },
+    ], [t]);
+
+    const studioTracks = React.useMemo(() => [
+        { num: '01', title: t("conoceme.studio.01.title"), details: t("conoceme.studio.01.details"), icon: <FaCheckCircle />, badge: t("conoceme.studio.01.badge") },
+        { num: '02', title: t("conoceme.studio.02.title"), details: t("conoceme.studio.02.details"), icon: <FaCubes /> },
+        { num: '03', title: t("conoceme.studio.03.title"), details: t("conoceme.studio.03.details"), icon: <FaBolt /> },
+        { num: '04', title: t("conoceme.studio.04.title"), details: t("conoceme.studio.04.details"), icon: <FaWrench /> },
+        { num: '05', title: t("conoceme.studio.05.title"), details: t("conoceme.studio.05.details"), icon: <FaUniversalAccess /> },
+        { num: '06', title: t("conoceme.studio.06.title"), details: t("conoceme.studio.06.details"), icon: <FaRocket /> },
+    ], [t]);
+
     return (
         <main className="w-full bg-[#171717]">
             <div className={`w-full`}>
@@ -132,7 +175,7 @@ export default function Conoceme() {
                         borderColor: RETRO_CREAM,
                         borderStyle: 'solid',
                         willChange: 'transform, opacity'
-                    }}
+                    }} 
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -153,7 +196,7 @@ export default function Conoceme() {
                                 variants={simpleEntryVariants}
                                 transition={{ delay: 0.3 }}
                             >
-                                README.md
+                                {t("conoceme.title")}
                             </motion.h1>
 
                             <motion.p
@@ -163,11 +206,26 @@ export default function Conoceme() {
                                 transition={{ delay: 0.8 }}
                             >
                                 <FaQuoteLeft className="inline mr-2 text-3xl md:mr-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
-                                Soy <strong className="font-black" style={{ color: RETRO_MAROON }}>Rafa</strong>. Mi enfoque como desarrollador <strong className="font-black" style={{ color: RETRO_MAROON }}>Frontend</strong> es construir interfaces donde el rendimiento y la estética vayan de la mano. Vengo del sector audiovisual, una etapa que me enseñó a cuidar el detalle visual, pero hoy mi prioridad es la <strong className="font-black" style={{ color: RETRO_MAROON }}>solución técnica</strong>. Utilizo herramientas como <strong className="font-black" style={{ color: RETRO_MAROON }}>React y TypeScript</strong> para crear sitios web rápidos, accesibles y con un diseño cuidado. No busco el estándar, sino el equilibrio entre un código limpio y una <strong className="font-black" style={{ color: RETRO_MAROON }}>experiencia de usuario</strong> impecable.
+                                <Trans
+                                  i18nKey="conoceme.introQuote"
+                                  components={{
+                                    c1: <strong className="font-black" style={{ color: RETRO_MAROON }} />,
+                                    c2: <strong className="font-black" style={{ color: RETRO_MAROON }} />,
+                                    c3: <strong className="font-black" style={{ color: RETRO_MAROON }} />,
+                                    c4: <strong className="font-black" style={{ color: RETRO_MAROON }} />,
+                                    c5: <strong className="font-black" style={{ color: RETRO_MAROON }} />,
+                                  }}
+                                >
+                                    <strong className="font-black" style={{ color: RETRO_MAROON }} />
+                                    <strong className="font-black" style={{ color: RETRO_MAROON }} />
+                                    <strong className="font-black" style={{ color: RETRO_MAROON }} />
+                                    <strong className="font-black" style={{ color: RETRO_MAROON }} />
+                                    <strong className="font-black" style={{ color: RETRO_MAROON }} />
+                                </Trans>
                                 <FaQuoteRight className="inline ml-2 text-3xl md:ml-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
                                 <br />
                                 <span className="font-vintage-cursive text-lg md:text-xl font-bold not-italic opacity-70" style={{ color: RETRO_MAROON }}>
-                                    — rdisquete
+                                    {t("conoceme.signature")}
                                 </span>
                             </motion.p>
 
@@ -222,7 +280,7 @@ export default function Conoceme() {
                                 return (
                                     <motion.a
                                         key={key} custom={index} variants={simpleEntryVariants} href={url}
-                                        target="_blank" rel="noopener noreferrer" aria-label={`Visitar perfil de ${key === 'cv' ? 'currículum' : key}`}
+                                        target="_blank" rel="noopener noreferrer" aria-label={t("conoceme.aria.profile")}
                                         className={`transition-colors hover:text-[#b43a31] transform hover:scale-110`}
                                     >
                                         <IconComponent />
@@ -265,21 +323,49 @@ export default function Conoceme() {
                 </picture>
                 <div className="relative z-10 max-w-4xl mx-auto">
                     <h2 className="text-6xl md:text-8xl font-black uppercase mb-12 font-display-impact leading-[0.8] tracking-tighter">
-                        Donde la Creatividad <br />
-                        <span style={{ color: RETRO_MAROON }}>se Une al Código</span>
+                        <Trans
+                          i18nKey="conoceme.passion.heading"
+                          components={{ c1: <span style={{ color: RETRO_MAROON }} /> }}
+                        >
+                            <br />
+                            <span style={{ color: RETRO_MAROON }} />
+                        </Trans>
                     </h2>
 
                     <div className="space-y-8 text-lg md:text-2xl font-mono leading-relaxed text-left border-l-8 border-[#171717] pl-8">
                         <p>
-                            Tras más de diez años en el sector audiovisual, entendí que una interfaz no es solo una imagen, sino un <strong className="font-black">sistema funcional</strong>. Mi trabajo actual consiste en llevar esa exigencia visual al desarrollo <span style={{ color: RETRO_MAROON }} className="font-bold">Frontend</span>.
+                            <Trans
+                              i18nKey="conoceme.passion.p1"
+                              components={{
+                                c1: <strong className="font-black" />,
+                                c2: <span style={{ color: RETRO_MAROON }} className="font-bold" />,
+                              }}
+                            >
+                                <strong className="font-black" />
+                                <span style={{ color: RETRO_MAROON }} className="font-bold" />
+                            </Trans>
                         </p>
 
                         <p>
-                            No veo el código como un cambio de rumbo, sino como la capacidad de <strong className="font-black">construir mis propias herramientas</strong>. He pasado de capturar la realidad con una cámara a programar experiencias interactivas escalables y eficientes.
+                            <Trans
+                              i18nKey="conoceme.passion.p2"
+                              components={{ c1: <strong className="font-black" /> }}
+                            >
+                                <strong className="font-black" />
+                            </Trans>
                         </p>
 
                         <p>
-                            Hoy, mi enfoque es el equilibrio técnico: utilizar <strong style={{ color: RETRO_MAROON }}>React y TypeScript</strong> para crear productos que sean robustos por dentro e impecables por fuera. Busco que el código limpio sea siempre la base de una <strong className="font-black">experiencia de usuario superior</strong>.
+                            <Trans
+                              i18nKey="conoceme.passion.p3"
+                              components={{
+                                c1: <strong style={{ color: RETRO_MAROON }} />,
+                                c2: <strong className="font-black" />,
+                              }}
+                            >
+                                <strong style={{ color: RETRO_MAROON }} />
+                                <strong className="font-black" />
+                            </Trans>
                         </p>
                     </div>
                 </div>
@@ -300,7 +386,7 @@ export default function Conoceme() {
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <div className="flex items-center gap-6 mb-16">
                         <FaRegPlayCircle className="text-7xl text-[#8e2b27] animate-pulse" />
-                        <h2 className="text-6xl font-black tracking-tighter uppercase md:text-8xl font-display-impact">TRACKLIST: Skills</h2>
+                        <h2 className="text-6xl font-black tracking-tighter uppercase md:text-8xl font-display-impact">{t("conoceme.skills.title")}</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
@@ -335,15 +421,23 @@ export default function Conoceme() {
                     <div className="flex items-center gap-6 mb-20">
                         <FaWrench className="text-6xl text-[#8e2b27]" />
                         <div>
-                            <span className="text-[#8e2b27] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2">Behind The Mix</span>
+                            <span className="text-[#8e2b27] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2">{t("conoceme.studio.subtitle")}</span>
                             <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase font-display-impact">
-                                STUDIO <span className="text-[#8e2b27]">SESSIONS</span>
+                                <Trans
+                                  i18nKey="conoceme.studio.title"
+                                  components={{ c1: <span className="text-[#8e2b27]" /> }}
+                                >STUDIO <span className="text-[#8e2b27]">SESSIONS</span></Trans>
                             </h2>
                         </div>
                     </div>
 
                     <p className="max-w-2xl mb-14 font-mono text-sm leading-relaxed opacity-85 border-l-2 border-[#8e2b27] pl-4">
-                        No basta con saber usar las herramientas. Lo que define mi trabajo es <strong className="text-[#cdc69c]">cómo las aplico</strong>: testing, rendimiento, accesibilidad y arquitectura como parte del proceso, no como añadidos.
+                        <Trans
+                          i18nKey="conoceme.studio.intro"
+                          components={{ c1: <strong className="text-[#cdc69c]" /> }}
+                        >
+                            <strong className="text-[#cdc69c]" />
+                        </Trans>
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
@@ -373,18 +467,21 @@ export default function Conoceme() {
 
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <h2 className="absolute -top-16 -left-10 text-[12rem] md:text-[20rem] font-black text-[#8e2b27]/20 font-display-impact select-none uppercase leading-none">
-                        A SIDE
+                        {t("conoceme.experiencia.watermark")}
                     </h2>
 
                     <div className="flex flex-col justify-between gap-4 mb-16 md:flex-row md:items-end">
                         <div>
-                            <span className="text-[#8e2b27] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2">Side A // 33 RPM</span>
+                            <span className="text-[#8e2b27] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2">{t("conoceme.experiencia.subtitle")}</span>
                             <h3 className="text-6xl font-black tracking-tighter uppercase font-display-impact">
-                                Experiencia <span className="text-[#8e2b27]">Laboral</span>
+                                <Trans
+                                  i18nKey="conoceme.experiencia.heading"
+                                  components={{ c1: <span className="text-[#8e2b27]" /> }}
+                                ><span className="text-[#8e2b27]" /></Trans>
                             </h3>
                         </div>
                         <p className="font-mono text-xs opacity-60 max-w-[200px] text-right hidden md:block">
-                            TECHNICAL SKILLS APPLIED IN REAL SCENARIOS
+                            {t("conoceme.experiencia.caption")}
                         </p>
                     </div>
 
@@ -416,19 +513,22 @@ export default function Conoceme() {
 
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <h2 className="absolute -top-16 -right-10 text-[12rem] md:text-[20rem] font-black text-black/20 font-display-impact select-none uppercase leading-none text-right z-0">
-                        B SIDE
+                        {t("conoceme.formacion.watermark")}
                     </h2>
                     <div className="relative z-20 flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b-4 border-[#cdc69c]/30 pb-8">
                         <div>
                             <span className="text-[#cdc69c] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2 opacity-60">
-                                Side B // 45 RPM
+                                {t("conoceme.formacion.subtitle")}
                             </span>
                             <h3 className="text-6xl font-black tracking-tighter uppercase font-display-impact">
-                                Formación <span className="text-white">Académica</span>
+                                <Trans
+                                  i18nKey="conoceme.formacion.heading"
+                                  components={{ c1: <span className="text-white" /> }}
+                                ><span className="text-white" /></Trans>
                             </h3>
                         </div>
                         <p className="font-mono text-xs opacity-60 max-w-[250px] text-right hidden md:block">
-                            CONTINUOUS LEARNING & VERTICAL SPECIALIZATION _
+                            {t("conoceme.formacion.caption")}
                         </p>
                     </div>
 
@@ -452,146 +552,3 @@ export default function Conoceme() {
     );
 }
 
-// --- DATA ---
-const skillTracks = [
-    {
-        num: '01',
-        title: 'React & Next.js',
-        subtitle: 'Platinum Track / Especialidad',
-        details: 'Arquitectura de interfaces de alto rendimiento. Experto en Hooks, Server Components y gestión de estado avanzada.',
-        isPlatinum: true,
-        icon: <FaReact />
-
-    },
-    {
-        num: '02',
-        title: 'Tailwind CSS',
-        subtitle: 'Platinum Track / Diseño Atómico',
-        details: 'Maquetación ultra-rápida y sistemas de diseño escalables. Control total sobre el layout y la consistencia visual.',
-        isPlatinum: true,
-        icon: <SiTailwindcss />
-    },
-    {
-        num: '03',
-        title: 'TypeScript',
-        subtitle: 'Gold Track',
-        details: 'Desarrollo robusto con tipado estricto. Código limpio, mantenible y profesional.',
-        icon: <SiTypescript />
-    },
-    {
-        num: '04',
-        title: 'Ecosistema Frontend',
-        subtitle: 'JS ES6+ • HTML5 • CSS3',
-        details: 'Sólida base técnica en lógica de programación, semántica web y accesibilidad profesional.',
-    },
-    {
-        num: '05',
-        title: 'UI/UX Visual Eye',
-        subtitle: 'Creative Vision',
-        details: 'Criterio estético heredado de la fotografía: composición, jerarquía visual y psicología del color aplicada a la web.',
-    },
-    {
-        num: '06',
-        title: 'Framer Motion',
-        subtitle: 'Interacciones',
-        details: 'Micro-animaciones y coreografías visuales que elevan la experiencia de usuario.',
-        icon: <SiFramer />
-    },
-    {
-        num: '07',
-        title: 'Angular & Otras Tecnologías',
-        subtitle: 'B-Side',
-        details: 'Conocimientos de Angular para proyectos modulares, además de herramientas como WordPress, Git y despliegue en Netlify.',
-    }
-];
-
-const experienciaData = [
-    {
-        empresa: "Adv Estudio",
-        puesto: "Frontend Developer & Audiovisual Creator",
-        fecha: "2024 - 2026",
-        resumen: "Desarrollo de interfaces dinámicas en React y digitalización de procesos mediante soluciones web personalizadas.",
-        detalles: "Liderazgo técnico en proyectos como 'Armario Escénico', implementando arquitecturas de filtrado complejo y persistencia de datos. Desarrollo de componentes escalables priorizando el rendimiento y la narrativa visual de alto impacto."
-    },
-    {
-        empresa: "Apple Mecanorba",
-        puesto: "Asesor Comercial de Productos Apple",
-        fecha: "May. 2024 - Sep. 2024",
-        resumen: "Especialista en el ecosistema Apple, asesorando sobre hardware y flujos de trabajo técnicos para perfiles creativos.",
-        detalles: "Resolución de flujos técnicos críticos y optimización de entornos de trabajo basados en macOS e iOS. Consultoría experta en la integración de soluciones tecnológicas para profesionales del sector multimedia."
-    },
-    {
-        empresa: "P.D. Fotógrafos",
-        puesto: "Fotógrafo y Editor de Vídeo",
-        fecha: "2012 - 2023",
-        resumen: "Dirección de producción visual y campañas digitales durante más de una década.",
-        detalles: "Responsable de la narrativa visual y postproducción de activos digitales. Mi etapa en este estudio forjó mi capacidad para entender la jerarquía visual y el detalle estético que hoy aplico al desarrollo de interfaces."
-    },
-    {
-        empresa: "Gestor.Ex",
-        puesto: "Técnico de Sonido y Docente",
-        fecha: "2014",
-        resumen: "Ingeniería de sonido en directo para Radio Marca y formación técnica en producción audiovisual.",
-        detalles: "Operación de sistemas de audio complejos y formación técnica en flujos de trabajo de producción sonora. Una experiencia clave para mi comprensión actual del procesamiento de señales (Web Audio API)."
-    },
-    {
-        empresa: "Uveauve",
-        puesto: "Auxiliar de Vídeo y Sonido",
-        fecha: "2011",
-        resumen: "Soporte técnico operativo en eventos y retransmisiones multimedia en directo.",
-        detalles: "Montaje de infraestructura técnica y asistencia en control de señal. Inicio de mi trayectoria técnica en entornos de alta presión y flujos de trabajo multimedia."
-    },
-];
-
-const formacionData = [
-    { titulo: "Desarrollo de 0 a producción", centro: "Big School", fecha: "2026", resumen: "Desarrollo de aplicaciones de 0 a producción con IA.", detalles: "Copilotos, Prompt Engineering, Docker, CI/CD y Cloud." },
-    { titulo: "Certificado de IA para Desarrolladores", centro: "Big School", fecha: "2025", resumen: "Diseño prompts técnicos y automatización.", detalles: "" },
-    { titulo: "Maestría en JavaScript", centro: "Udemy", fecha: "2025", resumen: "Fundamentos sólidos y sintaxis moderna.", detalles: "Manejo avanzado de asincronía." },
-    { titulo: "React y TypeScript", centro: "Udemy", fecha: "2024", resumen: "Zustand, React Query y Next.js.", detalles: "" },
-    { titulo: "Master en JavaScript", centro: "Udemy", fecha: "2024", resumen: "jQuery, Angular y NodeJS.", detalles: "" },
-    { titulo: "Front End Libraries", centro: "FreeCodeCamp", fecha: "2023", resumen: "Certificación en frameworks modernos.", detalles: "" },
-    { titulo: "JavaScript Algorithms", centro: "FreeCodeCamp", fecha: "2023", resumen: "Estructuras de datos y algoritmos.", detalles: "" },
-    { titulo: "Responsive Web Design", centro: "FreeCodeCamp", fecha: "2023", resumen: "Diseño web adaptable.", detalles: "" },
-    { titulo: "Postgrado Full Stack", centro: "Euroinnova", fecha: "2023", resumen: "HTML, CSS, JS, PHP y MySQL.", detalles: "" },
-    { titulo: "Certificado Multimedia", centro: "Sexpe", fecha: "2021", resumen: "Creación de productos interactivos.", detalles: "" },
-];
-
-const studioTracks = [
-    {
-        num: '01',
-        title: 'Testing',
-        details: 'Vitest + Testing Library. Tests de render, comportamiento y formularios. Mock compartido de Framer Motion para evitar duplicación entre specs.',
-        icon: <FaCheckCircle />,
-        badge: 'QUALITY FIRST'
-    },
-    {
-        num: '02',
-        title: 'Arquitectura',
-        details: 'Estructura feature-based, custom hooks, estado global con Zustand/Context, separación entre lógica de negocio y UI. Componentes reutilizables y modulares.',
-        icon: <FaCubes />
-    },
-    {
-        num: '03',
-        title: 'Performance',
-        details: 'Lazy routes con React.lazy, imágenes WebP con picture element, font preloading, preload="none" en vídeos y lazy loading nativo. Lighthouse 95+.',
-        icon: <FaBolt />
-    },
-    {
-        num: '04',
-        title: 'Code Quality',
-        details: 'TypeScript estricto, ESLint con reglas personalizadas, flujos de Git con ramas y PRs, despliegue continuo en Netlify. El código se mantiene limpio por convención, no por supervisión.',
-        icon: <FaWrench />
-    },
-    {
-        num: '05',
-        title: 'Accesibilidad',
-        details: 'Skip-to-content, focus traps en modales y menús, aria-labels descriptivos, roles ARIA, respeto a prefers-reduced-motion. Teclado navegable.',
-        icon: <FaUniversalAccess />
-    },
-    {
-        num: '06',
-        title: 'Despliegue',
-        details: 'Netlify con CI/CD, optimización de build automática, SEO con schema.org y Open Graph, sitemap, meta descriptions y estructura semántica.',
-        icon: <FaRocket />
-    }
-];

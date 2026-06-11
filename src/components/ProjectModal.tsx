@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import type { Proyecto } from "../data/projectsData";
+import { useTranslation } from "react-i18next";
 
 export default function ProjectModal({ project, onClose }: { project: Proyecto, onClose: () => void }) {
+  const { t } = useTranslation();
     return (
         <motion.div
             className="fixed inset-0 bg-black/95 flex items-start justify-center z-[9999] overflow-y-auto px-4 py-8"
@@ -31,7 +33,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                 <div className="p-6 md:p-8 md:w-2/5 space-y-5 text-black relative flex flex-col">
                     <button
                         onClick={onClose}
-                        aria-label="Cerrar modal"
+                        aria-label={t("projectModal.aria.closeModal")}
                         className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-black text-white text-sm font-bold hover:bg-[#8e2b27] transition z-20"
                     >
                         ✕
@@ -57,17 +59,17 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                     </p>
 
                     <div className="space-y-1">
-                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">Contexto</h3>
+                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">{t("projectModal.contexto")}</h3>
                         <p className="text-xs font-mono text-black/80 leading-relaxed">{project.context}</p>
                     </div>
 
                     <div className="space-y-1">
-                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">Problema</h3>
+                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">{t("projectModal.problema")}</h3>
                         <p className="text-xs font-mono text-black/80 leading-relaxed">{project.problem}</p>
                     </div>
 
                     <div className="space-y-1">
-                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">Solución</h3>
+                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">{t("projectModal.solucion")}</h3>
                         <ul className="text-xs font-mono space-y-1 text-black/80">
                             {project.solution.map((item, i) => (
                                 <li key={i} className="flex gap-2">
@@ -79,7 +81,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                     </div>
 
                     <div className="border-t border-black/10 pt-3 space-y-1">
-                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">Resultado</h3>
+                        <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">{t("projectModal.resultado")}</h3>
                         <p className="text-sm font-mono text-black/90 leading-relaxed">{project.result}</p>
                     </div>
 
@@ -97,7 +99,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                                 rel="noreferrer"
                                 className="w-full text-center bg-[#8e2b27] text-white py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-black transition"
                             >
-                                Ver proyecto
+                                {t("projectModal.verProyecto")}
                             </a>
                         )}
                         {project.github && (
@@ -107,7 +109,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                                 rel="noreferrer"
                                 className="w-full text-center border-2 border-black text-black py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-black hover:text-white transition"
                             >
-                                Ver código
+                                {t("projectModal.verCodigo")}
                             </a>
                         )}
                         {project.apkUrl && (
@@ -116,7 +118,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                                 target="_blank" rel="noreferrer"
                                 className="w-full text-center border-2 border-[#8e2b27] text-[#8e2b27] py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-[#8e2b27] hover:text-white transition"
                             >
-                                Descargar APK
+                                {t("projectModal.descargarApk")}
                             </a>
                         )}
                     </div>

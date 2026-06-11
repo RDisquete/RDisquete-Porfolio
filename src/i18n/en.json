@@ -1,0 +1,470 @@
+{
+  "app": {
+    "skipToContent": "Skip to main content"
+  },
+ "header": {
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "aria": {
+    "closeMenu": "Close navigation menu",
+    "mobileMenu": "Mobile menu",
+    "openMenu": "Open navigation menu",
+    "home": "Go to homepage",
+    "nav": "Main navigation"
+  },
+  "alt": {
+    "logo": "RDisquete Logo"
+  }
+},
+  "hero": {
+    "aria": {
+      "instagram": "Visit my Instagram profile",
+      "whatsapp": "Contact via WhatsApp",
+      "email": "Send an email",
+      "linkedin": "View my LinkedIn professional profile",
+      "cv": "Download CV in PDF",
+      "github": "View my projects on GitHub",
+      "social": "Social media"
+    }
+  },
+  "sobremi": {
+    "alt": {
+      "portrait": "Portrait of Rafa Dorado"
+    },
+    "badge": "RAFA DORADO // RDISQUETE",
+    "title": "RAFA<br />DORADO",
+    "subtitle": "Frontend Developer",
+    "p1": "I don't just write code; I build applications designed to last. My approach combines user experience, performance, accessibility, and a solid technical foundation.",
+    "p2": "I specialize in turning ideas into <c1>modern interfaces</c1>: visually refined, technically <c2>robust</c2>, and built to scale without compromising quality.",
+    "level": "LEVEL: UNCONVENTIONAL_CODE",
+    "cta": "Go to contact page",
+    "letsConnect": "Let's connect",
+    "hablemos": "SHALL WE TALK?"
+  },
+  "footer": {
+    "aria": {
+      "contactLinks": "Contact links"
+    },
+    "decorative": "SIDE_A // R.D.Z // 33RPM"
+  },
+  "manifesto": {
+    "soloEsVisual": "onlyVisual",
+    "faltaEstructura": "// missing structure",
+    "construirMejor": "build better",
+    "ahoraTieneSentido": "now it makes sense",
+    "productoUxFrontend": "PRODUCT · UX · FRONTEND"
+  },
+  "proyectosHome": {
+    "aria": {
+      "closeModal": "Close modal"
+    },
+    "contexto": "Context",
+    "solucion": "Solution",
+    "problema": "Problem",
+    "resultado": "Result",
+    "impacto": "Impact",
+    "verProyecto": "View project",
+    "verCodigo": "View code",
+    "descargarApk": "Download APK",
+    "codigo": "Code",
+    "sideBArchive": "Side_B // Archive"
+  },
+  "projectModal": {
+    "aria": {
+      "closeModal": "Close modal"
+    },
+    "contexto": "Context",
+    "problema": "Problem",
+    "solucion": "Solution",
+    "resultado": "Result",
+    "verProyecto": "View project",
+    "verCodigo": "View code",
+    "descargarApk": "Download APK"
+  },
+  "proyectos": {
+    "cta": "SHALL WE RECORD THE NEXT HIT?"
+  },
+  "contacto": {
+    "phrases": [
+      "You can tell me your idea, or just say hi 👋",
+      "A form never bites.",
+      "Got questions? Ask away!",
+      "Every great project starts here…",
+      "I reply fast, promise."
+    ],
+    "placeholder": {
+      "nombre": "YOUR NAME...",
+      "email": "EMAIL...",
+      "mensaje": "WRITE YOUR IDEA HERE..."
+    },
+    "enviando": "SENDING...",
+    "aria": {
+      "profile": "Visit my {{label}} profile",
+      "home": "Back to homepage"
+    },
+    "returnHome": "RETURN_TO_HOME"
+  },
+  "conoceme": {
+    "introQuote": "I'm <c1>Rafa</c1>. My approach as a <c2>Frontend</c2> developer is to build interfaces where performance and aesthetics go hand in hand. I come from the audiovisual industry, a stage that taught me to care about visual detail, but today my priority is the <c3>technical solution</c3>. I use tools like <c4>React and TypeScript</c4> to create fast, accessible websites with a refined design. I don't chase the standard — I seek the balance between clean code and an impeccable <c5>user experience</c5>.",
+    "signature": "— rdisquete",
+    "aria": {
+      "profile": "Visit profile"
+    },
+    "title": "README.md",
+    "passion": {
+      "heading": "Where Creativity <br/><c1>Meets Code</c1>",
+      "p1": "After more than ten years in the audiovisual sector, I understood that an interface is not just an image, but a <c1>functional system</c1>. My current work is about bringing that visual rigor to <c2>Frontend</c2> development.",
+      "p2": "I don't see code as a career change, but as the ability to <c1>build my own tools</c1>. I went from capturing reality with a camera to programming scalable, efficient interactive experiences.",
+      "p3": "Today, my focus is technical balance: using <c1>React and TypeScript</c1> to create products that are robust on the inside and flawless on the outside. I strive for clean code as the foundation of a <c2>superior user experience</c2>."
+    },
+    "skills": {
+      "title": "TRACKLIST: Skills",
+      "01": {
+        "title": "React & Next.js",
+        "subtitle": "Platinum Track / Specialty",
+        "details": "High-performance interface architecture. Expert in Hooks, Server Components, and advanced state management."
+      },
+      "02": {
+        "title": "Tailwind CSS",
+        "subtitle": "Platinum Track / Atomic Design",
+        "details": "Ultra-fast layout and scalable design systems. Full control over layout and visual consistency."
+      },
+      "03": {
+        "title": "TypeScript",
+        "subtitle": "Gold Track",
+        "details": "Robust development with strict typing. Clean, maintainable, professional code."
+      },
+      "04": {
+        "title": "Frontend Ecosystem",
+        "subtitle": "JS ES6+ • HTML5 • CSS3",
+        "details": "Solid technical foundation in programming logic, web semantics, and professional accessibility."
+      },
+      "05": {
+        "title": "UI/UX Visual Eye",
+        "subtitle": "Creative Vision",
+        "details": "Aesthetic sensibility inherited from photography: composition, visual hierarchy, and color psychology applied to the web."
+      },
+      "06": {
+        "title": "Framer Motion",
+        "subtitle": "Interactions",
+        "details": "Micro-animations and visual choreographies that elevate the user experience."
+      },
+      "07": {
+        "title": "Angular & Other Technologies",
+        "subtitle": "B-Side",
+        "details": "Knowledge of Angular for modular projects, plus tools like WordPress, Git, and Netlify deployment."
+      }
+    },
+    "studio": {
+      "subtitle": "Behind The Mix",
+      "title": "STUDIO <c1>SESSIONS</c1>",
+      "intro": "Knowing the tools isn't enough. What defines my work is <c1>how I apply them</c1>: testing, performance, accessibility, and architecture as part of the process, not afterthoughts.",
+      "01": {
+        "title": "Testing",
+        "details": "Vitest + Testing Library. Render, behavior, and form tests. Shared Framer Motion mock to avoid duplication across specs.",
+        "badge": "QUALITY FIRST"
+      },
+      "02": {
+        "title": "Architecture",
+        "details": "Feature-based structure, custom hooks, global state with Zustand/Context, separation of business logic and UI. Reusable modular components."
+      },
+      "03": {
+        "title": "Performance",
+        "details": "Lazy routes with React.lazy, WebP images with picture element, font preloading, preload=\"none\" on videos, native lazy loading. Lighthouse 95+."
+      },
+      "04": {
+        "title": "Code Quality",
+        "details": "Strict TypeScript, ESLint with custom rules, Git workflows with branches and PRs, continuous deployment on Netlify. Code stays clean by convention, not supervision."
+      },
+      "05": {
+        "title": "Accessibility",
+        "details": "Skip-to-content, focus traps in modals and menus, descriptive aria-labels, ARIA roles, prefers-reduced-motion respect. Keyboard navigable."
+      },
+      "06": {
+        "title": "Deployment",
+        "details": "Netlify with CI/CD, automatic build optimization, SEO with schema.org and Open Graph, sitemap, meta descriptions, and semantic structure."
+      }
+    },
+    "experiencia": {
+      "watermark": "A SIDE",
+      "heading": "Work <c1>Experience</c1>",
+      "subtitle": "Side A // 33 RPM",
+      "caption": "TECHNICAL SKILLS APPLIED IN REAL SCENARIOS",
+      "00": {
+        "empresa": "Adv Estudio",
+        "puesto": "Frontend Developer & Audiovisual Creator",
+        "fecha": "2024 - 2026",
+        "resumen": "Development of dynamic interfaces in React and digitization of processes through custom web solutions.",
+        "detalles": "Technical leadership on projects like 'Armario Escénico', implementing complex filtering architectures and data persistence. Development of scalable components prioritizing performance and high-impact visual narrative."
+      },
+      "01": {
+        "empresa": "Apple Mecanorba",
+        "puesto": "Apple Products Sales Advisor",
+        "fecha": "May 2024 - Sep 2024",
+        "resumen": "Specialist in the Apple ecosystem, advising on hardware and technical workflows for creative profiles.",
+        "detalles": "Resolution of critical technical workflows and optimization of macOS/iOS-based work environments. Expert consulting on integrating technology solutions for multimedia professionals."
+      },
+      "02": {
+        "empresa": "P.D. Fotógrafos",
+        "puesto": "Photographer and Video Editor",
+        "fecha": "2012 - 2023",
+        "resumen": "Direction of visual production and digital campaigns for over a decade.",
+        "detalles": "Responsible for visual narrative and post-production of digital assets. My time at this studio forged my ability to understand visual hierarchy and aesthetic detail that I now apply to interface development."
+      },
+      "03": {
+        "empresa": "Gestor.Ex",
+        "puesto": "Sound Technician and Teacher",
+        "fecha": "2014",
+        "resumen": "Live sound engineering for Radio Marca and technical training in audiovisual production.",
+        "detalles": "Operation of complex audio systems and technical training in sound production workflows. A key experience for my current understanding of signal processing (Web Audio API)."
+      },
+      "04": {
+        "empresa": "Uveauve",
+        "puesto": "Video and Sound Assistant",
+        "fecha": "2011",
+        "resumen": "Operational technical support in live multimedia events and broadcasts.",
+        "detalles": "Technical infrastructure setup and signal control assistance. The beginning of my technical career in high-pressure environments and multimedia workflows."
+      }
+    },
+    "formacion": {
+      "watermark": "B SIDE",
+      "heading": "Academic <c1>Education</c1>",
+      "subtitle": "Side B // 45 RPM",
+      "caption": "CONTINUOUS LEARNING & VERTICAL SPECIALIZATION _",
+      "00": {
+        "titulo": "Development from 0 to Production",
+        "centro": "Big School",
+        "fecha": "2026",
+        "resumen": "Application development from scratch to production with AI.",
+        "detalles": "Copilots, Prompt Engineering, Docker, CI/CD, and Cloud."
+      },
+      "01": {
+        "titulo": "AI for Developers Certificate",
+        "centro": "Big School",
+        "fecha": "2025",
+        "resumen": "Technical prompt design and automation.",
+        "detalles": ""
+      },
+      "02": {
+        "titulo": "Mastery in JavaScript",
+        "centro": "Udemy",
+        "fecha": "2025",
+        "resumen": "Solid fundamentals and modern syntax.",
+        "detalles": "Advanced async handling."
+      },
+      "03": {
+        "titulo": "React and TypeScript",
+        "centro": "Udemy",
+        "fecha": "2024",
+        "resumen": "Zustand, React Query, and Next.js.",
+        "detalles": ""
+      },
+      "04": {
+        "titulo": "Master in JavaScript",
+        "centro": "Udemy",
+        "fecha": "2024",
+        "resumen": "jQuery, Angular, and NodeJS.",
+        "detalles": ""
+      },
+      "05": {
+        "titulo": "Front End Libraries",
+        "centro": "FreeCodeCamp",
+        "fecha": "2023",
+        "resumen": "Certification in modern frameworks.",
+        "detalles": ""
+      },
+      "06": {
+        "titulo": "JavaScript Algorithms",
+        "centro": "FreeCodeCamp",
+        "fecha": "2023",
+        "resumen": "Data structures and algorithms.",
+        "detalles": ""
+      },
+      "07": {
+        "titulo": "Responsive Web Design",
+        "centro": "FreeCodeCamp",
+        "fecha": "2023",
+        "resumen": "Adaptive web design.",
+        "detalles": ""
+      },
+      "08": {
+        "titulo": "Full Stack Postgraduate",
+        "centro": "Euroinnova",
+        "fecha": "2023",
+        "resumen": "HTML, CSS, JS, PHP, and MySQL.",
+        "detalles": ""
+      },
+      "09": {
+        "titulo": "Multimedia Certificate",
+        "centro": "Sexpe",
+        "fecha": "2021",
+        "resumen": "Creation of interactive products.",
+        "detalles": ""
+      }
+    }
+  },
+  "projects": {
+    "weddingAlbum": {
+      "title": "Wedding Album System",
+      "desc": "Interactive digital invitation for events that centralizes all information, the couple's story, and a real-time collaborative gallery accessible via QR.",
+      "context": "Project developed for a real wedding with the need to centralize information, manage guests, and share memories without relying on multiple tools.",
+      "problem": "Event information, guest management, and photos were scattered across different channels, creating friction for both the couple and guests.",
+      "solution": [
+        "Digital invitation with all event information",
+        "Direct links to key locations (Google Maps)",
+        "Section with the couple's story",
+        "Gallery where guests can view, upload, and download photos",
+        "Frictionless private area access via QR",
+        "Confirmation form connected to Google Sheets",
+        "Client-side image compression for better performance",
+        "Design optimized for quick mobile use"
+      ],
+      "result": "Guests accessed all information from a single place and shared photos in real time, while the couple managed confirmations automatically without manual processes.",
+      "impact": "Validated in a real environment with non-technical users."
+    },
+    "skyRESERVE": {
+      "title": "skyRESERVE",
+      "desc": "Drone service booking platform (web + mobile app) with authentication, admin panel, and real-time availability.",
+      "context": "Complete web and mobile app system with real Supabase backend. Manages the full drone booking cycle: from a client requesting a flight to the pilot completing the mission. Data persists in the database, authentication protects routes, and roles determine what each user can see.",
+      "problem": "Manual management of drone service bookings caused scheduling confusion, mission overlaps, and lack of control over each operation's status.",
+      "solution": [
+        "Real Supabase backend: auth, database, and Row Level Security",
+        "Role-based authentication: admin sees everything, pilot sees missions, client sees bookings",
+        "Availability calendar with real-time slot locking on booking",
+        "Mission status with transitions: planned → confirmed → in flight → completed",
+        "Global state with Zustand for panel synchronization",
+        "Native mobile app (iOS/Android/Web) with React Native and Expo",
+        "Unit and integration tests with Vitest",
+        "Netlify deployment with optimized build"
+      ],
+      "result": "Production application (web + mobile app) that replaces manual management with a system where the client books online, the admin assigns pilot/drone, and status updates in real time. No emails, no WhatsApp, no confusion.",
+      "impact": "Full-stack architecture with real backend, auth, roles, persistence, and native mobile version — not a tutorial CRUD, but a product with cross-platform business logic."
+    },
+    "thePueblo": {
+      "title": "The Pueblo",
+      "desc": "Visual experience built to support heavy audiovisual content without breaking fluidity or load times.",
+      "context": "Project for an audiovisual production company where content (images and video) is the product. The priority was not adding functionality, but ensuring the experience stayed fast even with heavy assets.",
+      "problem": "High-quality content (video + extensive galleries) quickly degrades performance: high load times, render blocks, and loss of navigation fluidity.",
+      "solution": [
+        "Progressive loading: static image as placeholder before video",
+        "Lazy video loading activated only on interaction",
+        "Separation of visual layers and logic to avoid unnecessary re-renders",
+        "Font optimization to eliminate layout shift",
+        "Manual playback control to avoid unnecessary consumption",
+        "Lightweight animations (CSS/AOS) instead of heavy JS"
+      ],
+      "result": "The website maintains a fluid feel even when handling heavy content, avoiding blocks and reducing perceived load time.",
+      "impact": "Allows showcasing high-quality audiovisual content without sacrificing performance — critical in projects where visuals are the product."
+    },
+    "nor3xtrem": {
+      "title": "Nor3xtrem",
+      "desc": "Real-time consultation platform for a cyclotourism event, optimized to work under high user load and limited connectivity.",
+      "context": "System developed for a large-scale cyclotourism event, where thousands of users simultaneously access critical information during the event.",
+      "problem": "In high-traffic environments with irregular coverage, access to key information (routes, regulations, rankings) had to remain stable, fast, and accessible without relying on optimal connections.",
+      "solution": [
+        "Lightweight SPA architecture with React to minimize overhead",
+        "Optimized build with Vite for minimal load times",
+        "Mobile-first design for on-road use",
+        "High-contrast interface for outdoor visibility",
+        "Modular structure to prevent render blocks",
+        "Smooth animations with Framer Motion without affecting performance"
+      ],
+      "result": "Platform capable of handling traffic spikes in real event conditions, maintaining stable access to critical information at all times.",
+      "impact": "Used in a real high-demand environment, demonstrating reliability under limited connectivity and simultaneous mass usage."
+    },
+    "armarioEscenico": {
+      "title": "Armario Escénico",
+      "desc": "Digital stage costume consultation system that replaces a physical archive, optimizing search and selection of garments for professional use.",
+      "context": "Project developed to digitize a real costume archive used in stage productions, where consultation relied on physical and inefficient systems.",
+      "problem": "Manual inventory management made locating a specific garment require slow searches dependent on memory or physical archive review.",
+      "solution": [
+        "Advanced filtering system by attributes (period, type, material)",
+        "Render optimization with useMemo for large data volumes",
+        "Selection persistence with localStorage for work continuity",
+        "Modular component architecture for catalog scalability",
+        "Mobile-first interface for quick workplace consultation"
+      ],
+      "result": "Transforms a physical archive into an agile consultation tool, significantly reducing the time needed to locate and select costumes in production processes.",
+      "impact": "Converts a physical costume search process into an immediate digital query, streamlining production work and garment selection."
+    },
+    "infraRD": {
+      "title": "Infra.RD",
+      "desc": "Observability system that monitors multiple web services, detecting outages and automatically alerting via email.",
+      "context": "Internal tool for continuously supervising endpoint status. Every 60 seconds it runs health checks against configured services and stores results in Supabase.",
+      "problem": "Without centralized monitoring, a service outage could go unnoticed for hours until a user manually reported it.",
+      "solution": [
+        "Automated health checks every 60 seconds via cron jobs",
+        "Historical latency and status logging in Supabase",
+        "Automatic email alert system for critical failures",
+        "Scenario simulation (OK / DOWN / TIMEOUT) for testing",
+        "Dashboard with quick overview: uptime, average latency, current status",
+        "Decoupled architecture: monitoring engine separate from UI"
+      ],
+      "result": "Detects and notifies incidents in under 60 seconds, eliminating reliance on manual checks and reducing reaction time to failures.",
+      "impact": "Moves from detecting outages via user reports to detecting them automatically before they impact the business."
+    },
+    "matterSound": {
+      "title": "Matter & Sound",
+      "desc": "Real-time audio visualizer that transforms frequencies into generative particle systems on Canvas.",
+      "context": "Experimental project that connects the browser microphone to a visual rendering engine. Audio is processed client-side via the Web Audio API and rendered as particles reacting to rhythm.",
+      "problem": "Processing real-time audio signals and rendering particles on Canvas without blocking React's main thread, while maintaining smooth animation.",
+      "solution": [
+        "Frequency analysis via FFT with Web Audio API",
+        "Particle rendering on HTML5 Canvas outside React's rendering cycle",
+        "useRef to isolate the animation loop from rendering",
+        "Complete separation of audio layer and visual engine",
+        "Memory management to prevent leaks in long sessions"
+      ],
+      "result": "Visualization engine that processes audio in real time and renders dynamic visual structures without perceptible performance drops.",
+      "impact": "Demonstrates mastery of browser APIs below React's level: signal processing and low-level rendering."
+    },
+    "edMovil": {
+      "title": "ED Movil",
+      "desc": "Telecommunications website commissioned by a real client to compare and contract fiber, mobile, and TV services.",
+      "context": "Real commission for a telecommunications provider that needed to replace their old website with a clearer, more direct experience. Goal: users compare, decide, and contact without friction.",
+      "problem": "The old website was losing clients because information was disorganized and the contact process was confusing. Users left without contacting.",
+      "solution": [
+        "Visual comparison structure with highlighted plans and prices",
+        "Contact forms with client-side validation",
+        "Mobile-first design for intensive smartphone use",
+        "Automated tests with Vitest and Testing Library",
+        "CI/CD configured to detect regressions before deployment"
+      ],
+      "result": "Website deployed and in production that the client actively uses to capture leads. Comparison → decision → contact flow reduced to 3 clear steps.",
+      "impact": "Real commission with paying client. The project was evaluated by conversion capability, not technical complexity."
+    },
+    "amMovilRepair": {
+      "title": "AM Movil Repair",
+      "desc": "Technical service website commissioned by a real business to digitize their presence and attract clients.",
+      "context": "Real commission for a mobile repair service with no digital presence. The client needed a website where users could find the location, see what they repair, and contact directly.",
+      "problem": "Without a website, potential customers relied on Google Maps or word of mouth to find the service. Many clients never made contact.",
+      "solution": [
+        "Interactive map with exact business location (Google Maps API)",
+        "Simplified contact form with essential fields",
+        "Responsive design optimized for mobile searches",
+        "Structure focused on a single action: contact",
+        "Fast loading to not lose impatient users"
+      ],
+      "result": "Website deployed at ammovilrepair.com and in active use. The client receives direct contacts through the form without relying on social media.",
+      "impact": "Real commission with own domain. Transforms scattered searches into direct contacts with an interface that doesn't give users time to leave."
+    },
+    "rdisquetePhoto": {
+      "title": "Web RDisquete Photo",
+      "desc": "Personal photography portfolio with galleries of original series and immersive navigation.",
+      "context": "Personal photography portfolio with real, original images. Each series is a different visual project (weddings, portraits, nature) and the interface is designed to fade away and let the image fill the screen.",
+      "problem": "Displaying extensive photo series without the interface competing for attention or disrupting the navigation rhythm between images.",
+      "solution": [
+        "Reusable galleries with keyboard and touch navigation",
+        "Carousels with smooth transitions and manual control",
+        "Pure CSS for photo transition animations",
+        "Lazy image loading for progressive loading",
+        "Minimalist layout eliminating all visual distraction"
+      ],
+      "result": "Deployed and active portfolio that serves as a professional showcase for photographic work, with series organized by project.",
+      "impact": "Combines my audiovisual background with frontend development — demonstrates that I not only write code but understand visual composition and narrative."
+    }
+  }
+}

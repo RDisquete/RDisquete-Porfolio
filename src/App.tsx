@@ -1,5 +1,6 @@
 import { useEffect, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -19,6 +20,7 @@ function CanonicalUpdater() {
 }
 
 export default function App() {
+  const { t } = useTranslation();
   const { startAtmosphere } = useVinyl();
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export default function App() {
       <CanonicalUpdater />
       <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-[#171717]">
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[9999] focus:bg-[#8e2b27] focus:text-white focus:px-4 focus:py-2 focus:top-2 focus:left-2">
-          Saltar al contenido principal
+          {t("app.skipToContent")}
         </a>
         <ScrollToTop />
         <Header />

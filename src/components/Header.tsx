@@ -1,12 +1,15 @@
 import { useEffect, useState, type ReactNode, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const RETRO_DARK = "#171717";
 const RETRO_CREAM = "#cdc69c";
 const RETRO_MAROON = "#8e2b27";
 
 export default function Header() {
+  const { t } = useTranslation();
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -90,14 +93,14 @@ export default function Header() {
               setMenuOpen(false);
               playSfx('relay', 0.2);
             }}
-            aria-label="Cerrar menú de navegación"
+            aria-label={t("header.aria.closeMenu")}
             className="absolute p-2 text-4xl border-4 top-4 right-4"
             style={{ borderColor: RETRO_CREAM }}
           >
             <FaTimes aria-hidden="true" />
           </button>
 
-          <nav aria-label="Menú móvil">
+          <nav aria-label={t("header.aria.mobileMenu")}>
             <ul className="flex flex-col gap-8 text-4xl font-black text-center uppercase">
               <NavLink 
                 to="/about" 
@@ -105,7 +108,7 @@ export default function Header() {
                 onClick={() => playSfx('relay', 0.15)}
                 onHover={() => playSfx('switch', 0.1)} 
               >
-                About
+                {t("header.nav.about")}
               </NavLink>
               <NavLink 
                 to="/projects" 
@@ -113,7 +116,7 @@ export default function Header() {
                 onClick={() => playSfx('relay', 0.15)}
                 onHover={() => playSfx('switch', 0.1)} 
               >
-                Projects
+                {t("header.nav.projects")}
               </NavLink>
               <NavLink 
                 to="/contact" 
@@ -121,10 +124,13 @@ export default function Header() {
                 onClick={() => playSfx('relay', 0.15)}
                 onHover={() => playSfx('switch', 0.1)}
               >
-                Contact
+                {t("header.nav.contact")}
               </NavLink>
             </ul>
           </nav>
+          <div className="mt-8">
+            <LanguageSwitcher mobile/>
+          </div>
         </div>
       )}
 
@@ -144,7 +150,7 @@ export default function Header() {
               setMenuOpen(true);
               playSfx('relay', 0.2);
             }}
-            aria-label="Abrir menú de navegación"
+            aria-label={t("header.aria.openMenu")}
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             className="text-3xl md:hidden"
@@ -155,21 +161,21 @@ export default function Header() {
 
           <Link
             to="/"
-            aria-label="Ir a la página de inicio"
+            aria-label={t("header.aria.home")}
             onClick={() => playSfx('relay', 0.1)}
             onMouseEnter={() => playSfx('switch', 0.1)}
             className="absolute transition-all duration-500 -translate-x-1/2 left-1/2 hover:scale-105 hover:drop-shadow-[0_2px_4px_rgba(205,198,156,0.5)]"
           >
             <img
               src="/Logo rojo claro.svg"
-              alt="Logo RDisquete"
+              alt={t("header.alt.logo")}
               width="100"
               height="100"
               className="w-30 h-30"
             />
           </Link>
 
-          <nav className="items-center hidden gap-6 ml-auto md:flex" aria-label="Navegación principal">
+          <nav className="items-center hidden gap-6 ml-auto md:flex" aria-label={t("header.aria.nav")}>
             <NavLink 
               to="/about" 
               active={location.pathname === "/about"}
@@ -190,10 +196,11 @@ export default function Header() {
               to="/contact" 
               active={location.pathname === "/contact"}
               onClick={() => playSfx('relay', 0.15)}
-              onHover={() => playSfx('switch', 0.1)} 
+              onHover={() => playSfx('switch', 0.1)}
             >
               Contact
             </NavLink>
+            <LanguageSwitcher />
           </nav>
         </div>
       </header>

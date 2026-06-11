@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { FaInstagram, FaLinkedin, FaWhatsapp, FaFileDownload, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 const BG = "#171717";
 const PAPER = "#e5dfbc"; 
 const ACCENT = "#8e2b27";
 
 export default function Footer() {
+  const { t } = useTranslation();
   const [timecode, setTimecode] = useState("00:00:00:00");
 
   useEffect(() => {
@@ -38,7 +40,7 @@ export default function Footer() {
       <div className="absolute flex items-center gap-2 pointer-events-none left-4 bottom-2 opacity-50">
         <div className="w-1 h-3" style={{ backgroundColor: ACCENT }} />
         <span className="text-[8px] font-mono tracking-[0.2em]" style={{ color: PAPER }}>
-          SIDE_A // R.D.Z // 33RPM
+          {t("footer.decorative")}
         </span>
       </div>
 
@@ -50,7 +52,7 @@ export default function Footer() {
           {timecode}
         </span>
       </div>
-      <nav aria-label="Enlaces de contacto" className="z-10">
+      <nav aria-label={t("footer.aria.contactLinks")} className="z-10">
         <div className="flex text-2xl gap-7" style={{ color: PAPER }}>
           {links.map((link, index) => (
             <a

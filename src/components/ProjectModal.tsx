@@ -89,7 +89,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                         </div>
                     )}
 
-                    <div className="flex flex-col gap-2 pt-3 mt-auto">
+                    <div className="flex flex-col gap-2 pt-3 mt-auto pb-4">
                         {project.url && (
                             <a
                                 href={project.url}
@@ -108,6 +108,15 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                                 className="w-full text-center border-2 border-black text-black py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-black hover:text-white transition"
                             >
                                 Ver código
+                            </a>
+                        )}
+                        {project.apkUrl && (
+                            <a
+                                href={project.apkUrl}
+                                target="_blank" rel="noreferrer"
+                                className="w-full text-center border-2 border-[#8e2b27] text-[#8e2b27] py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-[#8e2b27] hover:text-white transition"
+                            >
+                                Descargar APK
                             </a>
                         )}
                     </div>

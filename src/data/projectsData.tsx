@@ -1,7 +1,7 @@
 import React from "react";
 import {
     SiReact, SiTailwindcss, SiTypescript, SiVite, SiFramer,
-    SiHtml5, SiSupabase, SiVitest, SiGooglemaps, SiCss3,
+    SiHtml5, SiSupabase, SiVitest, SiGooglemaps, SiCss3, SiExpo,
 } from "react-icons/si";
 
 export interface Proyecto {
@@ -19,6 +19,7 @@ export interface Proyecto {
     solution: string[];
     result: string;
     impact?: string;
+    apkUrl?: string;
 }
 
 export const PROJECTS: Proyecto[] = [
@@ -52,10 +53,12 @@ export const PROJECTS: Proyecto[] = [
         url: "https://sky-reserve.netlify.app/",
         img: "/images/skyreserve.webp",
         github: "https://github.com/RDisquete/skyReserve",
+        apkUrl: "https://expo.dev/accounts/rdisquete/projects/sky-reserve-mobile/builds/0b78c454-2908-48b9-a726-4b33a3be22f7",
         video: "/images/skyReservehover.mp4",
-        techStack: "React 19, TypeScript, Supabase, Zustand, Tailwind, Framer Motion, Vitest",
+        techStack: "React 19, React Native, Expo, TypeScript, Supabase, Zustand, Tailwind, Framer Motion, Vitest",
         techIcons: [
             <SiReact key="re" />,
+            <SiExpo key="ex" />,
             <SiTypescript key="ts" />,
             <SiSupabase key="su" />,
             <SiTailwindcss key="tw" />,
@@ -63,8 +66,8 @@ export const PROJECTS: Proyecto[] = [
             <SiVitest key="vi" />
         ],
         pressingType: "First" as const,
-        desc: "Plataforma de reservas para servicios de drones con autenticación, panel admin y gestión de disponibilidad en tiempo real.",
-        context: "Aplicación desplegada y en uso con backend real en Supabase. Gestiona el ciclo completo de una reserva de dron: desde que un cliente solicita un vuelo hasta que el piloto completa la misión. Los datos persisten en base de datos, la autenticación protege las rutas y los roles determinan qué puede ver cada usuario.",
+        desc: "Plataforma de reservas para servicios de drones (web + app móvil) con autenticación, panel admin y disponibilidad en tiempo real.",
+        context: "Sistema completo web y app móvil con backend real en Supabase. Gestiona el ciclo completo de una reserva de dron: desde que un cliente solicita un vuelo hasta que el piloto completa la misión. Los datos persisten en base de datos, la autenticación protege las rutas y los roles determinan qué puede ver cada usuario.",
         problem: "Gestionar reservas de servicios de dron de forma manual generaba confusiones en horarios, solapamiento de misiones y falta de control sobre el estado de cada operación.",
         solution: [
             "Backend real en Supabase: auth, base de datos y Row Level Security",
@@ -72,11 +75,12 @@ export const PROJECTS: Proyecto[] = [
             "Calendario de disponibilidad con slots bloqueados en tiempo real al reservar",
             "Estados de misión con transiciones: planificada → confirmada → en vuelo → completada",
             "Estado global con Zustand para sincronización entre paneles",
+            "App móvil nativa (iOS/Android/Web) con React Native y Expo",
             "Tests unitarios y de integración con Vitest",
             "Despliegue en Netlify con build optimizado"
         ],
-        result: "Aplicación en producción que sustituye la gestión manual por un sistema donde el cliente reserva online, el admin asigna piloto/drone, y el estado se actualiza en tiempo real. Sin emails, sin WhatsApp, sin confusión.",
-        impact: "Arquitectura frontend con backend real, auth, roles y persistencia — no es un CRUD de tutorial, es un producto con lógica de negocio."
+        result: "Aplicación en producción (web + app móvil) que sustituye la gestión manual por un sistema donde el cliente reserva online, el admin asigna piloto/drone, y el estado se actualiza en tiempo real. Sin emails, sin WhatsApp, sin confusión.",
+        impact: "Arquitectura full-stack con backend real, auth, roles, persistencia y versión nativa móvil — no es un CRUD de tutorial, es un producto con lógica de negocio multiplataforma."
     },
     {
         title: "The Pueblo",

@@ -35,14 +35,14 @@ export default function Footer() {
       className="relative flex flex-col items-center w-full py-6 border-t-[1px] select-none footer-root"
       style={{ backgroundColor: BG, borderColor: `${PAPER}20` }}
     >
-      <div className="absolute flex items-center gap-2 pointer-events-none left-4 bottom-2 opacity-30">
+      <div className="absolute flex items-center gap-2 pointer-events-none left-4 bottom-2 opacity-50">
         <div className="w-1 h-3" style={{ backgroundColor: ACCENT }} />
         <span className="text-[8px] font-mono tracking-[0.2em]" style={{ color: PAPER }}>
           SIDE_A // R.D.Z // 33RPM
         </span>
       </div>
 
-      <div className="absolute text-right pointer-events-none right-4 bottom-2 opacity-30">
+      <div className="absolute text-right pointer-events-none right-4 bottom-2 opacity-50">
         <span className="text-[8px] font-mono tracking-widest uppercase block mb-[2px]" style={{ color: PAPER }}>
           Live Master
         </span>

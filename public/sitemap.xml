@@ -3,26 +3,22 @@
 
   <url>
     <loc>https://rdisquete.es/</loc>
+    <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://rdisquete.es/projects/invitacion</loc>
+    <loc>https://rdisquete.es/about</loc>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://rdisquete.es/projects/nor3xtrem</loc>
+    <loc>https://rdisquete.es/projects</loc>
+    <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://rdisquete.es/projects/the-pueblo</loc>
-  </url>
-
-  <url>
-    <loc>https://rdisquete.es/projects/edmovil</loc>
-  </url>
-
-  <url>
-    <loc>https://rdisquete.es/projects/infra-rd</loc>
+    <loc>https://rdisquete.es/contact</loc>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

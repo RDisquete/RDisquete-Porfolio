@@ -10,6 +10,7 @@ export default function Manifesto() {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
+    layoutEffect: false,
   });
 
   const cafeValue = useTransform(scrollYProgress, [0.4, 0.8], [10, 0]);
@@ -29,6 +30,7 @@ export default function Manifesto() {
       ref={sectionRef}
       id="manifesto-section"
       className="relative block w-full px-6 py-10 md:py-24 overflow-hidden bg-[#cdc69c]"
+      style={{ position: 'relative' }}
     >
       {/* Texturas */}
       <picture className="absolute inset-0 z-[50] pointer-events-none">
@@ -148,7 +150,7 @@ export default function Manifesto() {
             {isDone && (
               <motion.div
                 initial={{ scale: 3, opacity: 0, rotate: 25 }}
-                animate={{ scale: 1, opacity: 0.9, rotate: -12 }}
+                animate={{ scale: 1, opacity: 1, rotate: -12 }}
                 className="absolute -top-10 right-10 z-[40] pointer-events-none"
               >
                 <div className="px-4 py-1 border-4 border-[#8e2b27] text-[#8e2b27] font-bold text-4xl md:text-6xl uppercase tracking-tighter bg-[#cdc69c] border-double shadow-lg">

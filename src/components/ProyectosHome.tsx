@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { FaPlay, FaArrowRight } from "react-icons/fa";
@@ -19,6 +19,7 @@ interface Project {
   result?: string;
   github?: string;
   impact?: string;
+  apkUrl?: string;
 }
 
 // --- ANIMACIONES MODAL ---
@@ -131,7 +132,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </div>
           )}
 
-          <div className="flex flex-col gap-3 pt-4 mt-auto">
+          <div className="flex flex-col gap-3 pt-4 mt-auto pb-4">
             <a
               href={project.url}
               target="_blank"
@@ -150,6 +151,15 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 Ver código
               </a>
             )}
+            {project.apkUrl && (
+              <a
+                href={project.apkUrl}
+                target="_blank" rel="noreferrer"
+                className="w-full text-center border-2 border-[#8e2b27] text-[#8e2b27] py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-[#8e2b27] hover:text-white transition"
+              >
+                Descargar APK
+              </a>
+            )}
           </div>
         </div>
       </motion.div>
@@ -160,13 +170,28 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 }
 
 // --- VIDEO LAZY ---
-const LazyVideo = ({ src }: { src: string }) => (
-  <video
-    src={src}
-    className="object-cover w-full h-full grayscale contrast-125"
-    autoPlay loop muted playsInline preload="none"
-  />
-);
+const LazyVideo = ({ src, isHovered, poster }: { src: string; isHovered?: boolean; poster?: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const startedRef = useRef(false);
+
+  useEffect(() => {
+    if (!videoRef.current || startedRef.current) return;
+    if (isHovered) {
+      videoRef.current.play().catch(() => {});
+      startedRef.current = true;
+    }
+  }, [isHovered]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      poster={poster}
+      className="object-cover w-full h-full grayscale contrast-125"
+      loop muted playsInline preload="none"
+    />
+  );
+};
 
 // --- TRACK DE PROYECTO ---
 interface ProjectTrackProps {
@@ -245,10 +270,25 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
     projects?.[0] ?? null
   );
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isPreviewHovered, setIsPreviewHovered] = useState(false);
+  const [isNavHovered, setIsNavHovered] = useState(false);
   const navigate = useNavigate();
 
   return (
     <section className="relative flex flex-col items-center justify-center w-full min-h-screen py-16 overflow-hidden lg:flex-row lg:py-0 bg-neutral-950">
+
+      {/* TEXTURA DE FONDO */}
+      <picture className="absolute inset-0 z-[500] pointer-events-none">
+        <source srcSet="/images/texturas/abstract-crumpled-mobile.webp" media="(max-width: 767px)" />
+        <source srcSet="/images/texturas/top-view-of-crumpled-vintage.webp" media="(min-width: 768px)" />
+        <img
+          src="/images/texturas/top-view-of-crumpled-vintage.webp"
+          alt=""
+          role="presentation"
+          loading="lazy"
+          className="absolute inset-0 object-cover w-full h-full opacity-[0.15] mix-blend-multiply grayscale brightness-[0.3] will-change-transform"
+        />
+      </picture>
 
       {/* CONTENIDO PRINCIPAL */}
       <div className="relative z-10 flex flex-col items-center w-full h-auto gap-12 px-6 lg:h-screen lg:px-12 max-w-7xl lg:flex-row">
@@ -265,7 +305,9 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
             </h2>
           </header>
 
-          <nav className="flex-grow pr-4 custom-scrollbar lg:overflow-y-auto lg:max-h-[45vh] mb-4">
+          <nav className="flex-grow pr-4 custom-scrollbar lg:overflow-y-auto lg:max-h-[45vh] mb-4"
+            onMouseEnter={() => setIsNavHovered(true)}
+            onMouseLeave={() => setIsNavHovered(false)}>
             {projects?.map((project, index) => (
               <ProjectTrack
                 key={project.title}
@@ -290,8 +332,6 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
             </span>
           </button>
         </div>
-
-        {/* LADO DERECHO — PREVIEW CARD (Ahora con apertura de modal) */}
         <div className="flex items-center justify-center w-full lg:w-1/2">
           <div className="relative w-full max-w-[450px] lg:max-w-[500px] aspect-[4/5] lg:aspect-square">
             <AnimatePresence mode="wait">
@@ -301,8 +341,9 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.02 }}
                 transition={{ duration: 0.2 }}
-                // AGREGADO: Al hacer clic en la tarjeta, abre el proyecto actual
                 onClick={() => hoveredProject && setSelectedProject(hoveredProject)}
+                onMouseEnter={() => setIsPreviewHovered(true)}
+                onMouseLeave={() => setIsPreviewHovered(false)}
                 className="relative lg:absolute inset-0 p-4 md:p-6 bg-[#cdc69c] shadow-[15px_15px_0px_rgba(142,43,39,0.3)] md:shadow-[30px_30px_0px_rgba(142,43,39,0.2)] flex flex-col cursor-pointer group/card transition-transform hover:-translate-y-1 active:scale-[0.99]"
               >
                 {/* MEDIA */}
@@ -312,7 +353,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                   
                   <div className="hidden md:block w-full h-full">
                     {hoveredProject?.video ? (
-                      <LazyVideo src={hoveredProject.video} />
+                      <LazyVideo src={hoveredProject.video} isHovered={isNavHovered || isPreviewHovered} poster={hoveredProject?.img} />
                     ) : (
                       <img src={hoveredProject?.img} className="object-cover w-full h-full grayscale group-hover/card:grayscale-0 transition-all duration-500" alt="" loading="lazy" />
                     )}
@@ -366,6 +407,16 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                         className="flex-1 text-center border border-black text-black py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-black hover:text-[#cdc69c] transition-colors"
                       >
                         Código
+                      </a>
+                    )}
+                    {hoveredProject?.apkUrl && (
+                      <a
+                        href={hoveredProject.apkUrl}
+                        target="_blank" rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex-1 text-center bg-[#8e2b27] text-[#cdc69c] py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-black transition-colors"
+                      >
+                        APK
                       </a>
                     )}
                   </div>

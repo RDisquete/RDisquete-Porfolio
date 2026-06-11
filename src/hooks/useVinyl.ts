@@ -9,7 +9,7 @@ export const useVinyl = () => {
       const audio = new Audio('/sounds/vnyl_intro.mp3');
       audio.loop = false;
       audio.volume = 0.3;
-      audio.preload = "auto";
+      audio.preload = "none";
       audioRef.current = audio;
     }
   }, []);
@@ -18,6 +18,7 @@ export const useVinyl = () => {
     const audio = audioRef.current;
 
     if (audio && !hasPlayed.current) {
+      audio.preload = "auto";
       audio.currentTime = 0;
 
       audio.play()

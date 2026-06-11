@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, useReducedMotion } from "framer-motion";
 import { FaInstagram, FaWhatsapp, FaEnvelope, FaLinkedin, FaFileDownload, FaGithub } from "react-icons/fa";
 
 function useOrientation() {
@@ -27,6 +27,11 @@ const socials = [
   { label: "GitHub", url: "https://github.com/RDisquete", aria: "Ver mis proyectos en GitHub" },
 ];
 
+const frontendSlideIn: Variants = {
+  hidden: { x: "100%" },
+  visible: { x: "0%", transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.5 } },
+};
+
 const verticalSweep: Variants = {
   hidden: { opacity: 0, y: 20, scaleY: 0.8 },
   visible: { opacity: 1, y: 0, scaleY: 1, transition: { duration: 0.4, ease: [0.17, 0.67, 0.83, 0.67] } },
@@ -35,11 +40,6 @@ const verticalSweep: Variants = {
 const blockFade: Variants = {
   hidden: { opacity: 0, scale: 0.95 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.1, ease: "easeOut" } },
-};
-
-const frontendSlideIn: Variants = {
-  hidden: { x: "100%" },
-  visible: { x: "0%", transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.5 } },
 };
 
 const renderIcon = (label: string) => {
@@ -71,6 +71,7 @@ function HeroMobile() {
           src="/images/texturas/abstract-crumpled-mobile.webp"
           alt="" role="presentation"
           className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale mix-blend-multiply"
+          fetchPriority="high"
         />
       </picture>
 
@@ -123,7 +124,7 @@ function HeroMobile() {
         </motion.div>
 
         <motion.div
-          className="self-end mr-[10vw] mt-2"
+          className="self-end"
           initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.3 }}
         >
@@ -132,16 +133,6 @@ function HeroMobile() {
             style={{ fontSize: rdSize }}
           >
             rdisquete
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="self-end mr-[10vw] mt-4"
-          initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-        >
-          <p className="font-mono text-xs sm:text-sm tracking-[0.25em] uppercase text-[#cdc69c]/70">
-            Frontend Developer — React & TypeScript
           </p>
         </motion.div>
       </div>
@@ -174,20 +165,23 @@ function HeroMobile() {
 }
 
 function HeroDesktop() {
+  const prefersReducedMotion = useReducedMotion();
   return (
     <section className="relative w-full h-screen text-[#cdc69c] overflow-hidden border-8 border-[#bbb88c] bg-neutral-900">
       <picture className="absolute inset-0 z-[100] pointer-events-none">
         <source srcSet="/images/texturas/abstract-crumpled.webp" media="(min-width: 768px)" />
-        <img src="/images/texturas/abstract-crumpled-desktop.webp" alt="" role="presentation"
+        <img src="/images/texturas/abstract-crumpled.webp" alt="" role="presentation"
           fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover opacity-25 grayscale mix-blend-multiply" />
       </picture>
 
-      <motion.div
-        className="absolute z-20 top-1/4 left-0 w-full h-[2px] bg-[#cdc69c] opacity-30"
-        animate={{ x: ["0%", "100%"], opacity: [0.2, 0.8, 0.4] }}
-        transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
-      />
+      {!prefersReducedMotion && (
+        <motion.div
+          className="absolute z-20 top-1/4 left-0 w-full h-[2px] bg-[#cdc69c] opacity-30"
+          animate={{ x: ["0%", "100%"], opacity: [0.2, 0.8, 0.4] }}
+          transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+        />
+      )}
 
       <motion.div
         className="absolute bottom-16 left-0 right-0 z-[60] w-full h-16 bg-[#8e2b27] opacity-95 flex items-center"
@@ -235,23 +229,15 @@ function HeroDesktop() {
               DORADO
             </span>
           </motion.div>
-
-          <motion.div className="absolute z-[70] left-[55vw] top-[39vw]"
-            variants={blockFade} initial="hidden" animate="visible" transition={{ delay: 0.3 }}>
-            <p className="text-[8vw] font-bold text-[#cdc69c] font-vintage-cursive leading-none whitespace-nowrap drop-shadow-2xl">
-              rdisquete
-            </p>
-          </motion.div>
-
-          <motion.div className="absolute z-[70] left-[55vw] top-[48vw]"
-            initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.4 }}>
-            <p className="text-lg md:text-xl font-mono tracking-[0.25em] uppercase text-[#cdc69c]/70 whitespace-nowrap">
-              Frontend Developer — React & TypeScript
-            </p>
-          </motion.div>
         </div>
       </div>
+
+      <motion.div className="absolute z-[70] right-[8vw] bottom-[42px]"
+        variants={blockFade} initial="hidden" animate="visible" transition={{ delay: 0.3 }}>
+        <p className="text-[8vw] font-bold text-[#cdc69c] font-vintage-cursive leading-none whitespace-nowrap drop-shadow-2xl">
+          rdisquete
+        </p>
+      </motion.div>
 
       <nav className="absolute bottom-4 left-0 w-full z-[110] px-8 flex justify-center" aria-label="Redes sociales">
         <div className="flex space-x-6">

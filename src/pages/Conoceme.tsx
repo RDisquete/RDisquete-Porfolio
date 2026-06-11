@@ -11,12 +11,6 @@ const RETRO_DARK = "#171717";
 const RETRO_CREAM = "#cdc69c";
 const RETRO_MAROON = "#8e2b27";
 
-const TEXTURE_1 = "/images/texturas/abstract-crumpled.webp";
-const TEXTURE_2 = "/images/texturas/old-paper-grunge-dark.webp";
-const TEXTURE_3 = "/images/texturas/old-paper-grunge-dark.webp";
-const TEXTURE_4 = "/images/texturas/top-view-of-crumpled-vintage.webp";
-const TEXTURE_5 = "/images/texturas/old-black-background-grunge.webp";
-
 const fotoRealUrl = "/images/IMG_6012_byn.webp";
 
 const socialLinks = {
@@ -39,20 +33,6 @@ const IconMap: Record<string, React.ElementType> = {
 
 const retroWhite = "text-[#cdc69c]";
 const secondaryFont = "font-mono";
-const signatureStyle = { color: RETRO_MAROON };
-
-type BlendMode = "overlay" | "multiply" | "soft-light" | "screen" | "darken" | "normal";
-
-const createTextureStyle = (src: string, opacity = 0.2, blend: BlendMode = 'overlay', zIndex = 1) => ({
-    backgroundImage: `url(${src})`,
-    backgroundSize: 'cover',
-    opacity,
-    mixBlendMode: blend,
-    zIndex,
-    position: 'absolute' as const,
-});
-
-const textureStyle = createTextureStyle(TEXTURE_1, 0.3, 'overlay', 1);
 
 // --- ANIMACIONES ---
 const simpleEntryVariants: Variants = {
@@ -167,14 +147,14 @@ export default function Conoceme() {
 
                     <div className="relative z-30 flex flex-col flex-grow w-full px-4 pt-20 pb-12 mx-auto md:py-12 md:gap-12 max-w-7xl lg:flex-row lg:items-center md:px-20">
                         <div className="flex flex-col flex-1 order-1 pt-0 lg:w-7/12">
-                            <motion.h2
+                            <motion.h1
                                 className={`text-[10vw] md:text-[8vw] xl:text-[6rem] font-black leading-none uppercase mb-6 md:mb-8`}
                                 style={{ color: RETRO_MAROON }}
                                 variants={simpleEntryVariants}
                                 transition={{ delay: 0.3 }}
                             >
                                 README.md
-                            </motion.h2>
+                            </motion.h1>
 
                             <motion.p
                                 className={`max-w-xl font-light text-lg md:text-2xl xl:text-2xl leading-relaxed tracking-wide italic ${secondaryFont}`}
@@ -185,6 +165,10 @@ export default function Conoceme() {
                                 <FaQuoteLeft className="inline mr-2 text-3xl md:mr-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
                                 Soy <strong className="font-black" style={{ color: RETRO_MAROON }}>Rafa</strong>. Mi enfoque como desarrollador <strong className="font-black" style={{ color: RETRO_MAROON }}>Frontend</strong> es construir interfaces donde el rendimiento y la estética vayan de la mano. Vengo del sector audiovisual, una etapa que me enseñó a cuidar el detalle visual, pero hoy mi prioridad es la <strong className="font-black" style={{ color: RETRO_MAROON }}>solución técnica</strong>. Utilizo herramientas como <strong className="font-black" style={{ color: RETRO_MAROON }}>React y TypeScript</strong> para crear sitios web rápidos, accesibles y con un diseño cuidado. No busco el estándar, sino el equilibrio entre un código limpio y una <strong className="font-black" style={{ color: RETRO_MAROON }}>experiencia de usuario</strong> impecable.
                                 <FaQuoteRight className="inline ml-2 text-3xl md:ml-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
+                                <br />
+                                <span className="font-vintage-cursive text-lg md:text-xl font-bold not-italic opacity-70" style={{ color: RETRO_MAROON }}>
+                                    — rdisquete
+                                </span>
                             </motion.p>
 
                             <motion.div
@@ -205,49 +189,32 @@ export default function Conoceme() {
                                 className="relative overflow-hidden border-4 w-[60vw] h-[60vw] md:w-[35vw] md:h-[35vw] max-w-[480px] max-h-[480px]"
                                 style={{ borderColor: RETRO_CREAM, backgroundColor: RETRO_MAROON }}
                             >
-                                <img
-                                    src={fotoRealUrl}
-                                    alt="Rafa Dorado - Fotografía"
-                                    loading="eager"
-                                    style={{
-                                        width: '100%',
-                                        height: '110%',
-                                        position: 'absolute',
-                                        objectFit: 'cover',
-                                        objectPosition: 'center top',
-                                        filter: 'brightness(1.15) ',
-                                    }}
-                                />
-                                <div
-                                    className="absolute inset-0 pointer-events-none z-35"
-                                    style={createTextureStyle(TEXTURE_1, 0.15, 'overlay', 35)}
-                                    aria-hidden="true"
-                                />
+                                <picture>
+                                    <source srcSet="/images/IMG_6012_byn-mobile.webp" media="(max-width: 767px)" />
+                                    <source srcSet="/images/IMG_6012_byn.webp" media="(min-width: 768px)" />
+                                    <img
+                                        src={fotoRealUrl}
+                                        alt="Rafa Dorado - Fotografía"
+                                        loading="eager"
+                                        className="absolute inset-0 w-full h-full object-cover object-top"
+                                        style={{ height: '110%', filter: 'brightness(1.15)' }}
+                                    />
+                                </picture>
+                                <picture className="absolute inset-0 pointer-events-none z-[35]" aria-hidden="true">
+                                    <source srcSet="/images/texturas/abstract-crumpled-mobile.webp" media="(max-width: 767px)" />
+                                    <source srcSet="/images/texturas/abstract-crumpled.webp" media="(min-width: 768px)" />
+                                    <img
+                                        src="/images/texturas/abstract-crumpled.webp"
+                                        alt="" role="presentation"
+                                        loading="lazy"
+                                        className="absolute inset-0 w-full h-full object-cover opacity-15 mix-blend-overlay"
+                                    />
+                                </picture>
                             </div>
-
-                            <motion.div
-                                className="absolute z-30 bottom-[-60px] right-0 transform rotate-[-2deg] pointer-events-none hidden md:block"
-                                variants={simpleEntryVariants}
-                                transition={{ delay: 1.0 }}
-                            >
-                                <p className={`text-[6vw] md:text-[6vw] font-bold normal-case font-vintage-cursive leading-none whitespace-nowrap opacity-90`} style={signatureStyle}>
-                                    rdisquete
-                                </p>
-                            </motion.div>
                         </motion.div>
                     </div>
 
                     <div className="relative z-30 w-full px-4 pt-4 pb-8 md:pt-4 md:pb-8 md:px-20">
-                        <motion.div
-                            className="flex justify-center w-full mb-2 md:hidden"
-                            variants={simpleEntryVariants}
-                            transition={{ delay: 1.0 }}
-                        >
-                            <p className={`text-3xl font-bold normal-case font-vintage-cursive leading-none whitespace-nowrap opacity-90`} style={signatureStyle}>
-                                rdisquete
-                            </p>
-                        </motion.div>
-
                         <div className="flex justify-center w-full space-x-6 text-2xl md:space-x-8 md:text-3xl" style={{ color: RETRO_CREAM }}>
                             {Object.entries(socialLinks).map(([key, url], index) => {
                                 const IconComponent = IconMap[key];
@@ -266,17 +233,36 @@ export default function Conoceme() {
                     </div>
 
                     <motion.div
-                        className="absolute inset-0"
-                        style={textureStyle}
+                        className="absolute inset-0 pointer-events-none"
                         variants={introTextureEntry}
                         aria-hidden="true"
-                    />
+                    >
+                        <picture className="absolute inset-0">
+                            <source srcSet="/images/texturas/abstract-crumpled-mobile.webp" media="(max-width: 767px)" />
+                            <source srcSet="/images/texturas/abstract-crumpled.webp" media="(min-width: 768px)" />
+                            <img
+                                src="/images/texturas/abstract-crumpled.webp"
+                                alt="" role="presentation"
+                                fetchPriority="high"
+                                className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay"
+                            />
+                        </picture>
+                    </motion.div>
                 </motion.section>
             </div>
 
             {/* --- SECCIÓN PASIÓN --- */}
             <section className="relative py-32 px-6 bg-[#cdc69c] text-[#171717] overflow-hidden">
-                <div className="absolute inset-0 opacity-20 contrast-125 saturate-110" style={{ backgroundImage: `url(${TEXTURE_2})`, backgroundSize: 'cover', mixBlendMode: 'multiply' }} />
+                <picture className="absolute inset-0 pointer-events-none">
+                    <source srcSet="/images/texturas/old-paper-grunge-dark-mobile.webp" media="(max-width: 767px)" />
+                    <source srcSet="/images/texturas/old-paper-grunge-dark.webp" media="(min-width: 768px)" />
+                    <img
+                        src="/images/texturas/old-paper-grunge-dark.webp"
+                        alt="" role="presentation"
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover opacity-20 contrast-125 saturate-110 mix-blend-multiply"
+                    />
+                </picture>
                 <div className="relative z-10 max-w-4xl mx-auto">
                     <h2 className="text-6xl md:text-8xl font-black uppercase mb-12 font-display-impact leading-[0.8] tracking-tighter">
                         Donde la Creatividad <br />
@@ -301,7 +287,16 @@ export default function Conoceme() {
 
             {/* --- SECCIÓN SKILLS --- */}
             <section className="relative py-24 bg-[#171717] text-[#cdc69c] px-6">
-                <div className="absolute inset-0 opacity-30 contrast-125 saturate-110" style={{ backgroundImage: `url(${TEXTURE_3})`, backgroundSize: 'cover', mixBlendMode: 'overlay' }} />
+                <picture className="absolute inset-0 pointer-events-none">
+                    <source srcSet="/images/texturas/old-paper-grunge-dark-mobile.webp" media="(max-width: 767px)" />
+                    <source srcSet="/images/texturas/old-paper-grunge-dark.webp" media="(min-width: 768px)" />
+                    <img
+                        src="/images/texturas/old-paper-grunge-dark.webp"
+                        alt="" role="presentation"
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover opacity-30 contrast-125 saturate-110 mix-blend-overlay"
+                    />
+                </picture>
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <div className="flex items-center gap-6 mb-16">
                         <FaRegPlayCircle className="text-7xl text-[#8e2b27] animate-pulse" />
@@ -326,7 +321,16 @@ export default function Conoceme() {
 
             {/* --- STUDIO SESSIONS: PROCESO TÉCNICO --- */}
             <section className="relative py-24 bg-[#0f0f0f] text-[#cdc69c] px-6 overflow-hidden">
-                <div className="absolute inset-0 opacity-20 contrast-125 saturate-110" style={{ backgroundImage: `url(${TEXTURE_2})`, backgroundSize: 'cover', mixBlendMode: 'overlay' }} />
+                <picture className="absolute inset-0 pointer-events-none">
+                    <source srcSet="/images/texturas/old-paper-grunge-dark-mobile.webp" media="(max-width: 767px)" />
+                    <source srcSet="/images/texturas/old-paper-grunge-dark.webp" media="(min-width: 768px)" />
+                    <img
+                        src="/images/texturas/old-paper-grunge-dark.webp"
+                        alt="" role="presentation"
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover opacity-20 contrast-125 saturate-110 mix-blend-overlay"
+                    />
+                </picture>
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <div className="flex items-center gap-6 mb-20">
                         <FaWrench className="text-6xl text-[#8e2b27]" />
@@ -358,8 +362,14 @@ export default function Conoceme() {
 
             {/* --- CARA A: EXPERIENCIA --- */}
             <section className="relative py-32 bg-[#cdc69c] text-[#171717] px-6 overflow-hidden">
-                <div className="absolute inset-0 opacity-35 pointer-events-none mix-blend-multiply"
-                    style={{ backgroundImage: `url(${TEXTURE_4})`, backgroundSize: 'cover' }} />
+                <picture className="absolute inset-0 pointer-events-none">
+                    <img
+                        src="/images/texturas/top-view-of-crumpled-vintage.webp"
+                        alt="" role="presentation"
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover opacity-35 mix-blend-multiply"
+                    />
+                </picture>
 
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <h2 className="absolute -top-16 -left-10 text-[12rem] md:text-[20rem] font-black text-[#8e2b27]/20 font-display-impact select-none uppercase leading-none">
@@ -395,10 +405,14 @@ export default function Conoceme() {
 
             {/* --- CARA B: FORMACIÓN --- */}
             <section className="relative py-32 bg-[#8e2b27] text-[#cdc69c] px-6 overflow-hidden">
-                <div
-                    className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay"
-                    style={{ backgroundImage: `url(${TEXTURE_5})`, backgroundSize: 'cover' }}
-                />
+                <picture className="absolute inset-0 pointer-events-none">
+                    <img
+                        src="/images/texturas/old-black-background-grunge.webp"
+                        alt="" role="presentation"
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay"
+                    />
+                </picture>
 
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <h2 className="absolute -top-16 -right-10 text-[12rem] md:text-[20rem] font-black text-black/20 font-display-impact select-none uppercase leading-none text-right z-0">

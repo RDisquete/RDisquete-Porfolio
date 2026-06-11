@@ -17,7 +17,8 @@ const ACCENT_COLOR = "#8e2b27";
 const CARD_LIGHT = "#ffffff";
 const BACKGROUND_SECUNDARY = "#e5dfbc";
 
-const TEXTURE_PAPER = "/images/texturas/textura1.webp";
+const TEXTURE_PAPER = "/images/texturas/textura2.webp";
+const TEXTURE_PAPER_MOBILE = "/images/texturas/textura2-mobile.webp";
 const TEXTURE_BG = "/images/texturas/top-view-of-crumpled-vintage.webp";
 const TEXTURE_MOBILE = "/images/texturas/abstract-crumpled-mobile.webp";
 const TEXTURE_DESKTOP = "/images/texturas/abstract-crumpled.webp";
@@ -104,7 +105,6 @@ export default function Contacto() {
           src={TEXTURE_BG}
           alt=""
           role="presentation"
-          fetchPriority="high"
           className="object-cover w-full h-full"
           width="1920"
           height="1080"
@@ -124,10 +124,10 @@ export default function Contacto() {
           <span className="font-mono text-[10px] tracking-[0.5em] text-[#cdc69c] uppercase font-black">
             Session No. 2026_A
           </span>
-          <h2 className="mt-2 text-4xl font-black leading-none tracking-tighter uppercase md:text-6xl"
+          <h1 className="mt-2 text-4xl font-black leading-none tracking-tighter uppercase md:text-6xl"
             style={{ color: BACKGROUND_SECUNDARY }}>
             GRABAR <span className="italic text-white underline decoration-1">TRACK</span>
-          </h2>
+          </h1>
         </motion.div>
 
         {/* TARJETA DEL FORMULARIO */}
@@ -136,15 +136,19 @@ export default function Contacto() {
           style={{ backgroundColor: CARD_LIGHT }}
           {...animationProps}
         >
-          <img
-            src={TEXTURE_PAPER}
-            alt=""
-            role="presentation"
-            loading="eager"
-            width="600"
-            height="800"
-            className="absolute inset-0 object-cover w-full h-full z-0 pointer-events-none opacity-30 mix-blend-multiply"
-          />
+          <picture className="absolute inset-0 z-0 pointer-events-none">
+            <source srcSet={TEXTURE_PAPER_MOBILE} media="(max-width: 767px)" />
+            <source srcSet={TEXTURE_PAPER} media="(min-width: 768px)" />
+            <img
+              src={TEXTURE_PAPER}
+              alt=""
+              role="presentation"
+              loading="lazy"
+              width="600"
+              height="800"
+              className="absolute inset-0 object-cover w-full h-full opacity-30 mix-blend-multiply"
+            />
+          </picture>
 
           <div className="relative z-10">
             <header className="flex items-center justify-between pb-3 mb-8 border-b-2 border-black/20 font-mono text-[10px] font-black uppercase italic">

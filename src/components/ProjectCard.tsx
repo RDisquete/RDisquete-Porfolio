@@ -41,7 +41,7 @@ export default function ProjectCard({ project, index, onOpen, isFeatured }: { pr
             style={{ backgroundColor: COLORS.cardLight }}
         >
             <motion.div className="absolute inset-0 z-10" animate={{ opacity: isHovered ? 0 : 1 }}>
-                <img src={project.img} alt={project.title} className="object-cover w-full h-full contrast-[1.1] grayscale-[20%]" />
+                <img src={project.img} alt={project.title} loading="lazy" className="object-cover w-full h-full contrast-[1.1] grayscale-[20%]" />
                 <div className={`absolute top-3 right-3 z-20 px-2 py-1 border-2 font-mono font-black uppercase text-[8px] shadow-lg
                     ${isFeatured ? "bg-[#8e2b27] text-white -rotate-3" : "bg-white/90 text-[#8e2b27] rotate-12"}`}
                     style={{ borderColor: isFeatured ? 'white' : COLORS.accent }}>

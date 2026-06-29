@@ -350,7 +350,6 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
               >
                 {/* MEDIA */}
                 <div className="relative h-[45%] md:h-[55%] w-full overflow-hidden bg-black border border-black/5">
-                  {/* Overlay sutil al hacer hover sobre la tarjeta */}
                   <div className="absolute inset-0 z-10 bg-[#8e2b27]/0 group-hover/card:bg-[#8e2b27]/10 transition-colors" />
                   
                   <div className="hidden md:block w-full h-full">
@@ -387,7 +386,6 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                     </div>
                   )}
 
-                  {/* BOTONES RÁPIDOS (con e.stopPropagation para no abrir el modal al clicar botones externos) */}
                   <div className="flex gap-2 mt-auto pt-3 border-t border-black/10">
                     {hoveredProject?.url && (
                       <a

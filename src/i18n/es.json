@@ -2,6 +2,9 @@
   "app": {
     "skipToContent": "Saltar al contenido principal"
   },
+  "languageSwitcher": {
+    "ariaLabel": "Cambiar idioma"
+  },
   "header": {
   "nav": {
     "about": "Sobre mí",

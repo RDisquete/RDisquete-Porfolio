@@ -68,9 +68,7 @@ export default function SobreMi() {
 
             <div className="relative overflow-hidden border-2 border-black bg-[#0f0f0f] w-[240px] h-[300px] md:w-[380px] md:h-[500px]">
               <picture>
-                {/* Móvil: 300px ancho, Calidad 60% en Squoosh */}
                 <source srcSet="/images/IMG_6012_byn-mobile.webp" media="(max-width: 767px)" />
-                {/* Desktop: 500px ancho, Calidad 75% en Squoosh */}
                 <source srcSet="/images/IMG_6012_byn.webp" media="(min-width: 768px)" />
                 <img
                   src="/images/IMG_6012_byn.webp"

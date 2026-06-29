@@ -309,7 +309,7 @@ export default function Conoceme() {
                 </motion.section>
             </div>
 
-            {/* --- SECCIÓN PASIÓN --- */}
+            {/* --- SECCIÓN 1 --- */}
             <section className="relative py-32 px-6 bg-[#cdc69c] text-[#171717] overflow-hidden">
                 <picture className="absolute inset-0 pointer-events-none">
                     <source srcSet="/images/texturas/old-paper-grunge-dark-mobile.webp" media="(max-width: 767px)" />

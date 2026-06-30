@@ -24,6 +24,39 @@ export interface Proyecto {
 
 export const PROJECTS: Proyecto[] = [
     {
+        title: "Vettonia",
+        url: "https://vettonia.netlify.app",
+        img: "/images/vettonia.webp",
+        github: "https://github.com/RDisquete/vettonia",
+        video: "/images/vettoniaHover.mp4",
+        techStack: "React 19, TypeScript, Supabase, Framer Motion, Tailwind CSS, Leaflet, Vitest",
+        techIcons: [
+            <SiReact key="re" />,
+            <SiTypescript key="ts" />,
+            <SiSupabase key="su" />,
+            <SiTailwindcss key="tw" />
+        ],
+        pressingType: "First" as const,
+        desc: "Plataforma digital para la gestión y experiencia de un festival de música que centraliza información, interacción de asistentes y administración de contenido en tiempo real.",
+            context: "Proyecto diseñado para simular un entorno real de festival, donde asistentes y organizadores necesitan una plataforma unificada para consultar información, interactuar durante el evento y gestionar contenido dinámico.",
+            problem: "La experiencia de un festival suele estar fragmentada entre múltiples herramientas: información del evento, interacción de usuarios, contenido multimedia y gestión administrativa, lo que dificulta la coherencia y escalabilidad del sistema.",
+            solution: [
+            "Cartel interactivo con 47 artistas y fichas individuales",
+            "Sistema de pases digitales con autenticación mediante PIN y QR",
+            "Galería colaborativa con subida de fotos, reacciones y moderación",
+            "Muro de mensajes en tiempo real para asistentes",
+            "Mapa interactivo del recinto con Leaflet y OpenStreetMap",
+            "Panel de administración para gestión de artistas, contenido y alertas",
+            "Sistema de actualizaciones en tiempo real con Supabase Realtime",
+            "Aplicación PWA instalable con soporte offline",
+            "Arquitectura basada en servicios desacoplados del UI",
+            "Testing automatizado con Vitest y Testing Library (257 tests)"
+        ],
+            result: "Se desarrolló una plataforma funcional y escalable que unifica la experiencia del asistente y la gestión interna del festival, con funcionalidades en tiempo real, persistencia híbrida y soporte offline.",
+            impact: "Proyecto full stack que demuestra habilidades en arquitectura frontend moderna, diseño de sistemas escalables, integración con backend, tiempo real, testing y desarrollo de experiencias de usuario complejas."
+    },
+
+    {
         title: "Wedding Album System",
         url: "https://rdisquetesevadeboda.netlify.app/",
         img: "/images/invitacionboda.webp",

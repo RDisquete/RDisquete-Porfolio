@@ -1,9 +1,47 @@
+import React from 'react'; 
 import {
   SiReact, SiSupabase, SiFramer, SiTailwindcss,
   SiVite, SiTypescript, SiExpo
 } from "react-icons/si";
 
 export const projects = [
+
+  {
+    title: "Vettonia",
+    url: "https://vettonia.netlify.app",
+    img: "/images/vettonia.webp",
+    github: "https://github.com/RDisquete/vettonia",
+    video: "/images/vettoniaHover.mp4",
+    techStack: "React 19, TypeScript, Supabase, Tailwind CSS, Framer Motion, Leaflet, Vitest",
+    techIcons: [
+      <SiReact key="re" />,
+      <SiTypescript key="ts" />,
+      <SiSupabase key="su" />,
+      <SiTailwindcss key="tw" />
+    ],
+    pressingType: "First" as const,
+  
+    desc: "Plataforma web completa para la gestión y experiencia digital de un festival de música, incluyendo cartel interactivo, pases digitales, galería colaborativa, administración de contenido, actualizaciones en tiempo real y soporte offline como PWA.",
+  
+    context: "Proyecto concebido para simular las necesidades reales de un festival moderno, donde asistentes y organizadores requieren una plataforma centralizada para acceder a información, interactuar durante el evento y gestionar contenido en tiempo real.",
+  
+    problem: "La información del evento, la interacción de los asistentes, la gestión del contenido y la moderación de recursos suelen estar repartidas entre múltiples aplicaciones y canales, generando una experiencia fragmentada tanto para usuarios como para organizadores.",
+  
+    solution: [
+      "Cartel interactivo con 47 artistas y fichas individuales",
+      "Sistema de pases digitales con identificador único y autenticación mediante PIN",
+      "Galería colaborativa con subida de fotografías, moderación y reacciones",
+      "Muro de mensajes para la participación de asistentes",
+      "Mapa interactivo del recinto mediante Leaflet y OpenStreetMap",
+      "Panel de administración para artistas, contenido, alertas y moderación",
+      "Actualizaciones en tiempo real utilizando Supabase Realtime",
+      "Aplicación instalable (PWA) con funcionamiento offline",
+      "Arquitectura desacoplada basada en servicios y TypeScript estricto",
+      "257 pruebas automatizadas con Vitest y Testing Library"
+    ],
+      result: "Se desarrolló una aplicación escalable y mantenible capaz de cubrir tanto la experiencia de los asistentes como las necesidades operativas de los organizadores, incorporando funcionalidades en tiempo real, persistencia híbrida y soporte offline.",
+      impact: "Demuestra capacidades en arquitectura frontend moderna, diseño de servicios, integración con backend, tiempo real, testing automatizado y optimización de experiencia de usuario en aplicaciones de producción."
+  },
   {
     title: "Wedding Album System — R&M",
     url: "https://rdisquetesevadeboda.netlify.app/",

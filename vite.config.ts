@@ -18,10 +18,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     ],
-    // Inyectamos solo la variable necesaria para evitar riesgos de seguridad
-    define: {
-      __GA_ID__: JSON.stringify(env.VITE_GOOGLE_ANALYTICS_ID || '')
-    },
     build: {
       rollupOptions: {
         output: {

@@ -1,36 +1,19 @@
-import React from 'react';
+import React from "react";
+import { useMemo, useEffect, type ReactNode } from "react";
 import { motion, type Variants } from "framer-motion";
 import { useTranslation, Trans } from "react-i18next";
 import {
-    FaQuoteLeft, FaQuoteRight, FaInstagram, FaWhatsapp, FaLinkedin, FaFileDownload, FaGithub,
+    FaQuoteLeft, FaQuoteRight,
     FaRegPlayCircle, FaReact, FaCheckCircle, FaBolt, FaCubes, FaWrench, FaUniversalAccess, FaRocket,
 } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
 import { SiTailwindcss, SiTypescript, SiFramer } from "react-icons/si";
+import { socialLinks, socialIcons } from "../data/socialLinks.tsx";
 
 const RETRO_DARK = "#171717";
 const RETRO_CREAM = "#cdc69c";
 const RETRO_MAROON = "#8e2b27";
 
 const fotoRealUrl = "/images/IMG_6012_byn.webp";
-
-const socialLinks = {
-    linkedin: "https://www.linkedin.com/in/rafael-dorado-zamoro/",
-    instagram: "https://www.instagram.com/rdisquete/",
-    whatsapp: "https://wa.me/+34648791998",
-    email: "mailto:rafael.doradozamoro@gmail.com",
-    cv: "/images/CV_Rafael_Dorado_Zamoro.pdf",
-    github: "https://github.com/RDisquete",
-};
-
-const IconMap: Record<string, React.ElementType> = {
-    instagram: FaInstagram,
-    whatsapp: FaWhatsapp,
-    email: MdEmail,
-    linkedin: FaLinkedin,
-    github: FaGithub,
-    cv: FaFileDownload,
-};
 
 const retroWhite = "text-[#cdc69c]";
 const secondaryFont = "font-mono";
@@ -58,7 +41,7 @@ interface TrackItemProps {
     extra?: string;
     color?: string;
     isPlatinum?: boolean;
-    icon?: React.ReactNode;
+    icon?: ReactNode;
     badge?: string;
 }
 
@@ -84,7 +67,7 @@ const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON,
                         </span>
                     )}
                     {icon && (
-                        <span className="text-2xl transition-all duration-300 group-hover:text-white group-hover:scale-125">
+                        <span aria-hidden="true" className="text-2xl transition-all duration-300 group-hover:text-white group-hover:scale-125">
                             {icon}
                         </span>
                     )}
@@ -125,7 +108,11 @@ const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON,
 export default function Conoceme() {
     const { t } = useTranslation();
 
-    const skillTracks = React.useMemo(() => [
+    useEffect(() => {
+        document.title = t("app.title.conoceme");
+    }, [t]);
+
+    const skillTracks = useMemo(() => [
         { num: '01', title: t("conoceme.skills.01.title"), subtitle: t("conoceme.skills.01.subtitle"), details: t("conoceme.skills.01.details"), isPlatinum: true, icon: <FaReact /> },
         { num: '02', title: t("conoceme.skills.02.title"), subtitle: t("conoceme.skills.02.subtitle"), details: t("conoceme.skills.02.details"), isPlatinum: true, icon: <SiTailwindcss /> },
         { num: '03', title: t("conoceme.skills.03.title"), subtitle: t("conoceme.skills.03.subtitle"), details: t("conoceme.skills.03.details"), icon: <SiTypescript /> },
@@ -135,7 +122,7 @@ export default function Conoceme() {
         { num: '07', title: t("conoceme.skills.07.title"), subtitle: t("conoceme.skills.07.subtitle"), details: t("conoceme.skills.07.details") },
     ], [t]);
 
-    const experienciaData = React.useMemo(() => [
+    const experienciaData = useMemo(() => [
         { empresa: t("conoceme.experiencia.00.empresa"), puesto: t("conoceme.experiencia.00.puesto"), fecha: t("conoceme.experiencia.00.fecha"), resumen: t("conoceme.experiencia.00.resumen"), detalles: t("conoceme.experiencia.00.detalles") },
         { empresa: t("conoceme.experiencia.01.empresa"), puesto: t("conoceme.experiencia.01.puesto"), fecha: t("conoceme.experiencia.01.fecha"), resumen: t("conoceme.experiencia.01.resumen"), detalles: t("conoceme.experiencia.01.detalles") },
         { empresa: t("conoceme.experiencia.02.empresa"), puesto: t("conoceme.experiencia.02.puesto"), fecha: t("conoceme.experiencia.02.fecha"), resumen: t("conoceme.experiencia.02.resumen"), detalles: t("conoceme.experiencia.02.detalles") },
@@ -143,7 +130,7 @@ export default function Conoceme() {
         { empresa: t("conoceme.experiencia.04.empresa"), puesto: t("conoceme.experiencia.04.puesto"), fecha: t("conoceme.experiencia.04.fecha"), resumen: t("conoceme.experiencia.04.resumen"), detalles: t("conoceme.experiencia.04.detalles") },
     ], [t]);
 
-    const formacionData = React.useMemo(() => [
+    const formacionData = useMemo(() => [
         { titulo: t("conoceme.formacion.00.titulo"), centro: t("conoceme.formacion.00.centro"), fecha: t("conoceme.formacion.00.fecha"), resumen: t("conoceme.formacion.00.resumen"), detalles: t("conoceme.formacion.00.detalles") },
         { titulo: t("conoceme.formacion.01.titulo"), centro: t("conoceme.formacion.01.centro"), fecha: t("conoceme.formacion.01.fecha"), resumen: t("conoceme.formacion.01.resumen"), detalles: t("conoceme.formacion.01.detalles") },
         { titulo: t("conoceme.formacion.02.titulo"), centro: t("conoceme.formacion.02.centro"), fecha: t("conoceme.formacion.02.fecha"), resumen: t("conoceme.formacion.02.resumen"), detalles: t("conoceme.formacion.02.detalles") },
@@ -156,7 +143,7 @@ export default function Conoceme() {
         { titulo: t("conoceme.formacion.09.titulo"), centro: t("conoceme.formacion.09.centro"), fecha: t("conoceme.formacion.09.fecha"), resumen: t("conoceme.formacion.09.resumen"), detalles: t("conoceme.formacion.09.detalles") },
     ], [t]);
 
-    const studioTracks = React.useMemo(() => [
+    const studioTracks = useMemo(() => [
         { num: '01', title: t("conoceme.studio.01.title"), details: t("conoceme.studio.01.details"), icon: <FaCheckCircle />, badge: t("conoceme.studio.01.badge") },
         { num: '02', title: t("conoceme.studio.02.title"), details: t("conoceme.studio.02.details"), icon: <FaCubes /> },
         { num: '03', title: t("conoceme.studio.03.title"), details: t("conoceme.studio.03.details"), icon: <FaBolt /> },
@@ -205,7 +192,7 @@ export default function Conoceme() {
                                 variants={simpleEntryVariants}
                                 transition={{ delay: 0.8 }}
                             >
-                                <FaQuoteLeft className="inline mr-2 text-3xl md:mr-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
+                                <FaQuoteLeft aria-hidden="true" className="inline mr-2 text-3xl md:mr-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
                                 <Trans
                                   i18nKey="conoceme.introQuote"
                                   components={{
@@ -222,7 +209,7 @@ export default function Conoceme() {
                                     <strong className="font-black" style={{ color: RETRO_MAROON }} />
                                     <strong className="font-black" style={{ color: RETRO_MAROON }} />
                                 </Trans>
-                                <FaQuoteRight className="inline ml-2 text-3xl md:ml-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
+                                <FaQuoteRight aria-hidden="true" className="inline ml-2 text-3xl md:ml-4 md:text-4xl" style={{ color: RETRO_MAROON }} />
                                 <br />
                                 <span className="font-vintage-cursive text-lg md:text-xl font-bold not-italic opacity-70" style={{ color: RETRO_MAROON }}>
                                     {t("conoceme.signature")}
@@ -252,36 +239,39 @@ export default function Conoceme() {
                                     <source srcSet="/images/IMG_6012_byn.webp" media="(min-width: 768px)" />
                                     <img
                                         src={fotoRealUrl}
-                                        alt="Rafa Dorado - Fotografía"
+                                        alt={t("conoceme.foto.alt")}
                                         loading="eager"
                                         className="absolute inset-0 w-full h-full object-cover object-top"
-                                        style={{ height: '110%', filter: 'brightness(1.15)' }}
+                                        style={{ filter: 'brightness(1.15)' }}
                                     />
                                 </picture>
-                                <picture className="absolute inset-0 pointer-events-none z-[35]" aria-hidden="true">
-                                    <source srcSet="/images/texturas/abstract-crumpled-mobile.webp" media="(max-width: 767px)" />
-                                    <source srcSet="/images/texturas/abstract-crumpled.webp" media="(min-width: 768px)" />
-                                    <img
-                                        src="/images/texturas/abstract-crumpled.webp"
-                                        alt="" role="presentation"
-                                        loading="lazy"
-                                        className="absolute inset-0 w-full h-full object-cover opacity-15 mix-blend-overlay"
-                                    />
-                                </picture>
+                                <div className="absolute inset-0 pointer-events-none z-[35]">
+                                    <picture>
+                                        <source srcSet="/images/texturas/abstract-crumpled-mobile.webp" media="(max-width: 767px)" />
+                                        <source srcSet="/images/texturas/abstract-crumpled.webp" media="(min-width: 768px)" />
+                                        <img
+                                            src="/images/texturas/abstract-crumpled.webp"
+                                            alt="" role="presentation"
+                                            loading="lazy"
+                                            className="absolute inset-0 w-full h-full object-cover opacity-15 mix-blend-overlay"
+                                        />
+                                    </picture>
+                                </div>
                             </div>
                         </motion.div>
                     </div>
 
                     <div className="relative z-30 w-full px-4 pt-4 pb-8 md:pt-4 md:pb-8 md:px-20">
                         <div className="flex justify-center w-full space-x-6 text-2xl md:space-x-8 md:text-3xl" style={{ color: RETRO_CREAM }}>
-                            {Object.entries(socialLinks).map(([key, url], index) => {
-                                const IconComponent = IconMap[key];
+                            {socialLinks.map((s, index) => {
+                                const IconComponent = socialIcons[s.key];
                                 if (!IconComponent) return null;
                                 return (
                                     <motion.a
-                                        key={key} custom={index} variants={simpleEntryVariants} href={url}
-                                        target="_blank" rel="noopener noreferrer" aria-label={t("conoceme.aria.profile")}
+                                        key={s.key} custom={index} variants={simpleEntryVariants} href={s.href}
+                                        target={s.download ? undefined : "_blank"} rel="noopener noreferrer" aria-label={t("conoceme.aria.profile", { platform: s.key })}
                                         className={`transition-colors hover:text-[#b43a31] transform hover:scale-110`}
+                                        {...(s.download ? { download: '' } : {})}
                                     >
                                         <IconComponent />
                                     </motion.a>
@@ -385,7 +375,7 @@ export default function Conoceme() {
                 </picture>
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <div className="flex items-center gap-6 mb-16">
-                        <FaRegPlayCircle className="text-7xl text-[#8e2b27] animate-pulse" />
+                        <FaRegPlayCircle aria-hidden="true" className="text-7xl text-[#8e2b27] animate-pulse" />
                         <h2 className="text-6xl font-black tracking-tighter uppercase md:text-8xl font-display-impact">{t("conoceme.skills.title")}</h2>
                     </div>
 
@@ -419,7 +409,7 @@ export default function Conoceme() {
                 </picture>
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <div className="flex items-center gap-6 mb-20">
-                        <FaWrench className="text-6xl text-[#8e2b27]" />
+                        <FaWrench aria-hidden="true" className="text-6xl text-[#8e2b27]" />
                         <div>
                             <span className="text-[#8e2b27] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2">{t("conoceme.studio.subtitle")}</span>
                             <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase font-display-impact">

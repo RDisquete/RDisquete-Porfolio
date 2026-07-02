@@ -1,3 +1,4 @@
+import React from "react";
 import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { Proyecto } from "../data/projectsData";
@@ -10,7 +11,7 @@ const COLORS = {
 
 const COLLAGE_ROTATIONS = [
     "rotate-[-1deg]", "rotate-[2deg] -translate-y-1",
-    "-rotate-1.5 translate-y-3", "rotate-2.5 -translate-y-2",
+    "-rotate-[1.5deg] translate-y-3", "rotate-[2.5deg] -translate-y-2",
 ];
 
 export default function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto, index: number, onOpen: (p: Proyecto) => void, isFeatured?: boolean }) {
@@ -53,14 +54,14 @@ export default function ProjectCard({ project, index, onOpen, isFeatured }: { pr
                         <h2 className={`font-black tracking-tighter text-white uppercase leading-[0.8] ${isFeatured ? "text-4xl md:text-7xl" : "text-xl md:text-2xl"}`}>{project.title}</h2>
                     </div>
                     <div className="flex gap-2 text-white/50 mb-1">
-                        {project.techIcons?.map((icon, i) => <span key={i} className="text-lg md:text-xl">{icon}</span>)}
+                        {project.techIcons?.map((icon, i) => <span key={i} aria-hidden="true" className="text-lg md:text-xl">{icon}</span>)}
                     </div>
                 </div>
             </motion.div>
 
             <motion.div className="absolute inset-0 z-20 flex flex-col justify-between p-5 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: isHovered ? 1 : 0 }} style={{ backgroundColor: theme.bg }}>
                 {!prefersReducedMotion && isHovered && project.video && (
-                    <video src={project.video.replace(/ /g, "%20")} autoPlay loop muted playsInline className="absolute inset-0 z-0 object-cover w-full h-full opacity-30 grayscale mix-blend-overlay" />
+                    <video key={project.video} src={project.video.replace(/ /g, "%20")} autoPlay loop muted playsInline preload="none" className="absolute inset-0 z-0 object-cover w-full h-full opacity-30 grayscale mix-blend-overlay" />
                 )}
                 <div className="relative z-10 flex flex-col h-full">
                     <div className="flex items-start justify-between pb-2 mb-3 border-b border-current/20" style={{ color: theme.text }}>

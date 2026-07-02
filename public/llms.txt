@@ -1,0 +1,18 @@
+# RDisquete — Rafa Dorado
+
+> Frontend Developer & Music Producer
+
+## About
+Portfolio personal de Rafa Dorado: desarrollador frontend (React, TypeScript, Tailwind) y productor musical.
+
+## Sections
+- Hero: presentación personal con fotografía y redes sociales
+- Proyectos: portfolio de 9 proyectos frontend (apps web/mobile, APIs)
+- Conoceme: perfil profesional, skills técnicos, estudio musical
+- Contacto: formulario de contacto vía Formspree y enlaces sociales
+- Manifesto: manifiesto personal y filosofía de trabajo
+
+## Links
+- Web: https://rdisquete.es
+- GitHub: https://github.com/rdisquete
+- LinkedIn: https://www.linkedin.com/in/rafael-dorado-zamoro/

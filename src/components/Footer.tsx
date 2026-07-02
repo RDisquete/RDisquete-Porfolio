@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { FaInstagram, FaLinkedin, FaWhatsapp, FaFileDownload, FaGithub } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import React from "react";
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { socialLinks, renderSocialIcon } from "../data/socialLinks";
 
 const BG = "#171717";
 const PAPER = "#e5dfbc"; 
@@ -9,7 +9,7 @@ const ACCENT = "#8e2b27";
 
 export default function Footer() {
   const { t } = useTranslation();
-  const [timecode, setTimecode] = useState("00:00:00:00");
+  const timeRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -18,19 +18,10 @@ export default function Footer() {
       const m = String(now.getMinutes()).padStart(2, "0");
       const s = String(now.getSeconds()).padStart(2, "0");
       const f = String(Math.floor(Math.random() * 24)).padStart(2, "0");
-      setTimecode(`${h}:${m}:${s}:${f}`);
+      if (timeRef.current) timeRef.current.textContent = `${h}:${m}:${s}:${f}`;
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  const links = [
-    { icon: <FaInstagram aria-hidden="true" />, href: "https://www.instagram.com/rdisquete/", label: "Instagram" },
-    { icon: <FaWhatsapp aria-hidden="true" />, href: "https://wa.me/+34648791998", label: "WhatsApp" },
-    { icon: <MdEmail aria-hidden="true" />, href: "mailto:rafael.doradozamoro@gmail.com", label: "Email" },
-    { icon: <FaLinkedin aria-hidden="true" />, href: "https://www.linkedin.com/in/rafael-dorado-zamoro/", label: "LinkedIn" },
-    { icon: <FaFileDownload aria-hidden="true" />, href: "/images/CV_Rafael_Dorado_Zamoro.pdf", label: "Descargar CV", download: true },
-    { icon: <FaGithub aria-hidden="true" />, href: "https://github.com/RDisquete", label: "GitHub" }
-  ];
 
   return (
     <footer
@@ -48,22 +39,23 @@ export default function Footer() {
         <span className="text-[8px] font-mono tracking-widest uppercase block mb-[2px]" style={{ color: PAPER }}>
           Live Master
         </span>
-        <span className="text-[10px] font-mono font-bold" style={{ color: ACCENT }}>
-          {timecode}
+        <span ref={timeRef} className="text-[10px] font-mono font-bold" style={{ color: ACCENT }}>
+          00:00:00:00
         </span>
       </div>
       <nav aria-label={t("footer.aria.contactLinks")} className="z-10">
         <div className="flex text-2xl gap-7" style={{ color: PAPER }}>
-          {links.map((link, index) => (
+          {socialLinks.map((link) => (
             <a
-              key={index}
+              key={link.key}
               href={link.href}
               target={link.download ? undefined : "_blank"}
               rel="noopener noreferrer"
-              aria-label={link.label}
+              aria-label={t(`hero.aria.${link.key}`)}
               className="transition-all duration-300 hover:text-[#8e2b27] transform hover:scale-110"
+              {...(link.download ? { download: '' } : {})}
             >
-              {link.icon}
+              {renderSocialIcon(link.key, "text-2xl")}
             </a>
           ))}
         </div>

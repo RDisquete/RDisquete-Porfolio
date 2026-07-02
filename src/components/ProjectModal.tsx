@@ -1,11 +1,45 @@
+import React from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import type { Proyecto } from "../data/projectsData";
 import { useTranslation } from "react-i18next";
 
 export default function ProjectModal({ project, onClose }: { project: Proyecto, onClose: () => void }) {
   const { t } = useTranslation();
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    closeRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || !containerRef.current) return;
+      const focusable = containerRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
     return (
         <motion.div
+            ref={containerRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={project.title}
             className="fixed inset-0 bg-black/95 flex items-start justify-center z-[9999] overflow-y-auto px-4 py-8"
             onClick={onClose}
         >
@@ -32,6 +66,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
 
                 <div className="p-6 md:p-8 md:w-2/5 space-y-5 text-black relative flex flex-col">
                     <button
+                        ref={closeRef}
                         onClick={onClose}
                         aria-label={t("projectModal.aria.closeModal")}
                         className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-black text-white text-sm font-bold hover:bg-[#8e2b27] transition z-20"
@@ -45,11 +80,11 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
 
                     <div className="flex items-center justify-between border-b border-black/10 pb-3">
                         <span className="font-mono text-[9px] font-black uppercase tracking-widest text-black/40">
-                            {project.pressingType === 'First' ? 'FIRST PRESS' : project.pressingType === 'Remaster' ? 'REMASTERED' : 'BOOTLEG'}
+                            {project.pressingType === 'First' ? t("projectModal.firstPress") : project.pressingType === 'Remaster' ? t("projectModal.remastered") : t("projectModal.bootleg")}
                         </span>
                         <div className="flex gap-2 text-base text-[#8e2b27]">
                             {project.techIcons?.map((icon, i) => (
-                                <span key={i}>{icon}</span>
+                                <span key={i} aria-hidden="true">{icon}</span>
                             ))}
                         </div>
                     </div>
@@ -57,6 +92,16 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                     <p className="text-xs font-mono text-black/60 italic leading-relaxed border-l-2 border-[#8e2b27] pl-3">
                         "{project.desc}"
                     </p>
+
+                    {project.stats && project.stats.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5">
+                            {project.stats.map((stat, i) => (
+                                <span key={i} className="bg-black text-[#f5f3e7] font-mono text-[9px] font-black px-2 py-1 uppercase tracking-wider">
+                                    {stat}
+                                </span>
+                            ))}
+                        </div>
+                    )}
 
                     <div className="space-y-1">
                         <h3 className="text-[9px] font-black uppercase text-black/30 tracking-widest">{t("projectModal.contexto")}</h3>
@@ -96,7 +141,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                             <a
                                 href={project.url}
                                 target="_blank"
-                                rel="noreferrer"
+                                rel="noopener noreferrer"
                                 className="w-full text-center bg-[#8e2b27] text-white py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-black transition"
                             >
                                 {t("projectModal.verProyecto")}
@@ -106,7 +151,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                             <a
                                 href={project.github}
                                 target="_blank"
-                                rel="noreferrer"
+                                rel="noopener noreferrer"
                                 className="w-full text-center border-2 border-black text-black py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-black hover:text-white transition"
                             >
                                 {t("projectModal.verCodigo")}
@@ -115,7 +160,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                         {project.apkUrl && (
                             <a
                                 href={project.apkUrl}
-                                target="_blank" rel="noreferrer"
+                                target="_blank" rel="noopener noreferrer"
                                 className="w-full text-center border-2 border-[#8e2b27] text-[#8e2b27] py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-[#8e2b27] hover:text-white transition"
                             >
                                 {t("projectModal.descargarApk")}

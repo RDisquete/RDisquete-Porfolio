@@ -1,6 +1,13 @@
 {
   "app": {
-    "skipToContent": "Saltar al contenido principal"
+    "skipToContent": "Saltar al contenido principal",
+    "loading": "Cargando...",
+    "title": {
+      "home": "RDisquete | Frontend Developer React TypeScript",
+      "proyectos": "Proyectos | RDisquete",
+      "conoceme": "Conóceme | RDisquete",
+      "contacto": "Contacto | RDisquete"
+    }
   },
   "languageSwitcher": {
     "ariaLabel": "Cambiar idioma"
@@ -38,7 +45,6 @@
       "portrait": "Retrato de Rafa Dorado"
     },
     "badge": "RAFA DORADO // RDISQUETE",
-    "title": "RAFA<br />DORADO",
     "subtitle": "Frontend Developer",
     "p1": "No solo escribo código; construyo aplicaciones pensadas para durar. Mi enfoque combina experiencia de usuario, rendimiento, accesibilidad y una base técnica sólida.",
     "p2": "Me especializo en transformar ideas en <c1>interfaces modernas</c1>: visualmente cuidadas, técnicamente <c2>robustas</c2> y diseñadas para crecer sin comprometer la calidad del producto.",
@@ -73,12 +79,16 @@
     "verCodigo": "Ver código",
     "descargarApk": "Descargar APK",
     "codigo": "Código",
-    "sideBArchive": "Side_B // Archive"
+    "sideBArchive": "Side_B // Archive",
+    "fullDiscography": "Ver Discografía Completa"
   },
   "projectModal": {
     "aria": {
       "closeModal": "Cerrar modal"
     },
+    "firstPress": "FIRST PRESS",
+    "remastered": "REMASTERED",
+    "bootleg": "BOOTLEG",
     "contexto": "Contexto",
     "problema": "Problema",
     "solucion": "Solución",
@@ -88,7 +98,8 @@
     "descargarApk": "Descargar APK"
   },
   "proyectos": {
-    "cta": "¿GRABAMOS EL PRÓXIMO HIT?"
+    "cta": "¿GRABAMOS EL PRÓXIMO HIT?",
+    "emptyFilter": "Ningún proyecto coincide con ese filtro."
   },
   "contacto": {
     "phrases": [
@@ -103,18 +114,32 @@
       "email": "EMAIL...",
       "mensaje": "ESCRIBE TU IDEA AQUÍ..."
     },
+    "label": {
+      "name": "Producer_Name",
+      "email": "Return_Path",
+      "message": "Project_Brief"
+    },
     "enviando": "ENVIANDO...",
+    "configRequired": "CONFIG_REQUIRED",
+    "sending": "Enviando Señal...",
+    "readyToSend": "¿Listo para Enviar?",
+    "systemOff": "SYSTEM_OFF",
+    "pushToStart": "PULSA PARA EMPEZAR",
+    "gotIt": "¡RECIBIDO!",
     "aria": {
       "profile": "Visitar mi perfil de {{label}}",
       "home": "Volver a la página principal"
     },
-    "returnHome": "RETURN_TO_HOME"
+    "returnHome": "VOLVER AL INICIO"
   },
   "conoceme": {
     "introQuote": "Soy <c1>Rafa</c1>. Mi enfoque como desarrollador <c2>Frontend</c2> es construir interfaces donde el rendimiento y la estética vayan de la mano. Vengo del sector audiovisual, una etapa que me enseñó a cuidar el detalle visual, pero hoy mi prioridad es la <c3>solución técnica</c3>. Utilizo herramientas como <c4>React y TypeScript</c4> para crear sitios web rápidos, accesibles y con un diseño cuidado. No busco el estándar, sino el equilibrio entre un código limpio y una <c5>experiencia de usuario</c5> impecable.",
     "signature": "— rdisquete",
+    "foto": {
+      "alt": "Rafa Dorado - Fotografía"
+    },
     "aria": {
-      "profile": "Visitar perfil de currículum"
+      "profile": "Visitar {{platform}}"
     },
     "title": "README.md",
     "passion": {
@@ -468,6 +493,26 @@
       ],
       "result": "Portfolio desplegado y activo que funciona como vitrina profesional del trabajo fotográfico, con series organizadas por proyecto.",
       "impact": "Combina mi background audiovisual con desarrollo frontend — demuestra que no solo escribo código, sino que entiendo composición visual y narrativa."
+    },
+    "vettonia": {
+      "title": "Vettonia",
+      "desc": "Plataforma digital para la gestión y experiencia de un festival de música que centraliza información, interacción de asistentes y administración de contenido en tiempo real.",
+      "context": "Proyecto diseñado para simular un entorno real de festival, donde asistentes y organizadores necesitan una plataforma unificada para consultar información, interactuar durante el evento y gestionar contenido dinámico.",
+      "problem": "La experiencia de un festival suele estar fragmentada entre múltiples herramientas: información del evento, interacción de usuarios, contenido multimedia y gestión administrativa, lo que dificulta la coherencia y escalabilidad del sistema.",
+      "solution": [
+        "Cartel interactivo con 47 artistas y fichas individuales",
+        "Sistema de pases digitales con autenticación mediante PIN y QR",
+        "Galería colaborativa con subida de fotos, reacciones y moderación",
+        "Muro de mensajes en tiempo real para asistentes",
+        "Mapa interactivo del recinto con Leaflet y OpenStreetMap",
+        "Panel de administración para gestión de artistas, contenido y alertas",
+        "Sistema de actualizaciones en tiempo real con Supabase Realtime",
+        "Aplicación PWA instalable con soporte offline",
+        "Arquitectura basada en servicios desacoplados del UI",
+        "Testing automatizado con Vitest y Testing Library (257 tests)"
+      ],
+      "result": "Se desarrolló una plataforma funcional y escalable que unifica la experiencia del asistente y la gestión interna del festival, con funcionalidades en tiempo real, persistencia híbrida y soporte offline.",
+      "impact": "Proyecto full stack que demuestra habilidades en arquitectura frontend moderna, diseño de sistemas escalables, integración con backend, tiempo real, testing y desarrollo de experiencias de usuario complejas."
     }
   }
 }

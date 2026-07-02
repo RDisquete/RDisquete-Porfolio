@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
@@ -22,6 +23,10 @@ export default function Proyectos() {
     const [selected, setSelected] = useState<Proyecto | null>(null);
     const [filter, setFilter] = useState('ALL');
 
+    useEffect(() => {
+        document.title = t("app.title.proyectos");
+    }, [t]);
+
     const categories = ['ALL', 'REACT', 'TYPESCRIPT', 'TAILWIND', 'VITE', 'FRAMER', 'SUPABASE', 'NEXT.JS', 'GOOGLE MAPS'];
 
     const filteredProjects = PROJECTS.filter(p =>
@@ -44,7 +49,7 @@ export default function Proyectos() {
                     </div>
                 </h1>
 
-                <nav className="mt-20 mb-22 relative z-10 flex flex-col items-center">
+                <nav className="mt-20 mb-20 relative z-10 flex flex-col items-center">
                     <span className="text-[9px] font-mono text-black/30 mb-4 tracking-[0.5em] uppercase">Select_Frequency:</span>
                     <div className="flex items-center gap-8 md:gap-16 overflow-x-auto pb-2">
                         {categories.map((tag) => (
@@ -73,6 +78,11 @@ export default function Proyectos() {
             </section>
 
             <section className="px-6 pb-32 mx-auto max-w-7xl relative z-10">
+                {filteredProjects.length === 0 ? (
+                    <p className="font-mono text-sm text-black/50 text-center py-20">
+                        {t("proyectos.emptyFilter")}
+                    </p>
+                ) : (
                 <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-14">
                     {filteredProjects.map((proj, idx) => (
                         <ProjectCard
@@ -84,12 +94,13 @@ export default function Proyectos() {
                         />
                     ))}
                 </div>
+                )}
 
                 <div className="flex flex-col items-center mt-24">
                     <Link to="/contact" className="flex items-center gap-4 group w-fit">
                         <motion.div whileHover={{ x: 10 }} className="flex items-center gap-4 cursor-pointer">
                             <div className="flex items-center justify-center w-10 h-10 border-2 border-black rounded-full group-hover:bg-black transition-colors">
-                                <FaArrowRight className="w-4 h-4 text-black group-hover:text-[#cdc69c] transition-colors" />
+                                <FaArrowRight aria-hidden="true" className="w-4 h-4 text-black group-hover:text-[#cdc69c] transition-colors" />
                             </div>
                             <span className="text-xl md:text-3xl font-black uppercase tracking-tighter text-[#8e2b27] group-hover:text-black">{t("proyectos.cta")}</span>
                         </motion.div>

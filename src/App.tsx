@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -20,8 +21,12 @@ function CanonicalUpdater() {
 }
 
 export default function App() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { startAtmosphere } = useVinyl();
+
+  useEffect(() => {
+    document.documentElement.lang = i18n.language?.startsWith("en") ? "en" : "es";
+  }, [i18n.language]);
 
   useEffect(() => {
     const handleFirstInteraction = () => {
@@ -43,7 +48,7 @@ export default function App() {
         <ScrollToTop />
         <Header />
         <main id="main-content" className="relative z-10 flex-1">
-          <Suspense fallback={null}>
+          <Suspense>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<Conoceme />} />

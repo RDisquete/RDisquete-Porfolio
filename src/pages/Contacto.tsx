@@ -3,15 +3,8 @@ import type { Variants } from "framer-motion";
 import { useMemo, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import {
-  FaLinkedin,
-  FaInstagram,
-  FaEnvelope,
-  FaWhatsapp,
-  FaFileDownload,
-  FaGithub,
-  FaArrowRight
-} from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
+import { socialLinks, renderSocialIcon } from "../data/socialLinks.tsx";
 import { useForm } from "@formspree/react";
 
 const ACCENT_COLOR = "#8e2b27";
@@ -24,15 +17,6 @@ const TEXTURE_BG = "/images/texturas/top-view-of-crumpled-vintage.webp";
 const TEXTURE_MOBILE = "/images/texturas/abstract-crumpled-mobile.webp";
 const TEXTURE_DESKTOP = "/images/texturas/abstract-crumpled.webp";
 
-const socialLinks = [
-  { icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com/rdisquete/" },
-  { icon: FaWhatsapp, label: "WhatsApp", href: "https://wa.me/+34648791998" },
-  { icon: FaEnvelope, label: "Email", href: "mailto:rafael.doradozamoro@gmail.com" },
-  { icon: FaLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/rafael-dorado-zamoro/" },
-  { icon: FaFileDownload, href: "/images/CV_Rafael_Dorado_Zamoro.pdf", label: "Descargar CV", download: true },
-  { icon: FaGithub, label: "GitHub", href: "https://github.com/RDisquete" }
-];
-
 const sectionVariants: Variants = {
   initial: { opacity: 0, y: 20 },
   animate: {
@@ -43,8 +27,13 @@ const sectionVariants: Variants = {
 };
 
 export default function Contacto() {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
+    const { t } = useTranslation();
+    
+    useEffect(() => {
+        document.title = t("app.title.contacto");
+    }, [t]);
+
+    const navigate = useNavigate();
   
   const formKey = import.meta.env.VITE_FORMSPREE_KEY;
   const [state, handleSubmitFormspree, reset] = useForm(formKey || "no_key_assigned");
@@ -118,7 +107,7 @@ export default function Contacto() {
 
         <motion.div className="mb-8 text-center" {...animationProps}>
           <span className="font-mono text-[10px] tracking-[0.5em] text-[#cdc69c] uppercase font-black">
-            Session No. 2026_A
+            {`Session No. ${new Date().getFullYear()}_A`}
           </span>
           <h1 className="mt-2 text-4xl font-black leading-none tracking-tighter uppercase md:text-6xl"
             style={{ color: BACKGROUND_SECUNDARY }}>
@@ -166,19 +155,19 @@ export default function Contacto() {
             >
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div className="border-b-2 border-black/10 focus-within:border-[#8e2b27] transition-all">
-                  <label htmlFor="nombre" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">Producer_Name</label>
+                  <label htmlFor="nombre" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">{t("contacto.label.name")}</label>
                   <input type="text" id="nombre" name="nombre" placeholder={t("contacto.placeholder.nombre")} required
                     className="w-full py-1 font-mono text-base text-black uppercase bg-transparent outline-none placeholder:text-black/20" />
                 </div>
                 <div className="border-b-2 border-black/10 focus-within:border-[#8e2b27] transition-all">
-                  <label htmlFor="email" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">Return_Path</label>
+                  <label htmlFor="email" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">{t("contacto.label.email")}</label>
                   <input type="email" id="email" name="email" placeholder={t("contacto.placeholder.email")} required
                     className="w-full py-1 font-mono text-base text-black uppercase bg-transparent outline-none placeholder:text-black/20" />
                 </div>
               </div>
 
               <div className="border-b-2 border-black/10 focus-within:border-[#8e2b27] transition-all">
-                <label htmlFor="mensaje" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">Project_Brief</label>
+                  <label htmlFor="mensaje" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">{t("contacto.label.message")}</label>
                 <textarea id="mensaje" name="mensaje" placeholder={t("contacto.placeholder.mensaje")} required
                   className="w-full bg-transparent py-1 font-mono text-base outline-none min-h-[100px] resize-none text-black placeholder:text-black/20" />
               </div>
@@ -194,14 +183,14 @@ export default function Contacto() {
                     className="flex items-center gap-4"
                   >
                     <div className="flex items-center justify-center w-12 h-12 transition-all duration-300 border-2 border-black rounded-full group-hover:bg-black">
-                      <FaArrowRight className="w-5 h-5 text-black transition-colors group-hover:text-white" />
+                      <FaArrowRight aria-hidden="true" className="w-5 h-5 text-black transition-colors group-hover:text-white" />
                     </div>
                     <div className="flex flex-col text-left">
                       <span className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-[#8e2b27]">
-                        {!formKey ? "CONFIG_REQUIRED" : state.submitting ? "Sending Signal..." : "Ready to Send?"}
+                        {!formKey ? t("contacto.configRequired") : state.submitting ? t("contacto.sending") : t("contacto.readyToSend")}
                       </span>
                       <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-black group-hover:text-[#8e2b27] transition-colors">
-                        {!formKey ? "SYSTEM_OFF" : state.submitting ? t("contacto.enviando") : "PUSH_TO_START"}
+                        {!formKey ? t("contacto.systemOff") : state.submitting ? t("contacto.enviando") : t("contacto.pushToStart")}
                       </span>
                     </div>
                   </motion.div>
@@ -220,7 +209,7 @@ export default function Contacto() {
                 className="absolute inset-0 z-50 flex items-center justify-center bg-white/40 backdrop-blur-[4px] pointer-events-none"
               >
                 <div className="border-[10px] border-green-800 text-green-800 font-black p-6 text-5xl md:text-6xl uppercase tracking-tighter bg-white shadow-2xl">
-                  GOT_IT!
+                  {t("contacto.gotIt")}
                 </div>
               </motion.div>
             )}
@@ -231,10 +220,11 @@ export default function Contacto() {
         <footer className="flex flex-col items-center gap-6 mt-12 w-full">
           <div className="flex gap-8">
             {socialLinks.map((s) => (
-              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                aria-label={t("contacto.aria.profile", { label: s.label })}
-                className="text-[#e5dfbc] hover:text-white transition-all hover:-translate-y-1 text-2xl">
-                <s.icon aria-hidden="true" />
+              <a key={s.key} href={s.href} target={s.download ? undefined : "_blank"} rel="noopener noreferrer"
+                aria-label={t(`hero.aria.${s.key}`)}
+                className="text-[#e5dfbc] hover:text-white transition-all hover:-translate-y-1 text-2xl"
+                {...(s.download ? { download: '' } : {})}>
+                {renderSocialIcon(s.key, "text-2xl")}
               </a>
             ))}
           </div>
@@ -260,7 +250,7 @@ export default function Contacto() {
             aria-label={t("contacto.aria.home")}
           >
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#cdc69c] group-hover:bg-[#cdc69c] transition-all duration-300">
-              <FaArrowRight className="w-4 h-4 text-[#cdc69c] rotate-[180deg] group-hover:text-[#681f1d] transition-colors" />
+              <FaArrowRight aria-hidden="true" className="w-4 h-4 text-[#cdc69c] rotate-[180deg] group-hover:text-[#681f1d] transition-colors" />
             </div>
             <span className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#cdc69c] group-hover:text-white transition-colors">
               {t("contacto.returnHome")}

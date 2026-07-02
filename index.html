@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/Logo rojo claro.webp" type="image/webp" />
+    <link rel="icon" href="/Logo-rojo-claro.webp" type="image/webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="#171717" />
@@ -32,6 +32,7 @@
     <link rel="preload" href="/images/texturas/abstract-crumpled.webp" as="image" media="(min-width: 768px)" fetchpriority="high" />
     <link rel="preload" href="/fonts/montserrat-v31-latin-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="/fonts/great-vibes-v21-latin-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/bebas-neue-v16-latin-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GOOGLE_ANALYTICS_ID%"></script>
     <script>
@@ -49,7 +50,7 @@
       "alternateName": "RDisquete",
       "url": "https://rdisquete.es",
       "jobTitle": "Frontend Developer",
-      "image": "https://rdisquete.es/Logo rojo claro.webp",
+      "image": "https://rdisquete.es/Logo-rojo-claro.webp",
       "knowsAbout": ["React", "TypeScript", "JavaScript", "Tailwind CSS", "Vite", "Framer Motion", "Supabase", "Next.js", "Frontend Development", "UX/UI"],
       "sameAs": [
         "https://github.com/RDisquete",
@@ -72,6 +73,7 @@
   <body>
     <div id="root"></div>
 
+    <!-- IMPORTANTE: Mantener sincronizado con src/data/projectsData.tsx -->
     <noscript>
       <main>
         <h1>Rafael Dorado (RDisquete) — Frontend Developer</h1>
@@ -83,6 +85,16 @@
         </p>
 
         <h2>Proyectos</h2>
+
+        <article>
+          <h3>Vettonia</h3>
+          <p>
+            Plataforma digital para la gestión y experiencia de un festival de música.
+            Cartel interactivo, pases digitales, galería colaborativa y administración
+            en tiempo real. Desarrollada con React, TypeScript y Supabase.
+          </p>
+          <a href="https://vettonia.netlify.app">Ver proyecto</a>
+        </article>
 
         <article>
           <h3>Matilda se va de boda</h3>
@@ -103,12 +115,13 @@
         </article>
 
         <article>
-          <h3>The Pueblo Studio</h3>
+          <h3>skyRESERVE</h3>
           <p>
-            Web corporativa para estudio creativo de narrativas visuales y estrategia de marca.
-            Desarrollada con React, TypeScript y Tailwind CSS.
+            Plataforma de reservas para servicios de drones (web + app móvil) con
+            autenticación, panel admin y disponibilidad en tiempo real. React, TypeScript,
+            React Native, Supabase.
           </p>
-          <a href="https://thepueblo.es">Ver proyecto</a>
+          <a href="https://sky-reserve.netlify.app/">Ver proyecto</a>
         </article>
 
         <article>
@@ -121,12 +134,31 @@
         </article>
 
         <article>
+          <h3>The Pueblo Studio</h3>
+          <p>
+            Web corporativa para estudio creativo de narrativas visuales y estrategia de marca.
+            Desarrollada con React, TypeScript y Tailwind CSS.
+          </p>
+          <a href="https://thepueblo.es">Ver proyecto</a>
+        </article>
+
+        <article>
           <h3>Armario Escénico</h3>
           <p>
             Proyecto web creativo con React y TypeScript. Diseño visual de alto impacto con
             animaciones y experiencia de usuario elaborada.
           </p>
           <a href="https://armarioescenico.netlify.app">Ver proyecto</a>
+        </article>
+
+        <article>
+          <h3>INFRA.RD — Health Monitor</h3>
+          <p>
+            Dashboard de monitorización de infraestructura web en tiempo real. Muestra el
+            estado y latencia de todos los proyectos activos. Desarrollado con React y
+            TypeScript con estética terminal.
+          </p>
+          <a href="https://rdisquetehealthmonitor.netlify.app">Ver proyecto</a>
         </article>
 
         <article>
@@ -148,28 +180,38 @@
         </article>
 
         <article>
-          <h3>INFRA.RD — Health Monitor</h3>
+          <h3>AM Movil Repair</h3>
           <p>
-            Dashboard de monitorización de infraestructura web en tiempo real. Muestra el
-            estado y latencia de todos los proyectos activos. Desarrollado con React y
-            TypeScript con estética terminal.
+            Web de servicio técnico de reparación de móviles con mapas interactivos.
+            Desarrollada con React, Tailwind CSS y Google Maps API.
           </p>
-          <a href="https://rdisquetehealthmonitor.netlify.app">Ver proyecto</a>
+          <a href="https://ammovilrepair.com">Ver proyecto</a>
+        </article>
+
+        <article>
+          <h3>Web RDisquete Photo</h3>
+          <p>
+            Portfolio fotográfico personal con galerías de series propias, navegación
+            inmersiva con teclado y touch, y diseño minimalista.
+          </p>
+          <a href="https://rdisquetephoto.netlify.app/">Ver proyecto</a>
         </article>
 
         <h2>Tecnologías</h2>
         <ul>
-          <li>React</li>
+          <li>React 19</li>
           <li>TypeScript</li>
           <li>Tailwind CSS</li>
           <li>Vite</li>
           <li>Framer Motion</li>
-          <li>Zod</li>
-          <li>Axios</li>
+          <li>React Native / Expo</li>
+          <li>Zustand</li>
           <li>Supabase</li>
           <li>Google Maps API</li>
-          <li>CSS3</li>
+          <li>Leaflet</li>
           <li>Next.js</li>
+          <li>Vitest / Testing Library</li>
+          <li>CSS3</li>
         </ul>
 
         <h2>Contacto</h2>

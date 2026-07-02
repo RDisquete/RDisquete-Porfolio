@@ -5,13 +5,16 @@ export const useVinyl = () => {
   const hasPlayed = useRef(false);
 
   useEffect(() => {
-    if (!audioRef.current) {
-      const audio = new Audio('/sounds/vnyl_intro.mp3');
-      audio.loop = false;
-      audio.volume = 0.3;
-      audio.preload = "none";
-      audioRef.current = audio;
-    }
+    const audio = new Audio('/sounds/vnyl_intro.mp3');
+    audio.loop = false;
+    audio.volume = 0.3;
+    audio.preload = "none";
+    audioRef.current = audio;
+
+    return () => {
+      audio.pause();
+      audioRef.current = null;
+    };
   }, []);
 
   const startAtmosphere = useCallback(() => {

@@ -1,7 +1,8 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { motion, type Variants, useReducedMotion } from "framer-motion";
-import { FaInstagram, FaWhatsapp, FaEnvelope, FaLinkedin, FaFileDownload, FaGithub } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { socialLinks, renderSocialIcon } from "../data/socialLinks.tsx";
 
 function useOrientation() {
   const [isLandscape, setIsLandscape] = useState(
@@ -19,15 +20,6 @@ function useOrientation() {
   return isLandscape;
 }
 
-const socials = [
-  { label: "Instagram", url: "https://www.instagram.com/rdisquete/", key: "instagram" },
-  { label: "WhatsApp", url: "https://wa.me/+34648791998", key: "whatsapp" },
-  { label: "Email", url: "mailto:rafael.doradozamoro@gmail.com", key: "email" },
-  { label: "LinkedIn", url: "https://www.linkedin.com/in/rafael-dorado-zamoro/", key: "linkedin" },
-  { label: "Descargar CV", url: "/images/CV_Rafael_Dorado_Zamoro.pdf", download: true, key: "cv" },
-  { label: "GitHub", url: "https://github.com/RDisquete", key: "github" },
-];
-
 const frontendSlideIn: Variants = {
   hidden: { x: "100%" },
   visible: { x: "0%", transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.5 } },
@@ -41,19 +33,6 @@ const verticalSweep: Variants = {
 const blockFade: Variants = {
   hidden: { opacity: 0, scale: 0.95 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.1, ease: "easeOut" } },
-};
-
-const renderIcon = (label: string) => {
-  const props = { className: "w-7 h-7 md:w-8 md:h-8", "aria-hidden": true as const };
-  switch (label) {
-    case "Instagram": return <FaInstagram {...props} />;
-    case "WhatsApp": return <FaWhatsapp {...props} />;
-    case "Email": return <FaEnvelope {...props} />;
-    case "LinkedIn": return <FaLinkedin {...props} />;
-    case "Descargar CV": return <FaFileDownload {...props} />;
-    case "GitHub": return <FaGithub {...props} />;
-    default: return null;
-  }
 };
 
 function HeroMobile() {
@@ -154,10 +133,10 @@ function HeroMobile() {
 
       <nav className="absolute bottom-1 left-0 w-full z-40 flex justify-center" aria-label={t("hero.aria.social")}>
         <div className="flex space-x-5">
-          {socials.map((s) => (
-            <a key={s.label} href={s.url} target="_blank" rel="noreferrer" aria-label={t(`hero.aria.${s.key}`)}
-              className="text-[#cdc69c] hover:text-[#8e2b27] transition-colors">
-              {renderIcon(s.label)}
+          {socialLinks.map((s) => (
+            <a key={s.key} href={s.href} target={s.download ? undefined : "_blank"} rel="noopener noreferrer" aria-label={t(`hero.aria.${s.key}`)}
+              className="text-[#cdc69c] hover:text-[#8e2b27] transition-colors" {...(s.download ? { download: '' } : {})}>
+              {renderSocialIcon(s.key)}
             </a>
           ))}
         </div>
@@ -244,10 +223,10 @@ function HeroDesktop() {
 
       <nav className="absolute bottom-4 left-0 w-full z-[110] px-8 flex justify-center" aria-label={t("hero.aria.social")}>
         <div className="flex space-x-6">
-          {socials.map((s) => (
-            <a key={s.label} href={s.url} target="_blank" rel="noreferrer" aria-label={t(`hero.aria.${s.key}`)}
-              className="text-[#cdc69c] hover:text-[#8e2b27] transition-colors">
-              {renderIcon(s.label)}
+          {socialLinks.map((s) => (
+            <a key={s.key} href={s.href} target={s.download ? undefined : "_blank"} rel="noopener noreferrer" aria-label={t(`hero.aria.${s.key}`)}
+              className="text-[#cdc69c] hover:text-[#8e2b27] transition-colors" {...(s.download ? { download: '' } : {})}>
+              {renderSocialIcon(s.key)}
             </a>
           ))}
         </div>

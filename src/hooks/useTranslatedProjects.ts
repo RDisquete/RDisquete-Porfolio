@@ -2,19 +2,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PROJECTS } from '../data/projectsData';
 import type { Proyecto } from '../data/projectsData';
-
-const projectKeyMap: Record<string, string> = {
-  'Wedding Album System': 'weddingAlbum',
-  'skyRESERVE': 'skyRESERVE',
-  'The Pueblo': 'thePueblo',
-  'Nor3xtrem': 'nor3xtrem',
-  'Armario Escénico': 'armarioEscenico',
-  'Infra.RD': 'infraRD',
-  'Matter & Sound': 'matterSound',
-  'ED Movil': 'edMovil',
-  'AM Movil Repair': 'amMovilRepair',
-  'Web RDisquete Photo': 'rdisquetePhoto',
-};
+import { projectKeyMap } from '../data/projectKeys';
 
 export function useTranslatedProjects(): Proyecto[] {
   const { t } = useTranslation();

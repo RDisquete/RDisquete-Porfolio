@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState, type ReactNode, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -167,22 +168,22 @@ export default function Header() {
             className="absolute transition-all duration-500 -translate-x-1/2 left-1/2 hover:scale-105 hover:drop-shadow-[0_2px_4px_rgba(205,198,156,0.5)]"
           >
             <img
-              src="/Logo rojo claro.svg"
+              src="/Logo-rojo-claro.svg"
               alt={t("header.alt.logo")}
-              width="100"
-              height="100"
-              className="w-30 h-30"
+              width="112"
+              height="112"
+              className="w-24 h-24 md:w-28 md:h-28"
             />
           </Link>
 
-          <nav className="items-center hidden gap-6 ml-auto md:flex" aria-label={t("header.aria.nav")}>
+            <nav className="items-center hidden gap-6 ml-auto md:flex" aria-label={t("header.aria.nav")}>
             <NavLink 
               to="/about" 
               active={location.pathname === "/about"}
               onClick={() => playSfx('relay', 0.15)}
               onHover={() => playSfx('switch', 0.1)} 
             >
-              About
+              {t("header.nav.about")}
             </NavLink>
             <NavLink 
               to="/projects" 
@@ -190,7 +191,7 @@ export default function Header() {
               onClick={() => playSfx('relay', 0.15)}
               onHover={() => playSfx('switch', 0.1)} 
             >
-              Projects
+              {t("header.nav.projects")}
             </NavLink>
             <NavLink 
               to="/contact" 
@@ -198,7 +199,7 @@ export default function Header() {
               onClick={() => playSfx('relay', 0.15)}
               onHover={() => playSfx('switch', 0.1)}
             >
-              Contact
+              {t("header.nav.contact")}
             </NavLink>
             <LanguageSwitcher />
           </nav>

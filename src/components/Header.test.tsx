@@ -1,9 +1,10 @@
+import React from "react";
 import { render, screen } from '@testing-library/react';
 import { test, expect, vi } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
-import Header from '../Header';
+import Header from './Header';
 
-vi.mock('../../hooks/useVinyl', () => ({
+vi.mock('../hooks/useVinyl', () => ({
   useVinyl: () => ({ startAtmosphere: vi.fn() }),
 }));
 
@@ -33,9 +34,9 @@ test('Header contiene los enlaces de navegación', () => {
       <Header />
     </BrowserRouter>
   );
-  expect(screen.getByText('About')).toBeDefined();
-  expect(screen.getByText('Projects')).toBeDefined();
-  expect(screen.getByText('Contact')).toBeDefined();
+  expect(screen.getByText('Sobre mí')).toBeDefined();
+  expect(screen.getByText('Proyectos')).toBeDefined();
+  expect(screen.getByText('Contacto')).toBeDefined();
 });
 
 test('Header muestra botón de menú hamburguesa en móvil', () => {

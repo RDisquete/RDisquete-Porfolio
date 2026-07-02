@@ -1,3 +1,4 @@
+import React from "react";
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
@@ -154,7 +155,7 @@ export default function SobreMi() {
             >
               <div className="flex items-center gap-4 cursor-pointer">
                 <div className="flex items-center justify-center w-12 h-12 transition-all duration-300 border-2 border-black rounded-full group-hover:bg-black">
-                  <FaArrowRight className="w-5 h-5 text-black group-hover:text-[#cdc69c] transition-colors" />
+                  <FaArrowRight aria-hidden="true" className="w-5 h-5 text-black group-hover:text-[#cdc69c] transition-colors" />
                 </div>
                 <div className="flex flex-col">
                   <span className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-[#cdc69c]">

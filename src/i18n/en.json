@@ -1,6 +1,13 @@
 {
   "app": {
-    "skipToContent": "Skip to main content"
+    "skipToContent": "Skip to main content",
+    "loading": "Loading...",
+    "title": {
+      "home": "RDisquete | Frontend Developer React TypeScript",
+      "proyectos": "Projects | RDisquete",
+      "conoceme": "About Me | RDisquete",
+      "contacto": "Contact | RDisquete"
+    }
   },
  "languageSwitcher": {
     "ariaLabel": "Change language"
@@ -38,7 +45,6 @@
       "portrait": "Portrait of Rafa Dorado"
     },
     "badge": "RAFA DORADO // RDISQUETE",
-    "title": "RAFA<br />DORADO",
     "subtitle": "Frontend Developer",
     "p1": "I don't just write code; I build applications designed to last. My approach combines user experience, performance, accessibility, and a solid technical foundation.",
     "p2": "I specialize in turning ideas into <c1>modern interfaces</c1>: visually refined, technically <c2>robust</c2>, and built to scale without compromising quality.",
@@ -73,12 +79,16 @@
     "verCodigo": "View code",
     "descargarApk": "Download APK",
     "codigo": "Code",
-    "sideBArchive": "Side_B // Archive"
+    "sideBArchive": "Side_B // Archive",
+    "fullDiscography": "View Full Discography"
   },
   "projectModal": {
     "aria": {
       "closeModal": "Close modal"
     },
+    "firstPress": "FIRST PRESS",
+    "remastered": "REMASTERED",
+    "bootleg": "BOOTLEG",
     "contexto": "Context",
     "problema": "Problem",
     "solucion": "Solution",
@@ -88,7 +98,8 @@
     "descargarApk": "Download APK"
   },
   "proyectos": {
-    "cta": "SHALL WE RECORD THE NEXT HIT?"
+    "cta": "SHALL WE RECORD THE NEXT HIT?",
+    "emptyFilter": "No projects match that filter."
   },
   "contacto": {
     "phrases": [
@@ -103,7 +114,18 @@
       "email": "EMAIL...",
       "mensaje": "WRITE YOUR IDEA HERE..."
     },
+    "label": {
+      "name": "Producer_Name",
+      "email": "Return_Path",
+      "message": "Project_Brief"
+    },
     "enviando": "SENDING...",
+    "configRequired": "CONFIG_REQUIRED",
+    "sending": "Sending Signal...",
+    "readyToSend": "Ready to Send?",
+    "systemOff": "SYSTEM_OFF",
+    "pushToStart": "PUSH_TO_START",
+    "gotIt": "GOT_IT!",
     "aria": {
       "profile": "Visit my {{label}} profile",
       "home": "Back to homepage"
@@ -113,8 +135,11 @@
   "conoceme": {
     "introQuote": "I'm <c1>Rafa</c1>. My approach as a <c2>Frontend</c2> developer is to build interfaces where performance and aesthetics go hand in hand. I come from the audiovisual industry, a stage that taught me to care about visual detail, but today my priority is the <c3>technical solution</c3>. I use tools like <c4>React and TypeScript</c4> to create fast, accessible websites with a refined design. I don't chase the standard — I seek the balance between clean code and an impeccable <c5>user experience</c5>.",
     "signature": "— rdisquete",
+    "foto": {
+      "alt": "Rafa Dorado - Photography"
+    },
     "aria": {
-      "profile": "Visit profile"
+      "profile": "Visit {{platform}}"
     },
     "title": "README.md",
     "passion": {
@@ -468,6 +493,26 @@
       ],
       "result": "Deployed and active portfolio that serves as a professional showcase for photographic work, with series organized by project.",
       "impact": "Combines my audiovisual background with frontend development — demonstrates that I not only write code but understand visual composition and narrative."
+    },
+    "vettonia": {
+      "title": "Vettonia",
+      "desc": "Digital platform for the management and experience of a music festival, centralizing information, attendee interaction and real-time content administration.",
+      "context": "Project designed to simulate a real festival environment, where attendees and organizers need a unified platform to consult information, interact during the event and manage dynamic content.",
+      "problem": "The festival experience is often fragmented across multiple tools: event information, user interaction, multimedia content and administrative management, making the system difficult to maintain and scale.",
+      "solution": [
+        "Interactive lineup with 47 artists and individual profiles",
+        "Digital pass system with PIN and QR authentication",
+        "Collaborative gallery with photo uploads, reactions and moderation",
+        "Real-time message wall for attendees",
+        "Interactive venue map with Leaflet and OpenStreetMap",
+        "Admin panel for artist, content and alert management",
+        "Real-time updates with Supabase Realtime",
+        "Installable PWA with offline support",
+        "Service-based architecture decoupled from the UI",
+        "Automated testing with Vitest and Testing Library (257 tests)"
+      ],
+      "result": "A functional and scalable platform that unifies the festival attendee experience and internal management, with real-time features, hybrid persistence and offline support.",
+      "impact": "Full stack project demonstrating modern frontend architecture, scalable system design, backend integration, real-time capabilities, testing and complex user experience development."
     }
   }
 }

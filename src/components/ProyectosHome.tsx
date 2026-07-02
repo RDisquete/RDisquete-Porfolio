@@ -1,9 +1,10 @@
+import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaPlay, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import ProjectModalShared from "./ProjectModal";
 
 // --- TIPOS ---
 interface Project {
@@ -14,162 +15,18 @@ interface Project {
   video?: string;
   techStack?: string;
   techIcons?: React.ReactNode[];
-  context?: string;
-  problem?: string;
-  solution?: string[];
-  result?: string;
+  context: string;
+  problem: string;
+  solution: string[];
+  result: string;
   github?: string;
   impact?: string;
   apkUrl?: string;
+  stats?: string[];
+  pressingType?: 'First' | 'Remaster' | 'Bootleg';
 }
 
-// --- ANIMACIONES MODAL ---
-const modalOverlay: Variants = {
-  hidden:  { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.25 } },
-  exit:    { opacity: 0, transition: { duration: 0.2 } },
-};
 
-const modalPanel: Variants = {
-  hidden:   { opacity: 0, y: 30, scale: 0.97 },
-  visible:  { opacity: 1, y: 0,  scale: 1, transition: { duration: 0.3, ease: [0.17, 0.67, 0.83, 0.67] } },
-  exit:     { opacity: 0, y: 20, scale: 0.97, transition: { duration: 0.2 } },
-};
-
-// --- MODAL ---
-function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
-  const { t } = useTranslation();
-  useEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = "hidden";
-    
-    return () => {
-      document.body.style.overflow = originalStyle;
-    };
-  }, []);
-
-  const modal = (
-    <motion.div
-      className="fixed inset-0 flex items-center justify-center p-4"
-      style={{ zIndex: 99999, backgroundColor: "rgba(0,0,0,0.95)" }}
-      variants={modalOverlay}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      onClick={onClose}
-    >
-      <motion.div
-        variants={modalPanel}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        onClick={(e) => e.stopPropagation()}
-        className="bg-[#f5f3e7] max-w-5xl w-full flex flex-col md:flex-row border-2 border-black shadow-[20px_20px_0px_#8e2b27] max-h-[90vh] overflow-y-auto"
-      >
-        <div className="w-full md:w-3/5 flex-shrink-0 overflow-hidden aspect-[4/3] md:aspect-auto md:self-stretch">
-          <img
-            src={project.img}
-            alt={project.title}
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
-
-        <div className="p-8 md:w-2/5 space-y-6 text-black relative flex flex-col">
-          <button
-            onClick={onClose}
-            aria-label={t("proyectosHome.aria.closeModal")}
-            className="absolute top-4 right-4 text-xl hover:text-[#8e2b27] transition"
-          >
-            ✕
-          </button>
-
-          <h2 className="text-4xl font-black uppercase leading-[0.9] pr-8">
-            {project.title}
-          </h2>
-
-          {project.context && (
-            <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">{t("proyectosHome.contexto")}</h3>
-              <p className="text-xs font-mono text-black/80">{project.context}</p>
-            </div>
-          )}
-
-          {project.solution && (
-            <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-2">{t("proyectosHome.solucion")}</h3>
-              <ul className="text-xs font-mono space-y-1">
-                {project.solution.map((item, i) => (
-                  <li key={i}>• {item}</li>
-                ))}
-              </ul>
-            </div>
-          )}{project.problem && (
-            <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">{t("proyectosHome.problema")}</h3>
-              <p className="text-xs font-mono text-black/80">{project.problem}</p>
-            </div>
-          )}
-          
-          {project.result && (
-            <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">{t("proyectosHome.resultado")}</h3>
-              <p className="text-xs font-mono text-black/80">{project.result}</p>
-            </div>
-          )}
-          
-          {project.impact && (
-            <div>
-              <h3 className="text-[10px] font-black uppercase text-black/40 mb-1">{t("proyectosHome.impacto")}</h3>
-              <p className="text-xs font-mono text-black/80">{project.impact}</p>
-            </div>
-          )}
-
-          {project.techIcons && (
-            <div className="pt-4 border-t border-black/10">
-              <div className="flex flex-wrap gap-2 text-2xl text-[#8e2b27]">
-                {project.techIcons.map((icon, i) => (
-                  <span key={i}>{icon}</span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="flex flex-col gap-3 pt-4 mt-auto pb-4">
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noreferrer"
-              className="w-full text-center bg-[#8e2b27] text-white py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-black transition"
-            >
-              {t("proyectosHome.verProyecto")}
-            </a>
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full text-center border-2 border-black text-black py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-black hover:text-white transition"
-              >
-                {t("proyectosHome.verCodigo")}
-              </a>
-            )}
-            {project.apkUrl && (
-              <a
-                href={project.apkUrl}
-                target="_blank" rel="noreferrer"
-                className="w-full text-center border-2 border-[#8e2b27] text-[#8e2b27] py-3 text-[11px] font-black tracking-[0.2em] uppercase hover:bg-[#8e2b27] hover:text-white transition"
-              >
-                {t("proyectosHome.descargarApk")}
-              </a>
-            )}
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-
-  return createPortal(modal, document.body);
-}
 
 // --- VIDEO LAZY ---
 const LazyVideo = ({ src, isHovered, poster }: { src: string; isHovered?: boolean; poster?: string }) => {
@@ -177,12 +34,22 @@ const LazyVideo = ({ src, isHovered, poster }: { src: string; isHovered?: boolea
   const startedRef = useRef(false);
 
   useEffect(() => {
-    if (!videoRef.current || startedRef.current) return;
-    if (isHovered) {
-      videoRef.current.play().catch(() => {});
+    const vid = videoRef.current;
+    if (!vid) return;
+    if (isHovered && !startedRef.current) {
+      vid.play().catch(() => {});
       startedRef.current = true;
+    } else if (!isHovered && startedRef.current) {
+      vid.pause();
     }
   }, [isHovered]);
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    return () => {
+      vid?.pause();
+    };
+  }, []);
 
   return (
     <video
@@ -230,8 +97,8 @@ const ProjectTrack = ({ project, index, featured, onHoverStart, onSelect }: Proj
                {project.title}
              </h3>
            </div>
-           <FaPlay className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
-         </div>
+            <FaPlay aria-hidden="true" className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
       </motion.div>
     );
   }
@@ -259,8 +126,8 @@ const ProjectTrack = ({ project, index, featured, onHoverStart, onSelect }: Proj
              {project.title}
            </h3>
          </div>
-         <FaPlay className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
-       </div>
+          <FaPlay aria-hidden="true" className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
+        </div>
     </motion.div>
   );
 };
@@ -280,7 +147,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
     <section className="relative flex flex-col items-center justify-center w-full min-h-screen py-16 overflow-hidden lg:flex-row lg:py-0 bg-neutral-950">
 
       {/* TEXTURA DE FONDO */}
-      <picture className="absolute inset-0 z-[500] pointer-events-none">
+      <picture className="absolute inset-0 z-0 pointer-events-none">
         <source srcSet="/images/texturas/abstract-crumpled-mobile.webp" media="(max-width: 767px)" />
         <source srcSet="/images/texturas/top-view-of-crumpled-vintage.webp" media="(min-width: 768px)" />
         <img
@@ -307,7 +174,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
             </h2>
           </header>
 
-          <nav className="flex-grow pr-4 custom-scrollbar lg:overflow-y-auto lg:max-h-[45vh] mb-4"
+          <nav className="relative flex-grow pr-4 custom-scrollbar lg:overflow-y-auto lg:max-h-[45vh] mb-4"
             onMouseEnter={() => setIsNavHovered(true)}
             onMouseLeave={() => setIsNavHovered(false)}>
             {projects?.map((project, index) => (
@@ -327,10 +194,10 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
             onClick={() => navigate("/projects")}
           >
             <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#8e2b27] group-hover:bg-[#8e2b27] transition-all duration-300">
-              <FaArrowRight className="w-4 h-4 text-[#8e2b27] group-hover:text-[#cdc69c]" />
+              <FaArrowRight aria-hidden="true" className="w-4 h-4 text-[#8e2b27] group-hover:text-[#cdc69c]" />
             </div>
             <span className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#cdc69c] group-hover:text-white">
-              View Full Discography
+              {t("proyectosHome.fullDiscography")}
             </span>
           </button>
         </div>
@@ -344,8 +211,12 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                 exit={{ opacity: 0, scale: 1.02 }}
                 transition={{ duration: 0.2 }}
                 onClick={() => hoveredProject && setSelectedProject(hoveredProject)}
+                onKeyDown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && hoveredProject) { e.preventDefault(); setSelectedProject(hoveredProject); } }}
                 onMouseEnter={() => setIsPreviewHovered(true)}
                 onMouseLeave={() => setIsPreviewHovered(false)}
+                role="button"
+                tabIndex={0}
+                aria-label={hoveredProject?.title}
                 className="relative lg:absolute inset-0 p-4 md:p-6 bg-[#cdc69c] shadow-[15px_15px_0px_rgba(142,43,39,0.3)] md:shadow-[30px_30px_0px_rgba(142,43,39,0.2)] flex flex-col cursor-pointer group/card transition-transform hover:-translate-y-1 active:scale-[0.99]"
               >
                 {/* MEDIA */}
@@ -381,7 +252,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                   {hoveredProject?.techIcons && hoveredProject.techIcons.length > 0 && (
                     <div className="flex flex-wrap gap-2 pt-3 mt-2 border-t border-black/10 text-xl text-[#8e2b27]">
                       {hoveredProject.techIcons.map((icon, i) => (
-                        <span key={i}>{icon}</span>
+                        <span key={i} aria-hidden="true">{icon}</span>
                       ))}
                     </div>
                   )}
@@ -391,7 +262,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                       <a
                         href={hoveredProject.url}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         className="flex-1 text-center bg-black text-[#cdc69c] py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-[#8e2b27] transition-colors"
                       >
@@ -402,7 +273,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                       <a
                         href={hoveredProject.github}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         className="flex-1 text-center border border-black text-black py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-black hover:text-[#cdc69c] transition-colors"
                       >
@@ -412,7 +283,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                     {hoveredProject?.apkUrl && (
                       <a
                         href={hoveredProject.apkUrl}
-                        target="_blank" rel="noreferrer"
+                        target="_blank" rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         className="flex-1 text-center bg-[#8e2b27] text-[#cdc69c] py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-black transition-colors"
                       >
@@ -429,7 +300,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
 
       <AnimatePresence>
         {selectedProject && (
-          <ProjectModal
+          <ProjectModalShared
             project={selectedProject}
             onClose={() => setSelectedProject(null)}
           />

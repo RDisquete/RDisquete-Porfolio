@@ -2,17 +2,16 @@
 
 > Frontend Developer & Music Producer
 
-## About
-Portfolio personal de Rafa Dorado: desarrollador frontend (React, TypeScript, Tailwind) y productor musical.
+Portfolio personal de Rafa Dorado: desarrollador frontend especializado en React, TypeScript, Tailwind CSS y diseño de alto impacto. También productor musical.
 
-## Sections
-- Hero: presentación personal con fotografía y redes sociales
-- Proyectos: portfolio de 9 proyectos frontend (apps web/mobile, APIs)
-- Conoceme: perfil profesional, skills técnicos, estudio musical
-- Contacto: formulario de contacto vía Formspree y enlaces sociales
-- Manifesto: manifiesto personal y filosofía de trabajo
+## Pages
 
-## Links
-- Web: https://rdisquete.es
-- GitHub: https://github.com/rdisquete
-- LinkedIn: https://www.linkedin.com/in/rafael-dorado-zamoro/
+- [Home](https://rdisquete.es/): Hero con presentación, manifiesto, proyectos destacados y perfil
+- [Proyectos](https://rdisquete.es/projects): Portfolio completo con 9 proyectos frontend y filtros por tecnología
+- [Conoceme](https://rdisquete.es/about): Perfil profesional, skills técnicos, experiencia, formación y estudio musical
+- [Contacto](https://rdisquete.es/contact): Formulario de contacto vía Formspree y enlaces a redes sociales
+
+## External
+
+- [GitHub](https://github.com/rdisquete): Perfil de GitHub con todos los repositorios de proyectos
+- [LinkedIn](https://www.linkedin.com/in/rafael-dorado-zamoro/): Perfil profesional de LinkedIn

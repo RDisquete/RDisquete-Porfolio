@@ -38,9 +38,6 @@ const blockFade: Variants = {
 function HeroMobile() {
   const { t } = useTranslation();
   const isLandscape = useOrientation();
-  const nameSize = isLandscape ? "11vw" : "23vw";
-  const rdSize = isLandscape ? "6vw" : "13vw";
-  const ptTop = isLandscape ? "pt-12" : "pt-20";
 
   return (
     <section
@@ -57,18 +54,19 @@ function HeroMobile() {
       </picture>
 
       <motion.div
-        className="absolute top-0 right-[0%] z-[35] h-full flex items-center pointer-events-none"
+        className="absolute top-0 right-[-5%] z-[35] h-full flex items-center pointer-events-none"
         variants={frontendSlideIn} initial="hidden" animate="visible"
       >
         <span
           className="font-display-impact font-black select-none text-[#cdc69c]"
           style={{
             writingMode: "vertical-rl",
-            transform: "rotate(180deg)",
-            fontSize: "clamp(5rem, 20vw, 14rem)",
-            lineHeight: 0.82,
-            letterSpacing: "-0.04em",
-            opacity: 0.15,
+            transform: "rotate(180deg) scaleX(1.3)",
+            fontSize: "clamp(7rem, 28vw, 18rem)",
+            lineHeight: 0.9,
+            letterSpacing: "-0.02em",
+            opacity: 0.08,
+            transformOrigin: "center center",
           }}
         >
           FRONTEND
@@ -76,46 +74,51 @@ function HeroMobile() {
       </motion.div>
 
       <div
-        className={`relative z-20 flex flex-col justify-center px-5 ${ptTop} ${isLandscape ? "pb-16" : "pb-28"}`}
+        className="relative z-20 flex flex-col justify-center px-5 pb-24"
         style={{ minHeight: "100dvh" }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-        >
-          <h1
-            className="font-display-impact font-light uppercase text-[#cdc69c] leading-none"
-            style={{ fontSize: nameSize, letterSpacing: "-0.03em" }}
+        <div className="flex flex-col items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
-            RAFA
-          </h1>
-        </motion.div>
+            <h1
+              className="font-display-impact font-light uppercase text-[#cdc69c] leading-[0.75]"
+              style={{ fontSize: isLandscape ? "14vw" : "28vw", letterSpacing: "-0.03em" }}
+            >
+              RAFA
+            </h1>
+          </motion.div>
 
-        <motion.div
-          className="ml-[5vw]"
-          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-        >
-          <span
-            className="font-display-impact font-extrabold uppercase text-[#8e2b27] leading-none block"
-            style={{ fontSize: nameSize, letterSpacing: "-0.04em" }}
+          <motion.div
+            className={isLandscape ? "ml-[3vw]" : "-mt-3 ml-[2vw]"}
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           >
-            DORADO
-          </span>
-        </motion.div>
+            <span
+              className="font-display-impact font-extrabold uppercase text-[#8e2b27] leading-[0.75] block"
+              style={{ fontSize: isLandscape ? "14vw" : "32vw", letterSpacing: "-0.04em" }}
+            >
+              DORADO
+            </span>
+          </motion.div>
+        </div>
 
-        <motion.div
-          className="self-end"
-          initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-        >
-          <p
-            className="font-vintage-cursive font-bold text-[#cdc69c] leading-none"
-            style={{ fontSize: rdSize }}
+        <div className={isLandscape ? "absolute right-4 bottom-[52px]" : "absolute right-5 z-50"}
+          style={isLandscape ? {} : { bottom: "90px" }}>
+          <motion.div
+            className="text-right"
+            initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
           >
-            rdisquete
-          </p>
-        </motion.div>
+            <p
+              className="font-vintage-cursive font-bold text-[#cdc69c] leading-none"
+              style={{ fontSize: isLandscape ? "6vw" : "13vw" }}
+            >
+              rdisquete
+            </p>
+          </motion.div>
+        </div>
       </div>
 
       {!isLandscape && (

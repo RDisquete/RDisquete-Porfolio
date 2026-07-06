@@ -257,6 +257,17 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                     </div>
                   )}
 
+                  {/* STATS — remove block if unwanted */}
+                  {hoveredProject?.stats && hoveredProject.stats.length > 0 && (
+                    <div className="flex flex-wrap gap-1 pt-2 mt-2 border-t border-black/10">
+                      {hoveredProject.stats.map((stat, i) => (
+                        <span key={i} className="bg-black text-[#cdc69c] px-1.5 py-0.5 text-[7px] font-mono font-bold uppercase tracking-wider">
+                          {stat}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
                   <div className="flex gap-2 mt-auto pt-3 border-t border-black/10">
                     {hoveredProject?.url && (
                       <a

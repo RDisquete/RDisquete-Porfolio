@@ -322,10 +322,10 @@ export default function Conoceme() {
                         </Trans>
                     </h2>
 
-                    <div className="space-y-8 text-lg md:text-2xl font-mono leading-relaxed text-left border-l-8 border-[#171717] pl-8">
+                    <div className="text-lg md:text-2xl font-mono leading-relaxed text-left border-l-8 border-[#171717] pl-8">
                         <p>
                             <Trans
-                              i18nKey="conoceme.passion.p1"
+                              i18nKey="conoceme.passion.text"
                               components={{
                                 c1: <strong className="font-black" />,
                                 c2: <span style={{ color: RETRO_MAROON }} className="font-bold" />,
@@ -333,28 +333,6 @@ export default function Conoceme() {
                             >
                                 <strong className="font-black" />
                                 <span style={{ color: RETRO_MAROON }} className="font-bold" />
-                            </Trans>
-                        </p>
-
-                        <p>
-                            <Trans
-                              i18nKey="conoceme.passion.p2"
-                              components={{ c1: <strong className="font-black" /> }}
-                            >
-                                <strong className="font-black" />
-                            </Trans>
-                        </p>
-
-                        <p>
-                            <Trans
-                              i18nKey="conoceme.passion.p3"
-                              components={{
-                                c1: <strong style={{ color: RETRO_MAROON }} />,
-                                c2: <strong className="font-black" />,
-                              }}
-                            >
-                                <strong style={{ color: RETRO_MAROON }} />
-                                <strong className="font-black" />
                             </Trans>
                         </p>
                     </div>

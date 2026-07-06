@@ -38,7 +38,7 @@ src/
 │   └── useTranslatedProjects.ts
 ├── data/           # Datos de proyectos
 │   ├── projectsData.tsx
-│   └── homeProjects.tsx
+│   └── projectKeys.ts
 ├── i18n/           # Traducciones ES/EN
 │   ├── index.ts
 │   ├── es.json

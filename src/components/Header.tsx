@@ -160,6 +160,12 @@ export default function Header() {
             <FaBars aria-hidden="true" />
           </button>
 
+          <span
+            className={`hidden md:block font-mono text-[9px] tracking-[0.2em] text-[#cdc69c]/50 uppercase whitespace-nowrap transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          >
+            // Open for opportunities
+          </span>
+
           <Link
             to="/"
             aria-label={t("header.aria.home")}

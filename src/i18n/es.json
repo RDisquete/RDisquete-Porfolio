@@ -144,9 +144,7 @@
     "title": "README.md",
     "passion": {
       "heading": "Donde la Creatividad <br/><c1>se Une al Código</c1>",
-      "p1": "Tras más de diez años en el sector audiovisual, entendí que una interfaz no es solo una imagen, sino un <c1>sistema funcional</c1>. Mi trabajo actual consiste en llevar esa exigencia visual al desarrollo <c2>Frontend</c2>.",
-      "p2": "No veo el código como un cambio de rumbo, sino como la capacidad de <c1>construir mis propias herramientas</c1>. He pasado de capturar la realidad con una cámara a programar experiencias interactivas escalables y eficientes.",
-      "p3": "Hoy, mi enfoque es el equilibrio técnico: utilizar <c1>React y TypeScript</c1> para crear productos que sean robustos por dentro e impecables por fuera. Busco que el código limpio sea siempre la base de una <c2>experiencia de usuario superior</c2>."
+      "text": "Mi trayectoria como <c1>fotógrafo</c1> durante más de diez años me enseñó que una interfaz no es solo una imagen: es un <c2>sistema funcional</c2>. Hoy aplico esa mirada al <c1>desarrollo Frontend</c1> con <c2>React y TypeScript</c2>, construyendo productos visualmente cuidados, técnicamente robustos y pensados para durar."
     },
     "skills": {
       "title": "TRACKLIST: Skills",

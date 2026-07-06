@@ -147,7 +147,21 @@ export default function SobreMi() {
             </p>
           </motion.article>
 
-          <motion.div className="mt-8 md:mt-12" variants={textReveal}>
+          <motion.div
+            className="flex flex-wrap gap-1.5 mt-6"
+            variants={textReveal}
+          >
+            {["React 19", "TypeScript", "Tailwind", "Supabase", "Framer", "RN", "Vitest"].map(tech => (
+              <span
+                key={tech}
+                className="bg-black/80 text-[#cdc69c] px-2 py-1 text-[8px] font-mono font-black uppercase tracking-[0.15em]"
+              >
+                {tech}
+              </span>
+            ))}
+          </motion.div>
+
+          <motion.div className="mt-6 md:mt-10" variants={textReveal}>
             <Link
               to="/contact"
               className="flex items-center gap-4 group w-fit"

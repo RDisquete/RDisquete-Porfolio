@@ -144,9 +144,7 @@
     "title": "README.md",
     "passion": {
       "heading": "Where Creativity <br/><c1>Meets Code</c1>",
-      "p1": "After more than ten years in the audiovisual sector, I understood that an interface is not just an image, but a <c1>functional system</c1>. My current work is about bringing that visual rigor to <c2>Frontend</c2> development.",
-      "p2": "I don't see code as a career change, but as the ability to <c1>build my own tools</c1>. I went from capturing reality with a camera to programming scalable, efficient interactive experiences.",
-      "p3": "Today, my focus is technical balance: using <c1>React and TypeScript</c1> to create products that are robust on the inside and flawless on the outside. I strive for clean code as the foundation of a <c2>superior user experience</c2>."
+      "text": "My decade-long career as a <c1>photographer</c1> taught me that an interface isn't just an image — it's a <c2>functional system</c2>. Today I apply that eye to <c1>Frontend development</c1> with <c2>React and TypeScript</c2>, building products that are visually refined, technically robust, and built to last."
     },
     "skills": {
       "title": "TRACKLIST: Skills",

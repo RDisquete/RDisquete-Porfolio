@@ -43,3 +43,15 @@ test('renderiza experiencia laboral y formación académica', () => {
   expect(screen.getByText(/Desarrollo de 0 a producción/)).toBeInTheDocument();
   expect(screen.getAllByText(/Big School/)).toHaveLength(2);
 });
+
+test('renderiza passion, studio sessions y formación', () => {
+  render(
+    <MemoryRouter>
+      <Conoceme />
+    </MemoryRouter>
+  );
+
+  expect(screen.getByText(/Creatividad|Creativity/)).toBeInTheDocument();
+  expect(screen.getByText('STUDIO SESSIONS')).toBeInTheDocument();
+  expect(screen.getByText(/Side B/i)).toBeInTheDocument();
+});

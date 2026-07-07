@@ -19,7 +19,20 @@ vi.mock('react-i18next', () => ({
     },
     i18n: { language: 'es', changeLanguage: vi.fn() },
   }),
-  Trans: ({ children }: { children: React.ReactNode }) => React.createElement(React.Fragment, null, children),
+  Trans: ({ i18nKey, children }: { i18nKey?: string; children?: React.ReactNode }) => {
+    if (!i18nKey) return React.createElement(React.Fragment, null, children);
+    const keys = i18nKey.split('.');
+    let value: unknown = es;
+    for (const k of keys) {
+      if (value && typeof value === 'object' && k in value) {
+        value = (value as Record<string, unknown>)[k];
+      } else {
+        return React.createElement(React.Fragment, null, children);
+      }
+    }
+    const text = typeof value === 'string' ? value.replace(/<[^>]+>/g, '') : i18nKey;
+    return React.createElement(React.Fragment, null, text);
+  },
 }));
 
 window.IntersectionObserver = vi.fn().mockImplementation(() => ({

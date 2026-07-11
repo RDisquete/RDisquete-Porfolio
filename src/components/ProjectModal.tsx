@@ -11,10 +11,16 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
 
   useEffect(() => {
     closeRef.current?.focus();
+    document.body.classList.add('overflow-hidden');
+    return () => document.body.classList.remove('overflow-hidden');
   }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+        return;
+      }
       if (e.key !== 'Tab' || !containerRef.current) return;
       const focusable = containerRef.current.querySelectorAll<HTMLElement>(
         'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
@@ -32,7 +38,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [onClose]);
 
     return (
         <motion.div

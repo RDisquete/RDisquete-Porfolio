@@ -239,14 +239,19 @@ function HeroDesktop() {
 }
 
 export default function HeroSection() {
+  const [isDesktop, setIsDesktop] = useState(
+    typeof window !== "undefined" ? window.innerWidth >= 768 : false
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   return (
     <div className="relative w-full bg-neutral-900">
-      <div className="md:hidden">
-        <HeroMobile />
-      </div>
-      <div className="hidden md:block">
-        <HeroDesktop />
-      </div>
+      {isDesktop ? <HeroDesktop /> : <HeroMobile />}
     </div>
   );
 }

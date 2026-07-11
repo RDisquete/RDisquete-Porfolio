@@ -16,7 +16,7 @@ test('Home debe renderizar todos sus bloques principales y el contenido base', a
     expect(screen.getByTestId('sobremi-mock')).toBeDefined();
   });
 
-  expect(screen.getAllByText(/RAFA/i)).toHaveLength(2);
-  expect(screen.getAllByText(/DORADO/i)).toHaveLength(2);
-  expect(screen.getAllByText(/rdisquete/i)).toHaveLength(2);
+  expect(screen.getAllByText(/RAFA/i)).toHaveLength(1);
+  expect(screen.getAllByText(/DORADO/i)).toHaveLength(1);
+  expect(screen.getAllByText(/rdisquete/i)).toHaveLength(1);
 });

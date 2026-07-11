@@ -14,6 +14,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Conoceme = lazy(() => import("./pages/Conoceme"));
 const Proyectos = lazy(() => import("./pages/Proyectos"));
 const Contacto = lazy(() => import("./pages/Contacto"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function CanonicalUpdater() {
   useCanonical();
@@ -54,7 +55,7 @@ export default function App() {
               <Route path="/about" element={<Conoceme />} />
               <Route path="/projects" element={<Proyectos />} />
               <Route path="/contact" element={<Contacto />} />
-              <Route path="*" element={<Home />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </main>

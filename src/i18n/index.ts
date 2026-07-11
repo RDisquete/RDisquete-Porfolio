@@ -10,7 +10,7 @@ i18n
   .init({
     resources: { es: { translation: es }, en: { translation: en } },
     fallbackLng: "es",
-    interpolation: { escapeValue: true },
+    interpolation: { escapeValue: false },
     detection: {
       order: ["localStorage", "navigator"],
       caches: ["localStorage"],

@@ -18,6 +18,7 @@ interface Project {
   context: string;
   problem: string;
   solution: string[];
+  solutionCount: number;
   result: string;
   github?: string;
   impact?: string;

@@ -1,7 +1,6 @@
 export const projectKeyMap: Record<string, string> = {
   'Vettonia': 'vettonia',
   'Wedding Album System': 'weddingAlbum',
-  'Wedding Album System — R&M': 'weddingAlbum',
   'skyRESERVE': 'skyRESERVE',
   'The Pueblo': 'thePueblo',
   'Nor3xtrem': 'nor3xtrem',

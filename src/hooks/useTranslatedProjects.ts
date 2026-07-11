@@ -16,7 +16,7 @@ export function useTranslatedProjects(): Proyecto[] {
       desc: t(`projects.${key}.desc`),
       context: t(`projects.${key}.context`),
       problem: t(`projects.${key}.problem`),
-      solution: p.solution.map((_, i) => t(`projects.${key}.solution.${i}`)),
+      solution: Array.from({ length: p.solutionCount }, (_, i) => t(`projects.${key}.solution.${i}`)),
       result: t(`projects.${key}.result`),
       impact: p.impact ? t(`projects.${key}.impact`) : undefined,
     };

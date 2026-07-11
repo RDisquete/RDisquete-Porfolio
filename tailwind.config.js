@@ -15,7 +15,10 @@ export default {
           'retro-dark': '#171717',
           'retro-cream': '#cdc69c',
           'retro-maroon': '#8e2b27',
-      }
+      },
+      animation: {
+        'spin-slow': 'spin 12s linear infinite',
+      },
     },
   },
   plugins: [],

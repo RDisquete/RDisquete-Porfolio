@@ -6,8 +6,13 @@
       "home": "RDisquete | Frontend Developer React TypeScript",
       "proyectos": "Proyectos | RDisquete",
       "conoceme": "Conóceme | RDisquete",
-      "contacto": "Contacto | RDisquete"
+      "contacto": "Contacto | RDisquete",
+      "notFound": "Página no encontrada | RDisquete"
     }
+  },
+  "notFound": {
+    "message": "Esta página no existe en este disco. El vinilo saltó, la cinta se acabó o escribiste mal la URL.",
+    "cta": "VOLVER AL INICIO"
   },
   "languageSwitcher": {
     "ariaLabel": "Cambiar idioma"

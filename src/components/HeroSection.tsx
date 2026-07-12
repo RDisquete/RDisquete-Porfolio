@@ -201,16 +201,16 @@ function HeroDesktop() {
 
       <div className="relative w-full h-full px-8 pt-8">
         <div className="absolute w-full top-[5%] left-0 z-[70]">
-          <motion.div className="absolute z-20 top-0 left-0 translate-x-[5vw] translate-y-[-20%]"
+          <motion.div className="absolute z-20 left-0 translate-x-[5vw] top-[1.2vw]"
             variants={verticalSweep} initial="hidden" animate="visible" transition={{ delay: 0.1 }}>
-            <h1 className="text-[14vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#cdc69c] uppercase font-display-impact font-light whitespace-nowrap">
+            <h1 className="text-[13vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#cdc69c] uppercase font-display-impact font-extrabold whitespace-nowrap">
               RAFA
             </h1>
           </motion.div>
 
           <motion.div className="absolute z-40 left-[10vw] top-[19vw]"
             variants={verticalSweep} initial="hidden" animate="visible" transition={{ delay: 0.2 }}>
-            <span className="text-[20vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#8e2b27] uppercase font-display-impact font-extrabold whitespace-nowrap block">
+            <span className="text-[22vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#8e2b27] uppercase font-display-impact font-extrabold whitespace-nowrap block">
               DORADO
             </span>
           </motion.div>

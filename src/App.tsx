@@ -50,11 +50,7 @@ export default function App() {
         <ScrollToTop />
         <Header />
         <main id="main-content" className="relative z-10 flex-1">
-          <Suspense fallback={
-            <div className="flex items-center justify-center min-h-[60vh]">
-              <p className="font-mono text-[#cdc69c] text-sm animate-pulse">{t("app.loading")}</p>
-            </div>
-          }>
+          <Suspense fallback={<div className="min-h-[60vh]" />}>
             <ErrorBoundary>
               <Routes>
                 <Route path="/" element={<Home />} />

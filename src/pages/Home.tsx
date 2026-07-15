@@ -20,14 +20,7 @@ export default function Home() {
     <div className="relative w-full bg-neutral-900">
       <HeroSection />
       <main className="relative">
-        <Suspense fallback={
-          <div className="flex items-center justify-center min-h-[60vh]">
-            <div className="text-center">
-              <div className="w-12 h-12 border-2 border-[#cdc69c]/20 border-t-[#cdc69c] rounded-full animate-spin mx-auto mb-4" />
-              <p className="font-mono text-[#cdc69c] text-xs tracking-[0.2em] uppercase">{t("app.loading")}</p>
-            </div>
-          </div>
-        }>
+        <Suspense fallback={<div className="min-h-[60vh]" />}>
           <Manifesto />
           <ProyectosHome projects={translatedProjects} />
           <SobreMi />

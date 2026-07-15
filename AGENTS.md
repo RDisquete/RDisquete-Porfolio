@@ -30,3 +30,4 @@
 ## Known code quirks
 - `tsconfig.app.json` has `noUnusedLocals: false` and `noUnusedParameters: false` — the compiler won't catch these; ESLint's `@typescript-eslint/no-unused-vars` (set to `warn`) is the actual safety net.
 - `index.html` contains a large `<noscript>` block with full project content — keep synced with `projectsData.tsx` whenever a project is added/removed/renamed.
+

@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 import { useVinyl } from "./hooks/useVinyl";
 import { useCanonical } from "./hooks/useCanonical";
@@ -49,14 +50,20 @@ export default function App() {
         <ScrollToTop />
         <Header />
         <main id="main-content" className="relative z-10 flex-1">
-          <Suspense>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<Conoceme />} />
-              <Route path="/projects" element={<Proyectos />} />
-              <Route path="/contact" element={<Contacto />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+          <Suspense fallback={
+            <div className="flex items-center justify-center min-h-[60vh]">
+              <p className="font-mono text-[#cdc69c] text-sm animate-pulse">{t("app.loading")}</p>
+            </div>
+          }>
+            <ErrorBoundary>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<Conoceme />} />
+                <Route path="/projects" element={<Proyectos />} />
+                <Route path="/contact" element={<Contacto />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </ErrorBoundary>
           </Suspense>
         </main>
 

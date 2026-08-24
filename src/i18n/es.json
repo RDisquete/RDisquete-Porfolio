@@ -18,23 +18,23 @@
     "ariaLabel": "Cambiar idioma"
   },
   "header": {
-  "nav": {
-    "about": "Sobre mí",
-    "projects": "Proyectos",
-    "contact": "Contacto"
+    "nav": {
+      "about": "Sobre mí",
+      "projects": "Proyectos",
+      "contact": "Contacto"
+    },
+    "aria": {
+      "closeMenu": "Cerrar menú de navegación",
+      "mobileMenu": "Menú móvil",
+      "openMenu": "Abrir menú de navegación",
+      "home": "Ir a la página de inicio",
+      "nav": "Navegación principal"
+    },
+    "alt": {
+      "logo": "Logo RDisquete"
+    },
+    "openForOpportunities": "// Abierto a oportunidades"
   },
-  "aria": {
-    "closeMenu": "Cerrar menú de navegación",
-    "mobileMenu": "Menú móvil",
-    "openMenu": "Abrir menú de navegación",
-    "home": "Ir a la página de inicio",
-    "nav": "Navegación principal"
-  },
-  "alt": {
-    "logo": "Logo RDisquete"
-  },
-  "openForOpportunities": "// Abierto a oportunidades"
-},
   "hero": {
     "aria": {
       "instagram": "Visitar mi perfil de Instagram",
@@ -484,19 +484,19 @@
       "impact": "Encargo real con dominio propio. Transforma búsquedas dispersas en contactos directos con una interfaz que no da tiempo a irse."
     },
     "rdisquetePhoto": {
-      "title": "Web RDisquete Photo",
-      "desc": "Portfolio fotográfico personal con galerías de series propias y navegación inmersiva.",
-      "context": "Portfolio propio de fotografía con imágenes reales propias. Cada serie es un proyecto visual distinto (bodas, retratos, naturaleza) y la interfaz está diseñada para desaparecer y dejar que la imagen ocupe toda la pantalla.",
-      "problem": "Mostrar series fotográficas extensas sin que la interfaz compita por la atención ni rompa el ritmo de navegación entre imágenes.",
+      "title": "RDisquete — Fotografía de Directo",
+      "desc": "Portfolio de fotografía de conciertos con galerías inmersivas organizadas por grupo.",
+      "context": "Proyecto personal que une fotografía de directo y desarrollo frontend. Reúne imágenes propias de grupos y conciertos, incluyendo varias coberturas de La Raya Rock, en una experiencia visual inspirada en la energía de los carteles y la música en vivo.",
+      "problem": "Mostrar galerías extensas de conciertos sin que la interfaz compita con las fotografías, manteniendo una navegación rápida, clara y atractiva en móvil.",
       "solution": [
-        "Galerías reutilizables con navegación por teclado y touch",
-        "Carruseles con transiciones suaves y control manual",
-        "CSS puro para animaciones de transición entre fotos",
-        "Lazy loading de imágenes para carga progresiva",
-        "Layout minimalista que elimina toda distracción visual"
+        "Galerías individuales organizadas por grupo y concierto",
+        "Grid masonry asimétrico para romper la cuadrícula convencional",
+        "Lightbox con navegación, teclado, touch y enlaces directos a cada fotografía",
+        "Imágenes WebP responsive con carga optimizada según dispositivo",
+        "Identidad visual brutalista con tipografías, textura y animaciones sutiles"
       ],
-      "result": "Portfolio desplegado y activo que funciona como vitrina profesional del trabajo fotográfico, con series organizadas por proyecto.",
-      "impact": "Combina mi background audiovisual con desarrollo frontend — demuestra que no solo escribo código, sino que entiendo composición visual y narrativa."
+      "result": "Portfolio desplegado y activo que convierte cada directo en una galería propia, dando protagonismo total a las bandas y a las fotografías.",
+      "impact": "Une mi experiencia en fotografía de conciertos con desarrollo frontend y diseño visual: no solo construyo interfaces, también pienso cómo una imagen, una marca y una historia deben sentirse en pantalla."
     },
     "vettonia": {
       "title": "Vettonia",

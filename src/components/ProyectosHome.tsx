@@ -32,15 +32,13 @@ interface Project {
 // --- VIDEO LAZY ---
 const LazyVideo = ({ src, isHovered, poster }: { src: string; isHovered?: boolean; poster?: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const startedRef = useRef(false);
 
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
-    if (isHovered && !startedRef.current) {
+    if (isHovered) {
       vid.play().catch(() => {});
-      startedRef.current = true;
-    } else if (!isHovered && startedRef.current) {
+    } else {
       vid.pause();
     }
   }, [isHovered]);

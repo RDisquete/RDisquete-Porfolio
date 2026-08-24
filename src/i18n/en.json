@@ -14,27 +14,27 @@
     "message": "This page doesn't exist on this record. The vinyl skipped, the tape ran out, or you mistyped the URL.",
     "cta": "BACK TO START"
   },
- "languageSwitcher": {
+  "languageSwitcher": {
     "ariaLabel": "Change language"
   },
   "header": {
-  "nav": {
-    "about": "About",
-    "projects": "Projects",
-    "contact": "Contact"
+    "nav": {
+      "about": "About",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "aria": {
+      "closeMenu": "Close navigation menu",
+      "mobileMenu": "Mobile menu",
+      "openMenu": "Open navigation menu",
+      "home": "Go to homepage",
+      "nav": "Main navigation"
+    },
+    "alt": {
+      "logo": "RDisquete Logo"
+    },
+    "openForOpportunities": "// Open for opportunities"
   },
-  "aria": {
-    "closeMenu": "Close navigation menu",
-    "mobileMenu": "Mobile menu",
-    "openMenu": "Open navigation menu",
-    "home": "Go to homepage",
-    "nav": "Main navigation"
-  },
-  "alt": {
-    "logo": "RDisquete Logo"
-  },
-  "openForOpportunities": "// Open for opportunities"
-},
   "hero": {
     "aria": {
       "instagram": "Visit my Instagram profile",
@@ -484,19 +484,19 @@
       "impact": "Real commission with own domain. Transforms scattered searches into direct contacts with an interface that doesn't give users time to leave."
     },
     "rdisquetePhoto": {
-      "title": "Web RDisquete Photo",
-      "desc": "Personal photography portfolio with galleries of original series and immersive navigation.",
-      "context": "Personal photography portfolio with real, original images. Each series is a different visual project (weddings, portraits, nature) and the interface is designed to fade away and let the image fill the screen.",
-      "problem": "Displaying extensive photo series without the interface competing for attention or disrupting the navigation rhythm between images.",
+      "title": "RDisquete — Live Music Photography",
+      "desc": "A live music photography portfolio with immersive galleries organised by artist and concert.",
+      "context": "A personal project combining live music photography and frontend development. It features original concert images, including several performances from the La Raya Rock festival, in a visual experience inspired by gig posters and live music energy.",
+      "problem": "Presenting extensive concert galleries without the interface competing with the images, while keeping the experience fast, clear, and engaging on mobile.",
       "solution": [
-        "Reusable galleries with keyboard and touch navigation",
-        "Carousels with smooth transitions and manual control",
-        "Pure CSS for photo transition animations",
-        "Lazy image loading for progressive loading",
-        "Minimalist layout eliminating all visual distraction"
+        "Individual galleries organised by artist and concert",
+        "Asymmetrical masonry grid that breaks away from conventional layouts",
+        "Lightbox with keyboard, touch navigation, and shareable deep links for every photo",
+        "Responsive WebP images optimised for different screen sizes",
+        "A brutalist visual identity with expressive typography, texture, and subtle animations"
       ],
-      "result": "Deployed and active portfolio that serves as a professional showcase for photographic work, with series organized by project.",
-      "impact": "Combines my audiovisual background with frontend development — demonstrates that I not only write code but understand visual composition and narrative."
+      "result": "A live, deployed portfolio that gives each performance its own space, placing the bands and photographs at the centre of the experience.",
+      "impact": "Brings together my live music photography background with frontend development and visual design—showing that I do more than build interfaces: I consider how images, brands, and stories should feel on screen."
     },
     "vettonia": {
       "title": "Vettonia",

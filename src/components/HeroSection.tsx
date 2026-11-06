@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { motion, type Variants, useReducedMotion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { socialLinks, renderSocialIcon } from "../data/socialLinks.tsx";
 
@@ -128,8 +128,8 @@ function HeroMobile() {
           initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          <p className="px-5 text-[10px] font-mono tracking-widest text-[#cdc69c] font-extrabold truncate uppercase">
-            console.log('Frontend Developer — React & TypeScript')
+          <p className="px-5 text-[10px] font-mono tracking-widest text-[#cdc69c] font-extrabold uppercase">
+            {t("hero.role")}
           </p>
         </motion.div>
       )}
@@ -150,7 +150,6 @@ function HeroMobile() {
 
 function HeroDesktop() {
   const { t } = useTranslation();
-  const prefersReducedMotion = useReducedMotion();
   return (
     <section className="relative w-full h-screen text-[#cdc69c] overflow-hidden border-8 border-[#bbb88c] bg-neutral-900">
       <picture className="absolute inset-0 z-[100] pointer-events-none">
@@ -160,21 +159,13 @@ function HeroDesktop() {
           className="absolute inset-0 w-full h-full object-cover opacity-25 grayscale mix-blend-multiply" />
       </picture>
 
-      {!prefersReducedMotion && (
-        <motion.div
-          className="absolute z-20 top-1/4 left-0 w-full h-[2px] bg-[#cdc69c] opacity-30"
-          animate={{ x: ["0%", "100%"], opacity: [0.2, 0.8, 0.4] }}
-          transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
-        />
-      )}
-
       <motion.div
         className="absolute bottom-16 left-0 right-0 z-[60] w-full h-16 bg-[#8e2b27] opacity-95 flex items-center"
         initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
         transition={{ delay: 0.6, duration: 0.5 }}
       >
-        <p className="px-8 text-xl font-mono tracking-widest text-[#cdc69c] font-extrabold truncate uppercase">
-          console.log('Frontend Developer — React & TypeScript')
+        <p className="px-8 text-xl font-mono tracking-widest text-[#cdc69c] font-extrabold uppercase">
+          {t("hero.role")}
         </p>
       </motion.div>
 

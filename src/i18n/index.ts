@@ -12,7 +12,7 @@ i18n
     fallbackLng: "es",
     interpolation: { escapeValue: false },
     detection: {
-      order: ["localStorage", "navigator"],
+      order: ["localStorage", "htmlTag"],
       caches: ["localStorage"],
     },
   });

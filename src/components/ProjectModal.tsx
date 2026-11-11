@@ -46,14 +46,14 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
             role="dialog"
             aria-modal="true"
             aria-label={project.title}
-            className="fixed inset-0 bg-black/95 flex items-start justify-center z-[9999] overflow-y-auto px-4 py-8"
+            className="fixed inset-0 bg-black/95 flex items-start justify-center z-9999 overflow-y-auto px-4 py-8"
             onClick={onClose}
         >
             <motion.div
                 onClick={(e) => e.stopPropagation()}
                 className="bg-[#f5f3e7] max-w-5xl w-full flex flex-col md:flex-row border-2 border-black shadow-[20px_20px_0px_#8e2b27]"
             >
-              <div className="w-full md:w-3/5 bg-black flex-shrink-0 relative overflow-hidden">
+              <div className="w-full md:w-3/5 bg-black shrink-0 relative overflow-hidden">
                 <img
                     src={project.img}
                     alt=""
@@ -65,7 +65,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                     <img
                         src={project.img}
                         alt={project.title}
-                        className="relative z-[1] w-full h-full object-contain"
+                        className="relative z-1 w-full h-full object-contain"
                     />
                 </div>
               </div>
@@ -75,7 +75,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                         ref={closeRef}
                         onClick={onClose}
                         aria-label={t("projectModal.aria.closeModal")}
-                        className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-black text-white text-sm font-bold hover:bg-[#8e2b27] transition z-20"
+                        className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-black text-white text-sm font-bold hover:bg-retro-maroon transition z-20"
                     >
                         ✕
                     </button>
@@ -88,14 +88,14 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                         <span className="font-mono text-[9px] font-black uppercase tracking-widest text-black/40">
                             {project.pressingType === 'First' ? t("projectModal.firstPress") : project.pressingType === 'Remaster' ? t("projectModal.remastered") : t("projectModal.bootleg")}
                         </span>
-                        <div className="flex gap-2 text-base text-[#8e2b27]">
+                        <div className="flex gap-2 text-base text-retro-maroon">
                             {project.techIcons?.map((icon, i) => (
                                 <span key={i} aria-hidden="true">{icon}</span>
                             ))}
                         </div>
                     </div>
 
-                    <p className="text-xs font-mono text-black/60 italic leading-relaxed border-l-2 border-[#8e2b27] pl-3">
+                    <p className="text-xs font-mono text-black/60 italic leading-relaxed border-l-2 border-retro-maroon pl-3">
                         "{project.desc}"
                     </p>
 
@@ -124,7 +124,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                         <ul className="text-xs font-mono space-y-1 text-black/80">
                             {project.solution.map((item, i) => (
                                 <li key={i} className="flex gap-2">
-                                    <span className="text-[#8e2b27] shrink-0">→</span>
+                                    <span className="text-retro-maroon shrink-0">→</span>
                                     {item}
                                 </li>
                             ))}
@@ -148,7 +148,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                                 href={project.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full text-center bg-[#8e2b27] text-white py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-black transition"
+                                className="w-full text-center bg-retro-maroon text-white py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-black transition"
                             >
                                 {t("projectModal.verProyecto")}
                             </a>
@@ -167,7 +167,7 @@ export default function ProjectModal({ project, onClose }: { project: Proyecto, 
                             <a
                                 href={project.apkUrl}
                                 target="_blank" rel="noopener noreferrer"
-                                className="w-full text-center border-2 border-[#8e2b27] text-[#8e2b27] py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-[#8e2b27] hover:text-white transition"
+                                className="w-full text-center border-2 border-retro-maroon text-retro-maroon py-3 text-[10px] font-black tracking-[0.2em] uppercase hover:bg-retro-maroon hover:text-white transition"
                             >
                                 {t("projectModal.descargarApk")}
                             </a>

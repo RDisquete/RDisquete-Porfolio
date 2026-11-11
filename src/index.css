@@ -1,3 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display-impact: "Bebas Neue", Impact, sans-serif;
+  --font-vintage-cursive: "Great Vibes", cursive;
+  --color-retro-dark: #171717;
+  --color-retro-cream: #cdc69c;
+  --color-retro-maroon: #8e2b27;
+  --animate-spin-slow: spin 12s linear infinite;
+}
+
 @font-face {
   font-family: 'Montserrat';
   src: url('/fonts/montserrat-v31-latin-regular.woff2') format('woff2');
@@ -21,10 +32,6 @@
   font-display: swap;
   src: url('/fonts/bebas-neue-v16-latin-regular.woff2') format('woff2');
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 html {
   height: 100%;

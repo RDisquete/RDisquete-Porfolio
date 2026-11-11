@@ -106,7 +106,7 @@ export default function Contacto() {
       <div className="relative z-10 flex flex-col items-center w-full max-w-xl">
 
         <motion.div className="mb-8 text-center" {...animationProps}>
-          <span className="font-mono text-[10px] tracking-[0.5em] text-[#cdc69c] uppercase font-black">
+          <span className="font-mono text-[10px] tracking-[0.5em] text-retro-cream uppercase font-black">
             {`Session No. ${new Date().getFullYear()}_A`}
           </span>
           <h1 className="mt-2 text-4xl font-black leading-none tracking-tighter uppercase md:text-6xl"
@@ -117,7 +117,7 @@ export default function Contacto() {
 
         {/* TARJETA DEL FORMULARIO */}
         <motion.section
-          className="relative w-full p-6 md:p-12 shadow-[20px_20px_0px_rgba(0,0,0,0.5)] border-[3px] border-black"
+          className="relative w-full p-6 md:p-12 shadow-[20px_20px_0px_rgba(0,0,0,0.5)] border-3 border-black"
           style={{ backgroundColor: CARD_LIGHT }}
           {...animationProps}
         >
@@ -137,12 +137,12 @@ export default function Contacto() {
 
           <div className="relative z-10">
             <header className="flex items-center justify-between pb-3 mb-8 border-b-2 border-black/20 font-mono text-[10px] font-black uppercase italic">
-              <span className="text-[#8e2b27]">// INPUT_SIGNAL_RECORDS</span>
+              <span className="text-retro-maroon">// INPUT_SIGNAL_RECORDS</span>
               <div className="flex gap-1.5" aria-hidden="true">
                 {[1, 2, 3].map((num: number) => (
                   <div
                     key={num}
-                    className="w-2 h-2 rounded-full bg-[#8e2b27]"
+                    className="w-2 h-2 rounded-full bg-retro-maroon"
                   />
                 ))}
               </div>
@@ -154,22 +154,22 @@ export default function Contacto() {
               onSubmit={handleSubmitFormspree}
             >
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div className="border-b-2 border-black/10 focus-within:border-[#8e2b27] transition-all">
-                  <label htmlFor="nombre" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">{t("contacto.label.name")}</label>
+                <div className="border-b-2 border-black/10 focus-within:border-retro-maroon transition-all">
+                  <label htmlFor="nombre" className="block font-mono text-[10px] font-black text-retro-maroon uppercase mb-1">{t("contacto.label.name")}</label>
                   <input type="text" id="nombre" name="nombre" placeholder={t("contacto.placeholder.nombre")} required
-                    className="w-full py-1 font-mono text-base text-black uppercase bg-transparent outline-none placeholder:text-black/20" />
+                    className="w-full py-1 font-mono text-base text-black uppercase bg-transparent outline-hidden placeholder:text-black/20" />
                 </div>
-                <div className="border-b-2 border-black/10 focus-within:border-[#8e2b27] transition-all">
-                  <label htmlFor="email" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">{t("contacto.label.email")}</label>
+                <div className="border-b-2 border-black/10 focus-within:border-retro-maroon transition-all">
+                  <label htmlFor="email" className="block font-mono text-[10px] font-black text-retro-maroon uppercase mb-1">{t("contacto.label.email")}</label>
                   <input type="email" id="email" name="email" placeholder={t("contacto.placeholder.email")} required
-                    className="w-full py-1 font-mono text-base text-black uppercase bg-transparent outline-none placeholder:text-black/20" />
+                    className="w-full py-1 font-mono text-base text-black uppercase bg-transparent outline-hidden placeholder:text-black/20" />
                 </div>
               </div>
 
-              <div className="border-b-2 border-black/10 focus-within:border-[#8e2b27] transition-all">
-                  <label htmlFor="mensaje" className="block font-mono text-[10px] font-black text-[#8e2b27] uppercase mb-1">{t("contacto.label.message")}</label>
+              <div className="border-b-2 border-black/10 focus-within:border-retro-maroon transition-all">
+                  <label htmlFor="mensaje" className="block font-mono text-[10px] font-black text-retro-maroon uppercase mb-1">{t("contacto.label.message")}</label>
                 <textarea id="mensaje" name="mensaje" placeholder={t("contacto.placeholder.mensaje")} required
-                  className="w-full bg-transparent py-1 font-mono text-base outline-none min-h-[100px] resize-none text-black placeholder:text-black/20" />
+                  className="w-full bg-transparent py-1 font-mono text-base outline-hidden min-h-25 resize-none text-black placeholder:text-black/20" />
               </div>
 
               <div className="flex justify-start mt-4">
@@ -186,10 +186,10 @@ export default function Contacto() {
                       <FaArrowRight aria-hidden="true" className="w-5 h-5 text-black transition-colors group-hover:text-white" />
                     </div>
                     <div className="flex flex-col text-left">
-                      <span className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-[#8e2b27]">
+                      <span className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-retro-maroon">
                         {!formKey ? t("contacto.configRequired") : state.submitting ? t("contacto.sending") : t("contacto.readyToSend")}
                       </span>
-                      <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-black group-hover:text-[#8e2b27] transition-colors">
+                      <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-black group-hover:text-retro-maroon transition-colors">
                         {!formKey ? t("contacto.systemOff") : state.submitting ? t("contacto.enviando") : t("contacto.pushToStart")}
                       </span>
                     </div>
@@ -206,9 +206,9 @@ export default function Contacto() {
                 initial={{ scale: 2, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1, rotate: -12 }}
                 exit={{ scale: 0.5, opacity: 0 }}
-                className="absolute inset-0 z-50 flex items-center justify-center bg-white/40 backdrop-blur-[4px] pointer-events-none"
+                className="absolute inset-0 z-50 flex items-center justify-center bg-white/40 backdrop-blur-xs pointer-events-none"
               >
-                <div className="border-[10px] border-green-800 text-green-800 font-black p-6 text-5xl md:text-6xl uppercase tracking-tighter bg-white shadow-2xl">
+                <div className="border-10 border-green-800 text-green-800 font-black p-6 text-5xl md:text-6xl uppercase tracking-tighter bg-white shadow-2xl">
                   {t("contacto.gotIt")}
                 </div>
               </motion.div>
@@ -229,8 +229,8 @@ export default function Contacto() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3 font-mono text-[11px] text-white/60 italic min-h-[20px]">
-            <span className="w-1.5 h-1.5 bg-[#cdc69c] rounded-full animate-pulse flex-shrink-0" aria-hidden="true" />
+          <div className="flex items-center gap-3 font-mono text-[11px] text-white/60 italic min-h-5">
+            <span className="w-1.5 h-1.5 bg-retro-cream rounded-full animate-pulse shrink-0" aria-hidden="true" />
             <AnimatePresence mode="wait">
               <motion.span
                 key={index}
@@ -246,13 +246,13 @@ export default function Contacto() {
 
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-4 group w-fit mt-12 mb-8 border-none outline-none cursor-pointer bg-transparent"
+            className="flex items-center gap-4 group w-fit mt-12 mb-8 border-none outline-hidden cursor-pointer bg-transparent"
             aria-label={t("contacto.aria.home")}
           >
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#cdc69c] group-hover:bg-[#cdc69c] transition-all duration-300">
-              <FaArrowRight aria-hidden="true" className="w-4 h-4 text-[#cdc69c] rotate-[180deg] group-hover:text-[#681f1d] transition-colors" />
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-retro-cream group-hover:bg-retro-cream transition-all duration-300">
+              <FaArrowRight aria-hidden="true" className="w-4 h-4 text-retro-cream rotate-180 group-hover:text-[#681f1d] transition-colors" />
             </div>
-            <span className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#cdc69c] group-hover:text-white transition-colors">
+            <span className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-retro-cream group-hover:text-white transition-colors">
               {t("contacto.returnHome")}
             </span>
           </button>

@@ -9,7 +9,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
 
 import { useVinyl } from "./hooks/useVinyl";
-import { useCanonical } from "./hooks/useCanonical";
+import { usePageMeta } from "./hooks/usePageMeta";
 
 const Home = lazy(() => import("./pages/Home"));
 const Conoceme = lazy(() => import("./pages/Conoceme"));
@@ -17,8 +17,8 @@ const Proyectos = lazy(() => import("./pages/Proyectos"));
 const Contacto = lazy(() => import("./pages/Contacto"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-function CanonicalUpdater() {
-  useCanonical();
+function PageMetaUpdater() {
+  usePageMeta();
   return null;
 }
 
@@ -42,9 +42,9 @@ export default function App() {
 
   return (
     <Router>
-      <CanonicalUpdater />
-      <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-[#171717]">
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[9999] focus:bg-[#8e2b27] focus:text-white focus:px-4 focus:py-2 focus:top-2 focus:left-2">
+      <PageMetaUpdater />
+      <div className="relative flex flex-col min-h-screen overflow-x-hidden bg-retro-dark">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-9999 focus:bg-retro-maroon focus:text-white focus:px-4 focus:py-2 focus:top-2 focus:left-2">
           {t("app.skipToContent")}
         </a>
         <ScrollToTop />

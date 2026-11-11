@@ -1,17 +1,41 @@
 # RDisquete — Rafa Dorado
 
-> Frontend Developer & Music Producer
+> Frontend Developer & Music Producer · España
 
-Portfolio personal de Rafa Dorado: desarrollador frontend especializado en React, TypeScript, Tailwind CSS y diseño de alto impacto. También productor musical.
+Portfolio personal de Rafael Dorado (RDisquete): desarrollador frontend especializado en React, TypeScript, Tailwind CSS y diseño de alto impacto. También productor musical.
 
-## Pages
+## Páginas
 
-- [Home](https://rdisquete.es/): Hero con presentación, manifiesto, proyectos destacados y perfil
-- [Proyectos](https://rdisquete.es/projects): Portfolio completo con 9 proyectos frontend y filtros por tecnología
-- [Conoceme](https://rdisquete.es/about): Perfil profesional, skills técnicos, experiencia, formación y estudio musical
-- [Contacto](https://rdisquete.es/contact): Formulario de contacto vía Formspree y enlaces a redes sociales
+- [Inicio](https://rdisquete.es/): Presentación, manifiesto, proyectos destacados y perfil.
+- [Conóceme](https://rdisquete.es/about): Perfil profesional, skills, experiencia, formación y estudio musical.
+- [Proyectos](https://rdisquete.es/projects): Catálogo completo con 11 proyectos frontend y filtros por tecnología.
+- [Contacto](https://rdisquete.es/contact): Formulario de contacto y enlaces a redes sociales.
 
-## External
+## Proyectos (11)
 
-- [GitHub](https://github.com/rdisquete): Perfil de GitHub con todos los repositorios de proyectos
-- [LinkedIn](https://www.linkedin.com/in/rafael-dorado-zamoro/): Perfil profesional de LinkedIn
+1. Vettonia — Plataforma para festival de música (React, TypeScript, Supabase, PWA).
+2. Wedding Album System — Invitación de boda digital (React, Supabase, Framer Motion).
+3. skyRESERVE — Reserva de servicios con drones (React 19, React Native, Supabase).
+4. Nor3xtrem — Web oficial de marcha ciclodeportiva (React, Vite).
+5. Web RDisquete Photo — Portfolio fotográfico de directo (React, TypeScript).
+6. The Pueblo — Web corporativa de estudio creativo (React, TypeScript, Tailwind).
+7. Armario Escénico — Proyecto web creativo (React, TypeScript).
+8. Infra.RD — Dashboard de monitorización de infraestructura (React, TypeScript).
+9. Matter & Sound — Web de proyecto musical (React, Framer Motion).
+10. ED Movil — Landing de operadora de telecomunicaciones (React, Tailwind).
+11. AM Movil Repair — Web de servicio técnico con mapas (React, Tailwind, Google Maps).
+
+## Stack
+
+React 19, TypeScript, Tailwind CSS, Vite, Framer Motion, React Native / Expo, Zustand, Supabase, Google Maps API, Leaflet, Next.js, Vitest / Testing Library, CSS3.
+
+## Experiencia
+
+- Adv Estudio — Frontend Developer & Audiovisual Creator (2024-2026).
+- Apple Mecanorba — Asesor de Productos Apple (2024).
+- P.D. Fotógrafos — Fotógrafo y Editor de Vídeo (2012-2023).
+
+## Enlaces
+
+- [GitHub](https://github.com/RDisquete)
+- [LinkedIn](https://www.linkedin.com/in/rafael-dorado-zamoro/)

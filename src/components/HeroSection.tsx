@@ -41,10 +41,10 @@ function HeroMobile() {
 
   return (
     <section
-      className="relative w-full text-[#cdc69c] overflow-hidden border-8 border-[#bbb88c] bg-neutral-900"
+      className="relative w-full text-retro-cream overflow-hidden border-8 border-[#bbb88c] bg-neutral-900"
       style={{ minHeight: "100dvh" }}
     >
-      <picture className="absolute inset-0 z-[50] pointer-events-none">
+      <picture className="absolute inset-0 z-50 pointer-events-none">
         <img
           src="/images/texturas/abstract-crumpled-mobile.webp"
           alt="" role="presentation"
@@ -54,11 +54,11 @@ function HeroMobile() {
       </picture>
 
       <motion.div
-        className="absolute top-0 right-[-5%] z-[35] h-full flex items-center pointer-events-none"
+        className="absolute top-0 right-[-5%] z-35 h-full flex items-center pointer-events-none"
         variants={frontendSlideIn} initial="hidden" animate="visible"
       >
         <span
-          className="font-display-impact font-black select-none text-[#cdc69c]"
+          className="font-display-impact font-black select-none text-retro-cream"
           style={{
             writingMode: "vertical-rl",
             transform: "rotate(180deg) scaleX(1.3)",
@@ -83,7 +83,7 @@ function HeroMobile() {
             transition={{ duration: 0.4, delay: 0.1 }}
           >
             <h1
-              className="font-display-impact font-light uppercase text-[#cdc69c] leading-[0.75]"
+              className="font-display-impact font-light uppercase text-retro-cream leading-[0.75]"
               style={{ fontSize: isLandscape ? "14vw" : "28vw", letterSpacing: "-0.03em" }}
             >
               RAFA
@@ -96,7 +96,7 @@ function HeroMobile() {
             transition={{ duration: 0.4, delay: 0.2 }}
           >
             <span
-              className="font-display-impact font-extrabold uppercase text-[#8e2b27] leading-[0.75] block"
+              className="font-display-impact font-extrabold uppercase text-retro-maroon leading-[0.75] block"
               style={{ fontSize: isLandscape ? "14vw" : "32vw", letterSpacing: "-0.04em" }}
             >
               DORADO
@@ -104,7 +104,7 @@ function HeroMobile() {
           </motion.div>
         </div>
 
-        <div className={isLandscape ? "absolute right-4 bottom-[52px]" : "absolute right-5 z-50"}
+        <div className={isLandscape ? "absolute right-4 bottom-13" : "absolute right-5 z-50"}
           style={isLandscape ? {} : { bottom: "90px" }}>
           <motion.div
             className="text-right"
@@ -112,7 +112,7 @@ function HeroMobile() {
             transition={{ duration: 0.3, delay: 0.3 }}
           >
             <p
-              className="font-vintage-cursive font-bold text-[#cdc69c] leading-none"
+              className="font-vintage-cursive font-bold text-retro-cream leading-none"
               style={{ fontSize: isLandscape ? "6vw" : "13vw" }}
             >
               rdisquete
@@ -123,13 +123,13 @@ function HeroMobile() {
 
       {!isLandscape && (
         <motion.div
-          className="absolute left-0 right-0 z-30 h-10 bg-[#8e2b27] flex items-center"
+          className="absolute left-0 right-0 z-30 h-10 bg-retro-maroon flex items-center"
           style={{ bottom: "40px" }}
           initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          <p className="px-5 text-[10px] font-mono tracking-widest text-[#cdc69c] font-extrabold uppercase">
-            {t("hero.role")}
+          <p className="px-5 text-[10px] font-mono tracking-widest text-retro-cream font-extrabold uppercase">
+            console.log('Frontend Developer — React & TypeScript')
           </p>
         </motion.div>
       )}
@@ -138,7 +138,7 @@ function HeroMobile() {
         <div className="flex space-x-5">
           {socialLinks.map((s) => (
             <a key={s.key} href={s.href} target={s.download ? undefined : "_blank"} rel="noopener noreferrer" aria-label={t(`hero.aria.${s.key}`)}
-              className="text-[#cdc69c] hover:text-[#8e2b27] transition-colors" {...(s.download ? { download: '' } : {})}>
+              className="text-retro-cream hover:text-retro-maroon transition-colors" {...(s.download ? { download: '' } : {})}>
               {renderSocialIcon(s.key)}
             </a>
           ))}
@@ -151,8 +151,8 @@ function HeroMobile() {
 function HeroDesktop() {
   const { t } = useTranslation();
   return (
-    <section className="relative w-full h-screen text-[#cdc69c] overflow-hidden border-8 border-[#bbb88c] bg-neutral-900">
-      <picture className="absolute inset-0 z-[100] pointer-events-none">
+    <section className="relative w-full h-screen text-retro-cream overflow-hidden border-8 border-[#bbb88c] bg-neutral-900">
+      <picture className="absolute inset-0 z-100 pointer-events-none">
         <source srcSet="/images/texturas/abstract-crumpled.webp" media="(min-width: 768px)" />
         <img src="/images/texturas/abstract-crumpled.webp" alt="" role="presentation"
           fetchPriority="high"
@@ -160,23 +160,23 @@ function HeroDesktop() {
       </picture>
 
       <motion.div
-        className="absolute bottom-16 left-0 right-0 z-[60] w-full h-16 bg-[#8e2b27] opacity-95 flex items-center"
+        className="absolute bottom-16 left-0 right-0 z-60 w-full h-16 bg-retro-maroon opacity-95 flex items-center"
         initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
         transition={{ delay: 0.6, duration: 0.5 }}
       >
-        <p className="px-8 text-xl font-mono tracking-widest text-[#cdc69c] font-extrabold uppercase">
-          {t("hero.role")}
+        <p className="px-8 text-xl font-mono tracking-widest text-retro-cream font-extrabold truncate uppercase">
+          console.log('Frontend Developer — React & TypeScript')
         </p>
       </motion.div>
 
       <motion.div
-        className="absolute top-0 right-[0%] z-[35] h-full flex items-center pointer-events-none"
+        className="absolute top-0 right-0 z-35 h-full flex items-center pointer-events-none"
         variants={frontendSlideIn}
         initial="hidden"
         animate="visible"
       >
         <span
-          className="font-display-impact font-black select-none text-[#cdc69c]"
+          className="font-display-impact font-black select-none text-retro-cream"
           style={{
             writingMode: "vertical-rl",
             transform: "rotate(180deg)",
@@ -191,35 +191,35 @@ function HeroDesktop() {
       </motion.div>
 
       <div className="relative w-full h-full px-8 pt-8">
-        <div className="absolute w-full top-[5%] left-0 z-[70]">
+        <div className="absolute w-full top-[5%] left-0 z-70">
           <motion.div className="absolute z-20 left-0 translate-x-[5vw] top-[1.2vw]"
             variants={verticalSweep} initial="hidden" animate="visible" transition={{ delay: 0.1 }}>
-            <h1 className="text-[13vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#cdc69c] uppercase font-display-impact font-extrabold whitespace-nowrap">
+            <h1 className="text-[13vw] leading-[0.8] tracking-tight transform scale-y-160 text-retro-cream uppercase font-display-impact font-extrabold whitespace-nowrap">
               RAFA
             </h1>
           </motion.div>
 
           <motion.div className="absolute z-40 left-[10vw] top-[19vw]"
             variants={verticalSweep} initial="hidden" animate="visible" transition={{ delay: 0.2 }}>
-            <span className="text-[22vw] leading-[0.8] tracking-tight transform scale-y-[1.6] text-[#8e2b27] uppercase font-display-impact font-extrabold whitespace-nowrap block">
+            <span className="text-[22vw] leading-[0.8] tracking-tight transform scale-y-160 text-retro-maroon uppercase font-display-impact font-extrabold whitespace-nowrap block">
               DORADO
             </span>
           </motion.div>
         </div>
       </div>
 
-      <motion.div className="absolute z-[70] right-[8vw] bottom-[42px]"
+      <motion.div className="absolute z-70 right-[8vw] bottom-10.5"
         variants={blockFade} initial="hidden" animate="visible" transition={{ delay: 0.3 }}>
-        <p className="text-[8vw] font-bold text-[#cdc69c] font-vintage-cursive leading-none whitespace-nowrap drop-shadow-2xl">
+        <p className="text-[8vw] font-bold text-retro-cream font-vintage-cursive leading-none whitespace-nowrap drop-shadow-2xl">
           rdisquete
         </p>
       </motion.div>
 
-      <nav className="absolute bottom-4 left-0 w-full z-[110] px-8 flex justify-center" aria-label={t("hero.aria.social")}>
+      <nav className="absolute bottom-4 left-0 w-full z-110 px-8 flex justify-center" aria-label={t("hero.aria.social")}>
         <div className="flex space-x-6">
           {socialLinks.map((s) => (
             <a key={s.key} href={s.href} target={s.download ? undefined : "_blank"} rel="noopener noreferrer" aria-label={t(`hero.aria.${s.key}`)}
-              className="text-[#cdc69c] hover:text-[#8e2b27] transition-colors" {...(s.download ? { download: '' } : {})}>
+              className="text-retro-cream hover:text-retro-maroon transition-colors" {...(s.download ? { download: '' } : {})}>
               {renderSocialIcon(s.key)}
             </a>
           ))}

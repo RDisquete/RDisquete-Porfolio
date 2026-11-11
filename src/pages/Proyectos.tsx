@@ -35,10 +35,10 @@ export default function Proyectos() {
 
     return (
         <main className="relative min-h-screen" style={{ backgroundColor: COLORS.bg }}>
-            <div className="hidden md:block absolute inset-0 z-[100] pointer-events-none opacity-25 mix-blend-multiply" style={{ backgroundImage: `url(${TEXTURE_URL})`, backgroundSize: 'cover' }} />
-            <div className="block md:hidden absolute inset-0 z-[100] pointer-events-none opacity-25 mix-blend-multiply" style={{ backgroundImage: `url(${TEXTURE_MOBILE_URL})`, backgroundSize: 'cover' }} />
+            <div className="hidden md:block absolute inset-0 z-100 pointer-events-none opacity-25 mix-blend-multiply" style={{ backgroundImage: `url(${TEXTURE_URL})`, backgroundSize: 'cover' }} />
+            <div className="block md:hidden absolute inset-0 z-100 pointer-events-none opacity-25 mix-blend-multiply" style={{ backgroundImage: `url(${TEXTURE_MOBILE_URL})`, backgroundSize: 'cover' }} />
 
-            <section className="relative z-[1] px-6 pt-24 pb-12 mx-auto text-center max-w-7xl">
+            <section className="relative z-1 px-6 pt-24 pb-12 mx-auto text-center max-w-7xl">
                 <span className="absolute top-6 left-1/2 -translate-x-1/2 text-[18vw] font-black text-white/20 select-none pointer-events-none uppercase">Catalog</span>
                 <h1 className="flex flex-col items-center leading-[0.8] mb-12 relative z-10 text-black">
                     <span className="text-5xl md:text-[9rem] font-black uppercase tracking-tighter">PROJECT</span>
@@ -57,10 +57,10 @@ export default function Proyectos() {
                                 key={tag}
                                 onClick={() => setFilter(tag)}
                                 aria-pressed={filter === tag}
-                                className="group relative flex flex-col items-center flex-shrink-0"
+                                className="group relative flex flex-col items-center shrink-0"
                             >
                                 <span className={`font-mono text-[10px] font-black transition-colors duration-300
-                                    ${filter === tag ? 'text-[#8e2b27]' : 'text-black/40 group-hover:text-black'}`}>
+                                    ${filter === tag ? 'text-retro-maroon' : 'text-black/40 group-hover:text-black'}`}>
                                     {tag}
                                 </span>
                                 <motion.div
@@ -69,7 +69,7 @@ export default function Proyectos() {
                                         height: filter === tag ? 20 : 0,
                                         opacity: filter === tag ? 1 : 0
                                     }}
-                                    className="w-[2px] bg-[#8e2b27] mt-2"
+                                    className="w-0.5 bg-retro-maroon mt-2"
                                 />
                             </button>
                         ))}
@@ -100,9 +100,9 @@ export default function Proyectos() {
                     <Link to="/contact" className="flex items-center gap-4 group w-fit">
                         <motion.div whileHover={{ x: 10 }} className="flex items-center gap-4 cursor-pointer">
                             <div className="flex items-center justify-center w-10 h-10 border-2 border-black rounded-full group-hover:bg-black transition-colors">
-                                <FaArrowRight aria-hidden="true" className="w-4 h-4 text-black group-hover:text-[#cdc69c] transition-colors" />
+                                <FaArrowRight aria-hidden="true" className="w-4 h-4 text-black group-hover:text-retro-cream transition-colors" />
                             </div>
-                            <span className="text-xl md:text-3xl font-black uppercase tracking-tighter text-[#8e2b27] group-hover:text-black">{t("proyectos.cta")}</span>
+                            <span className="text-xl md:text-3xl font-black uppercase tracking-tighter text-retro-maroon group-hover:text-black">{t("proyectos.cta")}</span>
                         </motion.div>
                     </Link>
                 </div>

@@ -80,7 +80,7 @@ const ProjectTrack = ({ project, index, featured, onHoverStart, onSelect }: Proj
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.3 }}
-        className="group border-b border-[#cdc69c]/20"
+        className="group border-b border-retro-cream/20"
         onMouseEnter={() => onHoverStart(project)}
         onClick={() => onSelect(project)}
       >
@@ -88,15 +88,15 @@ const ProjectTrack = ({ project, index, featured, onHoverStart, onSelect }: Proj
          role="button"
          tabIndex={0}
          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(project); } }}
-         className="flex items-center gap-4 py-5 px-2 cursor-pointer transition-all hover:bg-[#cdc69c]/5"
+         className="flex items-center gap-4 py-5 px-2 cursor-pointer transition-all hover:bg-retro-cream/5"
        >
-           <span className="font-mono text-sm text-[#8e2b27] font-black">{trackNumber}.</span>
-           <div className="flex-grow">
-             <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-white group-hover:text-[#cdc69c] transition-colors">
+           <span className="font-mono text-sm text-retro-maroon font-black">{trackNumber}.</span>
+           <div className="grow">
+             <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-white group-hover:text-retro-cream transition-colors">
                {project.title}
              </h3>
            </div>
-            <FaPlay aria-hidden="true" className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
+            <FaPlay aria-hidden="true" className="w-3 h-3 text-retro-cream opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
       </motion.div>
     );
@@ -109,7 +109,7 @@ const ProjectTrack = ({ project, index, featured, onHoverStart, onSelect }: Proj
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="group border-b border-[#cdc69c]/10 last:border-0"
+      className="group border-b border-retro-cream/10 last:border-0"
       onMouseEnter={() => onHoverStart(project)}
       onClick={() => onSelect(project)}
     >
@@ -117,15 +117,15 @@ const ProjectTrack = ({ project, index, featured, onHoverStart, onSelect }: Proj
          role="button"
          tabIndex={0}
          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(project); } }}
-         className="flex items-center gap-4 py-4 px-2 cursor-pointer transition-all hover:bg-[#cdc69c]/5"
+         className="flex items-center gap-4 py-4 px-2 cursor-pointer transition-all hover:bg-retro-cream/5"
        >
-         <span className="font-mono text-xs text-[#8e2b27] font-bold">{trackNumber}.</span>
-         <div className="flex-grow">
-           <h3 className="text-lg md:text-2xl font-black uppercase tracking-tighter text-[#cdc69c] group-hover:text-white transition-colors">
+         <span className="font-mono text-xs text-retro-maroon font-bold">{trackNumber}.</span>
+         <div className="grow">
+           <h3 className="text-lg md:text-2xl font-black uppercase tracking-tighter text-retro-cream group-hover:text-white transition-colors">
              {project.title}
            </h3>
          </div>
-          <FaPlay aria-hidden="true" className="w-3 h-3 text-[#cdc69c] opacity-0 group-hover:opacity-100 transition-opacity" />
+          <FaPlay aria-hidden="true" className="w-3 h-3 text-retro-cream opacity-0 group-hover:opacity-100 transition-opacity" />
         </div>
     </motion.div>
   );
@@ -154,7 +154,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
           alt=""
           role="presentation"
           loading="lazy"
-          className="absolute inset-0 object-cover w-full h-full opacity-[0.15] mix-blend-multiply grayscale brightness-[0.3] will-change-transform"
+          className="absolute inset-0 object-cover w-full h-full opacity-15 mix-blend-multiply grayscale brightness-30 will-change-transform"
         />
       </picture>
 
@@ -162,18 +162,18 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
       <div className="relative z-10 flex flex-col items-center w-full h-auto gap-12 px-6 lg:h-screen lg:px-12 max-w-7xl lg:flex-row">
 
         {/* LADO IZQUIERDO - LISTA DE TRACKS */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center border-l border-[#8e2b27]/30 pl-6 md:pl-8 lg:h-full lg:py-12">
+        <div className="w-full lg:w-1/2 flex flex-col justify-center border-l border-retro-maroon/30 pl-6 md:pl-8 lg:h-full lg:py-12">
           <header className="mb-8">
-            <span className="font-mono text-[9px] tracking-[0.5em] text-[#8e2b27] uppercase font-bold block mb-2">
+            <span className="font-mono text-[9px] tracking-[0.5em] text-retro-maroon uppercase font-bold block mb-2">
               {t("proyectosHome.sideBArchive")}
             </span>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#cdc69c] uppercase tracking-tighter leading-[0.85]">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-retro-cream uppercase tracking-tighter leading-[0.85]">
               SELECTED <br />
               <span className="inline-block mt-2 italic text-white">TRACKS</span>
             </h2>
           </header>
 
-          <nav className="relative flex-grow pr-4 custom-scrollbar lg:overflow-y-auto lg:max-h-[45vh] mb-4"
+          <nav className="relative grow pr-4 custom-scrollbar lg:overflow-y-auto lg:max-h-[45vh] mb-4"
             onMouseEnter={() => setIsNavHovered(true)}
             onMouseLeave={() => setIsNavHovered(false)}>
             {projects?.map((project, index) => (
@@ -189,19 +189,19 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
           </nav>
 
           <button
-            className="flex items-center gap-3 py-4 mt-4 group w-fit bg-transparent border-none outline-none cursor-pointer"
+            className="flex items-center gap-3 py-4 mt-4 group w-fit bg-transparent border-none outline-hidden cursor-pointer"
             onClick={() => navigate("/projects")}
           >
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#8e2b27] group-hover:bg-[#8e2b27] transition-all duration-300">
-              <FaArrowRight aria-hidden="true" className="w-4 h-4 text-[#8e2b27] group-hover:text-[#cdc69c]" />
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-retro-maroon group-hover:bg-retro-maroon transition-all duration-300">
+              <FaArrowRight aria-hidden="true" className="w-4 h-4 text-retro-maroon group-hover:text-retro-cream" />
             </div>
-            <span className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-[#cdc69c] group-hover:text-white">
+            <span className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-retro-cream group-hover:text-white">
               {t("proyectosHome.fullDiscography")}
             </span>
           </button>
         </div>
         <div className="flex items-center justify-center w-full lg:w-1/2">
-          <div className="relative w-full max-w-[450px] lg:max-w-[500px] aspect-[4/5] lg:aspect-square">
+          <div className="relative w-full max-w-112.5 lg:max-w-125 aspect-4/5 lg:aspect-square">
             <AnimatePresence mode="wait">
               <motion.div
                 key={hoveredProject?.title}
@@ -216,11 +216,11 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                 role="button"
                 tabIndex={0}
                 aria-label={hoveredProject?.title}
-                className="relative lg:absolute inset-0 p-4 md:p-6 bg-[#cdc69c] shadow-[15px_15px_0px_rgba(142,43,39,0.3)] md:shadow-[30px_30px_0px_rgba(142,43,39,0.2)] flex flex-col cursor-pointer group/card transition-transform hover:-translate-y-1 active:scale-[0.99]"
+                className="relative lg:absolute inset-0 p-4 md:p-6 bg-retro-cream shadow-[15px_15px_0px_rgba(142,43,39,0.3)] md:shadow-[30px_30px_0px_rgba(142,43,39,0.2)] flex flex-col cursor-pointer group/card transition-transform hover:-translate-y-1 active:scale-99"
               >
                 {/* MEDIA */}
                 <div className="relative h-[45%] md:h-[55%] w-full overflow-hidden bg-black border border-black/5">
-                  <div className="absolute inset-0 z-10 bg-[#8e2b27]/0 group-hover/card:bg-[#8e2b27]/10 transition-colors" />
+                  <div className="absolute inset-0 z-10 bg-retro-maroon/0 group-hover/card:bg-retro-maroon/10 transition-colors" />
                   
                   <div className="hidden md:block w-full h-full">
                     {hoveredProject?.video ? (
@@ -235,10 +235,10 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                 </div>
 
                 {/* INFO */}
-                <div className="flex flex-col flex-grow pt-4 text-black md:pt-6">
+                <div className="flex flex-col grow pt-4 text-black md:pt-6">
                   <div className="flex items-start justify-between pb-2 border-b border-black/20">
                     <h4 className="text-xl font-black leading-none uppercase md:text-3xl tracking-tighter">{hoveredProject?.title}</h4>
-                    <span className="font-mono text-[10px] font-bold bg-black text-[#cdc69c] px-2 py-0.5">
+                    <span className="font-mono text-[10px] font-bold bg-black text-retro-cream px-2 py-0.5">
                       {`OP_0${projects.indexOf(hoveredProject!) + 1}`}
                     </span>
                   </div>
@@ -249,7 +249,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
 
                   {/* TECH ICONS */}
                   {hoveredProject?.techIcons && hoveredProject.techIcons.length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-3 mt-2 border-t border-black/10 text-xl text-[#8e2b27]">
+                    <div className="flex flex-wrap gap-2 pt-3 mt-2 border-t border-black/10 text-xl text-retro-maroon">
                       {hoveredProject.techIcons.map((icon, i) => (
                         <span key={i} aria-hidden="true">{icon}</span>
                       ))}
@@ -260,7 +260,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                   {hoveredProject?.stats && hoveredProject.stats.length > 0 && (
                     <div className="flex flex-wrap gap-1 pt-2 mt-2 border-t border-black/10">
                       {hoveredProject.stats.map((stat, i) => (
-                        <span key={i} className="bg-black text-[#cdc69c] px-1.5 py-0.5 text-[7px] font-mono font-bold uppercase tracking-wider">
+                        <span key={i} className="bg-black text-retro-cream px-1.5 py-0.5 text-[7px] font-mono font-bold uppercase tracking-wider">
                           {stat}
                         </span>
                       ))}
@@ -274,7 +274,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="flex-1 text-center bg-black text-[#cdc69c] py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-[#8e2b27] transition-colors"
+                        className="flex-1 text-center bg-black text-retro-cream py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-retro-maroon transition-colors"
                       >
                         {t("proyectosHome.verProyecto")}
                       </a>
@@ -285,7 +285,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="flex-1 text-center border border-black text-black py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-black hover:text-[#cdc69c] transition-colors"
+                        className="flex-1 text-center border border-black text-black py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-black hover:text-retro-cream transition-colors"
                       >
                         {t("proyectosHome.codigo")}
                       </a>
@@ -295,7 +295,7 @@ export default function ProyectosHome({ projects }: { projects: Project[] }) {
                         href={hoveredProject.apkUrl}
                         target="_blank" rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="flex-1 text-center bg-[#8e2b27] text-[#cdc69c] py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-black transition-colors"
+                        className="flex-1 text-center bg-retro-maroon text-retro-cream py-2 text-[9px] font-black tracking-[0.15em] uppercase hover:bg-black transition-colors"
                       >
                         APK
                       </a>

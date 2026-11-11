@@ -10,6 +10,30 @@
       "notFound": "Página no encontrada | RDisquete"
     }
   },
+  "seo": {
+    "siteName": "RDisquete — Rafa Dorado",
+    "home": {
+      "description": "Portfolio de RDisquete (Rafael Dorado), Frontend Developer especializado en React, TypeScript y diseño creativo de alto impacto. Proyectos, experiencia y contacto."
+    },
+    "proyectos": {
+      "description": "Catálogo de proyectos frontend de RDisquete: React, TypeScript, Supabase, Tailwind CSS y Framer Motion. Aplicaciones reales desplegadas en producción."
+    },
+    "conoceme": {
+      "description": "Conoce a Rafael Dorado (RDisquete): Frontend Developer con más de diez años de experiencia audiovisual, especializado en React, TypeScript y experiencias de alto impacto."
+    },
+    "contacto": {
+      "description": "Contacta con Rafael Dorado (RDisquete) para proyectos de desarrollo frontend, React y TypeScript. Formulario directo y enlaces a LinkedIn y GitHub."
+    },
+    "notFound": {
+      "description": "La página solicitada no existe en el portfolio de RDisquete."
+    },
+    "breadcrumb": {
+      "home": "Inicio",
+      "proyectos": "Proyectos",
+      "conoceme": "Conóceme",
+      "contacto": "Contacto"
+    }
+  },
   "notFound": {
     "message": "Esta página no existe en este disco. El vinilo saltó, la cinta se acabó o escribiste mal la URL.",
     "cta": "VOLVER AL INICIO"

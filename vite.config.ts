@@ -21,9 +21,24 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            vendor: ['react', 'react-dom', 'react-router-dom'],
-            framer: ['framer-motion'],
+          manualChunks(id: string) {
+            if (!id.includes('node_modules')) return undefined;
+            if (
+              id.includes('framer-motion') ||
+              id.includes('motion-dom') ||
+              id.includes('motion-utils')
+            ) {
+              return 'framer';
+            }
+            if (
+              id.includes('/react/') ||
+              id.includes('react-dom') ||
+              id.includes('react-router') ||
+              id.includes('scheduler')
+            ) {
+              return 'vendor';
+            }
+            return undefined;
           },
           assetFileNames: 'assets/[name]-[hash][extname]',
           chunkFileNames: 'assets/[name]-[hash].js',

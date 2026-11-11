@@ -34,13 +34,13 @@ export default function SobreMi() {
   return (
     <motion.section
       id="sobre-mi"
-      className="relative min-h-screen w-full px-6 md:px-20 py-20 flex items-center justify-center bg-[#8e2b27] overflow-hidden"
+      className="relative min-h-screen w-full px-6 md:px-20 py-20 flex items-center justify-center bg-retro-maroon overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
     >
       {/* 1. TEXTURA SUPREMA (Picture para ahorro de datos) */}
-      <picture className="absolute inset-0 z-[100] pointer-events-none">
+      <picture className="absolute inset-0 z-100 pointer-events-none">
         <source srcSet="/images/texturas/textura2-mobile.webp" media="(max-width: 767px)" />
         <source srcSet="/images/texturas/textura2.webp" media="(min-width: 768px)" />
         <img
@@ -53,7 +53,7 @@ export default function SobreMi() {
       </picture>
 
       {/* Marca de agua decorativa */}
-      <span className="absolute bottom-10 right-10 text-[15vw] font-black text-black/10 select-none pointer-events-none uppercase leading-none z-[2]">
+      <span className="absolute bottom-10 right-10 text-[15vw] font-black text-black/10 select-none pointer-events-none uppercase leading-none z-2">
         Profile
       </span>
 
@@ -62,12 +62,12 @@ export default function SobreMi() {
 
         {/* 2. LADO DE LA IMAGEN (Retrato Adaptativo) */}
         <motion.div
-          className="relative flex justify-center flex-shrink-0 lg:w-5/12 lg:justify-start"
+          className="relative flex justify-center shrink-0 lg:w-5/12 lg:justify-start"
           variants={imageEntry}
         >
-          <div className="relative p-2 bg-[#cdc69c] shadow-[20px_20px_0px_0px_rgba(23,23,23,0.4)] md:shadow-[30px_30px_0px_0px_rgba(23,23,23,0.4)]">
+          <div className="relative p-2 bg-retro-cream shadow-[20px_20px_0px_0px_rgba(23,23,23,0.4)] md:shadow-[30px_30px_0px_0px_rgba(23,23,23,0.4)]">
 
-            <div className="relative overflow-hidden border-2 border-black bg-[#0f0f0f] w-[240px] h-[300px] md:w-[380px] md:h-[500px]">
+            <div className="relative overflow-hidden border-2 border-black bg-[#0f0f0f] w-60 h-75 md:w-95 md:h-125">
               <picture>
                 <source srcSet="/images/IMG_6012_byn-mobile.webp" media="(max-width: 767px)" />
                 <source srcSet="/images/IMG_6012_byn.webp" media="(min-width: 768px)" />
@@ -82,17 +82,17 @@ export default function SobreMi() {
               </picture>
 
               {/* Scanlines effect */}
-              <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px]" aria-hidden="true" />
+              <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-size-[100%_4px]" aria-hidden="true" />
             </div>
 
-            <div className="absolute -bottom-4 -right-4 bg-black text-[#cdc69c] px-4 py-2 font-mono text-[10px] font-black uppercase border border-[#cdc69c]">
+            <div className="absolute -bottom-4 -right-4 bg-black text-retro-cream px-4 py-2 font-mono text-[10px] font-black uppercase border border-retro-cream">
               {t("sobremi.badge")}
             </div>
           </div>
         </motion.div>
 
         {/* Lado del Texto */}
-        <div className="flex flex-col flex-1 text-[#cdc69c]">
+        <div className="flex flex-col flex-1 text-retro-cream">
           <header>
             <motion.h2
               className="text-6xl sm:text-7xl md:text-[8.5rem] font-black leading-[0.85] md:leading-[0.8] uppercase tracking-tighter"
@@ -142,7 +142,7 @@ export default function SobreMi() {
               </Trans>
             </p>
 
-            <p className="mt-6 font-bold text-black bg-[#cdc69c] inline-block px-2 uppercase text-xs md:text-sm">
+            <p className="mt-6 font-bold text-black bg-retro-cream inline-block px-2 uppercase text-xs md:text-sm">
               {t("sobremi.level")}
             </p>
           </motion.article>
@@ -154,7 +154,7 @@ export default function SobreMi() {
             {["React 19", "TypeScript", "Tailwind", "Supabase", "Framer", "RN", "Vitest"].map(tech => (
               <span
                 key={tech}
-                className="bg-black/80 text-[#cdc69c] px-2 py-1 text-[8px] font-mono font-black uppercase tracking-[0.15em]"
+                className="bg-black/80 text-retro-cream px-2 py-1 text-[8px] font-mono font-black uppercase tracking-[0.15em]"
               >
                 {tech}
               </span>
@@ -169,13 +169,13 @@ export default function SobreMi() {
             >
               <div className="flex items-center gap-4 cursor-pointer">
                 <div className="flex items-center justify-center w-12 h-12 transition-all duration-300 border-2 border-black rounded-full group-hover:bg-black">
-                  <FaArrowRight aria-hidden="true" className="w-5 h-5 text-black group-hover:text-[#cdc69c] transition-colors" />
+                  <FaArrowRight aria-hidden="true" className="w-5 h-5 text-black group-hover:text-retro-cream transition-colors" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-[#cdc69c]">
+                  <span className="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-retro-cream">
                     {t("sobremi.letsConnect")}
                   </span>
-                  <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#cdc69c] group-hover:text-black transition-colors">
+                  <span className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-retro-cream group-hover:text-black transition-colors">
                     {t("sobremi.hablemos")}
                   </span>
                 </div>

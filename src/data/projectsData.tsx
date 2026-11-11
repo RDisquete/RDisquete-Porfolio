@@ -2,7 +2,7 @@ import React from "react";
 import type { ReactNode } from "react";
 import {
     SiReact, SiTailwindcss, SiTypescript, SiVite, SiFramer,
-    SiHtml5, SiSupabase, SiVitest, SiGooglemaps, SiCss3, SiExpo,
+    SiHtml5, SiSupabase, SiVitest, SiGooglemaps, SiCss, SiExpo,
 } from "react-icons/si";
 
 export interface Proyecto {
@@ -118,7 +118,7 @@ export const PROJECTS: Proyecto[] = [
         img: "/images/rdisquetePhoto.webp",
         video: "/RPhotoHover.mp4",
         techStack: "React, TypeScript, CSS3",
-        techIcons: [<SiReact key="re" />, <SiTypescript key="ts" />, <SiCss3 key="cs" />],
+        techIcons: [<SiReact key="re" />, <SiTypescript key="ts" />, <SiCss key="cs" />],
         pressingType: 'Bootleg',
         stats: ["Fotografía real propia", "Navegación teclado + touch", "Galerías reutilizables", "CSS puro"],
         desc: "",

@@ -25,7 +25,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative flex flex-col items-center w-full py-6 border-t-[1px] select-none footer-root"
+      className="relative flex flex-col items-center w-full py-6 border-t select-none footer-root"
       style={{ backgroundColor: BG, borderColor: `${PAPER}20` }}
     >
       <div className="absolute flex items-center gap-2 pointer-events-none left-4 bottom-2 opacity-50">
@@ -36,7 +36,7 @@ export default function Footer() {
       </div>
 
       <div className="absolute text-right pointer-events-none right-4 bottom-2 opacity-50">
-        <span className="text-[8px] font-mono tracking-widest uppercase block mb-[2px]" style={{ color: PAPER }}>
+        <span className="text-[8px] font-mono tracking-widest uppercase block mb-0.5" style={{ color: PAPER }}>
           Live Master
         </span>
         <span ref={timeRef} className="text-[10px] font-mono font-bold" style={{ color: ACCENT }}>
@@ -52,7 +52,7 @@ export default function Footer() {
               target={link.download ? undefined : "_blank"}
               rel="noopener noreferrer"
               aria-label={t(`hero.aria.${link.key}`)}
-              className="transition-all duration-300 hover:text-[#8e2b27] transform hover:scale-110"
+              className="transition-all duration-300 hover:text-retro-maroon transform hover:scale-110"
               {...(link.download ? { download: '' } : {})}
             >
               {renderSocialIcon(link.key, "text-2xl")}

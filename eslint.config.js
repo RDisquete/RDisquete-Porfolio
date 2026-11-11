@@ -25,6 +25,7 @@ export default defineConfig([
     rules: {
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
+      "react-hooks/set-state-in-effect": "warn",
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },

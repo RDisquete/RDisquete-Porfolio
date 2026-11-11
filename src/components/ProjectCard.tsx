@@ -10,8 +10,8 @@ const COLORS = {
 };
 
 const COLLAGE_ROTATIONS = [
-    "rotate-[-1deg]", "rotate-[2deg] -translate-y-1",
-    "-rotate-[1.5deg] translate-y-3", "rotate-[2.5deg] -translate-y-2",
+    "-rotate-1", "rotate-2 -translate-y-1",
+    "-rotate-1.5 translate-y-3", "rotate-2.5 -translate-y-2",
 ];
 
 export default function ProjectCard({ project, index, onOpen, isFeatured }: { project: Proyecto, index: number, onOpen: (p: Proyecto) => void, isFeatured?: boolean }) {
@@ -37,20 +37,20 @@ export default function ProjectCard({ project, index, onOpen, isFeatured }: { pr
             whileHover={prefersReducedMotion ? {} : { scale: 1.02 }}
             viewport={{ once: true }}
             className={`group relative overflow-hidden rounded-sm border-black/20 shadow-xl transition-all w-full text-left
-                ${isFeatured ? "md:col-span-2 md:row-span-2 border-[4px] border-[#8e2b27] min-h-[350px]" : "border-[1px] aspect-square min-h-[280px]"}
+                ${isFeatured ? "md:col-span-2 md:row-span-2 border-4 border-retro-maroon min-h-87.5" : "border aspect-square min-h-70"}
                 ${rotation}`}
             style={{ backgroundColor: COLORS.cardLight }}
         >
             <motion.div className="absolute inset-0 z-10" animate={{ opacity: isHovered ? 0 : 1 }}>
-                <img src={project.img} alt={project.title} loading="lazy" className="object-cover w-full h-full contrast-[1.1] grayscale-[20%]" />
+                <img src={project.img} alt={project.title} loading="lazy" className="object-cover w-full h-full contrast-110 grayscale-20" />
                 <div className={`absolute top-3 right-3 z-20 px-2 py-1 border-2 font-mono font-black uppercase text-[8px] shadow-lg
-                    ${isFeatured ? "bg-[#8e2b27] text-white -rotate-3" : "bg-white/90 text-[#8e2b27] rotate-12"}`}
+                    ${isFeatured ? "bg-retro-maroon text-white -rotate-3" : "bg-white/90 text-retro-maroon rotate-12"}`}
                     style={{ borderColor: isFeatured ? 'white' : COLORS.accent }}>
                     {isFeatured ? "★ SPECIAL EDITION ★" : theme.label}
                 </div>
-                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black via-black/90 to-transparent flex justify-between items-end">
+                <div className="absolute inset-x-0 bottom-0 p-4 bg-linear-to-t from-black via-black/90 to-transparent flex justify-between items-end">
                     <div className="max-w-[70%]">
-                        <p className="font-mono text-[8px] text-[#cdc69c]/70 mb-1 tracking-[0.2em] uppercase">{isFeatured ? "PREMIUM_COLLECTION" : `RD-202${index}`}</p>
+                        <p className="font-mono text-[8px] text-retro-cream/70 mb-1 tracking-[0.2em] uppercase">{isFeatured ? "PREMIUM_COLLECTION" : `RD-202${index}`}</p>
                         <h2 className={`font-black tracking-tighter text-white uppercase leading-[0.8] ${isFeatured ? "text-4xl md:text-7xl" : "text-xl md:text-2xl"}`}>{project.title}</h2>
                     </div>
                     <div className="flex gap-2 text-white/50 mb-1">
@@ -70,7 +70,7 @@ export default function ProjectCard({ project, index, onOpen, isFeatured }: { pr
                     </div>
                     <p className={`font-mono leading-tight mb-4 italic ${isFeatured ? "text-base md:text-xl" : "text-[11px] md:text-sm"}`} style={{ color: theme.text }}>"{project.desc}"</p>
                     <div className="p-3 mt-auto border-2 border-current border-dashed bg-black/5" style={{ color: theme.text }}>
-                        <h3 className="mb-1.5 text-[8px] font-black uppercase tracking-[0.1em]">Technical_Specs:</h3>
+                        <h3 className="mb-1.5 text-[8px] font-black uppercase tracking-widest">Technical_Specs:</h3>
                         <div className="flex flex-wrap gap-1">
                             {project.techStack?.split(',').map((tech, i) => (
                                 <span key={i} className="font-mono bg-black/10 px-1.5 py-0.5 font-bold text-[8px] md:text-[9px]">{tech.trim()}</span>

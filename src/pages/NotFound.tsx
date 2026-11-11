@@ -11,7 +11,7 @@ export default function NotFound() {
   }, [t]);
 
   return (
-    <section className="relative flex items-center justify-center min-h-screen px-6 py-32 overflow-hidden bg-[#171717]">
+    <section className="relative flex items-center justify-center min-h-screen px-6 py-32 overflow-hidden bg-retro-dark">
       <picture className="absolute inset-0 pointer-events-none">
         <img
           src="/images/texturas/old-black-background-grunge.webp"
@@ -40,35 +40,35 @@ export default function NotFound() {
       />
 
       <div className="relative z-10 flex flex-col items-center max-w-2xl mx-auto text-center">
-        <span className="font-mono text-[10px] font-bold tracking-[0.3em] text-[#8e2b27] uppercase mb-6">
+        <span className="font-mono text-[10px] font-bold tracking-[0.3em] text-retro-maroon uppercase mb-6">
           SIDE A // 404 // SIDE B
         </span>
 
-        <h1 className="text-[10rem] md:text-[18rem] font-black leading-none text-[#cdc69c] font-display-impact tracking-tighter select-none">
+        <h1 className="text-[10rem] md:text-[18rem] font-black leading-none text-retro-cream font-display-impact tracking-tighter select-none">
           404
         </h1>
 
-        <div className="w-full h-[2px] bg-[#8e2b27] mb-2" />
+        <div className="w-full h-0.5 bg-retro-maroon mb-2" />
 
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-[1px] bg-[#8e2b27]" />
-          <span className="text-[#8e2b27] text-[8px] font-mono">* * *</span>
-          <div className="w-12 h-[1px] bg-[#8e2b27]" />
+          <div className="w-12 h-px bg-retro-maroon" />
+          <span className="text-retro-maroon text-[8px] font-mono">* * *</span>
+          <div className="w-12 h-px bg-retro-maroon" />
         </div>
 
-        <p className="font-mono text-xs tracking-[0.15em] text-[#cdc69c]/50 uppercase mb-3">
+        <p className="font-mono text-xs tracking-[0.15em] text-retro-cream/50 uppercase mb-3">
           TRACK NOT FOUND
         </p>
 
-        <p className="max-w-md mb-12 text-sm leading-relaxed md:text-base font-mono text-[#cdc69c]/70">
+        <p className="max-w-md mb-12 text-sm leading-relaxed md:text-base font-mono text-retro-cream/70">
           {t("notFound.message")}
         </p>
 
-        <div className="w-16 h-[1px] bg-[#8e2b27]/50 mb-8" />
+        <div className="w-16 h-px bg-retro-maroon/50 mb-8" />
 
         <Link
           to="/"
-          className="inline-flex items-center gap-2 bg-[#8e2b27] text-[#cdc69c] px-8 py-3 text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-200 hover:bg-black hover:scale-105"
+          className="inline-flex items-center gap-2 bg-retro-maroon text-retro-cream px-8 py-3 text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-200 hover:bg-black hover:scale-105"
         >
           <FaHome />
           {t("notFound.cta")}

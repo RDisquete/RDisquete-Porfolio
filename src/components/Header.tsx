@@ -161,7 +161,7 @@ export default function Header() {
           </button>
 
           <span
-            className={`hidden md:block font-mono text-[9px] tracking-[0.2em] text-[#cdc69c]/50 uppercase whitespace-nowrap transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`hidden md:block font-mono text-[9px] tracking-[0.2em] text-retro-cream/50 uppercase whitespace-nowrap transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
           >
             {t("header.openForOpportunities")}
           </span>

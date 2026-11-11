@@ -15,7 +15,7 @@ const RETRO_MAROON = "#8e2b27";
 
 const fotoRealUrl = "/images/IMG_6012_byn.webp";
 
-const retroWhite = "text-[#cdc69c]";
+const retroWhite = "text-retro-cream";
 const secondaryFont = "font-mono";
 
 // --- ANIMACIONES ---
@@ -48,7 +48,7 @@ interface TrackItemProps {
 const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON, isPlatinum, icon, badge }: TrackItemProps) => (
     <motion.div
         className={`relative p-6 transition-all duration-300 border-b group border-current/10 cursor-crosshair 
-        ${isPlatinum ? 'bg-white/10' : 'hover:bg-[#cdc69c]/5'}`}
+        ${isPlatinum ? 'bg-white/10' : 'hover:bg-retro-cream/5'}`}
         whileHover={{ x: 15 }}
     >
         <div className="flex items-start">
@@ -56,13 +56,13 @@ const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON,
                 {num}.
             </span>
 
-            <div className="flex-grow">
+            <div className="grow">
                 <div className="flex items-center gap-3">
                     <h4 className="text-xl font-bold leading-tight tracking-tight uppercase md:text-2xl transition-colors duration-300 group-hover:text-white group-hover:drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
                         {title}
                     </h4>
                     {badge && (
-                        <span className="font-mono text-[8px] font-black uppercase tracking-[0.15em] bg-[#8e2b27] text-[#cdc69c] px-2 py-0.5">
+                        <span className="font-mono text-[8px] font-black uppercase tracking-[0.15em] bg-retro-maroon text-retro-cream px-2 py-0.5">
                             {badge}
                         </span>
                     )}
@@ -74,7 +74,7 @@ const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON,
                 </div>
 
                 {subtitle && (
-                    <p className={`mb-2 font-mono text-sm italic transition-all duration-300 group-hover:text-white/90 group-hover:opacity-100 ${isPlatinum ? 'text-[#cdc69c] opacity-100 font-bold' : 'opacity-70'}`}>
+                    <p className={`mb-2 font-mono text-sm italic transition-all duration-300 group-hover:text-white/90 group-hover:opacity-100 ${isPlatinum ? 'text-retro-cream opacity-100 font-bold' : 'opacity-70'}`}>
                         {subtitle}
                     </p>
                 )}
@@ -96,7 +96,7 @@ const TrackItem = ({ num, title, subtitle, details, extra, color = RETRO_MAROON,
         </div>
 
         <motion.div
-            className="absolute bottom-0 left-0 h-[2px] w-full origin-left"
+            className="absolute bottom-0 left-0 h-0.5 w-full origin-left"
             style={{ backgroundColor: isPlatinum ? color : '#ffffff' }}
             initial={{ scaleX: 0 }}
             whileHover={{ scaleX: 1 }}
@@ -153,7 +153,7 @@ export default function Conoceme() {
     ], [t]);
 
     return (
-        <main className="w-full bg-[#171717]">
+        <main className="w-full bg-retro-dark">
             <div className={`w-full`}>
                 <motion.section
                     className={`relative w-full min-h-screen border-4 box-border flex flex-col justify-between select-none ${retroWhite}`}
@@ -175,10 +175,10 @@ export default function Conoceme() {
                         transition={{ duration: 0.7, delay: 0.1 }}
                     />
 
-                    <div className="relative z-30 flex flex-col flex-grow w-full px-4 pt-20 pb-12 mx-auto md:py-12 md:gap-12 max-w-7xl lg:flex-row lg:items-center md:px-20">
+                    <div className="relative z-30 flex flex-col grow w-full px-4 pt-20 pb-12 mx-auto md:py-12 md:gap-12 max-w-7xl lg:flex-row lg:items-center md:px-20">
                         <div className="flex flex-col flex-1 order-1 pt-0 lg:w-7/12">
                             <motion.h1
-                                className={`text-[10vw] md:text-[8vw] xl:text-[6rem] font-black leading-none uppercase mb-6 md:mb-8`}
+                                className={`text-[10vw] md:text-[8vw] xl:text-8xl font-black leading-none uppercase mb-6 md:mb-8`}
                                 style={{ color: RETRO_MAROON }}
                                 variants={simpleEntryVariants}
                                 transition={{ delay: 0.3 }}
@@ -217,7 +217,7 @@ export default function Conoceme() {
                             </motion.p>
 
                             <motion.div
-                                className="w-full h-[2px] mt-4 mb-4 md:mt-8 md:mb-8"
+                                className="w-full h-0.5 mt-4 mb-4 md:mt-8 md:mb-8"
                                 style={{ backgroundColor: RETRO_MAROON, opacity: 0.8 }}
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
@@ -227,11 +227,11 @@ export default function Conoceme() {
                         </div>
 
                         <motion.div
-                            className="relative flex justify-center flex-shrink-0 order-2 pt-0 lg:w-5/12 lg:pl-16 lg:justify-end"
+                            className="relative flex justify-center shrink-0 order-2 pt-0 lg:w-5/12 lg:pl-16 lg:justify-end"
                             variants={imageEntry}
                         >
                             <div
-                                className="relative overflow-hidden border-4 w-[60vw] h-[60vw] md:w-[35vw] md:h-[35vw] max-w-[480px] max-h-[480px]"
+                                className="relative overflow-hidden border-4 w-[60vw] h-[60vw] md:w-[35vw] md:h-[35vw] max-w-120 max-h-120"
                                 style={{ borderColor: RETRO_CREAM, backgroundColor: RETRO_MAROON }}
                             >
                                 <picture>
@@ -245,7 +245,7 @@ export default function Conoceme() {
                                         style={{ filter: 'brightness(1.15)' }}
                                     />
                                 </picture>
-                                <div className="absolute inset-0 pointer-events-none z-[35]">
+                                <div className="absolute inset-0 pointer-events-none z-35">
                                     <picture>
                                         <source srcSet="/images/texturas/abstract-crumpled-mobile.webp" media="(max-width: 767px)" />
                                         <source srcSet="/images/texturas/abstract-crumpled.webp" media="(min-width: 768px)" />
@@ -300,7 +300,7 @@ export default function Conoceme() {
             </div>
 
             {/* --- SECCIÓN 1 --- */}
-            <section className="relative py-32 px-6 bg-[#cdc69c] text-[#171717] overflow-hidden">
+            <section className="relative py-32 px-6 bg-retro-cream text-retro-dark overflow-hidden">
                 <picture className="absolute inset-0 pointer-events-none">
                     <source srcSet="/images/texturas/old-paper-grunge-dark-mobile.webp" media="(max-width: 767px)" />
                     <source srcSet="/images/texturas/old-paper-grunge-dark.webp" media="(min-width: 768px)" />
@@ -322,7 +322,7 @@ export default function Conoceme() {
                         </Trans>
                     </h2>
 
-                    <div className="text-lg md:text-2xl font-mono leading-relaxed text-left border-l-8 border-[#171717] pl-8">
+                    <div className="text-lg md:text-2xl font-mono leading-relaxed text-left border-l-8 border-retro-dark pl-8">
                         <p>
                             <Trans
                               i18nKey="conoceme.passion.text"
@@ -340,7 +340,7 @@ export default function Conoceme() {
             </section>
 
             {/* --- SECCIÓN SKILLS --- */}
-            <section className="relative py-24 bg-[#171717] text-[#cdc69c] px-6">
+            <section className="relative py-24 bg-retro-dark text-retro-cream px-6">
                 <picture className="absolute inset-0 pointer-events-none">
                     <source srcSet="/images/texturas/old-paper-grunge-dark-mobile.webp" media="(max-width: 767px)" />
                     <source srcSet="/images/texturas/old-paper-grunge-dark.webp" media="(min-width: 768px)" />
@@ -353,7 +353,7 @@ export default function Conoceme() {
                 </picture>
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <div className="flex items-center gap-6 mb-16">
-                        <FaRegPlayCircle aria-hidden="true" className="text-7xl text-[#8e2b27] animate-pulse" />
+                        <FaRegPlayCircle aria-hidden="true" className="text-7xl text-retro-maroon animate-pulse" />
                         <h2 className="text-6xl font-black tracking-tighter uppercase md:text-8xl font-display-impact">{t("conoceme.skills.title")}</h2>
                     </div>
 
@@ -374,7 +374,7 @@ export default function Conoceme() {
             </section>
 
             {/* --- STUDIO SESSIONS: PROCESO TÉCNICO --- */}
-            <section className="relative py-24 bg-[#0f0f0f] text-[#cdc69c] px-6 overflow-hidden">
+            <section className="relative py-24 bg-[#0f0f0f] text-retro-cream px-6 overflow-hidden">
                 <picture className="absolute inset-0 pointer-events-none">
                     <source srcSet="/images/texturas/old-paper-grunge-dark-mobile.webp" media="(max-width: 767px)" />
                     <source srcSet="/images/texturas/old-paper-grunge-dark.webp" media="(min-width: 768px)" />
@@ -387,24 +387,24 @@ export default function Conoceme() {
                 </picture>
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <div className="flex items-center gap-6 mb-20">
-                        <FaWrench aria-hidden="true" className="text-6xl text-[#8e2b27]" />
+                        <FaWrench aria-hidden="true" className="text-6xl text-retro-maroon" />
                         <div>
-                            <span className="text-[#8e2b27] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2">{t("conoceme.studio.subtitle")}</span>
+                            <span className="text-retro-maroon font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2">{t("conoceme.studio.subtitle")}</span>
                             <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase font-display-impact">
                                 <Trans
                                   i18nKey="conoceme.studio.title"
-                                  components={{ c1: <span className="text-[#8e2b27]" /> }}
-                                >STUDIO <span className="text-[#8e2b27]">SESSIONS</span></Trans>
+                                  components={{ c1: <span className="text-retro-maroon" /> }}
+                                >STUDIO <span className="text-retro-maroon">SESSIONS</span></Trans>
                             </h2>
                         </div>
                     </div>
 
-                    <p className="max-w-2xl mb-14 font-mono text-sm leading-relaxed opacity-85 border-l-2 border-[#8e2b27] pl-4">
+                    <p className="max-w-2xl mb-14 font-mono text-sm leading-relaxed opacity-85 border-l-2 border-retro-maroon pl-4">
                         <Trans
                           i18nKey="conoceme.studio.intro"
-                          components={{ c1: <strong className="text-[#cdc69c]" /> }}
+                          components={{ c1: <strong className="text-retro-cream" /> }}
                         >
-                            <strong className="text-[#cdc69c]" />
+                            <strong className="text-retro-cream" />
                         </Trans>
                     </p>
 
@@ -423,7 +423,7 @@ export default function Conoceme() {
             </section>
 
             {/* --- CARA A: EXPERIENCIA --- */}
-            <section className="relative py-32 bg-[#cdc69c] text-[#171717] px-6 overflow-hidden">
+            <section className="relative py-32 bg-retro-cream text-retro-dark px-6 overflow-hidden">
                 <picture className="absolute inset-0 pointer-events-none">
                     <img
                         src="/images/texturas/top-view-of-crumpled-vintage.webp"
@@ -434,26 +434,26 @@ export default function Conoceme() {
                 </picture>
 
                 <div className="relative z-10 max-w-6xl mx-auto">
-                    <h2 className="absolute -top-16 -left-10 text-[12rem] md:text-[20rem] font-black text-[#8e2b27]/20 font-display-impact select-none uppercase leading-none">
+                    <h2 className="absolute -top-16 -left-10 text-[12rem] md:text-[20rem] font-black text-retro-maroon/20 font-display-impact select-none uppercase leading-none">
                         {t("conoceme.experiencia.watermark")}
                     </h2>
 
                     <div className="flex flex-col justify-between gap-4 mb-16 md:flex-row md:items-end">
                         <div>
-                            <span className="text-[#8e2b27] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2">{t("conoceme.experiencia.subtitle")}</span>
+                            <span className="text-retro-maroon font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2">{t("conoceme.experiencia.subtitle")}</span>
                             <h3 className="text-6xl font-black tracking-tighter uppercase font-display-impact">
                                 <Trans
                                   i18nKey="conoceme.experiencia.heading"
-                                  components={{ c1: <span className="text-[#8e2b27]" /> }}
-                                ><span className="text-[#8e2b27]" /></Trans>
+                                  components={{ c1: <span className="text-retro-maroon" /> }}
+                                ><span className="text-retro-maroon" /></Trans>
                             </h3>
                         </div>
-                        <p className="font-mono text-xs opacity-60 max-w-[200px] text-right hidden md:block">
+                        <p className="font-mono text-xs opacity-60 max-w-50 text-right hidden md:block">
                             {t("conoceme.experiencia.caption")}
                         </p>
                     </div>
 
-                    <div className="relative z-10 grid grid-cols-1 border-t-4 border-[#171717]">
+                    <div className="relative z-10 grid grid-cols-1 border-t-4 border-retro-dark">
                         {experienciaData.map((exp, i) => (
                             <TrackItem
                                 key={i}
@@ -469,7 +469,7 @@ export default function Conoceme() {
             </section>
 
             {/* --- CARA B: FORMACIÓN --- */}
-            <section className="relative py-32 bg-[#8e2b27] text-[#cdc69c] px-6 overflow-hidden">
+            <section className="relative py-32 bg-retro-maroon text-retro-cream px-6 overflow-hidden">
                 <picture className="absolute inset-0 pointer-events-none">
                     <img
                         src="/images/texturas/old-black-background-grunge.webp"
@@ -483,9 +483,9 @@ export default function Conoceme() {
                     <h2 className="absolute -top-16 -right-10 text-[12rem] md:text-[20rem] font-black text-black/20 font-display-impact select-none uppercase leading-none text-right z-0">
                         {t("conoceme.formacion.watermark")}
                     </h2>
-                    <div className="relative z-20 flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b-4 border-[#cdc69c]/30 pb-8">
+                    <div className="relative z-20 flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b-4 border-retro-cream/30 pb-8">
                         <div>
-                            <span className="text-[#cdc69c] font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2 opacity-60">
+                            <span className="text-retro-cream font-mono font-bold tracking-[0.3em] uppercase text-sm block mb-2 opacity-60">
                                 {t("conoceme.formacion.subtitle")}
                             </span>
                             <h3 className="text-6xl font-black tracking-tighter uppercase font-display-impact">
@@ -495,7 +495,7 @@ export default function Conoceme() {
                                 ><span className="text-white" /></Trans>
                             </h3>
                         </div>
-                        <p className="font-mono text-xs opacity-60 max-w-[250px] text-right hidden md:block">
+                        <p className="font-mono text-xs opacity-60 max-w-62.5 text-right hidden md:block">
                             {t("conoceme.formacion.caption")}
                         </p>
                     </div>

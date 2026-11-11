@@ -54,3 +54,11 @@ marcar la tarea y parar. Máximo ~30 min por tarea.
 - [x] **T10. Validación final de la spec.** RNF-2, RNF-3, RNF-6
 - Hecho cuando: `npx vitest run`, `npm run build` y `npm run lint` pasan, y se revisa el
   checklist de "Criterios de finalización" de la spec sin pendientes.
+
+- [x] **T11. Publicar el manifiesto ARD y su *agent skill*.** RF-11, RNF-8
+- Hecho cuando: `public/.well-known/ard.json` y su espejo `ai-catalog.json` son JSON
+  válido con entradas que cumplen el esquema ARD (URN `urn:air:`, `url` o `data`,
+  2-5 `representativeQueries`), la *agent skill* referenciada existe en
+  `public/.well-known/skills/rdisquete-portfolio/SKILL.md`, `index.html` la enlaza con
+  `rel="ard"`, `robots.txt` declara `Agentmap:`, `src/seo/ardManifest.test.ts` cubre
+  todo ello y el build copia la carpeta `.well-known` a `dist/`.

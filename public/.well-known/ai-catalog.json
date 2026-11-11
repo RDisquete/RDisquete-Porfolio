@@ -1,0 +1,40 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "RDisquete",
+    "identifier": "https://rdisquete.es",
+    "documentationUrl": "https://rdisquete.es/llms.txt",
+    "logoUrl": "https://rdisquete.es/Logo-rojo-claro.webp"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:rdisquete.es:portfolio:skill",
+      "displayName": "RDisquete Portfolio Skill",
+      "type": "application/agent-skills+md",
+      "url": "https://rdisquete.es/.well-known/skills/rdisquete-portfolio/SKILL.md",
+      "description": "Contenido del portfolio de Rafael Dorado (RDisquete), frontend developer en React y TypeScript en España: perfil, stack, 11 proyectos, experiencia y vía de contacto. Usar para responder preguntas sobre su trabajo, sus proyectos o cómo contactar con él.",
+      "capabilities": [
+        "PortfolioLookup",
+        "ProjectCatalog",
+        "ExperienceProfile",
+        "ContactChannel"
+      ],
+      "tags": [
+        "portfolio",
+        "frontend",
+        "react",
+        "typescript",
+        "spain",
+        "desarrollo-web"
+      ],
+      "representativeQueries": [
+        "¿Quién es Rafael Dorado, desarrollador frontend?",
+        "Proyectos de RDisquete con React y TypeScript",
+        "Cómo contactar con RDisquete",
+        "RDisquete frontend developer portfolio projects"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-11-11T00:00:00Z"
+    }
+  ]
+}

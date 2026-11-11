@@ -26,3 +26,5 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://rdisquete.es/sitemap.xml
+
+Agentmap: https://rdisquete.es/.well-known/ard.json

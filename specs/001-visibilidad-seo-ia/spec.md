@@ -68,6 +68,10 @@ visual ni la interacción para las personas.
   declara esa página como no indexable.
 - RF-10. EL SISTEMA mantiene disponibles la imagen de previsualización y el manifiesto en
   todas las respuestas, incluso cuando se solicita una página interna.
+- RF-11. EL SISTEMA publica un manifiesto de descubrimiento de recursos agénticos (ARD) en
+  `/.well-known/ard.json`, con el espejo heredado `/.well-known/ai-catalog.json`, y lo
+  señala desde `robots.txt` (directiva `Agentmap:`) y desde el HTML (`rel="ard"`).
+  *(Enmienda 2026-11-11)*
 
 ## Requisitos no funcionales
 
@@ -81,6 +85,10 @@ visual ni la interacción para las personas.
   siguen sin errores.
 - RNF-7. El contenido de respaldo entregado a rastreadores sin JavaScript incluye el
   contenido principal de todas las páginas públicas, no solo el de la página de inicio.
+- RNF-8. El manifiesto ARD es JSON válido y cumple el esquema ARD v0.91: cada entrada
+  declara `identifier` con URN `urn:air:<dominio>:<namespace>:<nombre>`, `displayName`,
+  `type`, exactamente uno de `url` o `data`, y entre 2 y 5 `representativeQueries`.
+  *(Enmienda 2026-11-11)*
 
 ## Casos límite
 
@@ -112,6 +120,8 @@ visual ni la interacción para las personas.
 - Las herramientas de validación de datos estructurados no reportan errores.
 - La imagen de previsualización y el manifiesto responden correctamente.
 - El mapa del sitio y el resumen para IA son coherentes con las páginas públicas.
+- El manifiesto ARD se sirve como `application/json` en `/.well-known/ard.json` y no lo
+  absorbe el fallback de la SPA.
 - La página de ruta inexistente no se ofrece para indexación.
 - Compilación, lint y pruebas en verde.
 
@@ -119,6 +129,9 @@ visual ni la interacción para las personas.
 
 - Se mantiene la aplicación actual (sin prerenderizado ni renderizado en servidor); el
   trabajo se centra en metadatos por página y en el contenido de respaldo.
+- El recurso agéntico publicado es una *agent skill* del portfolio (perfil, proyectos,
+  experiencia y contacto), no un servidor MCP: el sitio no expone herramientas invocables.
+  *(Enmienda 2026-11-11)*
 - Dirección canónica definitiva: `https://rdisquete.es` (sin `www`).
 - El español es el idioma principal; el inglés se ofrece con el selector de idioma y no se
   indexa de forma independiente.
